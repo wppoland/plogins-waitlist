@@ -13,6 +13,6 @@ jobs:
       has-js: false
       run-i18n: false
       run-playwright: false
-      # Plugin Check is the wp.org submission gate; flip to true (and read its
-      # output) when prepping the wp.org submission. Off during MVP dev.
-      run-plugin-check: false
+      # Plugin Check is the wp.org submission gate (advisory). Enabled to verify
+      # wp.org-readiness ahead of submission.
+      run-plugin-check: true
