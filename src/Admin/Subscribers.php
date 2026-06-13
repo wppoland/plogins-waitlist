@@ -65,6 +65,7 @@ final class Subscribers implements HasHooks
         header('Content-Type: text/csv; charset=UTF-8');
         header('Content-Disposition: attachment; filename="restock-subscribers.csv"');
 
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- Writing CSV to php://output; WP_Filesystem is for files, not the output stream.
         $out = fopen('php://output', 'w');
         if ($out === false) {
             return;
@@ -84,6 +85,7 @@ final class Subscribers implements HasHooks
             ]);
         }
 
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Writing CSV to php://output; WP_Filesystem is for files, not the output stream.
         fclose($out);
         exit;
     }

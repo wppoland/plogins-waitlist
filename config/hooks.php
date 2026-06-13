@@ -13,13 +13,12 @@ use Restock\Service\WaitlistService;
  *
  * Admin-only classes are included only when running in wp-admin context.
  */
-$hooks = [
-    WaitlistService::class,
-];
-
-if (is_admin()) {
-    $hooks[] = Settings::class;
-    $hooks[] = Subscribers::class;
-}
-
-return $hooks;
+return is_admin()
+    ? [
+        WaitlistService::class,
+        Settings::class,
+        Subscribers::class,
+    ]
+    : [
+        WaitlistService::class,
+    ];

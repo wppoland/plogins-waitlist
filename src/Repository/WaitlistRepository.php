@@ -122,11 +122,11 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
      */
     public function findAll(): array
     {
-        $table = $this->tableName();
+        $restock_table = $this->tableName();
 
-        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Own plugin table; table name is derived from wpdb prefix (trusted).
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Own plugin table; table name from $wpdb->prefix, cannot be parameterised.
         $rows = $this->wpdb->get_results(
-            "SELECT * FROM {$table} ORDER BY created_at DESC", // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+            "SELECT * FROM {$restock_table} ORDER BY created_at DESC", // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
         );
         // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
