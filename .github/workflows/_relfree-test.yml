@@ -3,12 +3,9 @@ on:
   workflow_dispatch:
 jobs:
   t:
-    uses: wppoland/workflows/.github/workflows/_release-free.yml@v1
+    uses: wppoland/workflows/.github/workflows/_min.yml@main
     with:
       slug: restock
-      wporg-slug: restock
-      has-js: false
       dry-run: true
     secrets:
       WPORG_SVN_USERNAME: ${{ secrets.WPORG_SVN_USERNAME }}
-      WPORG_SVN_PASSWORD: ${{ secrets.WPORG_SVN_PASSWORD }}
