@@ -23,6 +23,11 @@ final class Plugin
     private function __construct()
     {
         $this->container = new Container();
+
+        // Register service factories up front so the container is usable from the
+        // activation hook, which fires during activate_plugin() — BEFORE plugins_loaded
+        // and boot() ever run. (Lazy closures: nothing is instantiated here.)
+        (require PLUGIN_DIR . '/config/services.php')($this->container);
     }
 
     public static function instance(): Plugin
@@ -60,9 +65,6 @@ final class Plugin
             return;
         }
         $this->booted = true;
-
-        // Register service factories.
-        (require PLUGIN_DIR . '/config/services.php')($this->container);
 
         // Run any pending DB migrations.
         $this->container->get(Migrator::class)->run();
