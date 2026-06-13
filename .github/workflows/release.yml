@@ -18,4 +18,6 @@ jobs:
       wporg-slug: restock
       has-js: false
       dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry-run }}
-    secrets: inherit
+    secrets:
+      WPORG_SVN_USERNAME: ${{ secrets.WPORG_SVN_USERNAME }}
+      WPORG_SVN_PASSWORD: ${{ secrets.WPORG_SVN_PASSWORD }}
