@@ -10,6 +10,11 @@ on:
         type: boolean
         default: true
 
+# Granted to the reusable workflow's release job (it creates the GitHub release).
+# A reusable workflow cannot exceed the caller's GITHUB_TOKEN permissions.
+permissions:
+  contents: write
+
 jobs:
   release:
     uses: wppoland/workflows/.github/workflows/_release-free.yml@v1
