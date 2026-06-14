@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,9 +31,12 @@ Restock adds a fast, accessible waitlist form to out-of-stock WooCommerce produc
 * Email field pre-filled for logged-in customers
 * Required consent checkbox for every signup
 * Automatic plain-text email notification on restock, sent via `wp_mail`
-* Customisable form labels, button text, and notification email subject/intro/closing text
+* Optional heading and intro text shown above the form
+* Customisable form labels, button text, on-screen submit messages, and notification email subject/intro/closing text
+* `[restock_waitlist]` shortcode for placing the form manually in a product template
 * Toggle guest (not-logged-in) subscriptions on or off
 * Admin subscriber list with per-product filter and CSV export
+* Theme-overridable form template (`yourtheme/restock/single-product/waitlist-form.php`)
 * Compatible with WooCommerce HPOS (Custom Order Tables) and Cart/Checkout Blocks
 
 Built on the shared `wppoland/storefront-kit` WaitlistEngine.
@@ -69,6 +72,9 @@ In a custom `{prefix}_restock_waitlist` table in your WordPress database. Nothin
 = Can I export the subscriber list? =
 Yes. From **WooCommerce → Restock → Subscribers** you can view subscribers, filter by product, and export the list as CSV.
 
+= Can I place the form somewhere else on the product page? =
+Yes. By default the form is added to the single-product summary, but you can place it manually with the `[restock_waitlist]` shortcode inside a product template or layout. Use `[restock_waitlist id="123"]` to target a specific product. The form still only renders for products that are out of stock or on backorder.
+
 = Does the form reload the page on submit? =
 No. Submission is handled by a small vanilla-JavaScript `fetch` call (no jQuery), and the result is announced in an `aria-live` region — no page reload and no layout shift.
 
@@ -79,13 +85,20 @@ Deleting the plugin from the **Plugins** screen runs the uninstall routine, whic
 
 1. Waitlist form on an out-of-stock product page — email field, consent checkbox, and "Join Waitlist" button.
 2. Admin subscriber list — filterable by product, with CSV export.
-3. Settings page — toggle guest access and customise form labels and notification email text.
+3. Settings page — toggle guest access, set the heading/intro, and customise form labels, on-screen messages, and notification email text.
 
 == External Services ==
 
 Restock does not connect to any external services. Back-in-stock notification emails are sent through your own site's WordPress mailer (`wp_mail`); subscriber data stays in your WordPress database.
 
 == Changelog ==
+
+= 0.2.0 =
+* New: `[restock_waitlist]` shortcode to place the waitlist form manually (optional `id` attribute to target a specific product).
+* New: optional form heading and intro text, configurable from the settings page.
+* New: editable on-screen form messages (success, invalid email, missing consent, login required).
+* Improved: the settings page now exposes every form label, message, and email text the engine supports, instead of relying on hardcoded defaults.
+* Improved: empty optional settings now correctly fall back to the built-in defaults.
 
 = 0.1.0 =
 * Initial release.
