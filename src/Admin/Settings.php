@@ -18,7 +18,9 @@ final class Settings implements HasHooks
     private const OPTION = 'restock_settings';
     private const PAGE   = 'restock-settings';
     private const SECTION_GENERAL = 'restock_general';
+    private const SECTION_DISPLAY = 'restock_display';
     private const SECTION_FORM    = 'restock_form';
+    private const SECTION_MESSAGES = 'restock_messages';
     private const SECTION_EMAIL   = 'restock_email';
 
     public function registerHooks(): void
@@ -82,6 +84,67 @@ final class Settings implements HasHooks
             ],
         );
 
+        // ── Display ─────────────────────────────────────────────────────────
+        add_settings_section(
+            self::SECTION_DISPLAY,
+            __('Heading & intro', 'restock'),
+            static function (): void {
+                echo '<p>' . esc_html__(
+                    'Optional heading and introductory text shown above the waitlist form.',
+                    'restock',
+                ) . '</p>';
+            },
+            self::PAGE,
+        );
+
+        add_settings_field(
+            'show_title',
+            __('Show heading', 'restock'),
+            [$this, 'renderCheckbox'],
+            self::PAGE,
+            self::SECTION_DISPLAY,
+            [
+                'id'    => 'show_title',
+                'label' => __('Display a heading above the form.', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'title',
+            __('Heading text', 'restock'),
+            [$this, 'renderText'],
+            self::PAGE,
+            self::SECTION_DISPLAY,
+            [
+                'id'          => 'title',
+                'placeholder' => __('Notify me when available', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'show_intro',
+            __('Show intro text', 'restock'),
+            [$this, 'renderCheckbox'],
+            self::PAGE,
+            self::SECTION_DISPLAY,
+            [
+                'id'    => 'show_intro',
+                'label' => __('Display intro text above the form.', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'intro_text',
+            __('Intro text', 'restock'),
+            [$this, 'renderTextarea'],
+            self::PAGE,
+            self::SECTION_DISPLAY,
+            [
+                'id'          => 'intro_text',
+                'placeholder' => __('Leave your email and we will let you know the moment this product is back.', 'restock'),
+            ],
+        );
+
         // ── Form labels ───────────────────────────────────────────────────────
         add_settings_section(
             self::SECTION_FORM,
@@ -135,6 +198,68 @@ final class Settings implements HasHooks
             [
                 'id'          => 'button_text',
                 'placeholder' => __('Join Waitlist', 'restock'),
+            ],
+        );
+
+        // ── Messages ────────────────────────────────────────────────────────
+        add_settings_section(
+            self::SECTION_MESSAGES,
+            __('Form messages', 'restock'),
+            static function (): void {
+                echo '<p>' . esc_html__(
+                    'Messages shown to shoppers after they submit the form. Leave blank to use the built-in defaults.',
+                    'restock',
+                ) . '</p>';
+            },
+            self::PAGE,
+        );
+
+        add_settings_field(
+            'success_text',
+            __('Success message', 'restock'),
+            [$this, 'renderText'],
+            self::PAGE,
+            self::SECTION_MESSAGES,
+            [
+                'id'          => 'success_text',
+                'placeholder' => __('Thank you. You have been added to the waitlist.', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'invalid_email_text',
+            __('Invalid email message', 'restock'),
+            [$this, 'renderText'],
+            self::PAGE,
+            self::SECTION_MESSAGES,
+            [
+                'id'          => 'invalid_email_text',
+                'placeholder' => __('Provide a valid email address.', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'privacy_error_text',
+            __('Missing consent message', 'restock'),
+            [$this, 'renderText'],
+            self::PAGE,
+            self::SECTION_MESSAGES,
+            [
+                'id'          => 'privacy_error_text',
+                'placeholder' => __('You must accept the consent for email contact.', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'login_required_text',
+            __('Login required message', 'restock'),
+            [$this, 'renderText'],
+            self::PAGE,
+            self::SECTION_MESSAGES,
+            [
+                'id'          => 'login_required_text',
+                'placeholder' => __('Login to join the waitlist.', 'restock'),
+                'description' => __('Shown when guest subscriptions are disabled and the visitor is not logged in.', 'restock'),
             ],
         );
 
@@ -236,6 +361,32 @@ final class Settings implements HasHooks
     }
 
     /**
+     * Renders a textarea for a settings field.
+     *
+     * @param array<string, string> $args
+     */
+    public function renderTextarea(array $args): void
+    {
+        $options     = (array) get_option(self::OPTION, []);
+        $id          = $args['id'] ?? '';
+        $value       = isset($options[$id]) ? (string) $options[$id] : '';
+        $placeholder = $args['placeholder'] ?? '';
+        $description = $args['description'] ?? '';
+
+        printf(
+            '<textarea id="%1$s" name="%2$s[%1$s]" placeholder="%4$s" class="large-text" rows="2">%3$s</textarea>',
+            esc_attr($id),
+            esc_attr(self::OPTION),
+            esc_textarea($value),
+            esc_attr($placeholder),
+        );
+
+        if ($description !== '') {
+            printf('<p class="description">%s</p>', esc_html($description));
+        }
+    }
+
+    /**
      * Renders a checkbox for a settings field.
      *
      * @param array<string, string> $args
@@ -269,16 +420,40 @@ final class Settings implements HasHooks
             return [];
         }
 
-        return [
-            'allow_guests'      => ! empty($raw['allow_guests']),
-            'show_on_single'    => ! empty($raw['show_on_single']),
-            'email_label'       => sanitize_text_field((string) ($raw['email_label'] ?? '')),
-            'email_placeholder' => sanitize_text_field((string) ($raw['email_placeholder'] ?? '')),
-            'privacy_label'     => sanitize_text_field((string) ($raw['privacy_label'] ?? '')),
-            'button_text'       => sanitize_text_field((string) ($raw['button_text'] ?? '')),
-            'notify_subject'    => sanitize_text_field((string) ($raw['notify_subject'] ?? '')),
-            'notify_intro_text' => sanitize_text_field((string) ($raw['notify_intro_text'] ?? '')),
-            'notify_outro_text' => sanitize_text_field((string) ($raw['notify_outro_text'] ?? '')),
+        $clean = [
+            // General.
+            'allow_guests'        => ! empty($raw['allow_guests']),
+            'show_on_single'      => ! empty($raw['show_on_single']),
+            // Display.
+            'show_title'          => ! empty($raw['show_title']),
+            'title'               => sanitize_text_field((string) ($raw['title'] ?? '')),
+            'show_intro'          => ! empty($raw['show_intro']),
+            'intro_text'          => sanitize_textarea_field((string) ($raw['intro_text'] ?? '')),
+            // Form labels.
+            'email_label'         => sanitize_text_field((string) ($raw['email_label'] ?? '')),
+            'email_placeholder'   => sanitize_text_field((string) ($raw['email_placeholder'] ?? '')),
+            'privacy_label'       => sanitize_text_field((string) ($raw['privacy_label'] ?? '')),
+            'button_text'         => sanitize_text_field((string) ($raw['button_text'] ?? '')),
+            // Form messages (consumed by the WaitlistEngine AJAX handler).
+            'success_text'        => sanitize_text_field((string) ($raw['success_text'] ?? '')),
+            'invalid_email_text'  => sanitize_text_field((string) ($raw['invalid_email_text'] ?? '')),
+            'privacy_error_text'  => sanitize_text_field((string) ($raw['privacy_error_text'] ?? '')),
+            'login_required_text' => sanitize_text_field((string) ($raw['login_required_text'] ?? '')),
+            // Email.
+            'notify_subject'      => sanitize_text_field((string) ($raw['notify_subject'] ?? '')),
+            'notify_intro_text'   => sanitize_text_field((string) ($raw['notify_intro_text'] ?? '')),
+            'notify_outro_text'   => sanitize_text_field((string) ($raw['notify_outro_text'] ?? '')),
         ];
+
+        // Drop empty optional text fields so the engine and template fall back to
+        // their built-in defaults (their lookups use `?? $default`, which only
+        // triggers on a missing key — not on an empty string).
+        foreach ($clean as $key => $value) {
+            if (! in_array($key, ['allow_guests', 'show_on_single', 'show_title', 'show_intro'], true) && $value === '') {
+                unset($clean[$key]);
+            }
+        }
+
+        return $clean;
     }
 }
