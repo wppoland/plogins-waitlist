@@ -1,0 +1,225 @@
+/* ==========================================================================
+   Restock – Admin UI
+   Polishes the Settings and Subscribers screens: tidy cards, inline help
+   tooltips, friendly empty states. Themeable, dark-mode aware, motion-safe.
+   Scoped to .restock-admin so it never leaks into the rest of wp-admin.
+   ========================================================================== */
+
+.restock-admin {
+    --restock-accent: #2271b1;
+    --restock-card-bg: #fff;
+    --restock-card-border: #dcdfe4;
+    --restock-muted: #646970;
+    --restock-tip-bg: #1e1e1e;
+    --restock-tip-text: #fff;
+    --restock-ok: #16a34a;
+
+    max-inline-size: 60rem;
+}
+
+/* ── Intro / header ───────────────────────────────────────────────────── */
+
+.restock-admin__lead {
+    margin-block: 0.25em 1.25em;
+    max-inline-size: 60ch;
+    color: var(--restock-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ── Settings sections rendered as cards ──────────────────────────────── */
+
+.restock-admin .form-table {
+    margin-block-start: 0.5em;
+}
+
+.restock-admin h2 {
+    margin-block-start: 1.75em;
+    padding-block-end: 0.4em;
+    border-block-end: 1px solid var(--restock-card-border);
+    font-size: 1.05rem;
+}
+
+.restock-admin .form-table th {
+    inline-size: 16rem;
+    padding-block: 18px;
+}
+
+/* ── Inline help tooltip ("?" affordance) ─────────────────────────────── */
+
+.restock-help {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 1.15rem;
+    block-size: 1.15rem;
+    margin-inline-start: 0.4rem;
+    padding: 0;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--restock-accent);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: help;
+    vertical-align: middle;
+}
+
+.restock-help:focus-visible {
+    outline: 2px solid var(--restock-accent);
+    outline-offset: 2px;
+}
+
+/* Tooltip bubble — shown on hover and keyboard focus. */
+.restock-help__bubble {
+    position: absolute;
+    inset-block-end: calc(100% + 8px);
+    inset-inline-start: 50%;
+    z-index: 20;
+    inline-size: max-content;
+    max-inline-size: 18rem;
+    transform: translateX(-50%);
+    padding: 0.55rem 0.7rem;
+    border-radius: 6px;
+    background: var(--restock-tip-bg);
+    color: var(--restock-tip-text);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.45;
+    text-align: start;
+    white-space: normal;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.restock-help__bubble::after {
+    content: "";
+    position: absolute;
+    inset-block-start: 100%;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-block-start-color: var(--restock-tip-bg);
+}
+
+.restock-help:hover .restock-help__bubble,
+.restock-help:focus-visible .restock-help__bubble,
+.restock-help[aria-expanded="true"] .restock-help__bubble {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ── Subscribers screen ───────────────────────────────────────────────── */
+
+.restock-subscribers__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-block: 1em;
+}
+
+.restock-subscribers__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-block: 1em 1.5em;
+}
+
+.restock-stat {
+    flex: 1 1 9rem;
+    min-inline-size: 9rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--restock-card-border);
+    border-radius: 10px;
+    background: var(--restock-card-bg);
+}
+
+.restock-stat__value {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.restock-stat__label {
+    display: block;
+    margin-block-start: 0.2rem;
+    color: var(--restock-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* ── Friendly empty state ─────────────────────────────────────────────── */
+
+.restock-empty {
+    margin-block: 1em;
+    padding: clamp(1.5rem, 1rem + 3vw, 3rem) 1.5rem;
+    border: 1px dashed var(--restock-card-border);
+    border-radius: 12px;
+    background: var(--restock-card-bg);
+    text-align: center;
+}
+
+.restock-empty__icon {
+    font-size: 2.25rem;
+    line-height: 1;
+}
+
+.restock-empty__title {
+    margin-block: 0.5em 0.25em;
+    font-size: 1.1rem;
+}
+
+.restock-empty__text {
+    margin: 0 auto;
+    max-inline-size: 42ch;
+    color: var(--restock-muted);
+    line-height: 1.6;
+}
+
+/* ── Notified badge ───────────────────────────────────────────────────── */
+
+.restock-badge {
+    display: inline-block;
+    padding: 0.1em 0.6em;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.restock-badge--yes {
+    background: rgba(22, 163, 74, 0.12);
+    color: var(--restock-ok);
+}
+
+.restock-badge--no {
+    background: rgba(100, 105, 112, 0.12);
+    color: var(--restock-muted);
+}
+
+/* ── Motion ───────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: no-preference) {
+    .restock-help__bubble {
+        transition: opacity 0.14s ease, visibility 0.14s ease;
+    }
+}
+
+/* ── Dark mode (admin colour scheme handles most; refine cards/tips) ───── */
+
+@media (prefers-color-scheme: dark) {
+    .restock-admin {
+        --restock-card-bg: #1f2329;
+        --restock-card-border: #3c434a;
+        --restock-muted: #a7aaad;
+        --restock-tip-bg: #e2e4e7;
+        --restock-tip-text: #1d2327;
+    }
+}

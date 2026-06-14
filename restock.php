@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Plugin Name:       Restock - Back in Stock Notifications for WooCommerce
  * Plugin URI:        https://plogins.com/restock/
  * Description:       Lightweight, accessible back-in-stock / waitlist notifications for WooCommerce. Built with Core Web Vitals and WCAG 2.2 AA in mind.
- * Version:           0.2.0
+ * Version:           0.3.0
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Tested up to:      7.0
@@ -26,7 +26,7 @@ namespace Restock;
 
 defined('ABSPATH') || exit;
 
-const VERSION = '0.2.0';
+const VERSION = '0.3.0';
 const PLUGIN_FILE = __FILE__;
 const PLUGIN_DIR = __DIR__;
 const MIN_PHP_VERSION = '8.1.0';
@@ -99,4 +99,5 @@ add_action('plugins_loaded', static function (): void {
 register_activation_hook(PLUGIN_FILE, static function (): void {
     require_once PLUGIN_DIR . '/autoload.php';
     Plugin::instance()->container()->get(Migrator::class)->run();
+    flush_rewrite_rules();
 });

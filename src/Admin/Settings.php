@@ -69,6 +69,7 @@ final class Settings implements HasHooks
             [
                 'id'    => 'allow_guests',
                 'label' => __('Allow visitors who are not logged in to subscribe.', 'restock'),
+                'help'  => __('When on, anyone can join the waitlist by entering their email. When off, only logged-in customers can subscribe and guests see your "login required" message instead. Turn off to keep your list tied to real accounts.', 'restock'),
             ],
         );
 
@@ -81,6 +82,33 @@ final class Settings implements HasHooks
             [
                 'id'    => 'show_on_single',
                 'label' => __('Display the waitlist form on single product pages.', 'restock'),
+                'help'  => __('Automatically shows the form on each product page when that product is out of stock or on backorder. On variable products, the form appears after the shopper selects an unavailable variation. Turn off only if you place the form yourself with the [restock_waitlist] shortcode.', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'show_in_account',
+            __('My Account waitlists', 'restock'),
+            [$this, 'renderCheckbox'],
+            self::PAGE,
+            self::SECTION_GENERAL,
+            [
+                'id'    => 'show_in_account',
+                'label' => __('Show a Waitlists tab in WooCommerce My Account.', 'restock'),
+                'help'  => __('Logged-in customers can review active waitlists and leave a list from My Account. After enabling, visit Settings → Permalinks and click Save once if the tab returns a 404.', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'account_menu_label',
+            __('My Account menu label', 'restock'),
+            [$this, 'renderText'],
+            self::PAGE,
+            self::SECTION_GENERAL,
+            [
+                'id'          => 'account_menu_label',
+                'label'       => __('Waitlists', 'restock'),
+                'description' => __('Label for the My Account menu item.', 'restock'),
             ],
         );
 
@@ -106,6 +134,7 @@ final class Settings implements HasHooks
             [
                 'id'    => 'show_title',
                 'label' => __('Display a heading above the form.', 'restock'),
+                'help'  => __('Shows the heading text (set below) above the form, for example "Notify me when available". Hide it for a more compact form.', 'restock'),
             ],
         );
 
@@ -118,6 +147,7 @@ final class Settings implements HasHooks
             [
                 'id'          => 'title',
                 'placeholder' => __('Notify me when available', 'restock'),
+                'help'        => __('The heading shown above the form (only when "Show heading" is on). Keep it short and reassuring. Leave blank to use the placeholder shown here.', 'restock'),
             ],
         );
 
@@ -130,6 +160,7 @@ final class Settings implements HasHooks
             [
                 'id'    => 'show_intro',
                 'label' => __('Display intro text above the form.', 'restock'),
+                'help'  => __('Shows a short paragraph (set below) between the heading and the form to explain what subscribers will receive.', 'restock'),
             ],
         );
 
@@ -142,6 +173,7 @@ final class Settings implements HasHooks
             [
                 'id'          => 'intro_text',
                 'placeholder' => __('Leave your email and we will let you know the moment this product is back.', 'restock'),
+                'help'        => __('Introductory sentence shown above the form (only when "Show intro text" is on). Use it to set expectations, e.g. one email, no spam. Leave blank to use the placeholder shown here.', 'restock'),
             ],
         );
 
@@ -162,6 +194,7 @@ final class Settings implements HasHooks
             [
                 'id'          => 'email_label',
                 'placeholder' => __('Email address', 'restock'),
+                'help'        => __('Accessible label for the email field, read out by screen readers. It is visually hidden on the form but important for accessibility. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -174,6 +207,7 @@ final class Settings implements HasHooks
             [
                 'id'          => 'email_placeholder',
                 'placeholder' => __('Your email address', 'restock'),
+                'help'        => __('Greyed-out hint shown inside the empty email field. It disappears as soon as the shopper types. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -186,6 +220,7 @@ final class Settings implements HasHooks
             [
                 'id'          => 'privacy_label',
                 'placeholder' => __('I consent to receiving back-in-stock notifications.', 'restock'),
+                'help'        => __('Text next to the required consent checkbox. Shoppers must tick it before they can subscribe, so word it clearly for GDPR/marketing-consent compliance. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -198,6 +233,20 @@ final class Settings implements HasHooks
             [
                 'id'          => 'button_text',
                 'placeholder' => __('Join Waitlist', 'restock'),
+                'help'        => __('Label on the submit button. An action-oriented phrase such as "Notify me" or "Join Waitlist" works best. Leave blank to use the default.', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'variation_prompt_text',
+            __('Variable product prompt', 'restock'),
+            [$this, 'renderTextarea'],
+            self::PAGE,
+            self::SECTION_FORM,
+            [
+                'id'          => 'variation_prompt_text',
+                'label'       => __('Select options above, then join the waitlist when that variation is unavailable.', 'restock'),
+                'description' => __('Shown above the form on variable products.', 'restock'),
             ],
         );
 
@@ -223,6 +272,7 @@ final class Settings implements HasHooks
             [
                 'id'          => 'success_text',
                 'placeholder' => __('Thank you. You have been added to the waitlist.', 'restock'),
+                'help'        => __('Confirmation shown after a shopper successfully joins the waitlist. Reassure them you will email when the item returns. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -235,6 +285,7 @@ final class Settings implements HasHooks
             [
                 'id'          => 'invalid_email_text',
                 'placeholder' => __('Provide a valid email address.', 'restock'),
+                'help'        => __('Error shown when the entered email address is missing or malformed. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -247,6 +298,7 @@ final class Settings implements HasHooks
             [
                 'id'          => 'privacy_error_text',
                 'placeholder' => __('You must accept the consent for email contact.', 'restock'),
+                'help'        => __('Error shown when a shopper submits without ticking the consent checkbox. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -260,6 +312,33 @@ final class Settings implements HasHooks
                 'id'          => 'login_required_text',
                 'placeholder' => __('Login to join the waitlist.', 'restock'),
                 'description' => __('Shown when guest subscriptions are disabled and the visitor is not logged in.', 'restock'),
+                'help'        => __('Only relevant when "Allow guest subscriptions" is off. Tell visitors they need an account, ideally with a link to your login page. Leave blank to use the default.', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'variation_required_text',
+            __('Variation required message', 'restock'),
+            [$this, 'renderText'],
+            self::PAGE,
+            self::SECTION_MESSAGES,
+            [
+                'id'    => 'variation_required_text',
+                'label' => __('Select product options before joining the waitlist.', 'restock'),
+                'help'  => __('Error shown when a shopper tries to subscribe without choosing a variation on variable products.', 'restock'),
+            ],
+        );
+
+        add_settings_field(
+            'unsubscribe_success_text',
+            __('Unsubscribe success message', 'restock'),
+            [$this, 'renderText'],
+            self::PAGE,
+            self::SECTION_MESSAGES,
+            [
+                'id'    => 'unsubscribe_success_text',
+                'label' => __('You have been removed from this waitlist.', 'restock'),
+                'help'  => __('Confirmation shown after a customer leaves a waitlist from My Account.', 'restock'),
             ],
         );
 
@@ -286,6 +365,7 @@ final class Settings implements HasHooks
                 'id'          => 'notify_subject',
                 'placeholder' => __('Product back in stock - {product_name}', 'restock'),
                 'description' => __('Use {product_name} as a placeholder for the product title.', 'restock'),
+                'help'        => __('Subject line of the email sent to subscribers when the product is restocked. Include {product_name} so each email names the exact product. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -299,6 +379,7 @@ final class Settings implements HasHooks
                 'id'          => 'notify_intro_text',
                 'placeholder' => __('Product {product_name} is back in stock.', 'restock'),
                 'description' => __('Use {product_name} as a placeholder for the product title.', 'restock'),
+                'help'        => __('First line of the notification email body. The product link is added automatically on the next line. Use {product_name} to name the product. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -311,6 +392,7 @@ final class Settings implements HasHooks
             [
                 'id'          => 'notify_outro_text',
                 'placeholder' => __('If you no longer wish to receive these messages, simply ignore this email.', 'restock'),
+                'help'        => __('Closing line of the notification email, shown after the product link. A good place for a brief reassurance or sign-off. Leave blank to use the default.', 'restock'),
             ],
         );
     }
@@ -321,8 +403,11 @@ final class Settings implements HasHooks
             return;
         }
         ?>
-        <div class="wrap">
+        <div class="wrap restock-admin">
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+            <p class="restock-admin__lead">
+                <?php esc_html_e('Configure the back-in-stock waitlist form that appears on out-of-stock products. Hover or focus the ? icons for guidance on each option. Empty text fields fall back to sensible built-in defaults.', 'restock'); ?>
+            </p>
             <form method="post" action="options.php">
                 <?php
                 settings_fields(self::PAGE);
@@ -332,6 +417,33 @@ final class Settings implements HasHooks
             </form>
         </div>
         <?php
+    }
+
+    /**
+     * Builds an accessible inline-help affordance: a "?" button whose tooltip
+     * text is wired to it via aria-describedby and exposed as role="tooltip".
+     * Usable on hover and keyboard focus; the help text is always read out by
+     * screen readers even without JavaScript.
+     */
+    private function helpIcon(string $id, string $text): string
+    {
+        if ($text === '') {
+            return '';
+        }
+
+        $bubbleId = 'restock-help-' . $id;
+
+        return sprintf(
+            '<button type="button" class="restock-help" aria-describedby="%1$s" aria-expanded="false">'
+            . '<span aria-hidden="true">?</span>'
+            . '<span class="screen-reader-text">%2$s</span>'
+            . '<span class="restock-help__bubble" id="%1$s" role="tooltip">%3$s</span>'
+            . '</button>',
+            esc_attr($bubbleId),
+            /* translators: accessible name for the inline-help button. */
+            esc_html__('More information', 'restock'),
+            esc_html($text),
+        );
     }
 
     /**
@@ -354,6 +466,9 @@ final class Settings implements HasHooks
             esc_attr($value),
             esc_attr($placeholder),
         );
+
+        // Help icon is pre-escaped HTML built by helpIcon().
+        echo $this->helpIcon($id, $args['help'] ?? ''); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
         if ($description !== '') {
             printf('<p class="description">%s</p>', esc_html($description));
@@ -381,6 +496,9 @@ final class Settings implements HasHooks
             esc_attr($placeholder),
         );
 
+        // Help icon is pre-escaped HTML built by helpIcon().
+        echo $this->helpIcon($id, $args['help'] ?? ''); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
         if ($description !== '') {
             printf('<p class="description">%s</p>', esc_html($description));
         }
@@ -395,7 +513,7 @@ final class Settings implements HasHooks
     {
         $options = (array) get_option(self::OPTION, []);
         $id      = $args['id'] ?? '';
-        $default = in_array($id, ['allow_guests', 'show_on_single'], true);
+        $default = in_array($id, ['allow_guests', 'show_on_single', 'show_in_account'], true);
         $checked = isset($options[$id]) ? (bool) $options[$id] : $default;
         $label   = $args['label'] ?? '';
 
@@ -406,6 +524,9 @@ final class Settings implements HasHooks
             checked($checked, true, false),
             esc_html($label),
         );
+
+        // Help icon is pre-escaped HTML built by helpIcon().
+        echo $this->helpIcon($id, $args['help'] ?? ''); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     }
 
     /**
@@ -424,6 +545,8 @@ final class Settings implements HasHooks
             // General.
             'allow_guests'        => ! empty($raw['allow_guests']),
             'show_on_single'      => ! empty($raw['show_on_single']),
+            'show_in_account'     => ! empty($raw['show_in_account']),
+            'account_menu_label'   => sanitize_text_field((string) ($raw['account_menu_label'] ?? '')),
             // Display.
             'show_title'          => ! empty($raw['show_title']),
             'title'               => sanitize_text_field((string) ($raw['title'] ?? '')),
@@ -434,11 +557,14 @@ final class Settings implements HasHooks
             'email_placeholder'   => sanitize_text_field((string) ($raw['email_placeholder'] ?? '')),
             'privacy_label'       => sanitize_text_field((string) ($raw['privacy_label'] ?? '')),
             'button_text'         => sanitize_text_field((string) ($raw['button_text'] ?? '')),
+            'variation_prompt_text' => sanitize_textarea_field((string) ($raw['variation_prompt_text'] ?? '')),
             // Form messages (consumed by the WaitlistEngine AJAX handler).
             'success_text'        => sanitize_text_field((string) ($raw['success_text'] ?? '')),
             'invalid_email_text'  => sanitize_text_field((string) ($raw['invalid_email_text'] ?? '')),
             'privacy_error_text'  => sanitize_text_field((string) ($raw['privacy_error_text'] ?? '')),
             'login_required_text' => sanitize_text_field((string) ($raw['login_required_text'] ?? '')),
+            'variation_required_text' => sanitize_text_field((string) ($raw['variation_required_text'] ?? '')),
+            'unsubscribe_success_text' => sanitize_text_field((string) ($raw['unsubscribe_success_text'] ?? '')),
             // Email.
             'notify_subject'      => sanitize_text_field((string) ($raw['notify_subject'] ?? '')),
             'notify_intro_text'   => sanitize_text_field((string) ($raw['notify_intro_text'] ?? '')),
@@ -449,7 +575,7 @@ final class Settings implements HasHooks
         // their built-in defaults (their lookups use `?? $default`, which only
         // triggers on a missing key — not on an empty string).
         foreach ($clean as $key => $value) {
-            if (! in_array($key, ['allow_guests', 'show_on_single', 'show_title', 'show_intro'], true) && $value === '') {
+            if (! in_array($key, ['allow_guests', 'show_on_single', 'show_in_account', 'show_title', 'show_intro'], true) && $value === '') {
                 unset($clean[$key]);
             }
         }
