@@ -41,8 +41,6 @@ Restock adds a fast, accessible waitlist form to out-of-stock WooCommerce produc
 * Theme-overridable form template (`yourtheme/restock/single-product/waitlist-form.php`)
 * Compatible with WooCommerce HPOS (Custom Order Tables) and Cart/Checkout Blocks
 
-Built on the shared `wppoland/storefront-kit` WaitlistEngine.
-
 == Installation ==
 
 1. Install and activate WooCommerce (8.0 or later).

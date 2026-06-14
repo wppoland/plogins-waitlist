@@ -10,7 +10,7 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
     return;
 }
 
-// Fallback PSR-4 autoloader for Restock and WPPoland\StorefrontKit
+// Fallback PSR-4 autoloader.
 spl_autoload_register(static function (string $class): void {
     $prefixes = [
         'Restock\\' => __DIR__ . '/src/',
