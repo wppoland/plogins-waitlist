@@ -230,3 +230,36 @@
         --restock-err-text: #f87171;
     }
 }
+
+/* ── My Account waitlists ─────────────────────────────────────────────── */
+
+.restock-account-waitlists__table {
+    margin-block-start: 1em;
+}
+
+.restock-account-waitlists__empty {
+    color: var(--restock-muted, #5b6472);
+}
+
+.restock-account-waitlists__unsubscribe {
+    white-space: nowrap;
+}
+
+.restock-account-waitlists__message {
+    margin-block-start: 1em;
+}
+
+.restock-account-waitlists__message[data-state="success"] {
+    color: var(--restock-ok-text, #15803d);
+}
+
+.restock-account-waitlists__message[data-state="error"] {
+    color: var(--restock-err-text, #b91c1c);
+}
+
+.restock-waitlist__variation-prompt {
+    margin-block: 0 0.75em;
+    color: var(--restock-muted);
+    font-size: 0.9em;
+    line-height: 1.45;
+}

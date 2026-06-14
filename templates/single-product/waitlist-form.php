@@ -20,16 +20,29 @@ $restock_show_intro   = ! empty($restock_settings['show_intro']) && $restock_int
 
 $restock_email_label = (string) ($restock_settings['email_label'] ?? __('Email address', 'restock'));
 $restock_button_text = (string) ($restock_settings['button_text'] ?? __('Join Waitlist', 'restock'));
+$restock_is_variable = $restock_product->is_type('variable');
+$restock_variation_prompt = (string) ($restock_settings['variation_prompt_text'] ?? __('Select options above, then join the waitlist when that variation is unavailable.', 'restock'));
 ?>
-<div class="restock-waitlist" data-restock-waitlist>
+<div
+    class="restock-waitlist"
+    data-restock-waitlist
+    data-restock-variable="<?php echo $restock_is_variable ? '1' : '0'; ?>"
+    <?php if ($restock_is_variable) : ?>
+        hidden
+        data-restock-parent-id="<?php echo esc_attr((string) $restock_product->get_id()); ?>"
+    <?php endif; ?>
+>
     <?php if ($restock_show_heading) : ?>
         <h3 class="restock-waitlist__heading"><?php echo esc_html($restock_heading); ?></h3>
     <?php endif; ?>
     <?php if ($restock_show_intro) : ?>
         <p class="restock-waitlist__intro"><?php echo esc_html($restock_intro); ?></p>
     <?php endif; ?>
+    <?php if ($restock_is_variable) : ?>
+        <p class="restock-waitlist__variation-prompt"><?php echo esc_html($restock_variation_prompt); ?></p>
+    <?php endif; ?>
     <form class="restock-waitlist-form" novalidate>
-        <input type="hidden" name="product_id" value="<?php echo esc_attr((string) $restock_product->get_id()); ?>" />
+        <input type="hidden" name="product_id" value="<?php echo esc_attr((string) $restock_product->get_id()); ?>" data-restock-product-id />
         <label>
             <span class="screen-reader-text"><?php echo esc_html($restock_email_label); ?></span>
             <input
