@@ -6,6 +6,7 @@ namespace Restock;
 
 defined('ABSPATH') || exit;
 
+use Restock\Admin\Assets;
 use Restock\Admin\Settings;
 use Restock\Admin\Subscribers;
 use Restock\Repository\WaitlistRepository;
@@ -39,5 +40,6 @@ return static function (Container $c): void {
         $c->singleton(Subscribers::class, static fn (): Subscribers => new Subscribers(
             $c->get(WaitlistRepository::class),
         ));
+        $c->singleton(Assets::class, static fn (): Assets => new Assets());
     }
 };

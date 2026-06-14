@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.2.0
+Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,8 @@ Restock adds a fast, accessible waitlist form to out-of-stock WooCommerce produc
 **Features**
 
 * Waitlist form shown automatically on out-of-stock and backorder ("on backorder") product pages
+* Variable products: form appears after the shopper selects an unavailable variation
+* WooCommerce **My Account → Waitlists** tab for logged-in customers (review lists, leave waitlist)
 * Asynchronous AJAX subscribe (no page reload, no jQuery)
 * Email field pre-filled for logged-in customers
 * Required consent checkbox for every signup
@@ -73,7 +75,13 @@ In a custom `{prefix}_restock_waitlist` table in your WordPress database. Nothin
 Yes. From **WooCommerce → Restock → Subscribers** you can view subscribers, filter by product, and export the list as CSV.
 
 = Can I place the form somewhere else on the product page? =
-Yes. By default the form is added to the single-product summary, but you can place it manually with the `[restock_waitlist]` shortcode inside a product template or layout. Use `[restock_waitlist id="123"]` to target a specific product. The form still only renders for products that are out of stock or on backorder.
+Yes. By default the form is added to the single-product summary, but you can place it manually with the `[restock_waitlist]` shortcode inside a product template or layout. Use `[restock_waitlist id="123"]` to target a specific product. On simple products the form still only renders when the product is out of stock or on backorder; on variable products it appears after an unavailable variation is selected.
+
+= Does it work with variable products? =
+Yes. Choose options in the standard WooCommerce variation form first. When the selected variation is out of stock or on backorder, the waitlist form appears and the subscription is stored for that specific variation.
+
+= Can customers manage waitlists in My Account? =
+Yes. Logged-in customers see a **Waitlists** tab under My Account with active subscriptions, current stock status, and a button to leave each list. Disable the tab under **WooCommerce → Restock** if you do not need it.
 
 = Does the form reload the page on submit? =
 No. Submission is handled by a small vanilla-JavaScript `fetch` call (no jQuery), and the result is announced in an `aria-live` region — no page reload and no layout shift.
@@ -92,6 +100,11 @@ Deleting the plugin from the **Plugins** screen runs the uninstall routine, whic
 Restock does not connect to any external services. Back-in-stock notification emails are sent through your own site's WordPress mailer (`wp_mail`); subscriber data stays in your WordPress database.
 
 == Changelog ==
+
+= 0.3.0 =
+* New: WooCommerce My Account **Waitlists** tab with stock status and leave-waitlist action.
+* New: variation-aware waitlist signups on variable products (form shows after an out-of-stock variation is selected).
+* New: settings for My Account menu label, variation prompt, and unsubscribe confirmation message.
 
 = 0.2.0 =
 * New: `[restock_waitlist]` shortcode to place the waitlist form manually (optional `id` attribute to target a specific product).
