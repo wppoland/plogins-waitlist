@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
+use Restock\Admin\Assets;
 use Restock\Admin\Settings;
 use Restock\Admin\Subscribers;
 use Restock\Service\WaitlistService;
@@ -18,6 +19,7 @@ return is_admin()
         WaitlistService::class,
         Settings::class,
         Subscribers::class,
+        Assets::class,
     ]
     : [
         WaitlistService::class,
