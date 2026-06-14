@@ -1,5 +1,5 @@
 === Restock - Back in Stock Notifications for WooCommerce ===
-Contributors: motylanogha
+Contributors: wppoland
 Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
