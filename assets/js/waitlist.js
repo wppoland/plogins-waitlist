@@ -1,117 +1,178 @@
-/**
- * Restock – Waitlist form (storefront).
- *
- * Vanilla JS, no dependencies. Submits the form over fetch(), reflects the
- * result inline with an accessible, colour-coded status message, and guards
- * against double submissions. The button label swaps to a "busy" state while
- * the request is in flight (its min-width is reserved in CSS, so no reflow).
- */
-(() => {
+document.addEventListener('DOMContentLoaded', () => {
   const config = window.restockWaitlist;
 
   if (!config) {
     return;
   }
 
-  const init = () => {
-    document.querySelectorAll('.restock-waitlist-form').forEach((form) => {
-      // Bind once, even if init runs twice (defensive against re-injection).
-      if (form.dataset.restockBound === '1') {
-        return;
-      }
-      form.dataset.restockBound = '1';
+  const showMessage = (element, text, state) => {
+    if (!element || !text) {
+      return;
+    }
 
-      const message = form.querySelector('[data-restock-waitlist-message]');
-      const submitButton = form.querySelector('[type="submit"]');
-      const defaultLabel = submitButton ? submitButton.textContent : '';
-      const busyLabel =
-        (submitButton && submitButton.getAttribute('data-busy-label')) || defaultLabel;
+    element.hidden = false;
+    element.textContent = text;
 
-      // Announce results to assistive tech the moment they appear.
-      if (message) {
-        message.setAttribute('role', 'status');
-        message.setAttribute('aria-live', 'polite');
-      }
-
-      const showMessage = (text, state) => {
-        if (!message || !text) {
-          return;
-        }
-        message.hidden = false;
-        message.textContent = text;
-        if (state) {
-          message.setAttribute('data-state', state);
-        } else {
-          message.removeAttribute('data-state');
-        }
-      };
-
-      const setBusy = (busy) => {
-        if (busy) {
-          form.setAttribute('aria-busy', 'true');
-        } else {
-          form.removeAttribute('aria-busy');
-        }
-        if (submitButton) {
-          submitButton.disabled = busy;
-          submitButton.textContent = busy ? busyLabel : defaultLabel;
-        }
-      };
-
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        // Ignore re-entrant submits while a request is in flight.
-        if (form.getAttribute('aria-busy') === 'true') {
-          return;
-        }
-
-        const body = new URLSearchParams(new FormData(form));
-        body.set('action', config.action || 'restock_waitlist_subscribe');
-        body.set('nonce', config.nonce || '');
-
-        setBusy(true);
-
-        try {
-          const response = await fetch(config.ajaxUrl, {
-            method: 'POST',
-            credentials: 'same-origin',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
-            body: body.toString(),
-          });
-
-          let payload = null;
-          try {
-            payload = await response.json();
-          } catch (parseError) {
-            payload = null;
-          }
-
-          const text =
-            payload?.data?.message ||
-            payload?.data?.error ||
-            (payload?.success ? '' : config.errorText) ||
-            config.errorText ||
-            '';
-
-          if (payload?.success) {
-            showMessage(text, 'success');
-            form.reset();
-          } else {
-            showMessage(text, 'error');
-          }
-        } catch (networkError) {
-          showMessage(config.errorText || '', 'error');
-        } finally {
-          setBusy(false);
-        }
-      });
-    });
+    if (state) {
+      element.setAttribute('data-state', state);
+    }
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
-  }
-})();
+  document.querySelectorAll('.restock-waitlist-form').forEach((form) => {
+    const wrapper = form.closest('.restock-waitlist');
+    const message = form.querySelector('[data-restock-waitlist-message]');
+    const productInput = form.querySelector('[data-restock-product-id]');
+
+    if (message) {
+      message.setAttribute('role', 'status');
+      message.setAttribute('aria-live', 'polite');
+    }
+
+    const setWrapperVisible = (visible) => {
+      if (!wrapper) {
+        return;
+      }
+
+      wrapper.hidden = !visible;
+    };
+
+    const variationIsWaitlistable = (variation) => {
+      if (!variation || !variation.variation_id) {
+        return false;
+      }
+
+      if (variation.is_in_stock === true || variation.is_in_stock === 'yes') {
+        return false;
+      }
+
+      return variation.backorders_allowed === true
+        || variation.backorders_allowed === 'yes'
+        || variation.availability_html === ''
+        || (typeof variation.availability_html === 'string'
+          && variation.availability_html.toLowerCase().includes('out of stock'));
+    };
+
+    if (wrapper && wrapper.dataset.restockVariable === '1' && productInput) {
+      const variationsForm = document.querySelector('form.variations_form');
+
+      if (variationsForm && typeof jQuery !== 'undefined') {
+        jQuery(variationsForm).on('found_variation', (_event, variation) => {
+          if (variationIsWaitlistable(variation)) {
+            productInput.value = String(variation.variation_id);
+            setWrapperVisible(true);
+            return;
+          }
+
+          setWrapperVisible(false);
+        });
+
+        jQuery(variationsForm).on('reset_data', () => {
+          setWrapperVisible(false);
+        });
+      }
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const submitButton = form.querySelector('[type="submit"]');
+
+      if (form.getAttribute('aria-busy') === 'true') {
+        return;
+      }
+
+      const body = new URLSearchParams(new FormData(form));
+      body.set('action', config.action || 'restock_waitlist_subscribe');
+      body.set('nonce', config.nonce);
+
+      form.setAttribute('aria-busy', 'true');
+
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+      try {
+        const response = await fetch(config.ajaxUrl, {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+          body: body.toString(),
+        });
+
+        const payload = await response.json();
+        const text = payload?.data?.message || payload?.data?.error || '';
+        const state = payload?.success ? 'success' : 'error';
+
+        showMessage(message, text, state);
+
+        if (payload?.success) {
+          form.reset();
+
+          if (productInput && wrapper && wrapper.dataset.restockVariable === '1') {
+            productInput.value = wrapper.dataset.restockParentId || productInput.value;
+          }
+        }
+      } catch (error) {
+        showMessage(message, config.errorText || '', 'error');
+      } finally {
+        form.removeAttribute('aria-busy');
+
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-restock-unsubscribe]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      if (!config.unsubscribeAction) {
+        return;
+      }
+
+      const row = button.closest('[data-restock-subscription-row]');
+      const message = document.querySelector('[data-restock-account-message]');
+      const subscriptionId = button.getAttribute('data-subscription-id');
+
+      if (!subscriptionId || button.disabled) {
+        return;
+      }
+
+      button.disabled = true;
+
+      try {
+        const body = new URLSearchParams({
+          action: config.unsubscribeAction,
+          nonce: config.nonce,
+          subscription_id: subscriptionId,
+        });
+
+        const response = await fetch(config.ajaxUrl, {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+          body: body.toString(),
+        });
+
+        const payload = await response.json();
+
+        if (payload?.success) {
+          row?.remove();
+          showMessage(message, payload?.data?.message || config.unsubscribeSuccess || '', 'success');
+
+          if (!document.querySelector('[data-restock-subscription-row]')) {
+            window.location.reload();
+          }
+
+          return;
+        }
+
+        showMessage(message, payload?.data?.message || config.errorText || '', 'error');
+      } catch (error) {
+        showMessage(message, config.errorText || '', 'error');
+      } finally {
+        button.disabled = false;
+      }
+    });
+  });
+});
