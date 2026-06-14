@@ -52,21 +52,73 @@ final class WaitlistService implements HasHooks
     public function registerHooks(): void
     {
         $this->engine->registerHooks();
+
+        add_shortcode('restock_waitlist', [$this, 'renderShortcode']);
+    }
+
+    /**
+     * Render the waitlist form via a shortcode so stores can place it manually
+     * (e.g. in a custom product template or page builder) instead of relying on
+     * the default single-product summary placement.
+     *
+     * Usage: [restock_waitlist] (current product) or [restock_waitlist id="123"].
+     *
+     * The form's JS/CSS are enqueued by the engine on single-product pages, so
+     * the shortcode is intended for use within a product template/layout. On a
+     * product page the assets are already present and the async submit works.
+     *
+     * @param array<string, mixed>|string $atts Shortcode attributes.
+     */
+    public function renderShortcode(array|string $atts = []): string
+    {
+        $atts = shortcode_atts(['id' => 0], is_array($atts) ? $atts : [], 'restock_waitlist');
+
+        $productId = absint($atts['id']);
+        $product   = $productId > 0 ? wc_get_product($productId) : ($GLOBALS['product'] ?? null);
+
+        if (! $product instanceof \WC_Product) {
+            return '';
+        }
+
+        $settings = $this->getSettings();
+
+        // Mirror the engine's own visibility rules: respect the show_on_single
+        // toggle and only render for products that are out of stock / on backorder.
+        if (empty($settings['show_on_single'])) {
+            return '';
+        }
+
+        if ($product->is_in_stock() && $product->get_stock_status() !== 'onbackorder') {
+            return '';
+        }
+
+        return $this->templateLoader->render('single-product/waitlist-form', [
+            'product'  => $product,
+            'settings' => $settings,
+            'email'    => is_user_logged_in() ? wp_get_current_user()->user_email : '',
+        ]);
     }
 
     public function isEnabled(): bool
     {
-        // Simple MVP is always enabled.
+        // Restock has no global on/off switch; placement is controlled per
+        // context (single product hook + shortcode). Always enabled.
         return true;
     }
 
     /**
+     * Merged settings: persisted options on top of sensible defaults.
+     *
+     * The keys here intentionally mirror every option the WaitlistEngine and the
+     * front-end template read, so the admin Settings page can expose them all
+     * rather than leaving the engine on hardcoded fallbacks.
+     *
      * @return array<string, mixed>
      */
     public function getSettings(): array
     {
         $defaults = [
-            'allow_guests' => true,
+            'allow_guests'   => true,
             'show_on_single' => true,
         ];
 
