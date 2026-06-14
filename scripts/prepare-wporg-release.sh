@@ -32,6 +32,12 @@ while IFS= read -r pattern; do
     rm -rf "${DIST_DIR}/${pattern#/}"
 done < "${ROOT_DIR}/.distignore"
 
+# Purge bundled dependency dev artifacts.
+if [[ -d "${DIST_DIR}/vendor" ]]; then
+    find "${DIST_DIR}/vendor" -type d -name '.github' -prune -exec rm -rf {} +
+    find "${DIST_DIR}/vendor" \( -name '.gitignore' -o -name 'phpstan.neon.dist' -o -name 'phpstan-baseline.neon' -o -name 'phpcs.xml.dist' \) -delete
+fi
+
 # Purge macOS artifacts.
 find "${DIST_DIR}" -name '.DS_Store' -delete
 find "${DIST_DIR}" -type d -empty -delete
