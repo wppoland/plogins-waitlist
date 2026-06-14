@@ -111,18 +111,83 @@ final class Subscribers implements HasHooks
             ),
             self::NONCE_EXPORT,
         );
+
+        // Summary stats computed from the already-fetched rows (no extra query).
+        $total    = count($rows);
+        $pending  = 0;
+        $notified = 0;
+        foreach ($rows as $sub) {
+            if ($sub->notified) {
+                ++$notified;
+            } else {
+                ++$pending;
+            }
+        }
+
+        $filteredProduct = $productId > 0 ? wc_get_product($productId) : null;
         ?>
-        <div class="wrap">
+        <div class="wrap restock-admin">
             <h1><?php esc_html_e('Restock Subscribers', 'restock'); ?></h1>
 
-            <p>
-                <a href="<?php echo esc_url($exportUrl); ?>" class="button">
-                    <?php esc_html_e('Export CSV', 'restock'); ?>
-                </a>
+            <p class="restock-admin__lead">
+                <?php esc_html_e('Everyone who asked to be notified when an out-of-stock product returns. When you restock a product, pending subscribers are emailed automatically and move to "Notified".', 'restock'); ?>
             </p>
 
+            <?php if ($filteredProduct instanceof \WC_Product) : ?>
+                <div class="notice notice-info inline">
+                    <p>
+                        <?php
+                        printf(
+                            /* translators: %s: product name. */
+                            esc_html__('Showing waiting subscribers for: %s', 'restock'),
+                            '<strong>' . esc_html($filteredProduct->get_name()) . '</strong>',
+                        );
+                        ?>
+                        &nbsp;
+                        <a href="<?php echo esc_url(admin_url('admin.php?page=' . self::PAGE)); ?>">
+                            <?php esc_html_e('Show all subscribers', 'restock'); ?>
+                        </a>
+                    </p>
+                </div>
+            <?php endif; ?>
+
+            <?php if (! empty($rows)) : ?>
+                <div class="restock-subscribers__stats">
+                    <div class="restock-stat">
+                        <span class="restock-stat__value"><?php echo esc_html(number_format_i18n($total)); ?></span>
+                        <span class="restock-stat__label"><?php esc_html_e('Total', 'restock'); ?></span>
+                    </div>
+                    <div class="restock-stat">
+                        <span class="restock-stat__value"><?php echo esc_html(number_format_i18n($pending)); ?></span>
+                        <span class="restock-stat__label"><?php esc_html_e('Waiting', 'restock'); ?></span>
+                    </div>
+                    <div class="restock-stat">
+                        <span class="restock-stat__value"><?php echo esc_html(number_format_i18n($notified)); ?></span>
+                        <span class="restock-stat__label"><?php esc_html_e('Notified', 'restock'); ?></span>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="restock-subscribers__toolbar">
+                <a href="<?php echo esc_url($exportUrl); ?>" class="button button-secondary">
+                    <span class="dashicons dashicons-download" aria-hidden="true" style="vertical-align:text-top;"></span>
+                    <?php esc_html_e('Export CSV', 'restock'); ?>
+                </a>
+            </div>
+
             <?php if (empty($rows)) : ?>
-                <p><?php esc_html_e('No subscribers yet.', 'restock'); ?></p>
+                <div class="restock-empty">
+                    <div class="restock-empty__icon" aria-hidden="true">&#128235;</div>
+                    <h2 class="restock-empty__title"><?php esc_html_e('No subscribers yet', 'restock'); ?></h2>
+                    <p class="restock-empty__text">
+                        <?php esc_html_e('When a product is out of stock, shoppers can join its waitlist from the product page. Their requests will appear here, and they will be emailed automatically as soon as you restock.', 'restock'); ?>
+                    </p>
+                    <p>
+                        <a href="<?php echo esc_url(admin_url('admin.php?page=restock-settings')); ?>" class="button button-primary">
+                            <?php esc_html_e('Review waitlist settings', 'restock'); ?>
+                        </a>
+                    </p>
+                </div>
             <?php else : ?>
                 <table class="wp-list-table widefat fixed striped">
                     <thead>
@@ -154,11 +219,11 @@ final class Subscribers implements HasHooks
                                 </td>
                                 <td><?php echo esc_html($sub->email); ?></td>
                                 <td>
-                                    <?php
-                                    echo $sub->notified
-                                        ? esc_html__('Yes', 'restock')
-                                        : esc_html__('No', 'restock');
-                                    ?>
+                                    <?php if ($sub->notified) : ?>
+                                        <span class="restock-badge restock-badge--yes"><?php esc_html_e('Notified', 'restock'); ?></span>
+                                    <?php else : ?>
+                                        <span class="restock-badge restock-badge--no"><?php esc_html_e('Waiting', 'restock'); ?></span>
+                                    <?php endif; ?>
                                 </td>
                                 <td><?php echo esc_html($sub->createdAt->format('Y-m-d H:i')); ?></td>
                             </tr>
