@@ -135,4 +135,45 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
             is_array($rows) ? $rows : [],
         );
     }
+
+    /**
+     * Active (not yet notified) subscriptions for a logged-in customer.
+     *
+     * @return list<WaitlistSubscription>
+     */
+    public function findActiveForAccount(int $userId, string $email): array
+    {
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
+        $rows = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                'SELECT * FROM %i WHERE notified = 0 AND (user_id = %d OR email = %s) ORDER BY created_at DESC',
+                $this->tableName(),
+                $userId,
+                $email,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return array_map(
+            static fn (object $row): WaitlistSubscription => WaitlistSubscription::fromRow($row),
+            is_array($rows) ? $rows : [],
+        );
+    }
+
+    public function deleteForAccountOwner(int $subscriptionId, int $userId, string $email): bool
+    {
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
+        $deleted = $this->wpdb->query(
+            $this->wpdb->prepare(
+                'DELETE FROM %i WHERE id = %d AND notified = 0 AND (user_id = %d OR email = %s)',
+                $this->tableName(),
+                $subscriptionId,
+                $userId,
+                $email,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return is_int($deleted) && $deleted > 0;
+    }
 }
