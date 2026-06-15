@@ -14,6 +14,7 @@ final class WaitlistSubscription
     public function __construct(
         public readonly int $id,
         public readonly int $productId,
+        public readonly int $variationId,
         public readonly string $email,
         public readonly ?int $userId,
         public readonly bool $notified,
@@ -30,6 +31,7 @@ final class WaitlistSubscription
         return new self(
             id: (int) $row->id,
             productId: (int) $row->product_id,
+            variationId: isset($row->variation_id) ? (int) $row->variation_id : 0,
             email: (string) $row->email,
             userId: $row->user_id !== null ? (int) $row->user_id : null,
             notified: (bool) $row->notified,

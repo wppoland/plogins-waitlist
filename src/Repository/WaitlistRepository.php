@@ -26,7 +26,12 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
 
     public function subscribe(int $productId, string $email, ?int $userId): int
     {
-        $existing = $this->findByProductAndEmail($productId, $email);
+        return $this->subscribeWithVariation($productId, 0, $email, $userId);
+    }
+
+    public function subscribeWithVariation(int $productId, int $variationId, string $email, ?int $userId): int
+    {
+        $existing = $this->findByProductVariationAndEmail($productId, $variationId, $email);
 
         if ($existing !== null) {
             if ($existing->notified) {
@@ -51,12 +56,13 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
             $this->tableName(),
             [
                 'product_id' => $productId,
+                'variation_id' => $variationId,
                 'email' => $email,
                 'user_id' => $userId,
                 'notified' => 0,
                 'created_at' => current_time('mysql', true),
             ],
-            ['%d', '%s', '%d', '%d', '%s'],
+            ['%d', '%d', '%s', '%d', '%d', '%s'],
         );
 
         return (int) $this->wpdb->insert_id;
@@ -64,12 +70,18 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
 
     public function findByProductAndEmail(int $productId, string $email): ?WaitlistSubscription
     {
+        return $this->findByProductVariationAndEmail($productId, 0, $email);
+    }
+
+    public function findByProductVariationAndEmail(int $productId, int $variationId, string $email): ?WaitlistSubscription
+    {
         // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
         $row = $this->wpdb->get_row(
             $this->wpdb->prepare(
-                'SELECT * FROM %i WHERE product_id = %d AND email = %s LIMIT 1',
+                'SELECT * FROM %i WHERE product_id = %d AND variation_id = %d AND email = %s LIMIT 1',
                 $this->tableName(),
                 $productId,
+                $variationId,
                 $email,
             ),
         );
@@ -83,12 +95,21 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
      */
     public function findPendingByProduct(int $productId): array
     {
+        return $this->findPendingByProductVariation($productId, 0);
+    }
+
+    /**
+     * @return list<WaitlistSubscription>
+     */
+    public function findPendingByProductVariation(int $productId, int $variationId): array
+    {
         // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
         $rows = $this->wpdb->get_results(
             $this->wpdb->prepare(
-                'SELECT * FROM %i WHERE product_id = %d AND notified = 0 ORDER BY created_at ASC',
+                'SELECT * FROM %i WHERE product_id = %d AND variation_id = %d AND notified = 0 ORDER BY created_at ASC',
                 $this->tableName(),
                 $productId,
+                $variationId,
             ),
         );
         // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
@@ -97,6 +118,20 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
             static fn (object $row): WaitlistSubscription => WaitlistSubscription::fromRow($row),
             is_array($rows) ? $rows : [],
         );
+    }
+
+    /**
+     * Pending subscriptions to notify when a product or variation returns to stock.
+     *
+     * @return list<WaitlistSubscription>
+     */
+    public function findPendingForRestock(\WC_Product $product): array
+    {
+        if ($product->is_type('variation')) {
+            return $this->findPendingByProductVariation($product->get_parent_id(), $product->get_id());
+        }
+
+        return $this->findPendingByProduct($product->get_id());
     }
 
     public function markNotified(int $id): void
