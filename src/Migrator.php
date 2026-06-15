@@ -17,6 +17,7 @@ final class Migrator
     /** Ordered list of migration class short-names under Restock\Migration. */
     private const MIGRATIONS = [
         'Migration_0_1_0',
+        'Migration_0_2_1',
     ];
 
     public function run(): void
