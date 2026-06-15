@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.2.0
+Stable tag: 0.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,7 +39,7 @@ Restock adds a fast, accessible waitlist form to out-of-stock WooCommerce produc
 * Theme-overridable form template (`yourtheme/restock/single-product/waitlist-form.php`)
 * Compatible with WooCommerce HPOS (Custom Order Tables) and Cart/Checkout Blocks
 
-Built on the shared `wppoland/storefront-kit` WaitlistEngine.
+A lightweight, reliable back-in-stock waitlist for WooCommerce.
 
 == Installation ==
 
@@ -97,7 +97,7 @@ Restock does not connect to any external services. Back-in-stock notification em
 * New: `[restock_waitlist]` shortcode to place the waitlist form manually (optional `id` attribute to target a specific product).
 * New: optional form heading and intro text, configurable from the settings page.
 * New: editable on-screen form messages (success, invalid email, missing consent, login required).
-* Improved: the settings page now exposes every form label, message, and email text the engine supports, instead of relying on hardcoded defaults.
+* Improved: the settings page now exposes every form label, message, and email text the plugin supports, instead of relying on hardcoded defaults.
 * Improved: empty optional settings now correctly fall back to the built-in defaults.
 
 = 0.1.0 =
