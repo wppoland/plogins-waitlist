@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // The signal catches: fire the one-shot ignite on a confirmed signup.
-    // Presentation only — re-armed each time by removing then re-adding the
+    // Presentation only - re-armed each time by removing then re-adding the
     // class on the next frame so a repeat success re-ignites.
     element.classList.remove('restock-waitlist__message--ignite');
 

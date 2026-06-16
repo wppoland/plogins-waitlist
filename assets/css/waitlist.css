@@ -1,27 +1,20 @@
 /* ==========================================================================
-   Restock – Waitlist Form (storefront)
+   Restock - Waitlist Form (storefront)
    Modern, accessible, Core-Web-Vitals-native styles.
-
-   World: an empty shelf and a held breath. You light a signal so the store
-   finds you the moment the goods return. The accent is a warm SIGNAL-AMBER —
-   the glow of a lit beacon, not a generic blue link. Restraint everywhere
-   except the one moment that matters: the confirmation, where the signal
-   "catches" — a single warm ember-bloom that ignites once and settles.
 
    - Themeable via CSS custom properties (override --restock-* in your theme,
      with sensible fallbacks that inherit the surrounding theme's currentColor).
    - No layout shift: the status message reserves no space until shown, and the
      form never reflows on submit (the button keeps its width while busy). The
-     confirmation glow is painted with box-shadow/pseudo-elements only — it
+     confirmation glow is painted with box-shadow/pseudo-elements only, so it
      never changes box size, so there is zero CLS.
-   - Tasteful transitions, the one bold micro-interaction gated behind
-     prefers-reduced-motion.
+   - Tasteful transitions gated behind prefers-reduced-motion.
    - Native dark-mode support via prefers-color-scheme.
    - Designed to sit inside WooCommerce themes without fighting them.
    ========================================================================== */
 
 .restock-waitlist {
-    /* Tokens — override these in your theme to re-skin the form. */
+    /* Tokens - override these in your theme to re-skin the form. */
     --restock-radius: 14px;
     --restock-radius-sm: 9px;
     --restock-gap: clamp(0.6rem, 0.4rem + 0.6vw, 0.85rem);
@@ -35,7 +28,7 @@
     --restock-text: inherit;
     --restock-muted: #6b5847;
 
-    /* Signal-amber: the lit beacon. This is the plugin's world, not a blue link. */
+    /* Signal-amber accent used for the waitlist confirmation flow. */
     --restock-accent: #c2410c;
     --restock-accent-soft: #e8763a;
     --restock-ember: #f59e0b;
@@ -50,8 +43,7 @@
     margin-block-start: 1.5em;
     padding-block: var(--restock-pad-block);
     padding-inline: var(--restock-pad-inline);
-    /* A thin warm hairline on the inline-start edge: the shelf where the
-       signal is lit. Quiet — it earns its keep only by being amber. */
+    /* A thin warm hairline on the inline-start edge reinforces the accent. */
     border: 1px solid var(--restock-border);
     border-inline-start: 3px solid color-mix(in srgb, var(--restock-accent) 55%, transparent);
     border-radius: var(--restock-radius);
@@ -73,7 +65,7 @@
     line-height: 1.5;
 }
 
-/* ── Form ─────────────────────────────────────────────────────────────── */
+/* Form */
 
 .restock-waitlist-form {
     display: flex;
@@ -111,7 +103,7 @@
     border-color: var(--restock-accent);
 }
 
-/* ── Privacy checkbox ─────────────────────────────────────────────────── */
+/* Privacy checkbox */
 
 .restock-waitlist__privacy {
     display: flex;
@@ -132,14 +124,14 @@
     cursor: pointer;
 }
 
-/* ── Submit button ────────────────────────────────────────────────────── */
+/* Submit button */
 
 .restock-waitlist-form button[type="submit"] {
     align-self: flex-start;
     /* Reserve width so the "busy" label swap never reflows the layout. */
     min-inline-size: 11ch;
     text-align: center;
-    /* The beacon you light. Calm at rest — warm signal-amber, not a blue link. */
+    /* Warm signal-amber button treatment. */
     border: 0;
     color: #fff;
     background: linear-gradient(180deg,
@@ -163,7 +155,7 @@
     cursor: progress;
 }
 
-/* ── Status message ───────────────────────────────────────────────────── */
+/* Status message */
 
 .restock-waitlist__message {
     margin: 0;
@@ -191,8 +183,7 @@
     font-weight: 550;
 }
 
-/* The lit beacon dot: the signal caught. A small ember sitting beside the
-   kept promise. Painted, not laid out — it reserves no extra box space. */
+/* Painted confirmation dot that reserves no extra box space. */
 .restock-waitlist__message[data-state="success"]::before {
     content: "";
     position: absolute;
@@ -212,13 +203,13 @@
     color: var(--restock-err-text);
 }
 
-/* ── Loading state ────────────────────────────────────────────────────── */
+/* Loading state */
 
 .restock-waitlist-form[aria-busy="true"] {
     pointer-events: none;
 }
 
-/* ── Tasteful motion (opt-in, never for reduced-motion users) ──────────── */
+/* Tasteful motion (opt-in, never for reduced-motion users) */
 
 @media (prefers-reduced-motion: no-preference) {
     .restock-waitlist-form input[type="email"] {
@@ -242,12 +233,8 @@
         to   { opacity: 1; transform: none; }
     }
 
-    /* ── THE BOLD MOVE — the signal catches ────────────────────────────────
-       On a confirmed signup the confirmation IGNITES: a single warm ember
-       sweeps across the message (the flare catching) and the beacon dot
-       pulses one ring outward, then settles. One-shot, fired by JS adding
-       --ignite once; never loops, never on idle render. Box-shadow / overlay
-       only → zero layout shift. */
+    /* One-shot success animation. Box-shadow/overlay only, so there is no
+       layout shift. */
     .restock-waitlist__message--ignite {
         animation:
             restock-fade-in 0.22s ease both,
@@ -271,7 +258,7 @@
         animation: restock-ember-sweep 0.9s ease-out 1 both;
     }
 
-    /* The beacon dot fires one expanding ring, like a flare igniting. */
+    /* The confirmation dot fires one expanding ring. */
     .restock-waitlist__message--ignite[data-state="success"]::before {
         animation: restock-beacon 0.95s ease-out 1 both;
     }
@@ -295,7 +282,7 @@
     }
 }
 
-/* ── Responsive: side-by-side on wider product columns ────────────────── */
+/* Responsive: side-by-side on wider product columns */
 
 @media (min-width: 30em) {
     .restock-waitlist-form {
@@ -315,7 +302,7 @@
     }
 }
 
-/* ── Dark mode ────────────────────────────────────────────────────────── */
+/* Dark mode */
 
 @media (prefers-color-scheme: dark) {
     .restock-waitlist {
@@ -325,7 +312,7 @@
         --restock-border-strong: rgba(255, 255, 255, 0.24);
         --restock-muted: #b6a896;
 
-        /* The beacon glows brighter against the dark — a flare at night. */
+        /* Brighter accent for dark mode contrast. */
         --restock-accent: #fb923c;
         --restock-accent-soft: #fdba74;
         --restock-ember: #fbbf24;
@@ -344,7 +331,7 @@
     }
 }
 
-/* ── My Account waitlists ─────────────────────────────────────────────── */
+/* My Account waitlists */
 
 .restock-account-waitlists__table {
     margin-block-start: 1em;
