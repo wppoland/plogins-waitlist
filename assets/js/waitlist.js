@@ -16,6 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (state) {
       element.setAttribute('data-state', state);
     }
+
+    // The signal catches: fire the one-shot ignite on a confirmed signup.
+    // Presentation only - re-armed each time by removing then re-adding the
+    // class on the next frame so a repeat success re-ignites.
+    element.classList.remove('restock-waitlist__message--ignite');
+
+    if (state === 'success') {
+      requestAnimationFrame(() => {
+        element.classList.add('restock-waitlist__message--ignite');
+      });
+    }
   };
 
   document.querySelectorAll('.restock-waitlist-form').forEach((form) => {
