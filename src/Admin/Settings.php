@@ -107,8 +107,9 @@ final class Settings implements HasHooks
             self::SECTION_GENERAL,
             [
                 'id'          => 'account_menu_label',
-                'label'       => __('Waitlists', 'restock'),
+                'placeholder' => __('Waitlists', 'restock'),
                 'description' => __('Label for the My Account menu item.', 'restock'),
+                'help'        => __('Wording of the menu item customers click in My Account to see the products they are waiting for. Only shown when "My Account waitlists" is on. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -245,8 +246,9 @@ final class Settings implements HasHooks
             self::SECTION_FORM,
             [
                 'id'          => 'variation_prompt_text',
-                'label'       => __('Select options above, then join the waitlist when that variation is unavailable.', 'restock'),
+                'placeholder' => __('Select options above, then join the waitlist when that variation is unavailable.', 'restock'),
                 'description' => __('Shown above the form on variable products.', 'restock'),
+                'help'        => __('Guidance shown above the form on variable products, telling shoppers to pick a variation first. The form then appears once they choose an unavailable one. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -323,9 +325,9 @@ final class Settings implements HasHooks
             self::PAGE,
             self::SECTION_MESSAGES,
             [
-                'id'    => 'variation_required_text',
-                'label' => __('Select product options before joining the waitlist.', 'restock'),
-                'help'  => __('Error shown when a shopper tries to subscribe without choosing a variation on variable products.', 'restock'),
+                'id'          => 'variation_required_text',
+                'placeholder' => __('Select product options before joining the waitlist.', 'restock'),
+                'help'        => __('Error shown when a shopper tries to subscribe without choosing a variation on variable products. Leave blank to use the default.', 'restock'),
             ],
         );
 
@@ -336,9 +338,9 @@ final class Settings implements HasHooks
             self::PAGE,
             self::SECTION_MESSAGES,
             [
-                'id'    => 'unsubscribe_success_text',
-                'label' => __('You have been removed from this waitlist.', 'restock'),
-                'help'  => __('Confirmation shown after a customer leaves a waitlist from My Account.', 'restock'),
+                'id'          => 'unsubscribe_success_text',
+                'placeholder' => __('You have been removed from this waitlist.', 'restock'),
+                'help'        => __('Confirmation shown after a customer leaves a waitlist from My Account. Leave blank to use the default.', 'restock'),
             ],
         );
 
