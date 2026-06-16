@@ -1,42 +1,51 @@
 /* ==========================================================================
-   Restock – Waitlist Form (storefront)
+   Restock - Waitlist Form (storefront)
    Modern, accessible, Core-Web-Vitals-native styles.
 
-   - Themeable via CSS custom properties (override --restock-* in your theme).
+   - Themeable via CSS custom properties (override --restock-* in your theme,
+     with sensible fallbacks that inherit the surrounding theme's currentColor).
    - No layout shift: the status message reserves no space until shown, and the
-     form never reflows on submit (the button keeps its width while busy).
-   - Tasteful transitions, all gated behind prefers-reduced-motion.
+     form never reflows on submit (the button keeps its width while busy). The
+     confirmation glow is painted with box-shadow/pseudo-elements only, so it
+     never changes box size, so there is zero CLS.
+   - Tasteful transitions gated behind prefers-reduced-motion.
    - Native dark-mode support via prefers-color-scheme.
    - Designed to sit inside WooCommerce themes without fighting them.
    ========================================================================== */
 
 .restock-waitlist {
-    /* Tokens — override these in your theme to re-skin the form. */
-    --restock-radius: 12px;
-    --restock-radius-sm: 8px;
+    /* Tokens - override these in your theme to re-skin the form. */
+    --restock-radius: 14px;
+    --restock-radius-sm: 9px;
     --restock-gap: clamp(0.6rem, 0.4rem + 0.6vw, 0.85rem);
     --restock-pad-block: clamp(1rem, 0.8rem + 0.8vw, 1.35rem);
     --restock-pad-inline: clamp(1.1rem, 0.9rem + 0.9vw, 1.6rem);
 
-    --restock-surface: #f7f8fa;
+    --restock-surface: #fbf7f3;
     --restock-surface-2: #ffffff;
-    --restock-border: rgba(15, 23, 42, 0.12);
-    --restock-border-strong: rgba(15, 23, 42, 0.22);
+    --restock-border: rgba(80, 44, 18, 0.14);
+    --restock-border-strong: rgba(80, 44, 18, 0.26);
     --restock-text: inherit;
-    --restock-muted: #5b6472;
-    --restock-accent: #2563eb;
+    --restock-muted: #6b5847;
 
-    --restock-ok-bg: rgba(22, 163, 74, 0.1);
-    --restock-ok-border: rgba(22, 163, 74, 0.4);
-    --restock-ok-text: #15803d;
-    --restock-err-bg: rgba(220, 38, 38, 0.08);
-    --restock-err-border: rgba(220, 38, 38, 0.4);
+    /* Signal-amber accent used for the waitlist confirmation flow. */
+    --restock-accent: #c2410c;
+    --restock-accent-soft: #e8763a;
+    --restock-ember: #f59e0b;
+
+    --restock-ok-bg: rgba(194, 65, 12, 0.08);
+    --restock-ok-border: rgba(194, 65, 12, 0.42);
+    --restock-ok-text: #9a3412;
+    --restock-err-bg: rgba(190, 30, 36, 0.08);
+    --restock-err-border: rgba(190, 30, 36, 0.4);
     --restock-err-text: #b91c1c;
 
     margin-block-start: 1.5em;
     padding-block: var(--restock-pad-block);
     padding-inline: var(--restock-pad-inline);
+    /* A thin warm hairline on the inline-start edge reinforces the accent. */
     border: 1px solid var(--restock-border);
+    border-inline-start: 3px solid color-mix(in srgb, var(--restock-accent) 55%, transparent);
     border-radius: var(--restock-radius);
     background: var(--restock-surface);
     color: var(--restock-text);
@@ -56,7 +65,7 @@
     line-height: 1.5;
 }
 
-/* ── Form ─────────────────────────────────────────────────────────────── */
+/* Form */
 
 .restock-waitlist-form {
     display: flex;
@@ -94,7 +103,7 @@
     border-color: var(--restock-accent);
 }
 
-/* ── Privacy checkbox ─────────────────────────────────────────────────── */
+/* Privacy checkbox */
 
 .restock-waitlist__privacy {
     display: flex;
@@ -115,13 +124,30 @@
     cursor: pointer;
 }
 
-/* ── Submit button ────────────────────────────────────────────────────── */
+/* Submit button */
 
 .restock-waitlist-form button[type="submit"] {
     align-self: flex-start;
     /* Reserve width so the "busy" label swap never reflows the layout. */
     min-inline-size: 11ch;
     text-align: center;
+    /* Warm signal-amber button treatment. */
+    border: 0;
+    color: #fff;
+    background: linear-gradient(180deg,
+        var(--restock-accent-soft) 0%,
+        var(--restock-accent) 100%);
+}
+
+.restock-waitlist-form button[type="submit"]:hover {
+    background: linear-gradient(180deg,
+        color-mix(in srgb, var(--restock-accent-soft) 88%, #fff) 0%,
+        var(--restock-accent) 100%);
+}
+
+.restock-waitlist-form button[type="submit"]:focus-visible {
+    outline: 2px solid var(--restock-accent);
+    outline-offset: 2px;
 }
 
 .restock-waitlist-form button[type="submit"]:disabled {
@@ -129,7 +155,7 @@
     cursor: progress;
 }
 
-/* ── Status message ───────────────────────────────────────────────────── */
+/* Status message */
 
 .restock-waitlist__message {
     margin: 0;
@@ -149,9 +175,26 @@
 }
 
 .restock-waitlist__message[data-state="success"] {
+    position: relative;
+    padding-inline-start: 2.1em;
     background: var(--restock-ok-bg);
     border-color: var(--restock-ok-border);
     color: var(--restock-ok-text);
+    font-weight: 550;
+}
+
+/* Painted confirmation dot that reserves no extra box space. */
+.restock-waitlist__message[data-state="success"]::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0.85em;
+    inset-block-start: 50%;
+    inline-size: 0.5em;
+    block-size: 0.5em;
+    margin-block-start: -0.25em;
+    border-radius: 50%;
+    background: var(--restock-ember);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--restock-ember) 65%, transparent);
 }
 
 .restock-waitlist__message[data-state="error"] {
@@ -160,13 +203,13 @@
     color: var(--restock-err-text);
 }
 
-/* ── Loading state ────────────────────────────────────────────────────── */
+/* Loading state */
 
 .restock-waitlist-form[aria-busy="true"] {
     pointer-events: none;
 }
 
-/* ── Tasteful motion (opt-in, never for reduced-motion users) ──────────── */
+/* Tasteful motion (opt-in, never for reduced-motion users) */
 
 @media (prefers-reduced-motion: no-preference) {
     .restock-waitlist-form input[type="email"] {
@@ -189,9 +232,57 @@
         from { opacity: 0; transform: translateY(-3px); }
         to   { opacity: 1; transform: none; }
     }
+
+    /* One-shot success animation. Box-shadow/overlay only, so there is no
+       layout shift. */
+    .restock-waitlist__message--ignite {
+        animation:
+            restock-fade-in 0.22s ease both,
+            restock-catch 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) 1 both;
+    }
+
+    .restock-waitlist__message--ignite::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background: linear-gradient(
+            100deg,
+            transparent 0%,
+            color-mix(in srgb, var(--restock-ember) 38%, transparent) 45%,
+            color-mix(in srgb, var(--restock-accent-soft) 30%, transparent) 55%,
+            transparent 100%);
+        background-size: 220% 100%;
+        background-repeat: no-repeat;
+        animation: restock-ember-sweep 0.9s ease-out 1 both;
+    }
+
+    /* The confirmation dot fires one expanding ring. */
+    .restock-waitlist__message--ignite[data-state="success"]::before {
+        animation: restock-beacon 0.95s ease-out 1 both;
+    }
+
+    @keyframes restock-catch {
+        0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--restock-ember) 0%, transparent); }
+        35%  { box-shadow: 0 0 20px 1px color-mix(in srgb, var(--restock-ember) 45%, transparent); }
+        100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--restock-ember) 0%, transparent); }
+    }
+
+    @keyframes restock-ember-sweep {
+        0%   { background-position: 160% 0; opacity: 0; }
+        12%  { opacity: 1; }
+        100% { background-position: -60% 0; opacity: 0; }
+    }
+
+    @keyframes restock-beacon {
+        0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--restock-ember) 70%, transparent); }
+        70%  { box-shadow: 0 0 0 0.7em color-mix(in srgb, var(--restock-ember) 0%, transparent); }
+        100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--restock-ember) 0%, transparent); }
+    }
 }
 
-/* ── Responsive: side-by-side on wider product columns ────────────────── */
+/* Responsive: side-by-side on wider product columns */
 
 @media (min-width: 30em) {
     .restock-waitlist-form {
@@ -211,27 +302,36 @@
     }
 }
 
-/* ── Dark mode ────────────────────────────────────────────────────────── */
+/* Dark mode */
 
 @media (prefers-color-scheme: dark) {
     .restock-waitlist {
-        --restock-surface: rgba(255, 255, 255, 0.04);
-        --restock-surface-2: rgba(255, 255, 255, 0.06);
+        --restock-surface: rgba(255, 245, 235, 0.045);
+        --restock-surface-2: rgba(255, 245, 235, 0.07);
         --restock-border: rgba(255, 255, 255, 0.14);
         --restock-border-strong: rgba(255, 255, 255, 0.24);
-        --restock-muted: #9aa4b2;
-        --restock-accent: #60a5fa;
+        --restock-muted: #b6a896;
 
-        --restock-ok-bg: rgba(34, 197, 94, 0.14);
-        --restock-ok-border: rgba(34, 197, 94, 0.5);
-        --restock-ok-text: #4ade80;
+        /* Brighter accent for dark mode contrast. */
+        --restock-accent: #fb923c;
+        --restock-accent-soft: #fdba74;
+        --restock-ember: #fbbf24;
+
+        --restock-ok-bg: rgba(251, 146, 60, 0.14);
+        --restock-ok-border: rgba(251, 146, 60, 0.5);
+        --restock-ok-text: #fdba74;
         --restock-err-bg: rgba(248, 113, 113, 0.14);
         --restock-err-border: rgba(248, 113, 113, 0.5);
         --restock-err-text: #f87171;
     }
+
+    /* In dark mode the lit-button text needs deeper contrast on bright amber. */
+    .restock-waitlist-form button[type="submit"] {
+        color: #3a1c08;
+    }
 }
 
-/* ── My Account waitlists ─────────────────────────────────────────────── */
+/* My Account waitlists */
 
 .restock-account-waitlists__table {
     margin-block-start: 1em;
