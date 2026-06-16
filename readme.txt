@@ -8,28 +8,26 @@ Stable tag: 0.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Lightweight, accessible back-in-stock / waitlist notifications for WooCommerce. No jQuery, no layout shift, WCAG 2.2 AA.
+Back-in-stock waitlist for WooCommerce. Shoppers leave their email, you email them on restock. Accessible, no layout shift.
 
 == Description ==
 
-Restock adds a fast, accessible waitlist form to out-of-stock WooCommerce product pages. Shoppers leave their email; when the product is restocked, every pending subscriber is emailed automatically — using your site's own WordPress mailer, with no third-party service involved.
+Restock adds a waitlist form to out-of-stock WooCommerce products. A shopper enters their email, and when you set the product back to "In stock", Restock emails everyone waiting through your site's own WordPress mailer. There is no external service, no account to sign up for, and nothing leaves your database.
 
-**Why Restock?**
+The form is rendered in PHP on the single-product summary, where it sits in the normal page flow rather than being injected after load, so it does not shift surrounding content. Submitting it runs a small vanilla-JavaScript `fetch` request loaded with `defer` in the footer; the plugin adds no jQuery of its own. On variable products it hooks into WooCommerce's existing variation script so the form only appears once an unavailable variation is selected.
 
-* **No jQuery.** The subscribe form uses a tiny vanilla JS `fetch` call, loaded `defer` in the footer. Pages stay fast.
-* **Server-rendered first.** The form is rendered in PHP on the product page; JavaScript only handles the asynchronous submit.
-* **No layout shift.** The form lives in the normal document flow on the single-product summary — there is no lazy injection that pushes content around, so it does not hurt Cumulative Layout Shift.
-* **WCAG 2.2 AA in mind.** Labelled email field (with a `screen-reader-text` label), a required consent checkbox, an `aria-live` status message for success/error feedback, and an `aria-busy` state while submitting.
-* **Built-in email notifications.** When WooCommerce fires `woocommerce_product_set_stock_status` with status `instock`, Restock emails every pending subscriber via `wp_mail` and marks them notified. No queue or cron service required.
-* **Privacy-first.** An explicit consent checkbox is required before anyone can join the waitlist.
-* **Clean install.** One custom `{prefix}_restock_waitlist` table, version-tracked. Deleting the plugin drops the table and removes its options.
+Accessibility was a first-class concern rather than an afterthought. The email field carries a visually hidden label, consent is a real required checkbox, and the success/error message is announced through an `aria-live` region while the form reports `aria-busy` during submission.
+
+Subscriber data lives in a single `{prefix}_restock_waitlist` table that the plugin creates and version-tracks. Notifications fire on the `woocommerce_product_set_stock_status` hook, so there is no queue or background cron to run. Uninstalling drops the table and removes the plugin's options, leaving nothing behind.
+
+Source and issues: https://github.com/wppoland/restock — patches and bug reports welcome there.
 
 **Features**
 
 * Waitlist form shown automatically on out-of-stock and backorder ("on backorder") product pages
 * Variable products: form appears after the shopper selects an unavailable variation
 * WooCommerce **My Account → Waitlists** tab for logged-in customers (review lists, leave waitlist)
-* Asynchronous AJAX subscribe (no page reload, no jQuery)
+* Asynchronous submit with a vanilla-JavaScript fetch call, so the page does not reload
 * Email field pre-filled for logged-in customers
 * Required consent checkbox for every signup
 * Automatic plain-text email notification on restock, sent via `wp_mail`
@@ -82,7 +80,7 @@ Yes. Choose options in the standard WooCommerce variation form first. When the s
 Yes. Logged-in customers see a **Waitlists** tab under My Account with active subscriptions, current stock status, and a button to leave each list. Disable the tab under **WooCommerce → Restock** if you do not need it.
 
 = Does the form reload the page on submit? =
-No. Submission is handled by a small vanilla-JavaScript `fetch` call (no jQuery), and the result is announced in an `aria-live` region — no page reload and no layout shift.
+No. The form is submitted with a vanilla-JavaScript `fetch` call and the result is announced in an `aria-live` region, so the page stays put. Restock loads no jQuery for this; on variable products it does rely on WooCommerce's own variation script to know which variation is selected.
 
 = How do I remove all plugin data? =
 Deleting the plugin from the **Plugins** screen runs the uninstall routine, which drops the `{prefix}_restock_waitlist` table and removes the `restock_settings` and `restock_schema_version` options.
