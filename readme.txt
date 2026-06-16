@@ -75,9 +75,9 @@ No. The form is submitted with a vanilla-JavaScript `fetch` call and the result 
 
 == Screenshots ==
 
-1. Waitlist form on an out-of-stock product page — email field, consent checkbox, and "Join Waitlist" button.
-2. Admin subscriber list — filterable by product, with CSV export.
-3. Settings page — toggle guest access, set the heading/intro, and customise form labels, on-screen messages, and notification email text.
+1. The waitlist form on an out-of-stock product — a shopper leaves their email and ticks the required consent box to be notified when it returns.
+2. The Restock settings screen — sectioned cards with inline help for guest access, the heading and intro, form labels, on-screen messages, and notification email text.
+3. A customer's My Account → Waitlists tab — products they are waiting for, the current stock status, and a button to leave each list.
 
 == External Services ==
 
