@@ -49,41 +49,29 @@ Source and issues: https://github.com/wppoland/restock — patches and bug repor
 
 == Frequently Asked Questions ==
 
-= Is Restock free? =
-Yes. Restock is free and licensed under the GPL.
-
 = Does Restock require WooCommerce? =
 Yes. Restock is a WooCommerce extension and requires WooCommerce 8.0 or later. It will show an admin notice and stay inactive if WooCommerce is missing or out of date.
-
-= Can guests (visitors who are not logged in) join the waitlist? =
-Yes by default. You can restrict signups to logged-in customers by unchecking **Allow guest subscriptions** in **WooCommerce → Restock**.
 
 = How are notifications sent? =
 When WooCommerce sets a product's stock status to `instock`, Restock sends a plain-text email to every pending subscriber for that product (and its parent, for variations) using your site's own WordPress mailer (`wp_mail`). Subscribers who are emailed successfully are marked as notified so they are not contacted twice.
 
+= Does it work with variable products? =
+Yes. Choose options in the standard WooCommerce variation form first. When the selected variation is out of stock or on backorder, the waitlist form appears and the subscription is stored for that specific variation.
+
+= Can guests join the waitlist? =
+Yes by default. You can restrict signups to logged-in customers by unchecking **Allow guest subscriptions** in **WooCommerce → Restock**.
+
+= Can customers manage waitlists in My Account? =
+Yes. Logged-in customers see a **Waitlists** tab under My Account with active subscriptions, current stock status, and a button to leave each list.
+
 = Does this comply with GDPR / consent requirements? =
 Every signup requires the shopper to tick an explicit consent checkbox before they can join the waitlist; the form will not submit without it. Subscriber emails are stored only in a custom table in your own WordPress database and are never sent to any external service. You are responsible for the wording of your consent label and your site's privacy policy.
-
-= Where are subscribers stored? =
-In a custom `{prefix}_restock_waitlist` table in your WordPress database. Nothing is sent to any third party.
 
 = Can I export the subscriber list? =
 Yes. From **WooCommerce → Restock → Subscribers** you can view subscribers, filter by product, and export the list as CSV.
 
-= Can I place the form somewhere else on the product page? =
-Yes. By default the form is added to the single-product summary, but you can place it manually with the `[restock_waitlist]` shortcode inside a product template or layout. Use `[restock_waitlist id="123"]` to target a specific product. On simple products the form still only renders when the product is out of stock or on backorder; on variable products it appears after an unavailable variation is selected.
-
-= Does it work with variable products? =
-Yes. Choose options in the standard WooCommerce variation form first. When the selected variation is out of stock or on backorder, the waitlist form appears and the subscription is stored for that specific variation.
-
-= Can customers manage waitlists in My Account? =
-Yes. Logged-in customers see a **Waitlists** tab under My Account with active subscriptions, current stock status, and a button to leave each list. Disable the tab under **WooCommerce → Restock** if you do not need it.
-
 = Does the form reload the page on submit? =
 No. The form is submitted with a vanilla-JavaScript `fetch` call and the result is announced in an `aria-live` region, so the page stays put. Restock loads no jQuery for this; on variable products it does rely on WooCommerce's own variation script to know which variation is selected.
-
-= How do I remove all plugin data? =
-Deleting the plugin from the **Plugins** screen runs the uninstall routine, which drops the `{prefix}_restock_waitlist` table and removes the `restock_settings` and `restock_schema_version` options.
 
 == Screenshots ==
 
