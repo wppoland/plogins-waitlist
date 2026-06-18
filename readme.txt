@@ -49,6 +49,15 @@ Source and issues: https://github.com/wppoland/restock — patches and bug repor
 
 == Frequently Asked Questions ==
 
+= Documentation and links =
+
+* **Documentation** - https://plogins.com/restock/docs/
+* **Plugin page** - https://plogins.com/restock/
+* **Source code** - https://github.com/wppoland/restock
+* **Bug reports and feature requests** - https://github.com/wppoland/restock/issues
+* **Discussions and questions** - https://github.com/wppoland/restock/discussions
+
+
 = Does Restock require WooCommerce? =
 Yes. Restock is a WooCommerce extension and requires WooCommerce 8.0 or later. It will show an admin notice and stay inactive if WooCommerce is missing or out of date.
 
