@@ -20,7 +20,7 @@ Accessibility was a first-class concern rather than an afterthought. The email f
 
 Subscriber data lives in a single `{prefix}_restock_waitlist` table that the plugin creates and version-tracks. Notifications fire on the `woocommerce_product_set_stock_status` hook, so there is no queue or background cron to run. Uninstalling drops the table and removes the plugin's options, leaving nothing behind.
 
-Source and issues: https://github.com/wppoland/restock — patches and bug reports welcome there.
+Source and issues: https://github.com/wppoland/restock . Patches and bug reports are welcome there.
 
 **Features**
 
@@ -84,9 +84,9 @@ No. The form is submitted with a vanilla-JavaScript `fetch` call and the result 
 
 == Screenshots ==
 
-1. The waitlist form on an out-of-stock product — a shopper leaves their email and ticks the required consent box to be notified when it returns.
-2. The Restock settings screen — sectioned cards with inline help for guest access, the heading and intro, form labels, on-screen messages, and notification email text.
-3. A customer's My Account → Waitlists tab — products they are waiting for, the current stock status, and a button to leave each list.
+1. The waitlist form on an out-of-stock product, where a shopper leaves their email and ticks the required consent box to be notified when it returns.
+2. The Restock settings screen with sectioned cards and inline help for guest access, the heading and intro, form labels, on-screen messages, and notification email text.
+3. A customer's My Account Waitlists tab, showing products they are waiting for, the current stock status, and a button to leave each list.
 
 == External Services ==
 
