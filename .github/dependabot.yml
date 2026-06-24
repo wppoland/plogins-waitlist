@@ -1,0 +1,20 @@
+version: 2
+updates:
+  - package-ecosystem: composer
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+  # Build tooling only (wp-scripts/webpack/babel). Not shipped in the plugin zip,
+  # so npm advisories are build-time noise. Ignore all to suppress version and
+  # security PRs for this ecosystem; composer + github-actions stay active.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    ignore:
+      - dependency-name: "*"
