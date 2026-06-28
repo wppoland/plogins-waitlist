@@ -137,6 +137,33 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
     }
 
     /**
+     * Subscriptions whose email matches the search term, newest first.
+     *
+     * Used by the admin subscriber list page only.
+     *
+     * @return list<WaitlistSubscription>
+     */
+    public function search(string $term): array
+    {
+        $like = '%' . $this->wpdb->esc_like($term) . '%';
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
+        $rows = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                'SELECT * FROM %i WHERE email LIKE %s ORDER BY created_at DESC',
+                $this->tableName(),
+                $like,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return array_map(
+            static fn (object $row): WaitlistSubscription => WaitlistSubscription::fromRow($row),
+            is_array($rows) ? $rows : [],
+        );
+    }
+
+    /**
      * Active (not yet notified) subscriptions for a logged-in customer.
      *
      * @return list<WaitlistSubscription>
