@@ -96,10 +96,18 @@ final class Subscribers implements HasHooks
             return;
         }
 
-        $productId = isset($_GET['product_id']) ? absint($_GET['product_id']) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        $rows = $productId > 0
-            ? $this->repository->findPendingByProduct($productId)
-            : $this->repository->findAll();
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only list filters (GET), no state change.
+        $productId = isset($_GET['product_id']) ? absint($_GET['product_id']) : 0;
+        $search    = isset($_GET['s']) ? sanitize_text_field(wp_unslash((string) $_GET['s'])) : '';
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
+
+        if ($productId > 0) {
+            $rows = $this->repository->findPendingByProduct($productId);
+        } elseif ('' !== $search) {
+            $rows = $this->repository->search($search);
+        } else {
+            $rows = $this->repository->findAll();
+        }
 
         $exportUrl = wp_nonce_url(
             add_query_arg(
@@ -173,9 +181,38 @@ final class Subscribers implements HasHooks
                     <span class="dashicons dashicons-download" aria-hidden="true" style="vertical-align:text-top;"></span>
                     <?php esc_html_e('Export CSV', 'restock'); ?>
                 </a>
+                <?php if (0 === $productId) : ?>
+                    <form method="get" class="restock-subscribers__search">
+                        <input type="hidden" name="page" value="<?php echo esc_attr(self::PAGE); ?>" />
+                        <label class="screen-reader-text" for="restock-subscriber-search"><?php esc_html_e('Search subscribers by email', 'restock'); ?></label>
+                        <input type="search" id="restock-subscriber-search" name="s" value="<?php echo esc_attr($search); ?>" placeholder="<?php esc_attr_e('Search by email', 'restock'); ?>" />
+                        <button type="submit" class="button"><?php esc_html_e('Search', 'restock'); ?></button>
+                        <?php if ('' !== $search) : ?>
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=' . self::PAGE)); ?>" class="button-link"><?php esc_html_e('Clear', 'restock'); ?></a>
+                        <?php endif; ?>
+                    </form>
+                <?php endif; ?>
             </div>
 
-            <?php if (empty($rows)) : ?>
+            <?php if (empty($rows) && '' !== $search) : ?>
+                <div class="restock-empty">
+                    <h2 class="restock-empty__title"><?php esc_html_e('No matching subscribers', 'restock'); ?></h2>
+                    <p class="restock-empty__text">
+                        <?php
+                        printf(
+                            /* translators: %s: search term. */
+                            esc_html__('No subscribers match "%s".', 'restock'),
+                            esc_html($search),
+                        );
+                        ?>
+                    </p>
+                    <p>
+                        <a href="<?php echo esc_url(admin_url('admin.php?page=' . self::PAGE)); ?>" class="button button-secondary">
+                            <?php esc_html_e('Show all subscribers', 'restock'); ?>
+                        </a>
+                    </p>
+                </div>
+            <?php elseif (empty($rows)) : ?>
                 <div class="restock-empty">
                     <div class="restock-empty__icon" aria-hidden="true">&#128235;</div>
                     <h2 class="restock-empty__title"><?php esc_html_e('No subscribers yet', 'restock'); ?></h2>
