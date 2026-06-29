@@ -20,7 +20,7 @@ Accessibility was a first-class concern rather than an afterthought. The email f
 
 Subscriber data lives in a single `{prefix}_restock_waitlist` table that the plugin creates and version-tracks. Notifications fire on the `woocommerce_product_set_stock_status` hook, so there is no queue or background cron to run. Uninstalling drops the table and removes the plugin's options, leaving nothing behind.
 
-Source and issues: https://github.com/wppoland/restock . Patches and bug reports are welcome there.
+Source and issues: https://github.com/wppoland/plogins-waitlist . Patches and bug reports are welcome there.
 
 **Features**
 
@@ -51,10 +51,10 @@ Source and issues: https://github.com/wppoland/restock . Patches and bug reports
 
 = Documentation and links =
 
-* **Documentation** - https://plogins.com/restock/docs/
-* **Plugin page** - https://plogins.com/restock/
-* **Source code** - https://github.com/wppoland/restock
-* **Bug reports and feature requests** - https://github.com/wppoland/restock/issues
+* **Documentation** - https://plogins.com/plogins-waitlist/docs/
+* **Plugin page** - https://plogins.com/plogins-waitlist/
+* **Source code** - https://github.com/wppoland/plogins-waitlist
+* **Bug reports and feature requests** - https://github.com/wppoland/plogins-waitlist/issues
 
 
 = Does Plogins Waitlist require WooCommerce? =
