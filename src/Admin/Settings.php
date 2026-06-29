@@ -33,8 +33,8 @@ final class Settings implements HasHooks
     {
         add_submenu_page(
             'woocommerce',
-            __('Restock Settings', 'restock'),
-            __('Restock', 'restock'),
+            __('Plogins Waitlist', 'plogins-waitlist'),
+            __('Waitlist', 'plogins-waitlist'),
             'manage_woocommerce',
             self::PAGE,
             [$this, 'renderPage'],
@@ -55,68 +55,68 @@ final class Settings implements HasHooks
         // ── General ──────────────────────────────────────────────────────────
         add_settings_section(
             self::SECTION_GENERAL,
-            __('General', 'restock'),
+            __('General', 'plogins-waitlist'),
             '__return_false',
             self::PAGE,
         );
 
         add_settings_field(
             'allow_guests',
-            __('Allow guest subscriptions', 'restock'),
+            __('Allow guest subscriptions', 'plogins-waitlist'),
             [$this, 'renderCheckbox'],
             self::PAGE,
             self::SECTION_GENERAL,
             [
                 'id'    => 'allow_guests',
-                'label' => __('Allow visitors who are not logged in to subscribe.', 'restock'),
-                'help'  => __('When on, anyone can join the waitlist by entering their email. When off, only logged-in customers can subscribe and guests see your "login required" message instead. Turn off to keep your list tied to real accounts.', 'restock'),
+                'label' => __('Allow visitors who are not logged in to subscribe.', 'plogins-waitlist'),
+                'help'  => __('When on, anyone can join the waitlist by entering their email. When off, only logged-in customers can subscribe and guests see your "login required" message instead. Turn off to keep your list tied to real accounts.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'show_on_single',
-            __('Show form on product page', 'restock'),
+            __('Show form on product page', 'plogins-waitlist'),
             [$this, 'renderCheckbox'],
             self::PAGE,
             self::SECTION_GENERAL,
             [
                 'id'    => 'show_on_single',
-                'label' => __('Display the waitlist form on single product pages.', 'restock'),
-                'help'  => __('Automatically shows the form on each product page when that product is out of stock or on backorder. On variable products, the form appears after the shopper selects an unavailable variation. Turn off only if you place the form yourself with the [restock_waitlist] shortcode.', 'restock'),
+                'label' => __('Display the waitlist form on single product pages.', 'plogins-waitlist'),
+                'help'  => __('Automatically shows the form on each product page when that product is out of stock or on backorder. On variable products, the form appears after the shopper selects an unavailable variation. Turn off only if you place the form yourself with the [restock_waitlist] shortcode.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'show_in_account',
-            __('My Account waitlists', 'restock'),
+            __('My Account waitlists', 'plogins-waitlist'),
             [$this, 'renderCheckbox'],
             self::PAGE,
             self::SECTION_GENERAL,
             [
                 'id'    => 'show_in_account',
-                'label' => __('Show a Waitlists tab in WooCommerce My Account.', 'restock'),
-                'help'  => __('Logged-in customers can review active waitlists and leave a list from My Account. After enabling, visit Settings → Permalinks and click Save once if the tab returns a 404.', 'restock'),
+                'label' => __('Show a Waitlists tab in WooCommerce My Account.', 'plogins-waitlist'),
+                'help'  => __('Logged-in customers can review active waitlists and leave a list from My Account. After enabling, visit Settings → Permalinks and click Save once if the tab returns a 404.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'account_menu_label',
-            __('My Account menu label', 'restock'),
+            __('My Account menu label', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_GENERAL,
             [
                 'id'          => 'account_menu_label',
-                'placeholder' => __('Waitlists', 'restock'),
-                'description' => __('Label for the My Account menu item.', 'restock'),
-                'help'        => __('Wording of the menu item customers click in My Account to see the products they are waiting for. Only shown when "My Account waitlists" is on. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Waitlists', 'plogins-waitlist'),
+                'description' => __('Label for the My Account menu item.', 'plogins-waitlist'),
+                'help'        => __('Wording of the menu item customers click in My Account to see the products they are waiting for. Only shown when "My Account waitlists" is on. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         // ── Display ─────────────────────────────────────────────────────────
         add_settings_section(
             self::SECTION_DISPLAY,
-            __('Heading & intro', 'restock'),
+            __('Heading & intro', 'plogins-waitlist'),
             static function (): void {
                 echo '<p>' . esc_html__(
                     'Optional heading and introductory text shown above the waitlist form.',
@@ -128,134 +128,134 @@ final class Settings implements HasHooks
 
         add_settings_field(
             'show_title',
-            __('Show heading', 'restock'),
+            __('Show heading', 'plogins-waitlist'),
             [$this, 'renderCheckbox'],
             self::PAGE,
             self::SECTION_DISPLAY,
             [
                 'id'    => 'show_title',
-                'label' => __('Display a heading above the form.', 'restock'),
-                'help'  => __('Shows the heading text (set below) above the form, for example "Notify me when available". Hide it for a more compact form.', 'restock'),
+                'label' => __('Display a heading above the form.', 'plogins-waitlist'),
+                'help'  => __('Shows the heading text (set below) above the form, for example "Notify me when available". Hide it for a more compact form.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'title',
-            __('Heading text', 'restock'),
+            __('Heading text', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_DISPLAY,
             [
                 'id'          => 'title',
-                'placeholder' => __('Notify me when available', 'restock'),
-                'help'        => __('The heading shown above the form (only when "Show heading" is on). Keep it short and reassuring. Leave blank to use the placeholder shown here.', 'restock'),
+                'placeholder' => __('Notify me when available', 'plogins-waitlist'),
+                'help'        => __('The heading shown above the form (only when "Show heading" is on). Keep it short and reassuring. Leave blank to use the placeholder shown here.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'show_intro',
-            __('Show intro text', 'restock'),
+            __('Show intro text', 'plogins-waitlist'),
             [$this, 'renderCheckbox'],
             self::PAGE,
             self::SECTION_DISPLAY,
             [
                 'id'    => 'show_intro',
-                'label' => __('Display intro text above the form.', 'restock'),
-                'help'  => __('Shows a short paragraph (set below) between the heading and the form to explain what subscribers will receive.', 'restock'),
+                'label' => __('Display intro text above the form.', 'plogins-waitlist'),
+                'help'  => __('Shows a short paragraph (set below) between the heading and the form to explain what subscribers will receive.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'intro_text',
-            __('Intro text', 'restock'),
+            __('Intro text', 'plogins-waitlist'),
             [$this, 'renderTextarea'],
             self::PAGE,
             self::SECTION_DISPLAY,
             [
                 'id'          => 'intro_text',
-                'placeholder' => __('Leave your email and we will let you know the moment this product is back.', 'restock'),
-                'help'        => __('Introductory sentence shown above the form (only when "Show intro text" is on). Use it to set expectations, e.g. one email, no spam. Leave blank to use the placeholder shown here.', 'restock'),
+                'placeholder' => __('Leave your email and we will let you know the moment this product is back.', 'plogins-waitlist'),
+                'help'        => __('Introductory sentence shown above the form (only when "Show intro text" is on). Use it to set expectations, e.g. one email, no spam. Leave blank to use the placeholder shown here.', 'plogins-waitlist'),
             ],
         );
 
         // ── Form labels ───────────────────────────────────────────────────────
         add_settings_section(
             self::SECTION_FORM,
-            __('Form labels', 'restock'),
+            __('Form labels', 'plogins-waitlist'),
             '__return_false',
             self::PAGE,
         );
 
         add_settings_field(
             'email_label',
-            __('Email field label', 'restock'),
+            __('Email field label', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_FORM,
             [
                 'id'          => 'email_label',
-                'placeholder' => __('Email address', 'restock'),
-                'help'        => __('Accessible label for the email field, read out by screen readers. It is visually hidden on the form but important for accessibility. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Email address', 'plogins-waitlist'),
+                'help'        => __('Accessible label for the email field, read out by screen readers. It is visually hidden on the form but important for accessibility. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'email_placeholder',
-            __('Email field placeholder', 'restock'),
+            __('Email field placeholder', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_FORM,
             [
                 'id'          => 'email_placeholder',
-                'placeholder' => __('Your email address', 'restock'),
-                'help'        => __('Greyed-out hint shown inside the empty email field. It disappears as soon as the shopper types. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Your email address', 'plogins-waitlist'),
+                'help'        => __('Greyed-out hint shown inside the empty email field. It disappears as soon as the shopper types. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'privacy_label',
-            __('Consent checkbox label', 'restock'),
+            __('Consent checkbox label', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_FORM,
             [
                 'id'          => 'privacy_label',
-                'placeholder' => __('I consent to receiving back-in-stock notifications.', 'restock'),
-                'help'        => __('Text next to the required consent checkbox. Shoppers must tick it before they can subscribe, so word it clearly for GDPR/marketing-consent compliance. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('I consent to receiving back-in-stock notifications.', 'plogins-waitlist'),
+                'help'        => __('Text next to the required consent checkbox. Shoppers must tick it before they can subscribe, so word it clearly for GDPR/marketing-consent compliance. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'button_text',
-            __('Button text', 'restock'),
+            __('Button text', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_FORM,
             [
                 'id'          => 'button_text',
-                'placeholder' => __('Join Waitlist', 'restock'),
-                'help'        => __('Label on the submit button. An action-oriented phrase such as "Notify me" or "Join Waitlist" works best. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Join Waitlist', 'plogins-waitlist'),
+                'help'        => __('Label on the submit button. An action-oriented phrase such as "Notify me" or "Join Waitlist" works best. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'variation_prompt_text',
-            __('Variable product prompt', 'restock'),
+            __('Variable product prompt', 'plogins-waitlist'),
             [$this, 'renderTextarea'],
             self::PAGE,
             self::SECTION_FORM,
             [
                 'id'          => 'variation_prompt_text',
-                'placeholder' => __('Select options above, then join the waitlist when that variation is unavailable.', 'restock'),
-                'description' => __('Shown above the form on variable products.', 'restock'),
-                'help'        => __('Guidance shown above the form on variable products, telling shoppers to pick a variation first. The form then appears once they choose an unavailable one. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Select options above, then join the waitlist when that variation is unavailable.', 'plogins-waitlist'),
+                'description' => __('Shown above the form on variable products.', 'plogins-waitlist'),
+                'help'        => __('Guidance shown above the form on variable products, telling shoppers to pick a variation first. The form then appears once they choose an unavailable one. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         // ── Messages ────────────────────────────────────────────────────────
         add_settings_section(
             self::SECTION_MESSAGES,
-            __('Form messages', 'restock'),
+            __('Form messages', 'plogins-waitlist'),
             static function (): void {
                 echo '<p>' . esc_html__(
                     'Messages shown to shoppers after they submit the form. Leave blank to use the built-in defaults.',
@@ -267,87 +267,87 @@ final class Settings implements HasHooks
 
         add_settings_field(
             'success_text',
-            __('Success message', 'restock'),
+            __('Success message', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_MESSAGES,
             [
                 'id'          => 'success_text',
-                'placeholder' => __('Thank you. You have been added to the waitlist.', 'restock'),
-                'help'        => __('Confirmation shown after a shopper successfully joins the waitlist. Reassure them you will email when the item returns. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Thank you. You have been added to the waitlist.', 'plogins-waitlist'),
+                'help'        => __('Confirmation shown after a shopper successfully joins the waitlist. Reassure them you will email when the item returns. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'invalid_email_text',
-            __('Invalid email message', 'restock'),
+            __('Invalid email message', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_MESSAGES,
             [
                 'id'          => 'invalid_email_text',
-                'placeholder' => __('Provide a valid email address.', 'restock'),
-                'help'        => __('Error shown when the entered email address is missing or malformed. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Provide a valid email address.', 'plogins-waitlist'),
+                'help'        => __('Error shown when the entered email address is missing or malformed. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'privacy_error_text',
-            __('Missing consent message', 'restock'),
+            __('Missing consent message', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_MESSAGES,
             [
                 'id'          => 'privacy_error_text',
-                'placeholder' => __('You must accept the consent for email contact.', 'restock'),
-                'help'        => __('Error shown when a shopper submits without ticking the consent checkbox. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('You must accept the consent for email contact.', 'plogins-waitlist'),
+                'help'        => __('Error shown when a shopper submits without ticking the consent checkbox. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'login_required_text',
-            __('Login required message', 'restock'),
+            __('Login required message', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_MESSAGES,
             [
                 'id'          => 'login_required_text',
-                'placeholder' => __('Login to join the waitlist.', 'restock'),
-                'description' => __('Shown when guest subscriptions are disabled and the visitor is not logged in.', 'restock'),
-                'help'        => __('Only relevant when "Allow guest subscriptions" is off. Tell visitors they need an account, ideally with a link to your login page. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Login to join the waitlist.', 'plogins-waitlist'),
+                'description' => __('Shown when guest subscriptions are disabled and the visitor is not logged in.', 'plogins-waitlist'),
+                'help'        => __('Only relevant when "Allow guest subscriptions" is off. Tell visitors they need an account, ideally with a link to your login page. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'variation_required_text',
-            __('Variation required message', 'restock'),
+            __('Variation required message', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_MESSAGES,
             [
                 'id'          => 'variation_required_text',
-                'placeholder' => __('Select product options before joining the waitlist.', 'restock'),
-                'help'        => __('Error shown when a shopper tries to subscribe without choosing a variation on variable products. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Select product options before joining the waitlist.', 'plogins-waitlist'),
+                'help'        => __('Error shown when a shopper tries to subscribe without choosing a variation on variable products. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'unsubscribe_success_text',
-            __('Unsubscribe success message', 'restock'),
+            __('Unsubscribe success message', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_MESSAGES,
             [
                 'id'          => 'unsubscribe_success_text',
-                'placeholder' => __('You have been removed from this waitlist.', 'restock'),
-                'help'        => __('Confirmation shown after a customer leaves a waitlist from My Account. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('You have been removed from this waitlist.', 'plogins-waitlist'),
+                'help'        => __('Confirmation shown after a customer leaves a waitlist from My Account. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         // ── Email ─────────────────────────────────────────────────────────────
         add_settings_section(
             self::SECTION_EMAIL,
-            __('Notification email', 'restock'),
+            __('Notification email', 'plogins-waitlist'),
             static function (): void {
                 echo '<p>' . esc_html__(
                     'These texts are used when a product comes back in stock and subscribers are notified.',
@@ -359,42 +359,42 @@ final class Settings implements HasHooks
 
         add_settings_field(
             'notify_subject',
-            __('Email subject', 'restock'),
+            __('Email subject', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_EMAIL,
             [
                 'id'          => 'notify_subject',
-                'placeholder' => __('Product back in stock - {product_name}', 'restock'),
-                'description' => __('Use {product_name} as a placeholder for the product title.', 'restock'),
-                'help'        => __('Subject line of the email sent to subscribers when the product is restocked. Include {product_name} so each email names the exact product. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Product back in stock - {product_name}', 'plogins-waitlist'),
+                'description' => __('Use {product_name} as a placeholder for the product title.', 'plogins-waitlist'),
+                'help'        => __('Subject line of the email sent to subscribers when the product is restocked. Include {product_name} so each email names the exact product. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'notify_intro_text',
-            __('Email intro text', 'restock'),
+            __('Email intro text', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_EMAIL,
             [
                 'id'          => 'notify_intro_text',
-                'placeholder' => __('Product {product_name} is back in stock.', 'restock'),
-                'description' => __('Use {product_name} as a placeholder for the product title.', 'restock'),
-                'help'        => __('First line of the notification email body. The product link is added automatically on the next line. Use {product_name} to name the product. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('Product {product_name} is back in stock.', 'plogins-waitlist'),
+                'description' => __('Use {product_name} as a placeholder for the product title.', 'plogins-waitlist'),
+                'help'        => __('First line of the notification email body. The product link is added automatically on the next line. Use {product_name} to name the product. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
         add_settings_field(
             'notify_outro_text',
-            __('Email closing text', 'restock'),
+            __('Email closing text', 'plogins-waitlist'),
             [$this, 'renderText'],
             self::PAGE,
             self::SECTION_EMAIL,
             [
                 'id'          => 'notify_outro_text',
-                'placeholder' => __('If you no longer wish to receive these messages, simply ignore this email.', 'restock'),
-                'help'        => __('Closing line of the notification email, shown after the product link. A good place for a brief reassurance or sign-off. Leave blank to use the default.', 'restock'),
+                'placeholder' => __('If you no longer wish to receive these messages, simply ignore this email.', 'plogins-waitlist'),
+                'help'        => __('Closing line of the notification email, shown after the product link. A good place for a brief reassurance or sign-off. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
     }
@@ -408,7 +408,7 @@ final class Settings implements HasHooks
         <div class="wrap restock-admin">
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
             <p class="restock-admin__lead">
-                <?php esc_html_e('Configure the back-in-stock waitlist form that appears on out-of-stock products. Hover or focus the ? icons for guidance on each option. Empty text fields fall back to sensible built-in defaults.', 'restock'); ?>
+                <?php esc_html_e('Configure the back-in-stock waitlist form that appears on out-of-stock products. Hover or focus the ? icons for guidance on each option. Empty text fields fall back to sensible built-in defaults.', 'plogins-waitlist'); ?>
             </p>
             <form method="post" action="options.php">
                 <?php
@@ -443,7 +443,7 @@ final class Settings implements HasHooks
             . '</button>',
             esc_attr($bubbleId),
             /* translators: accessible name for the inline-help button. */
-            esc_html__('More information', 'restock'),
+            esc_html__('More information', 'plogins-waitlist'),
             esc_html($text),
         );
     }

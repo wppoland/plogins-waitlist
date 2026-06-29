@@ -34,8 +34,8 @@ final class Subscribers implements HasHooks
     {
         add_submenu_page(
             'restock-settings',
-            __('Restock Subscribers', 'restock'),
-            __('Subscribers', 'restock'),
+            __('Waitlist Subscribers', 'plogins-waitlist'),
+            __('Subscribers', 'plogins-waitlist'),
             'manage_woocommerce',
             self::PAGE,
             [$this, 'renderPage'],
@@ -53,7 +53,7 @@ final class Subscribers implements HasHooks
         }
 
         if (! wp_verify_nonce(sanitize_key($_GET['_wpnonce']), self::NONCE_EXPORT)) {
-            wp_die(esc_html__('Security check failed.', 'restock'));
+            wp_die(esc_html__('Security check failed.', 'plogins-waitlist'));
         }
 
         $productId = isset($_GET['product_id']) ? absint($_GET['product_id']) : 0;
@@ -135,10 +135,10 @@ final class Subscribers implements HasHooks
         $filteredProduct = $productId > 0 ? wc_get_product($productId) : null;
         ?>
         <div class="wrap restock-admin">
-            <h1><?php esc_html_e('Restock Subscribers', 'restock'); ?></h1>
+            <h1><?php esc_html_e('Waitlist Subscribers', 'plogins-waitlist'); ?></h1>
 
             <p class="restock-admin__lead">
-                <?php esc_html_e('Everyone who asked to be notified when an out-of-stock product returns. When you restock a product, pending subscribers are emailed automatically and move to "Notified".', 'restock'); ?>
+                <?php esc_html_e('Everyone who asked to be notified when an out-of-stock product returns. When you restock a product, pending subscribers are emailed automatically and move to "Notified".', 'plogins-waitlist'); ?>
             </p>
 
             <?php if ($filteredProduct instanceof \WC_Product) : ?>
@@ -147,13 +147,13 @@ final class Subscribers implements HasHooks
                         <?php
                         printf(
                             /* translators: %s: product name. */
-                            esc_html__('Showing waiting subscribers for: %s', 'restock'),
+                            esc_html__('Showing waiting subscribers for: %s', 'plogins-waitlist'),
                             '<strong>' . esc_html($filteredProduct->get_name()) . '</strong>',
                         );
                         ?>
                         &nbsp;
                         <a href="<?php echo esc_url(admin_url('admin.php?page=' . self::PAGE)); ?>">
-                            <?php esc_html_e('Show all subscribers', 'restock'); ?>
+                            <?php esc_html_e('Show all subscribers', 'plogins-waitlist'); ?>
                         </a>
                     </p>
                 </div>
@@ -163,15 +163,15 @@ final class Subscribers implements HasHooks
                 <div class="restock-subscribers__stats">
                     <div class="restock-stat">
                         <span class="restock-stat__value"><?php echo esc_html(number_format_i18n($total)); ?></span>
-                        <span class="restock-stat__label"><?php esc_html_e('Total', 'restock'); ?></span>
+                        <span class="restock-stat__label"><?php esc_html_e('Total', 'plogins-waitlist'); ?></span>
                     </div>
                     <div class="restock-stat">
                         <span class="restock-stat__value"><?php echo esc_html(number_format_i18n($pending)); ?></span>
-                        <span class="restock-stat__label"><?php esc_html_e('Waiting', 'restock'); ?></span>
+                        <span class="restock-stat__label"><?php esc_html_e('Waiting', 'plogins-waitlist'); ?></span>
                     </div>
                     <div class="restock-stat">
                         <span class="restock-stat__value"><?php echo esc_html(number_format_i18n($notified)); ?></span>
-                        <span class="restock-stat__label"><?php esc_html_e('Notified', 'restock'); ?></span>
+                        <span class="restock-stat__label"><?php esc_html_e('Notified', 'plogins-waitlist'); ?></span>
                     </div>
                 </div>
             <?php endif; ?>
@@ -179,16 +179,16 @@ final class Subscribers implements HasHooks
             <div class="restock-subscribers__toolbar">
                 <a href="<?php echo esc_url($exportUrl); ?>" class="button button-secondary">
                     <span class="dashicons dashicons-download" aria-hidden="true" style="vertical-align:text-top;"></span>
-                    <?php esc_html_e('Export CSV', 'restock'); ?>
+                    <?php esc_html_e('Export CSV', 'plogins-waitlist'); ?>
                 </a>
                 <?php if (0 === $productId) : ?>
                     <form method="get" class="restock-subscribers__search">
                         <input type="hidden" name="page" value="<?php echo esc_attr(self::PAGE); ?>" />
-                        <label class="screen-reader-text" for="restock-subscriber-search"><?php esc_html_e('Search subscribers by email', 'restock'); ?></label>
-                        <input type="search" id="restock-subscriber-search" name="s" value="<?php echo esc_attr($search); ?>" placeholder="<?php esc_attr_e('Search by email', 'restock'); ?>" />
-                        <button type="submit" class="button"><?php esc_html_e('Search', 'restock'); ?></button>
+                        <label class="screen-reader-text" for="restock-subscriber-search"><?php esc_html_e('Search subscribers by email', 'plogins-waitlist'); ?></label>
+                        <input type="search" id="restock-subscriber-search" name="s" value="<?php echo esc_attr($search); ?>" placeholder="<?php esc_attr_e('Search by email', 'plogins-waitlist'); ?>" />
+                        <button type="submit" class="button"><?php esc_html_e('Search', 'plogins-waitlist'); ?></button>
                         <?php if ('' !== $search) : ?>
-                            <a href="<?php echo esc_url(admin_url('admin.php?page=' . self::PAGE)); ?>" class="button-link"><?php esc_html_e('Clear', 'restock'); ?></a>
+                            <a href="<?php echo esc_url(admin_url('admin.php?page=' . self::PAGE)); ?>" class="button-link"><?php esc_html_e('Clear', 'plogins-waitlist'); ?></a>
                         <?php endif; ?>
                     </form>
                 <?php endif; ?>
@@ -196,32 +196,32 @@ final class Subscribers implements HasHooks
 
             <?php if (empty($rows) && '' !== $search) : ?>
                 <div class="restock-empty">
-                    <h2 class="restock-empty__title"><?php esc_html_e('No matching subscribers', 'restock'); ?></h2>
+                    <h2 class="restock-empty__title"><?php esc_html_e('No matching subscribers', 'plogins-waitlist'); ?></h2>
                     <p class="restock-empty__text">
                         <?php
                         printf(
                             /* translators: %s: search term. */
-                            esc_html__('No subscribers match "%s".', 'restock'),
+                            esc_html__('No subscribers match "%s".', 'plogins-waitlist'),
                             esc_html($search),
                         );
                         ?>
                     </p>
                     <p>
                         <a href="<?php echo esc_url(admin_url('admin.php?page=' . self::PAGE)); ?>" class="button button-secondary">
-                            <?php esc_html_e('Show all subscribers', 'restock'); ?>
+                            <?php esc_html_e('Show all subscribers', 'plogins-waitlist'); ?>
                         </a>
                     </p>
                 </div>
             <?php elseif (empty($rows)) : ?>
                 <div class="restock-empty">
                     <div class="restock-empty__icon" aria-hidden="true">&#128235;</div>
-                    <h2 class="restock-empty__title"><?php esc_html_e('No subscribers yet', 'restock'); ?></h2>
+                    <h2 class="restock-empty__title"><?php esc_html_e('No subscribers yet', 'plogins-waitlist'); ?></h2>
                     <p class="restock-empty__text">
-                        <?php esc_html_e('When a product is out of stock, shoppers can join its waitlist from the product page. Their requests will appear here, and they will be emailed automatically as soon as you restock.', 'restock'); ?>
+                        <?php esc_html_e('When a product is out of stock, shoppers can join its waitlist from the product page. Their requests will appear here, and they will be emailed automatically as soon as you restock.', 'plogins-waitlist'); ?>
                     </p>
                     <p>
                         <a href="<?php echo esc_url(admin_url('admin.php?page=restock-settings')); ?>" class="button button-primary">
-                            <?php esc_html_e('Review waitlist settings', 'restock'); ?>
+                            <?php esc_html_e('Review waitlist settings', 'plogins-waitlist'); ?>
                         </a>
                     </p>
                 </div>
@@ -229,11 +229,11 @@ final class Subscribers implements HasHooks
                 <table class="wp-list-table widefat fixed striped">
                     <thead>
                         <tr>
-                            <th><?php esc_html_e('ID', 'restock'); ?></th>
-                            <th><?php esc_html_e('Product', 'restock'); ?></th>
-                            <th><?php esc_html_e('Email', 'restock'); ?></th>
-                            <th><?php esc_html_e('Notified', 'restock'); ?></th>
-                            <th><?php esc_html_e('Subscribed', 'restock'); ?></th>
+                            <th><?php esc_html_e('ID', 'plogins-waitlist'); ?></th>
+                            <th><?php esc_html_e('Product', 'plogins-waitlist'); ?></th>
+                            <th><?php esc_html_e('Email', 'plogins-waitlist'); ?></th>
+                            <th><?php esc_html_e('Notified', 'plogins-waitlist'); ?></th>
+                            <th><?php esc_html_e('Subscribed', 'plogins-waitlist'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -257,9 +257,9 @@ final class Subscribers implements HasHooks
                                 <td><?php echo esc_html($sub->email); ?></td>
                                 <td>
                                     <?php if ($sub->notified) : ?>
-                                        <span class="restock-badge restock-badge--yes"><?php esc_html_e('Notified', 'restock'); ?></span>
+                                        <span class="restock-badge restock-badge--yes"><?php esc_html_e('Notified', 'plogins-waitlist'); ?></span>
                                     <?php else : ?>
-                                        <span class="restock-badge restock-badge--no"><?php esc_html_e('Waiting', 'restock'); ?></span>
+                                        <span class="restock-badge restock-badge--no"><?php esc_html_e('Waiting', 'plogins-waitlist'); ?></span>
                                     <?php endif; ?>
                                 </td>
                                 <td><?php echo esc_html($sub->createdAt->format('Y-m-d H:i')); ?></td>

@@ -32,18 +32,18 @@ final class WaitlistService implements HasHooks
             version: \Restock\VERSION,
             templateName: 'single-product/waitlist-form',
             defaultMessages: [
-                'generic_error' => __('Something went wrong. Please try again.', 'restock'),
-                'product_not_found' => __('Product not found.', 'restock'),
-                'disabled' => __('Waitlist is unavailable for this product.', 'restock'),
-                'invalid_email' => __('Provide a valid email address.', 'restock'),
-                'privacy_error' => __('You must accept the consent for email contact.', 'restock'),
-                'login_required' => __('Login to join the waitlist.', 'restock'),
-                'success' => __('Thank you. You have been added to the waitlist.', 'restock'),
-                'variation_required' => __('Select product options before joining the waitlist.', 'restock'),
-                'notify_subject' => __('Product back in stock - {product_name}', 'restock'),
-                'notify_intro' => __('Product {product_name} is back in stock.', 'restock'),
-                'notify_outro' => __('If you no longer wish to receive these messages, simply ignore this email.', 'restock'),
-                'unsubscribe_success' => __('You have been removed from this waitlist.', 'restock'),
+                'generic_error' => __('Something went wrong. Please try again.', 'plogins-waitlist'),
+                'product_not_found' => __('Product not found.', 'plogins-waitlist'),
+                'disabled' => __('Waitlist is unavailable for this product.', 'plogins-waitlist'),
+                'invalid_email' => __('Provide a valid email address.', 'plogins-waitlist'),
+                'privacy_error' => __('You must accept the consent for email contact.', 'plogins-waitlist'),
+                'login_required' => __('Login to join the waitlist.', 'plogins-waitlist'),
+                'success' => __('Thank you. You have been added to the waitlist.', 'plogins-waitlist'),
+                'variation_required' => __('Select product options before joining the waitlist.', 'plogins-waitlist'),
+                'notify_subject' => __('Product back in stock - {product_name}', 'plogins-waitlist'),
+                'notify_intro' => __('Product {product_name} is back in stock.', 'plogins-waitlist'),
+                'notify_outro' => __('If you no longer wish to receive these messages, simply ignore this email.', 'plogins-waitlist'),
+                'unsubscribe_success' => __('You have been removed from this waitlist.', 'plogins-waitlist'),
             ],
             isEnabled: fn (): bool => $this->isEnabled(),
             settings: fn (): array => $this->getSettings(),
@@ -86,7 +86,7 @@ final class WaitlistService implements HasHooks
         $logout = $items['customer-logout'] ?? null;
         unset($items['customer-logout']);
 
-        $items[self::ACCOUNT_ENDPOINT] = (string) ($settings['account_menu_label'] ?? __('Waitlists', 'restock'));
+        $items[self::ACCOUNT_ENDPOINT] = (string) ($settings['account_menu_label'] ?? __('Waitlists', 'plogins-waitlist'));
 
         if ($logout !== null) {
             $items['customer-logout'] = $logout;
@@ -160,8 +160,8 @@ final class WaitlistService implements HasHooks
             'action' => 'restock_waitlist_subscribe',
             'unsubscribeAction' => 'restock_waitlist_unsubscribe',
             'nonce' => wp_create_nonce('restock_waitlist'),
-            'errorText' => __('Something went wrong. Please try again.', 'restock'),
-            'unsubscribeSuccess' => __('You have been removed from this waitlist.', 'restock'),
+            'errorText' => __('Something went wrong. Please try again.', 'plogins-waitlist'),
+            'unsubscribeSuccess' => __('You have been removed from this waitlist.', 'plogins-waitlist'),
         ]);
     }
 
@@ -170,27 +170,27 @@ final class WaitlistService implements HasHooks
         check_ajax_referer('restock_waitlist');
 
         if (! isset($_POST['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['nonce'])), 'restock_waitlist')) {
-            wp_send_json_error(['message' => __('Invalid request.', 'restock')], 403);
+            wp_send_json_error(['message' => __('Invalid request.', 'plogins-waitlist')], 403);
         }
 
         if (! is_user_logged_in()) {
-            wp_send_json_error(['message' => __('Login required.', 'restock')], 401);
+            wp_send_json_error(['message' => __('Login required.', 'plogins-waitlist')], 401);
         }
 
         $subscriptionId = isset($_POST['subscription_id']) ? absint(wp_unslash($_POST['subscription_id'])) : 0;
 
         if ($subscriptionId < 1) {
-            wp_send_json_error(['message' => __('Invalid request.', 'restock')], 400);
+            wp_send_json_error(['message' => __('Invalid request.', 'plogins-waitlist')], 400);
         }
 
         $user = wp_get_current_user();
 
         if (! $this->repository->deleteForAccountOwner($subscriptionId, (int) $user->ID, (string) $user->user_email)) {
-            wp_send_json_error(['message' => __('Could not remove this waitlist entry.', 'restock')], 404);
+            wp_send_json_error(['message' => __('Could not remove this waitlist entry.', 'plogins-waitlist')], 404);
         }
 
         wp_send_json_success([
-            'message' => (string) ($this->getSettings()['unsubscribe_success_text'] ?? __('You have been removed from this waitlist.', 'restock')),
+            'message' => (string) ($this->getSettings()['unsubscribe_success_text'] ?? __('You have been removed from this waitlist.', 'plogins-waitlist')),
         ]);
     }
 

@@ -12,15 +12,15 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-$restock_title = (string) ($restock_settings['account_title'] ?? __('My waitlists', 'restock'));
+$restock_title = (string) ($restock_settings['account_title'] ?? __('My waitlists', 'plogins-waitlist'));
 $restock_intro = (string) ($restock_settings['account_intro_text'] ?? '');
-$restock_empty = (string) ($restock_settings['account_empty_text'] ?? __('You are not on any waitlists yet.', 'restock'));
-$restock_unsubscribe_label = (string) ($restock_settings['unsubscribe_button_text'] ?? __('Leave waitlist', 'restock'));
+$restock_empty = (string) ($restock_settings['account_empty_text'] ?? __('You are not on any waitlists yet.', 'plogins-waitlist'));
+$restock_unsubscribe_label = (string) ($restock_settings['unsubscribe_button_text'] ?? __('Leave waitlist', 'plogins-waitlist'));
 
 $restock_stock_labels = [
-    'instock'     => __('In stock', 'restock'),
-    'outofstock' => __('Out of stock', 'restock'),
-    'onbackorder' => __('On backorder', 'restock'),
+    'instock'     => __('In stock', 'plogins-waitlist'),
+    'outofstock' => __('Out of stock', 'plogins-waitlist'),
+    'onbackorder' => __('On backorder', 'plogins-waitlist'),
 ];
 ?>
 <div class="restock-account-waitlists">
@@ -36,10 +36,10 @@ $restock_stock_labels = [
         <table class="shop_table restock-account-waitlists__table">
             <thead>
                 <tr>
-                    <th><?php esc_html_e('Product', 'restock'); ?></th>
-                    <th><?php esc_html_e('Stock', 'restock'); ?></th>
-                    <th><?php esc_html_e('Subscribed', 'restock'); ?></th>
-                    <th><span class="screen-reader-text"><?php esc_html_e('Actions', 'restock'); ?></span></th>
+                    <th><?php esc_html_e('Product', 'plogins-waitlist'); ?></th>
+                    <th><?php esc_html_e('Stock', 'plogins-waitlist'); ?></th>
+                    <th><?php esc_html_e('Subscribed', 'plogins-waitlist'); ?></th>
+                    <th><span class="screen-reader-text"><?php esc_html_e('Actions', 'plogins-waitlist'); ?></span></th>
                 </tr>
             </thead>
             <tbody>
