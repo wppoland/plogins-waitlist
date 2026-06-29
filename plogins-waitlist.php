@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /**
  * Plugin Name:       Plogins Waitlist for WooCommerce
- * Plugin URI:        https://plogins.com/restock/
+ * Plugin URI:        https://plogins.com/plogins-waitlist/
  * Description:       Lightweight, accessible back-in-stock / waitlist notifications for WooCommerce. Built with Core Web Vitals and WCAG 2.2 AA in mind.
  * Version:           0.3.1
  * Requires at least: 6.4
