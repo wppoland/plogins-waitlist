@@ -1,10 +1,10 @@
-=== Restock - Back in Stock Notifications for WooCommerce ===
+=== Plogins Waitlist for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.3.0
+Stable tag: 0.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Back-in-stock waitlist for WooCommerce. Shoppers leave their email, you email th
 
 == Description ==
 
-Restock adds a waitlist form to out-of-stock WooCommerce products. A shopper enters their email, and when you set the product back to "In stock", Restock emails everyone waiting through your site's own WordPress mailer. There is no external service, no account to sign up for, and nothing leaves your database.
+Plogins Waitlist adds a waitlist form to out-of-stock WooCommerce products. A shopper enters their email, and when you set the product back to "In stock", Plogins Waitlist emails everyone waiting through your site's own WordPress mailer. There is no external service, no account to sign up for, and nothing leaves your database.
 
 The form is rendered in PHP on the single-product summary, where it sits in the normal page flow rather than being injected after load, so it does not shift surrounding content. Submitting it runs a small vanilla-JavaScript `fetch` request loaded with `defer` in the footer; the plugin adds no jQuery of its own. On variable products it hooks into WooCommerce's existing variation script so the form only appears once an unavailable variation is selected.
 
@@ -42,9 +42,9 @@ Source and issues: https://github.com/wppoland/restock . Patches and bug reports
 == Installation ==
 
 1. Install and activate WooCommerce (8.0 or later).
-2. Install Restock from the WordPress plugin directory, or upload the `restock` folder to `/wp-content/plugins/`.
+2. Install Plogins Waitlist from the WordPress plugin directory, or upload the `plogins-waitlist` folder to `/wp-content/plugins/`.
 3. Activate the plugin through the **Plugins** screen.
-4. Optionally visit **WooCommerce → Restock** to customise labels and notification text; sensible defaults work out of the box.
+4. Optionally visit **WooCommerce → Plogins Waitlist** to customise labels and notification text; sensible defaults work out of the box.
 5. The waitlist form appears automatically on any out-of-stock or backorder product page.
 
 == Frequently Asked Questions ==
@@ -55,20 +55,19 @@ Source and issues: https://github.com/wppoland/restock . Patches and bug reports
 * **Plugin page** - https://plogins.com/restock/
 * **Source code** - https://github.com/wppoland/restock
 * **Bug reports and feature requests** - https://github.com/wppoland/restock/issues
-* **Discussions and questions** - https://github.com/wppoland/restock/discussions
 
 
-= Does Restock require WooCommerce? =
-Yes. Restock is a WooCommerce extension and requires WooCommerce 8.0 or later. It will show an admin notice and stay inactive if WooCommerce is missing or out of date.
+= Does Plogins Waitlist require WooCommerce? =
+Yes. Plogins Waitlist is a WooCommerce extension and requires WooCommerce 8.0 or later. It will show an admin notice and stay inactive if WooCommerce is missing or out of date.
 
 = How are notifications sent? =
-When WooCommerce sets a product's stock status to `instock`, Restock sends a plain-text email to every pending subscriber for that product (and its parent, for variations) using your site's own WordPress mailer (`wp_mail`). Subscribers who are emailed successfully are marked as notified so they are not contacted twice.
+When WooCommerce sets a product's stock status to `instock`, Plogins Waitlist sends a plain-text email to every pending subscriber for that product (and its parent, for variations) using your site's own WordPress mailer (`wp_mail`). Subscribers who are emailed successfully are marked as notified so they are not contacted twice.
 
 = Does it work with variable products? =
 Yes. Choose options in the standard WooCommerce variation form first. When the selected variation is out of stock or on backorder, the waitlist form appears and the subscription is stored for that specific variation.
 
 = Can guests join the waitlist? =
-Yes by default. You can restrict signups to logged-in customers by unchecking **Allow guest subscriptions** in **WooCommerce → Restock**.
+Yes by default. You can restrict signups to logged-in customers by unchecking **Allow guest subscriptions** in **WooCommerce → Plogins Waitlist**.
 
 = Can customers manage waitlists in My Account? =
 Yes. Logged-in customers see a **Waitlists** tab under My Account with active subscriptions, current stock status, and a button to leave each list.
@@ -77,22 +76,25 @@ Yes. Logged-in customers see a **Waitlists** tab under My Account with active su
 Every signup requires the shopper to tick an explicit consent checkbox before they can join the waitlist; the form will not submit without it. Subscriber emails are stored only in a custom table in your own WordPress database and are never sent to any external service. You are responsible for the wording of your consent label and your site's privacy policy.
 
 = Can I export the subscriber list? =
-Yes. From **WooCommerce → Restock → Subscribers** you can view subscribers, filter by product, and export the list as CSV.
+Yes. From **WooCommerce → Plogins Waitlist → Subscribers** you can view subscribers, filter by product, and export the list as CSV.
 
 = Does the form reload the page on submit? =
-No. The form is submitted with a vanilla-JavaScript `fetch` call and the result is announced in an `aria-live` region, so the page stays put. Restock loads no jQuery for this; on variable products it does rely on WooCommerce's own variation script to know which variation is selected.
+No. The form is submitted with a vanilla-JavaScript `fetch` call and the result is announced in an `aria-live` region, so the page stays put. Plogins Waitlist loads no jQuery for this; on variable products it does rely on WooCommerce's own variation script to know which variation is selected.
 
 == Screenshots ==
 
 1. The waitlist form on an out-of-stock product, where a shopper leaves their email and ticks the required consent box to be notified when it returns.
-2. The Restock settings screen with sectioned cards and inline help for guest access, the heading and intro, form labels, on-screen messages, and notification email text.
+2. The Plogins Waitlist settings screen with sectioned cards and inline help for guest access, the heading and intro, form labels, on-screen messages, and notification email text.
 3. A customer's My Account Waitlists tab, showing products they are waiting for, the current stock status, and a button to leave each list.
 
 == External Services ==
 
-Restock does not connect to any external services. Back-in-stock notification emails are sent through your own site's WordPress mailer (`wp_mail`); subscriber data stays in your WordPress database.
+Plogins Waitlist does not connect to any external services. Back-in-stock notification emails are sent through your own site's WordPress mailer (`wp_mail`); subscriber data stays in your WordPress database.
 
 == Changelog ==
+
+= 0.3.1 =
+* Renamed to Plogins Waitlist for WooCommerce for a distinct, non-generic directory name. No functional changes.
 
 = 0.3.0 =
 * New: WooCommerce My Account **Waitlists** tab with stock status and leave-waitlist action.

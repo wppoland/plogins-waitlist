@@ -18,10 +18,10 @@ $restock_intro   = (string) ($restock_settings['intro_text'] ?? '');
 $restock_show_heading = ! empty($restock_settings['show_title']) && $restock_heading !== '';
 $restock_show_intro   = ! empty($restock_settings['show_intro']) && $restock_intro !== '';
 
-$restock_email_label = (string) ($restock_settings['email_label'] ?? __('Email address', 'restock'));
-$restock_button_text = (string) ($restock_settings['button_text'] ?? __('Join Waitlist', 'restock'));
+$restock_email_label = (string) ($restock_settings['email_label'] ?? __('Email address', 'plogins-waitlist'));
+$restock_button_text = (string) ($restock_settings['button_text'] ?? __('Join Waitlist', 'plogins-waitlist'));
 $restock_is_variable = $restock_product->is_type('variable');
-$restock_variation_prompt = (string) ($restock_settings['variation_prompt_text'] ?? __('Select options above, then join the waitlist when that variation is unavailable.', 'restock'));
+$restock_variation_prompt = (string) ($restock_settings['variation_prompt_text'] ?? __('Select options above, then join the waitlist when that variation is unavailable.', 'plogins-waitlist'));
 ?>
 <div
     class="restock-waitlist"
@@ -49,7 +49,7 @@ $restock_variation_prompt = (string) ($restock_settings['variation_prompt_text']
                 type="email"
                 name="email"
                 value="<?php echo esc_attr($restock_email); ?>"
-                placeholder="<?php echo esc_attr((string) ($restock_settings['email_placeholder'] ?? __('Your email address', 'restock'))); ?>"
+                placeholder="<?php echo esc_attr((string) ($restock_settings['email_placeholder'] ?? __('Your email address', 'plogins-waitlist'))); ?>"
                 autocomplete="email"
                 inputmode="email"
                 required
@@ -57,9 +57,9 @@ $restock_variation_prompt = (string) ($restock_settings['variation_prompt_text']
         </label>
         <label class="restock-waitlist__privacy">
             <input type="checkbox" name="privacy" value="1" required />
-            <span><?php echo esc_html((string) ($restock_settings['privacy_label'] ?? __('I consent to receiving back-in-stock notifications.', 'restock'))); ?></span>
+            <span><?php echo esc_html((string) ($restock_settings['privacy_label'] ?? __('I consent to receiving back-in-stock notifications.', 'plogins-waitlist'))); ?></span>
         </label>
-        <button type="submit" class="button alt" data-busy-label="<?php echo esc_attr__('Sending…', 'restock'); ?>"><?php echo esc_html($restock_button_text); ?></button>
+        <button type="submit" class="button alt" data-busy-label="<?php echo esc_attr__('Sending…', 'plogins-waitlist'); ?>"><?php echo esc_html($restock_button_text); ?></button>
         <p class="restock-waitlist__message" data-restock-waitlist-message hidden></p>
     </form>
 </div>
