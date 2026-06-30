@@ -120,7 +120,7 @@ final class Settings implements HasHooks
             static function (): void {
                 echo '<p>' . esc_html__(
                     'Optional heading and introductory text shown above the waitlist form.',
-                    'restock',
+                    'plogins-waitlist',
                 ) . '</p>';
             },
             self::PAGE,
@@ -259,7 +259,7 @@ final class Settings implements HasHooks
             static function (): void {
                 echo '<p>' . esc_html__(
                     'Messages shown to shoppers after they submit the form. Leave blank to use the built-in defaults.',
-                    'restock',
+                    'plogins-waitlist',
                 ) . '</p>';
             },
             self::PAGE,
@@ -351,7 +351,7 @@ final class Settings implements HasHooks
             static function (): void {
                 echo '<p>' . esc_html__(
                     'These texts are used when a product comes back in stock and subscribers are notified.',
-                    'restock',
+                    'plogins-waitlist',
                 ) . '</p>';
             },
             self::PAGE,
