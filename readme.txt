@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,9 @@ No. The form is submitted with a vanilla-JavaScript `fetch` call and the result 
 Plogins Waitlist does not connect to any external services. Back-in-stock notification emails are sent through your own site's WordPress mailer (`wp_mail`); subscriber data stays in your WordPress database.
 
 == Changelog ==
+
+= 0.3.2 =
+* Fix the text domain on three admin help strings so it matches the plugin slug.
 
 = 0.3.1 =
 * Renamed to Plogins Waitlist for WooCommerce for a distinct, non-generic directory name. No functional changes.
