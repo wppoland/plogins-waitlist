@@ -24,6 +24,7 @@
 /vite.config.ts
 /README.md
 /SPEC.md
+/wp-cli.phar
 /.DS_Store
 
 .DS_Store
