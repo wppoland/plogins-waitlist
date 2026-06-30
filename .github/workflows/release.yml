@@ -19,8 +19,8 @@ jobs:
   release:
     uses: wppoland/workflows/.github/workflows/_release-free.yml@v1
     with:
-      slug: restock
-      wporg-slug: restock
+      slug: plogins-waitlist
+      wporg-slug: plogins-waitlist
       has-js: false
       dry-run: ${{ (github.event_name == 'workflow_dispatch' && inputs.dry-run) || false }}
     secrets:
