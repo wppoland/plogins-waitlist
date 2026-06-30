@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<ruleset name="Restock">
+<ruleset name="Plogins Waitlist">
     <description>WordPress Coding Standards - output escaping, nonces, redirects, and SQL placeholder safety (mirrors the polski ruleset; WordPress.org Plugin Check is the full compliance gate).</description>
 
-    <file>restock.php</file>
+    <file>plogins-waitlist.php</file>
     <file>autoload.php</file>
     <file>src</file>
     <file>config</file>
@@ -33,7 +33,7 @@
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">
-                <element value="restock"/>
+                <element value="plogins-waitlist"/>
             </property>
         </properties>
     </rule>
