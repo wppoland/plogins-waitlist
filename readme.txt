@@ -1,4 +1,4 @@
-=== Plogins Waitlist for WooCommerce ===
+=== Plogins Waitlist - Back in Stock for WooCommerce ===
 Contributors: motylanogha
 Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
