@@ -81,6 +81,11 @@ Yes. From **WooCommerce → Plogins Waitlist → Subscribers** you can view subs
 = Does the form reload the page on submit? =
 No. The form is submitted with a vanilla-JavaScript `fetch` call and the result is announced in an `aria-live` region, so the page stays put. Plogins Waitlist loads no jQuery for this; on variable products it does rely on WooCommerce's own variation script to know which variation is selected.
 
+
+= Does this plugin work on WordPress Multisite? =
+
+Yes. This plugin is compatible with WordPress Multisite. Network activate it or activate it on individual sites; each site keeps its own settings and data.
+
 == Screenshots ==
 
 1. The waitlist form on an out-of-stock product, where a shopper leaves their email and ticks the required consent box to be notified when it returns.
