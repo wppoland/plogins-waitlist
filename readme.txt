@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.3.2
+Stable tag: 0.3.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,9 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 Plogins Waitlist does not connect to any external services. Back-in-stock notification emails are sent through your own site's WordPress mailer (`wp_mail`); subscriber data stays in your WordPress database.
 
 == Changelog ==
+
+= 0.3.3 =
+* New: Elementor widget for the back-in-stock waitlist form, so it can be placed with the Elementor editor. Self-guarded: loads only when Elementor is active.
 
 = 0.3.2 =
 * Fix the text domain on three admin help strings so it matches the plugin slug.
