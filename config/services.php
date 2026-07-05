@@ -10,6 +10,7 @@ use Restock\Admin\Assets;
 use Restock\Admin\Settings;
 use Restock\Admin\Subscribers;
 use Restock\Repository\WaitlistRepository;
+use Restock\Service\ElementorWidgets;
 use Restock\Service\WaitlistService;
 use Restock\Util\TemplateLoader;
 
@@ -33,6 +34,9 @@ return static function (Container $c): void {
         $c->get(WaitlistRepository::class),
         $c->get(TemplateLoader::class),
     ));
+
+    // Elementor integration (self-guards on the elementor/widgets/register hook)
+    $c->singleton(ElementorWidgets::class, static fn (): ElementorWidgets => new ElementorWidgets());
 
     // Admin (only loaded in wp-admin context)
     if (is_admin()) {
