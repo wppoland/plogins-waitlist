@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.4.0
+Stable tag: 0.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,16 @@ Source and issues: https://github.com/wppoland/plogins-waitlist . Patches and bu
 * Admin subscriber list with per-product filter, CSV export, and one-click remove
 * Theme-overridable form template (`yourtheme/restock/single-product/waitlist-form.php`)
 * Compatible with WooCommerce HPOS (Custom Order Tables) and Cart/Checkout Blocks
+
+= You may also like these plugins =
+
+More free WooCommerce plugins from WPPoland:
+
+* [Plogins Tiers](https://wordpress.org/plugins/plogins-tiers/) - quantity and volume pricing tiers with a server-rendered price table.
+* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
+* [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - Polish-market compliance: GPSR, Omnibus, GDPR, invoices and storefront modules.
+
+Browse the full catalogue at https://plogins.com/ .
 
 == Installation ==
 
@@ -98,6 +108,9 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 Plogins Waitlist does not connect to any external services. Back-in-stock notification emails are sent through your own site's WordPress mailer (`wp_mail`); subscriber data stays in your WordPress database.
 
 == Changelog ==
+
+= 0.4.1 =
+* Docs: added a "You may also like" section linking the other free WPPoland WooCommerce plugins. No functional changes.
 
 = 0.4.0 =
 * New: optional social-proof line above the form showing how many shoppers are already waiting for a product ("12 shoppers are already waiting for this item."). Singular/plural aware, fully customisable text with a {count} placeholder, and hidden when nobody is waiting.
