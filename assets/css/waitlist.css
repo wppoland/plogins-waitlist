@@ -367,3 +367,32 @@
     font-size: 0.9em;
     line-height: 1.45;
 }
+
+.restock-waitlist__social-proof {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-block: 0 0.75em;
+    color: var(--restock-ok-text, #15803d);
+    font-size: 0.9em;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.restock-waitlist__social-proof-dot {
+    inline-size: 0.55em;
+    block-size: 0.55em;
+    border-radius: 50%;
+    background: currentColor;
+    flex: 0 0 auto;
+    animation: restock-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes restock-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.82); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .restock-waitlist__social-proof-dot { animation: none; }
+}

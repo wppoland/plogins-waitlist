@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 0.3.2
+Stable tag: 0.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,7 +35,8 @@ Source and issues: https://github.com/wppoland/plogins-waitlist . Patches and bu
 * Customisable form labels, button text, on-screen submit messages, and notification email subject/intro/closing text
 * `[restock_waitlist]` shortcode for placing the form manually in a product template
 * Toggle guest (not-logged-in) subscriptions on or off
-* Admin subscriber list with per-product filter and CSV export
+* Social-proof "N shoppers are already waiting" line above the form (optional, customisable, singular/plural aware)
+* Admin subscriber list with per-product filter, CSV export, and one-click remove
 * Theme-overridable form template (`yourtheme/restock/single-product/waitlist-form.php`)
 * Compatible with WooCommerce HPOS (Custom Order Tables) and Cart/Checkout Blocks
 
@@ -97,6 +98,13 @@ Yes. This plugin is compatible with WordPress Multisite. Network activate it or 
 Plogins Waitlist does not connect to any external services. Back-in-stock notification emails are sent through your own site's WordPress mailer (`wp_mail`); subscriber data stays in your WordPress database.
 
 == Changelog ==
+
+= 0.4.0 =
+* New: optional social-proof line above the form showing how many shoppers are already waiting for a product ("12 shoppers are already waiting for this item."). Singular/plural aware, fully customisable text with a {count} placeholder, and hidden when nobody is waiting.
+* New: remove a subscriber directly from the admin Subscribers list (nonce-protected, with confirmation).
+
+= 0.3.3 =
+* New: Elementor widget for the back-in-stock waitlist form, so it can be placed with the Elementor editor. Self-guarded: loads only when Elementor is active.
 
 = 0.3.2 =
 * Fix the text domain on three admin help strings so it matches the plugin slug.

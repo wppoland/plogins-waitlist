@@ -18,6 +18,7 @@ final class Subscribers implements HasHooks
 {
     private const PAGE = 'restock-subscribers';
     private const NONCE_EXPORT = 'restock_export_subscribers';
+    private const NONCE_DELETE = 'restock_delete_subscriber';
 
     public function __construct(
         private readonly WaitlistRepository $repository,
@@ -28,6 +29,39 @@ final class Subscribers implements HasHooks
     {
         add_action('admin_menu', [$this, 'addMenuPage']);
         add_action('admin_init', [$this, 'maybeExportCsv']);
+        add_action('admin_init', [$this, 'maybeDelete']);
+    }
+
+    /**
+     * Handle a single-subscriber delete from the list (nonce-protected).
+     */
+    public function maybeDelete(): void
+    {
+        if (
+            ! isset($_GET['restock_delete'], $_GET['_wpnonce']) ||
+            ! current_user_can('manage_woocommerce')
+        ) {
+            return;
+        }
+
+        $id = absint($_GET['restock_delete']);
+
+        if (! wp_verify_nonce(sanitize_key($_GET['_wpnonce']), self::NONCE_DELETE . '_' . $id)) {
+            wp_die(esc_html__('Security check failed.', 'plogins-waitlist'));
+        }
+
+        if ($id > 0) {
+            $this->repository->deleteById($id);
+        }
+
+        wp_safe_redirect(
+            add_query_arg(
+                'restock_deleted',
+                $id > 0 ? '1' : '0',
+                admin_url('admin.php?page=' . self::PAGE),
+            ),
+        );
+        exit;
     }
 
     public function addMenuPage(): void
@@ -137,6 +171,13 @@ final class Subscribers implements HasHooks
         <div class="wrap restock-admin">
             <h1><?php esc_html_e('Waitlist Subscribers', 'plogins-waitlist'); ?></h1>
 
+            <?php
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only flash flag after a nonce-checked redirect.
+            if (isset($_GET['restock_deleted']) && '1' === $_GET['restock_deleted']) :
+                ?>
+                <div class="notice notice-success is-dismissible"><p><?php esc_html_e('Subscriber removed from the waitlist.', 'plogins-waitlist'); ?></p></div>
+            <?php endif; ?>
+
             <p class="restock-admin__lead">
                 <?php esc_html_e('Everyone who asked to be notified when an out-of-stock product returns. When you restock a product, pending subscribers are emailed automatically and move to "Notified".', 'plogins-waitlist'); ?>
             </p>
@@ -234,6 +275,7 @@ final class Subscribers implements HasHooks
                             <th><?php esc_html_e('Email', 'plogins-waitlist'); ?></th>
                             <th><?php esc_html_e('Notified', 'plogins-waitlist'); ?></th>
                             <th><?php esc_html_e('Subscribed', 'plogins-waitlist'); ?></th>
+                            <th><?php esc_html_e('Actions', 'plogins-waitlist'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -263,6 +305,22 @@ final class Subscribers implements HasHooks
                                     <?php endif; ?>
                                 </td>
                                 <td><?php echo esc_html($sub->createdAt->format('Y-m-d H:i')); ?></td>
+                                <td>
+                                    <?php
+                                    $deleteUrl = wp_nonce_url(
+                                        add_query_arg('restock_delete', $sub->id, admin_url('admin.php?page=' . self::PAGE)),
+                                        self::NONCE_DELETE . '_' . $sub->id,
+                                    );
+                                    ?>
+                                    <a
+                                        href="<?php echo esc_url($deleteUrl); ?>"
+                                        class="restock-row-delete"
+                                        onclick="return confirm('<?php echo esc_js(__('Remove this subscriber from the waitlist?', 'plogins-waitlist')); ?>');"
+                                        aria-label="<?php echo esc_attr(sprintf(/* translators: %s: subscriber email. */ __('Remove %s', 'plogins-waitlist'), $sub->email)); ?>"
+                                    >
+                                        <?php esc_html_e('Remove', 'plogins-waitlist'); ?>
+                                    </a>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
