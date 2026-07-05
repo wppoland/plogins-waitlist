@@ -48,6 +48,9 @@ final class WaitlistService implements HasHooks
             isEnabled: fn (): bool => $this->isEnabled(),
             settings: fn (): array => $this->getSettings(),
             renderTemplate: function (string $template, array $data): void {
+                if (isset($data['product']) && $data['product'] instanceof \WC_Product) {
+                    $data['waiting_count'] = $this->repository->countPending((int) $data['product']->get_id());
+                }
                 $this->templateLoader->include($template, $data);
             },
         );
@@ -219,9 +222,10 @@ final class WaitlistService implements HasHooks
         }
 
         return $this->templateLoader->render('single-product/waitlist-form', [
-            'product'  => $product,
-            'settings' => $settings,
-            'email'    => is_user_logged_in() ? wp_get_current_user()->user_email : '',
+            'product'       => $product,
+            'settings'      => $settings,
+            'email'         => is_user_logged_in() ? wp_get_current_user()->user_email : '',
+            'waiting_count' => $this->repository->countPending((int) $product->get_id()),
         ]);
     }
 
@@ -236,9 +240,10 @@ final class WaitlistService implements HasHooks
     public function getSettings(): array
     {
         $defaults = [
-            'allow_guests'      => true,
-            'show_on_single'    => true,
-            'show_in_account'   => true,
+            'allow_guests'       => true,
+            'show_on_single'     => true,
+            'show_in_account'    => true,
+            'show_social_proof'  => true,
         ];
 
         $options = get_option('restock_settings', []);

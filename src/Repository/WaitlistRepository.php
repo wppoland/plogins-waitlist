@@ -203,4 +203,42 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
 
         return is_int($deleted) && $deleted > 0;
     }
+
+    /**
+     * Count pending (not-yet-notified) subscribers for a product.
+     *
+     * Drives the "N people are waiting" social-proof line on the form.
+     */
+    public function countPending(int $productId): int
+    {
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
+        $count = $this->wpdb->get_var(
+            $this->wpdb->prepare(
+                'SELECT COUNT(*) FROM %i WHERE product_id = %d AND notified = 0',
+                $this->tableName(),
+                $productId,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return (int) $count;
+    }
+
+    /**
+     * Delete a single subscription by its id (admin action).
+     */
+    public function deleteById(int $subscriptionId): bool
+    {
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
+        $deleted = $this->wpdb->query(
+            $this->wpdb->prepare(
+                'DELETE FROM %i WHERE id = %d',
+                $this->tableName(),
+                $subscriptionId,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return is_int($deleted) && $deleted > 0;
+    }
 }
