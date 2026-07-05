@@ -100,6 +100,33 @@ final class Settings implements HasHooks
         );
 
         add_settings_field(
+            'show_social_proof',
+            __('Show "people waiting" count', 'plogins-waitlist'),
+            [$this, 'renderCheckbox'],
+            self::PAGE,
+            self::SECTION_GENERAL,
+            [
+                'id'    => 'show_social_proof',
+                'label' => __('Show how many shoppers are already on the waitlist.', 'plogins-waitlist'),
+                'help'  => __('Displays a short social-proof line above the form (for example, "12 shoppers are already waiting for this item.") when at least one person is waiting. A higher count reassures shoppers the product is in demand and worth waiting for.', 'plogins-waitlist'),
+            ],
+        );
+
+        add_settings_field(
+            'social_proof_text',
+            __('"People waiting" text', 'plogins-waitlist'),
+            [$this, 'renderText'],
+            self::PAGE,
+            self::SECTION_GENERAL,
+            [
+                'id'          => 'social_proof_text',
+                'placeholder' => __('{count} shoppers are already waiting for this item.', 'plogins-waitlist'),
+                'description' => __('Use {count} for the number. Leave blank for the built-in wording (handles singular/plural automatically).', 'plogins-waitlist'),
+                'help'        => __('Only shown when "people waiting" count is on and at least one shopper is waiting.', 'plogins-waitlist'),
+            ],
+        );
+
+        add_settings_field(
             'account_menu_label',
             __('My Account menu label', 'plogins-waitlist'),
             [$this, 'renderText'],
@@ -515,7 +542,7 @@ final class Settings implements HasHooks
     {
         $options = (array) get_option(self::OPTION, []);
         $id      = $args['id'] ?? '';
-        $default = in_array($id, ['allow_guests', 'show_on_single', 'show_in_account'], true);
+        $default = in_array($id, ['allow_guests', 'show_on_single', 'show_in_account', 'show_social_proof'], true);
         $checked = isset($options[$id]) ? (bool) $options[$id] : $default;
         $label   = $args['label'] ?? '';
 
@@ -548,6 +575,8 @@ final class Settings implements HasHooks
             'allow_guests'        => ! empty($raw['allow_guests']),
             'show_on_single'      => ! empty($raw['show_on_single']),
             'show_in_account'     => ! empty($raw['show_in_account']),
+            'show_social_proof'   => ! empty($raw['show_social_proof']),
+            'social_proof_text'   => sanitize_text_field((string) ($raw['social_proof_text'] ?? '')),
             'account_menu_label'   => sanitize_text_field((string) ($raw['account_menu_label'] ?? '')),
             // Display.
             'show_title'          => ! empty($raw['show_title']),
