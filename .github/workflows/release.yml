@@ -1,22 +1,49 @@
 name: Release
 
+# Auto-release on version bump: a push to main that raises the plugin's Stable
+# tag above the live wp.org version builds and deploys via the shared reusable
+# workflow (composer --no-dev, npm build, POT/MO, 10up SVN deploy). Pushes that
+# do not change the version are gated out. workflow_dispatch = manual/dry-run.
+
 on:
   push:
-    tags: ['v[0-9]+.[0-9]+.[0-9]+']
+    branches: [main]
   workflow_dispatch:
     inputs:
       dry-run:
-        description: 'Build the SVN-ready zip as an artifact without pushing to wp.org'
+        description: 'Build the zip but do NOT push to wp.org'
         type: boolean
-        default: true
+        default: false
 
-# Granted to the reusable workflow's release job (it creates the GitHub release).
-# A reusable workflow cannot exceed the caller's GITHUB_TOKEN permissions.
 permissions:
   contents: write
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
+  gate:
+    name: Release only on a version bump
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.check.outputs.go }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: check
+        run: |
+          REPO=$(grep -i "Stable tag:" readme.txt | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+          LIVE=$(curl -s "https://api.wordpress.org/plugins/info/1.0/plogins-waitlist.json" | jq -r '.version // empty' 2>/dev/null || true)
+          echo "repo=$REPO live=$LIVE"
+          if [ -n "$REPO" ] && [ "$REPO" != "$LIVE" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+
   release:
+    needs: gate
+    if: ${{ needs.gate.outputs.go == 'true' || github.event_name == 'workflow_dispatch' }}
     uses: wppoland/workflows/.github/workflows/_release-free.yml@v1
     with:
       slug: plogins-waitlist
