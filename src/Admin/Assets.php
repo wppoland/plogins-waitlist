@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Restock\Admin;
+namespace Waitlist\Admin;
 
 defined('ABSPATH') || exit;
 
-use Restock\Contract\HasHooks;
-use Restock\Plugin;
+use Waitlist\Contract\HasHooks;
+use Waitlist\Plugin;
 
 /**
- * Enqueues the admin stylesheet and tooltip script, but only on Restock's own
+ * Enqueues the admin stylesheet and tooltip script, but only on Waitlist's own
  * settings screens, so nothing leaks into the rest of wp-admin.
  */
 final class Assets implements HasHooks
@@ -18,7 +18,7 @@ final class Assets implements HasHooks
     private const HANDLE = 'restock-admin';
 
     /**
-     * Hook suffixes of the Restock admin pages where assets should load.
+     * Hook suffixes of the Waitlist admin pages where assets should load.
      * Matches the `$hook_suffix` passed to `admin_enqueue_scripts`.
      */
     private const PAGE_HOOKS = [
@@ -43,14 +43,14 @@ final class Assets implements HasHooks
             self::HANDLE,
             $plugin->url('assets/css/admin.css'),
             [],
-            \Restock\VERSION,
+            \Waitlist\VERSION,
         );
 
         wp_enqueue_script(
             self::HANDLE,
             $plugin->url('assets/js/admin.js'),
             [],
-            \Restock\VERSION,
+            \Waitlist\VERSION,
             [
                 'in_footer' => true,
                 'strategy'  => 'defer',

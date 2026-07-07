@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Restock;
+namespace Waitlist;
 
 defined('ABSPATH') || exit;
 
-use Restock\Contract\HasHooks;
+use Waitlist\Contract\HasHooks;
 
 /**
  * Main plugin orchestrator: wires the DI container, runs migrations, and boots
@@ -80,10 +80,11 @@ final class Plugin
         }
 
         /**
-         * Fires after Restock has booted. The PRO plugin extends Restock here.
+         * Fires after Waitlist has booted. The PRO plugin extends Waitlist here.
          *
          * @param Plugin $plugin The booted plugin instance.
          */
-        do_action('restock/booted', $this);
+        do_action('waitlist/booted', $this);
+        do_action('restock/booted', $this); // legacy alias for Plogins Waitlist PRO <= 1.0.2
     }
 }

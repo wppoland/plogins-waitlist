@@ -2,10 +2,10 @@
 /**
  * My Account waitlists table.
  *
- * @var list<\Restock\Model\WaitlistSubscription> $restock_subscriptions
+ * @var list<\Waitlist\Model\WaitlistSubscription> $restock_subscriptions
  * @var array<string, mixed>                  $restock_settings
  *
- * @package Restock/Templates
+ * @package Waitlist/Templates
  */
 
 declare(strict_types=1);

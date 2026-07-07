@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Restock;
+namespace Waitlist;
 
 defined('ABSPATH') || exit;
 
-use Restock\Admin\Assets;
-use Restock\Admin\Settings;
-use Restock\Admin\Subscribers;
-use Restock\Repository\WaitlistRepository;
-use Restock\Service\ElementorWidgets;
-use Restock\Service\WaitlistService;
-use Restock\Util\TemplateLoader;
+use Waitlist\Admin\Assets;
+use Waitlist\Admin\Settings;
+use Waitlist\Admin\Subscribers;
+use Waitlist\Repository\WaitlistRepository;
+use Waitlist\Service\ElementorWidgets;
+use Waitlist\Service\WaitlistService;
+use Waitlist\Util\TemplateLoader;
 
 /**
  * Service registration. Returns a callable that binds every service into the

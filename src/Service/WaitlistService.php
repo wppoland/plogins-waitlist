@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Restock\Service;
+namespace Waitlist\Service;
 
 defined('ABSPATH') || exit;
 
-use Restock\Contract\HasHooks;
-use Restock\Repository\WaitlistRepository;
-use Restock\Util\TemplateLoader;
+use Waitlist\Contract\HasHooks;
+use Waitlist\Repository\WaitlistRepository;
+use Waitlist\Util\TemplateLoader;
 use WPPoland\StorefrontKit\Waitlist\WaitlistEngine;
 
 final class WaitlistService implements HasHooks
@@ -27,9 +27,9 @@ final class WaitlistService implements HasHooks
             nonceAction: 'restock_waitlist',
             scriptObjectName: 'restockWaitlist',
             assetHandle: 'restock-waitlist',
-            styleUrl: \Restock\Plugin::instance()->url('assets/css/waitlist.css'),
-            scriptUrl: \Restock\Plugin::instance()->url('assets/js/waitlist.js'),
-            version: \Restock\VERSION,
+            styleUrl: \Waitlist\Plugin::instance()->url('assets/css/waitlist.css'),
+            scriptUrl: \Waitlist\Plugin::instance()->url('assets/js/waitlist.js'),
+            version: \Waitlist\VERSION,
             templateName: 'single-product/waitlist-form',
             defaultMessages: [
                 'generic_error' => __('Something went wrong. Please try again.', 'plogins-waitlist'),
@@ -143,15 +143,15 @@ final class WaitlistService implements HasHooks
 
         wp_enqueue_style(
             'restock-waitlist',
-            \Restock\Plugin::instance()->url('assets/css/waitlist.css'),
+            \Waitlist\Plugin::instance()->url('assets/css/waitlist.css'),
             [],
-            \Restock\VERSION,
+            \Waitlist\VERSION,
         );
         wp_enqueue_script(
             'restock-waitlist',
-            \Restock\Plugin::instance()->url('assets/js/waitlist.js'),
+            \Waitlist\Plugin::instance()->url('assets/js/waitlist.js'),
             [],
-            \Restock\VERSION,
+            \Waitlist\VERSION,
             [
                 'in_footer' => true,
                 'strategy' => 'defer',

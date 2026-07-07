@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Restock\Elementor;
+namespace Waitlist\Elementor;
 
 defined('ABSPATH') || exit;
 

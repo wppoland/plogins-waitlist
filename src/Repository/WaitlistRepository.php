@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Restock\Repository;
+namespace Waitlist\Repository;
 
 defined('ABSPATH') || exit;
 
-use Restock\Model\WaitlistSubscription;
+use Waitlist\Model\WaitlistSubscription;
 use wpdb;
 
 /**
@@ -118,7 +118,7 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
      *
      * Used by the admin subscriber list page only.
      *
-     * @return list<\Restock\Model\WaitlistSubscription>
+     * @return list<\Waitlist\Model\WaitlistSubscription>
      */
     public function findAll(): array
     {
@@ -131,7 +131,7 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
         // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
 
         return array_map(
-            static fn (object $row): \Restock\Model\WaitlistSubscription => \Restock\Model\WaitlistSubscription::fromRow($row),
+            static fn (object $row): \Waitlist\Model\WaitlistSubscription => \Waitlist\Model\WaitlistSubscription::fromRow($row),
             is_array($rows) ? $rows : [],
         );
     }

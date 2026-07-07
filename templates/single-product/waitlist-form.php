@@ -6,7 +6,7 @@
  * @var array<string, mixed> $restock_settings
  * @var string               $restock_email
  *
- * @package Restock/Templates
+ * @package Waitlist/Templates
  */
 
 declare(strict_types=1);

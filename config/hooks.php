@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-use Restock\Admin\Assets;
-use Restock\Admin\Settings;
-use Restock\Admin\Subscribers;
-use Restock\Service\ElementorWidgets;
-use Restock\Service\WaitlistService;
+use Waitlist\Admin\Assets;
+use Waitlist\Admin\Settings;
+use Waitlist\Admin\Subscribers;
+use Waitlist\Service\ElementorWidgets;
+use Waitlist\Service\WaitlistService;
 
 /**
  * Ordered list of HasHooks services to register during plugin booting.

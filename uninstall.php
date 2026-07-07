@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Restock uninstall routine.
+ * Waitlist uninstall routine.
  *
  * Drops the plugin table and removes plugin options when the user deletes
  * the plugin from the WordPress admin.
  *
- * @package Restock
+ * @package Waitlist
  */
 
 defined('WP_UNINSTALL_PLUGIN') || exit;

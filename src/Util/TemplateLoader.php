@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Restock\Util;
+namespace Waitlist\Util;
 
 defined('ABSPATH') || exit;
 
-use const Restock\PLUGIN_DIR;
+use const Waitlist\PLUGIN_DIR;
 
 /**
  * Loads templates with theme override support.
