@@ -1,0 +1,402 @@
+# Copyright (C) 2026 WPPoland.com
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Plogins Waitlist for WooCommerce 0.3.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-waitlist\n"
+"POT-Creation-Date: 2026-06-30T05:20:58+00:00\n"
+"PO-Revision-Date: 2026-07-07 00:00+0000\n"
+"Last-Translator: WPPoland <kontakt@wppoland.com>\n"
+"Language-Team: German <de@li.org>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Codex + translate.googleapis.com\n"
+"X-Domain: plogins-waitlist\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Plogins Waitlist for WooCommerce"
+msgstr "Plogins Warteliste für WooCommerce"
+
+msgid "https://plogins.com/plogins-waitlist/"
+msgstr "https://plogins.com/plogins-waitlist/"
+
+msgid "Lightweight, accessible back-in-stock / waitlist notifications for WooCommerce. Built with Core Web Vitals and WCAG 2.2 AA in mind."
+msgstr "Einfache, leicht zugängliche Benachrichtigungen über Lagerbestände/Wartelisten für WooCommerce. Entwickelt unter Berücksichtigung von Core Web Vitals und WCAG 2.2 AA."
+
+msgid "WPPoland.com"
+msgstr "WPPoland.com"
+
+msgid "https://wppoland.com"
+msgstr "https://wppoland.com"
+
+msgid "Plogins Waitlist requires PHP %1$s or higher. You are running PHP %2$s."
+msgstr "Plogins Warteliste erfordert PHP %1$s oder höher. Sie führen PHP %2$s aus."
+
+msgid "Plogins Waitlist requires WooCommerce to be installed and activated."
+msgstr "Für die Warteliste Plogins muss WooCommerce installiert und aktiviert sein."
+
+msgid "Plogins Waitlist requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
+msgstr "Plogins Warteliste erfordert WooCommerce %1$s oder höher. Sie führen WooCommerce %2$s aus."
+
+msgid "Plogins Waitlist"
+msgstr "Plogins Warteliste"
+
+msgid "Waitlist"
+msgstr "Warteliste"
+
+msgid "General"
+msgstr "Allgemein"
+
+msgid "Allow guest subscriptions"
+msgstr "Gastabonnements zulassen"
+
+msgid "Allow visitors who are not logged in to subscribe."
+msgstr "Ermöglichen Sie Besuchern, die nicht angemeldet sind, das Abonnieren."
+
+msgid "When on, anyone can join the waitlist by entering their email. When off, only logged-in customers can subscribe and guests see your \"login required\" message instead. Turn off to keep your list tied to real accounts."
+msgstr "Wenn diese Option aktiviert ist, kann sich jeder durch Eingabe seiner E-Mail-Adresse in die Warteliste eintragen. Wenn diese Option deaktiviert ist, können sich nur angemeldete Kunden anmelden und Gäste sehen stattdessen Ihre Meldung „Anmeldung erforderlich“. Deaktivieren Sie diese Option, damit Ihre Liste an echte Konten gebunden bleibt."
+
+msgid "Show form on product page"
+msgstr "Formular auf Produktseite anzeigen"
+
+msgid "Display the waitlist form on single product pages."
+msgstr "Zeigen Sie das Wartelistenformular auf einzelnen Produktseiten an."
+
+msgid "Automatically shows the form on each product page when that product is out of stock or on backorder. On variable products, the form appears after the shopper selects an unavailable variation. Turn off only if you place the form yourself with the [restock_waitlist] shortcode."
+msgstr "Zeigt das Formular automatisch auf jeder Produktseite an, wenn das Produkt nicht vorrätig ist oder im Rückstand ist. Bei variablen Produkten erscheint das Formular, nachdem der Käufer eine nicht verfügbare Variante ausgewählt hat. Deaktivieren Sie die Funktion nur, wenn Sie das Formular selbst mit dem Shortcode [restock_waitlist] platzieren."
+
+msgid "My Account waitlists"
+msgstr "Wartelisten für mein Konto"
+
+msgid "Show a Waitlists tab in WooCommerce My Account."
+msgstr "Zeigen Sie eine Wartelisten-Registerkarte in WooCommerce Mein Konto an."
+
+msgid "Logged-in customers can review active waitlists and leave a list from My Account. After enabling, visit Settings → Permalinks and click Save once if the tab returns a 404."
+msgstr "Angemeldete Kunden können aktive Wartelisten überprüfen und über „Mein Konto“ eine Liste hinterlassen. Gehen Sie nach der Aktivierung zu Einstellungen → Permalinks und klicken Sie einmal auf Speichern, wenn die Registerkarte einen 404-Fehler zurückgibt."
+
+msgid "My Account menu label"
+msgstr "Menübezeichnung „Mein Konto“."
+
+msgid "Waitlists"
+msgstr "Wartelisten"
+
+msgid "Label for the My Account menu item."
+msgstr "Bezeichnung für den Menüpunkt „Mein Konto“."
+
+msgid "Wording of the menu item customers click in My Account to see the products they are waiting for. Only shown when \"My Account waitlists\" is on. Leave blank to use the default."
+msgstr "Wortlaut des Menüpunkts Klicken Sie in „Mein Konto“, um die Produkte anzuzeigen, auf die Kunden warten. Wird nur angezeigt, wenn „Wartelisten für mein Konto“ aktiviert ist. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Heading & intro"
+msgstr "Überschrift & Einleitung"
+
+msgid "Optional heading and introductory text shown above the waitlist form."
+msgstr "Optionale Überschrift und einleitender Text werden über dem Wartelistenformular angezeigt."
+
+msgid "Show heading"
+msgstr "Überschrift anzeigen"
+
+msgid "Display a heading above the form."
+msgstr "Über dem Formular eine Überschrift anzeigen."
+
+msgid "Shows the heading text (set below) above the form, for example \"Notify me when available\". Hide it for a more compact form."
+msgstr "Zeigt den Überschriftentext (unten eingestellt) über dem Formular an, zum Beispiel „Benachrichtigen Sie mich, wenn verfügbar“. Verstecken Sie es für eine kompaktere Form."
+
+msgid "Heading text"
+msgstr "Überschriftentext"
+
+msgid "Notify me when available"
+msgstr "Benachrichtigen Sie mich, wenn verfügbar"
+
+msgid "The heading shown above the form (only when \"Show heading\" is on). Keep it short and reassuring. Leave blank to use the placeholder shown here."
+msgstr "Die über dem Formular angezeigte Überschrift (nur wenn „Überschrift anzeigen“ aktiviert ist). Halten Sie es kurz und beruhigend. Lassen Sie das Feld leer, um den hier gezeigten Platzhalter zu verwenden."
+
+msgid "Show intro text"
+msgstr "Einleitungstext anzeigen"
+
+msgid "Display intro text above the form."
+msgstr "Zeigen Sie den Einführungstext über dem Formular an."
+
+msgid "Shows a short paragraph (set below) between the heading and the form to explain what subscribers will receive."
+msgstr "Zeigt einen kurzen Absatz (unten) zwischen der Überschrift und dem Formular an, um zu erklären, was Abonnenten erhalten."
+
+msgid "Intro text"
+msgstr "Einleitungstext"
+
+msgid "Leave your email and we will let you know the moment this product is back."
+msgstr "Hinterlassen Sie Ihre E-Mail-Adresse und wir informieren Sie, sobald dieses Produkt wieder verfügbar ist."
+
+msgid "Introductory sentence shown above the form (only when \"Show intro text\" is on). Use it to set expectations, e.g. one email, no spam. Leave blank to use the placeholder shown here."
+msgstr "Einleitungssatz, der über dem Formular angezeigt wird (nur wenn „Einleitungstext anzeigen“ aktiviert ist). Nutzen Sie es, um Erwartungen zu formulieren, z.B. Eine E-Mail, kein Spam. Lassen Sie das Feld leer, um den hier gezeigten Platzhalter zu verwenden."
+
+msgid "Form labels"
+msgstr "Formularetiketten"
+
+msgid "Email field label"
+msgstr "E-Mail-Feldbezeichnung"
+
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+msgid "Accessible label for the email field, read out by screen readers. It is visually hidden on the form but important for accessibility. Leave blank to use the default."
+msgstr "Barrierefreie Beschriftung für das E-Mail-Feld, vorlesbar durch Screenreader. Es ist auf dem Formular optisch verborgen, aber wichtig für die Zugänglichkeit. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Email field placeholder"
+msgstr "Platzhalter für das E-Mail-Feld"
+
+msgid "Your email address"
+msgstr "Ihre E-Mail-Adresse"
+
+msgid "Greyed-out hint shown inside the empty email field. It disappears as soon as the shopper types. Leave blank to use the default."
+msgstr "Im leeren E-Mail-Feld wird ein ausgegrauter Hinweis angezeigt. Es verschwindet, sobald der Käufer tippt. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Consent checkbox label"
+msgstr "Beschriftung des Kontrollkästchens „Einwilligung“."
+
+msgid "I consent to receiving back-in-stock notifications."
+msgstr "Ich bin damit einverstanden, Benachrichtigungen über wieder verfügbare Artikel zu erhalten."
+
+msgid "Text next to the required consent checkbox. Shoppers must tick it before they can subscribe, so word it clearly for GDPR/marketing-consent compliance. Leave blank to use the default."
+msgstr "Text neben dem erforderlichen Kontrollkästchen für die Einwilligung. Käufer müssen es aktivieren, bevor sie sich anmelden können. Formulieren Sie ihn klar, damit die DSGVO- und Marketing-Einwilligung verständlich ist. Leer lassen, um die Standardeinstellung zu verwenden."
+
+msgid "Button text"
+msgstr "Schaltflächentext"
+
+msgid "Join Waitlist"
+msgstr "Treten Sie der Warteliste bei"
+
+msgid "Label on the submit button. An action-oriented phrase such as \"Notify me\" or \"Join Waitlist\" works best. Leave blank to use the default."
+msgstr "Beschriftung auf der Schaltfläche „Senden“. Ein aktionsorientierter Satz wie „Benachrichtigen Sie mich“ oder „Auf die Warteliste setzen“ funktioniert am besten. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Variable product prompt"
+msgstr "Variable Produktaufforderung"
+
+msgid "Select options above, then join the waitlist when that variation is unavailable."
+msgstr "Wählen Sie oben Optionen aus und treten Sie der Warteliste bei, wenn diese Variante nicht verfügbar ist."
+
+msgid "Shown above the form on variable products."
+msgstr "Wird über dem Formular für variable Produkte angezeigt."
+
+msgid "Guidance shown above the form on variable products, telling shoppers to pick a variation first. The form then appears once they choose an unavailable one. Leave blank to use the default."
+msgstr "Über dem Formular wird eine Anleitung zu variablen Produkten angezeigt, in der Käufer aufgefordert werden, zuerst eine Variante auszuwählen. Das Formular wird dann angezeigt, sobald ein nicht verfügbares Formular ausgewählt wird. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Form messages"
+msgstr "Formulieren Sie Nachrichten"
+
+msgid "Messages shown to shoppers after they submit the form. Leave blank to use the built-in defaults."
+msgstr "Nachrichten, die Käufern angezeigt werden, nachdem sie das Formular abgeschickt haben. Lassen Sie das Feld leer, um die integrierten Standardeinstellungen zu verwenden."
+
+msgid "Success message"
+msgstr "Erfolgsmeldung"
+
+msgid "Thank you. You have been added to the waitlist."
+msgstr "Danke schön. Sie wurden zur Warteliste hinzugefügt."
+
+msgid "Confirmation shown after a shopper successfully joins the waitlist. Reassure them you will email when the item returns. Leave blank to use the default."
+msgstr "Bestätigung, die angezeigt wird, nachdem sich ein Käufer erfolgreich auf die Warteliste eingetragen hat. Versichern Sie ihnen, dass Sie eine E-Mail erhalten, wenn der Artikel zurückkommt. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Invalid email message"
+msgstr "Ungültige E-Mail-Nachricht"
+
+msgid "Provide a valid email address."
+msgstr "Geben Sie eine gültige E-Mail-Adresse an."
+
+msgid "Error shown when the entered email address is missing or malformed. Leave blank to use the default."
+msgstr "Fehler wird angezeigt, wenn die eingegebene E-Mail-Adresse fehlt oder fehlerhaft ist. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Missing consent message"
+msgstr "Fehlende Einwilligungsnachricht"
+
+msgid "You must accept the consent for email contact."
+msgstr "Für den E-Mail-Kontakt müssen Sie die Einwilligung akzeptieren."
+
+msgid "Error shown when a shopper submits without ticking the consent checkbox. Leave blank to use the default."
+msgstr "Es wird ein Fehler angezeigt, wenn ein Käufer etwas absendet, ohne das Kontrollkästchen für die Einwilligung zu aktivieren. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Login required message"
+msgstr "Meldung „Anmeldung erforderlich“."
+
+msgid "Login to join the waitlist."
+msgstr "Melden Sie sich an, um sich auf die Warteliste einzutragen."
+
+msgid "Shown when guest subscriptions are disabled and the visitor is not logged in."
+msgstr "Wird angezeigt, wenn Gastabonnements deaktiviert sind und der Besucher nicht angemeldet ist."
+
+msgid "Only relevant when \"Allow guest subscriptions\" is off. Tell visitors they need an account, ideally with a link to your login page. Leave blank to use the default."
+msgstr "Nur relevant, wenn „Gastabonnements zulassen“ deaktiviert ist. Teilen Sie den Besuchern mit, dass sie ein Konto benötigen, idealerweise mit einem Link zu Ihrer Anmeldeseite. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Variation required message"
+msgstr "Meldung „Variation erforderlich“."
+
+msgid "Select product options before joining the waitlist."
+msgstr "Wählen Sie Produktoptionen aus, bevor Sie sich auf die Warteliste setzen."
+
+msgid "Error shown when a shopper tries to subscribe without choosing a variation on variable products. Leave blank to use the default."
+msgstr "Es wird ein Fehler angezeigt, wenn ein Käufer versucht, ein Abonnement abzuschließen, ohne eine Variante variabler Produkte auszuwählen. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Unsubscribe success message"
+msgstr "Erfolgsmeldung zum Abbestellen"
+
+msgid "You have been removed from this waitlist."
+msgstr "Sie wurden von dieser Warteliste entfernt."
+
+msgid "Confirmation shown after a customer leaves a waitlist from My Account. Leave blank to use the default."
+msgstr "Bestätigung, die angezeigt wird, nachdem ein Kunde eine Warteliste in „Mein Konto“ verlassen hat. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Notification email"
+msgstr "Benachrichtigungs-E-Mail"
+
+msgid "These texts are used when a product comes back in stock and subscribers are notified."
+msgstr "Diese Texte werden verwendet, wenn ein Produkt wieder auf Lager ist und Abonnenten benachrichtigt werden."
+
+msgid "Email subject"
+msgstr "E-Mail-Betreff"
+
+msgid "Product back in stock - {product_name}"
+msgstr "Produkt wieder auf Lager – {product_name}"
+
+msgid "Use {product_name} as a placeholder for the product title."
+msgstr "Verwenden Sie {product_name} als Platzhalter für den Produkttitel."
+
+msgid "Subject line of the email sent to subscribers when the product is restocked. Include {product_name} so each email names the exact product. Leave blank to use the default."
+msgstr "Betreffzeile der E-Mail, die an Abonnenten gesendet wird, wenn das Produkt wieder auf Lager ist. Geben Sie {product_name} an, damit jede E-Mail das genaue Produkt benennt. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Email intro text"
+msgstr "E-Mail-Einführungstext"
+
+msgid "Product {product_name} is back in stock."
+msgstr "Produkt {product_name} ist wieder auf Lager."
+
+msgid "First line of the notification email body. The product link is added automatically on the next line. Use {product_name} to name the product. Leave blank to use the default."
+msgstr "Erste Zeile des E-Mail-Benachrichtigungstexts. Der Produktlink wird automatisch in der nächsten Zeile hinzugefügt. Verwenden Sie {product_name}, um das Produkt zu benennen. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Email closing text"
+msgstr "E-Mail-Abschlusstext"
+
+msgid "If you no longer wish to receive these messages, simply ignore this email."
+msgstr "Wenn Sie diese Nachrichten nicht mehr erhalten möchten, ignorieren Sie diese E-Mail einfach."
+
+msgid "Closing line of the notification email, shown after the product link. A good place for a brief reassurance or sign-off. Leave blank to use the default."
+msgstr "Schlusszeile der Benachrichtigungs-E-Mail, angezeigt nach dem Produktlink. Ein guter Ort für eine kurze Beruhigung oder Verabschiedung. Lassen Sie das Feld leer, um die Standardeinstellung zu verwenden."
+
+msgid "Configure the back-in-stock waitlist form that appears on out-of-stock products. Hover or focus the ? icons for guidance on each option. Empty text fields fall back to sensible built-in defaults."
+msgstr "Konfigurieren Sie das Wartelistenformular für wieder verfügbare Artikel, das bei nicht vorrätigen Produkten angezeigt wird. Bewegen oder fokussieren Sie das? Symbole zur Orientierung zu den einzelnen Optionen. Leere Textfelder greifen auf sinnvolle integrierte Standardeinstellungen zurück."
+
+msgid "More information"
+msgstr "Weitere Informationen"
+
+msgid "Waitlist Subscribers"
+msgstr "Abonnenten auf der Warteliste"
+
+msgid "Subscribers"
+msgstr "Abonnenten"
+
+msgid "Security check failed."
+msgstr "Sicherheitsüberprüfung fehlgeschlagen."
+
+msgid "Everyone who asked to be notified when an out-of-stock product returns. When you restock a product, pending subscribers are emailed automatically and move to \"Notified\"."
+msgstr "Jeder, der darum gebeten hat, benachrichtigt zu werden, wenn ein nicht vorrätiges Produkt zurückkommt. Wenn Sie ein Produkt wieder auffüllen, werden ausstehende Abonnenten automatisch per E-Mail benachrichtigt und in den Status „Benachrichtigt“ verschoben."
+
+msgid "Showing waiting subscribers for: %s"
+msgstr "Wartende Abonnenten werden angezeigt für: %s"
+
+msgid "Show all subscribers"
+msgstr "Alle Abonnenten anzeigen"
+
+msgid "Total"
+msgstr "Gesamt"
+
+msgid "Waiting"
+msgstr "Warten"
+
+msgid "Notified"
+msgstr "Benachrichtigt"
+
+msgid "Export CSV"
+msgstr "CSV exportieren"
+
+msgid "Search subscribers by email"
+msgstr "Suchen Sie nach Abonnenten per E-Mail"
+
+msgid "Search by email"
+msgstr "Suche per E-Mail"
+
+msgid "Search"
+msgstr "Suchen"
+
+msgid "Clear"
+msgstr "Zurücksetzen"
+
+msgid "No matching subscribers"
+msgstr "Keine passenden Abonnenten"
+
+msgid "No subscribers match \"%s\"."
+msgstr "Keine Abonnenten stimmen mit \"%s\" überein."
+
+msgid "No subscribers yet"
+msgstr "Noch keine Abonnenten"
+
+msgid "When a product is out of stock, shoppers can join its waitlist from the product page. Their requests will appear here, and they will be emailed automatically as soon as you restock."
+msgstr "Wenn ein Produkt nicht vorrätig ist, können sich Käufer über die Produktseite in die Warteliste eintragen. Ihre Anfragen werden hier angezeigt und automatisch per E-Mail verschickt, sobald Ihr Lagerbestand aufgefüllt ist."
+
+msgid "Review waitlist settings"
+msgstr "Überprüfen Sie die Wartelisteneinstellungen"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Product"
+msgstr "Produkt"
+
+msgid "Email"
+msgstr "E-Mail"
+
+msgid "Subscribed"
+msgstr "Abonniert"
+
+msgid "Something went wrong. Please try again."
+msgstr "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut."
+
+msgid "Product not found."
+msgstr "Produkt nicht gefunden."
+
+msgid "Waitlist is unavailable for this product."
+msgstr "Für dieses Produkt ist keine Warteliste verfügbar."
+
+msgid "Invalid request."
+msgstr "Ungültige Anfrage."
+
+msgid "Login required."
+msgstr "Anmeldung erforderlich."
+
+msgid "Could not remove this waitlist entry."
+msgstr "Dieser Wartelisteneintrag konnte nicht entfernt werden."
+
+msgid "My waitlists"
+msgstr "Meine Wartelisten"
+
+msgid "You are not on any waitlists yet."
+msgstr "Sie stehen noch nicht auf einer Warteliste."
+
+msgid "Leave waitlist"
+msgstr "Warteliste verlassen"
+
+msgid "In stock"
+msgstr "Auf Lager"
+
+msgid "Out of stock"
+msgstr "Ausverkauft"
+
+msgid "On backorder"
+msgstr "Im Rückstand"
+
+msgid "Stock"
+msgstr "Aktie"
+
+msgid "Actions"
+msgstr "Aktionen"
+
+msgid "Sending…"
+msgstr "Senden…"
+
