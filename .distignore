@@ -34,3 +34,7 @@
 /.playwright-mcp
 
 /glotpress-import
+
+# editor backups (never ship / never a badly_named_files reject)
+*~
+*.bak
