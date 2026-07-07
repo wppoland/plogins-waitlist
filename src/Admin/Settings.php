@@ -23,10 +23,18 @@ final class Settings implements HasHooks
     private const SECTION_MESSAGES = 'restock_messages';
     private const SECTION_EMAIL   = 'restock_email';
 
+    private ?ProUpsell $proUpsell = null;
+
+    private function proUpsell(): ProUpsell
+    {
+        return $this->proUpsell ??= new ProUpsell();
+    }
+
     public function registerHooks(): void
     {
         add_action('admin_menu', [$this, 'addMenuPage']);
         add_action('admin_init', [$this, 'registerSettings']);
+        $this->proUpsell()->registerHooks();
     }
 
     public function addMenuPage(): void
@@ -434,9 +442,13 @@ final class Settings implements HasHooks
         ?>
         <div class="wrap restock-admin">
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+
+            <?php $this->proUpsell()->banner(); ?>
+
             <p class="restock-admin__lead">
                 <?php esc_html_e('Configure the back-in-stock waitlist form that appears on out-of-stock products. Hover or focus the ? icons for guidance on each option. Empty text fields fall back to sensible built-in defaults.', 'plogins-waitlist'); ?>
             </p>
+            <div class="restock-cols">
             <form method="post" action="options.php">
                 <?php
                 settings_fields(self::PAGE);
@@ -444,6 +456,11 @@ final class Settings implements HasHooks
                 submit_button();
                 ?>
             </form>
+
+                <?php $this->proUpsell()->aside(); ?>
+            </div>
+
+            <?php $this->proUpsell()->cards(); ?>
         </div>
         <?php
     }
