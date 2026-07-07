@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Restock\Migration;
+namespace Waitlist\Migration;
 
 defined('ABSPATH') || exit;
 

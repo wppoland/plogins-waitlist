@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Restock;
+namespace Waitlist;
 
 defined('ABSPATH') || exit;
 
@@ -14,7 +14,7 @@ final class Migrator
 {
     private const OPTION = 'restock_schema_version';
 
-    /** Ordered list of migration class short-names under Restock\Migration. */
+    /** Ordered list of migration class short-names under Waitlist\Migration. */
     private const MIGRATIONS = [
         'Migration_0_1_0',
     ];
@@ -27,7 +27,7 @@ final class Migrator
         foreach ($migrations as $name) {
             if (version_compare($this->versionOf($name), $applied, '>')) {
                 /** @var class-string $class */
-                $class = 'Restock\\Migration\\' . $name;
+                $class = 'Waitlist\\Migration\\' . $name;
                 if (class_exists($class) && method_exists($class, 'migrate')) {
                     $class::migrate();
                 }

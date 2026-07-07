@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Restock\Admin;
+namespace Waitlist\Admin;
 
 defined('ABSPATH') || exit;
 
-use Restock\Contract\HasHooks;
-use Restock\Repository\WaitlistRepository;
+use Waitlist\Contract\HasHooks;
+use Waitlist\Repository\WaitlistRepository;
 
 /**
  * Admin page for viewing and exporting waitlist subscribers.
  *
- * Registered as WooCommerce → Restock → Subscribers.
+ * Registered as WooCommerce → Waitlist → Subscribers.
  */
 final class Subscribers implements HasHooks
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Restock\Contract;
+namespace Waitlist\Contract;
 
 defined('ABSPATH') || exit;
 

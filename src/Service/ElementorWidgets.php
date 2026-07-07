@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Restock\Service;
+namespace Waitlist\Service;
 
 defined('ABSPATH') || exit;
 
-use Restock\Contract\HasHooks;
-use Restock\Elementor\WaitlistWidget;
+use Waitlist\Contract\HasHooks;
+use Waitlist\Elementor\WaitlistWidget;
 
 /**
  * Elementor integration service.

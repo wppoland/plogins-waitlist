@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Restock\Admin;
+namespace Waitlist\Admin;
 
 defined('ABSPATH') || exit;
 
@@ -34,7 +34,7 @@ final class ProUpsell
     private function data(): array
     {
         if ($this->data === null) {
-            $file = \Restock\PLUGIN_DIR . '/config/pro-upsell.php';
+            $file = \Waitlist\PLUGIN_DIR . '/config/pro-upsell.php';
             $this->data = is_readable($file) ? (array) require $file : [];
         }
         return $this->data;

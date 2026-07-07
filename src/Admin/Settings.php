@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Restock\Admin;
+namespace Waitlist\Admin;
 
 defined('ABSPATH') || exit;
 
-use Restock\Contract\HasHooks;
+use Waitlist\Contract\HasHooks;
 
 /**
  * Admin settings page registered under the WooCommerce menu.
