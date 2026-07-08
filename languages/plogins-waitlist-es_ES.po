@@ -12,390 +12,729 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Domain: plogins-waitlist\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: plogins-waitlist\n"
 
+#. Plugin Name of the plugin
+#: plogins-waitlist.php
 msgid "Plogins Waitlist for WooCommerce"
 msgstr "Plogins Lista de espera para WooCommerce"
 
+#. Plugin URI of the plugin
+#: plogins-waitlist.php
 msgid "https://plogins.com/plogins-waitlist/"
 msgstr "https://plogins.com/plogins-waitlist/"
 
-msgid "Lightweight, accessible back-in-stock / waitlist notifications for WooCommerce. Built with Core Web Vitals and WCAG 2.2 AA in mind."
-msgstr "Notificaciones ligeras y accesibles de disponibilidad/lista de espera para WooCommerce. Creado teniendo en cuenta Core Web Vitals y WCAG 2.2 AA."
+#. Description of the plugin
+#: plogins-waitlist.php
+msgid ""
+"Lightweight, accessible back-in-stock / waitlist notifications for "
+"WooCommerce. Built with Core Web Vitals and WCAG 2.2 AA in mind."
+msgstr ""
+"Notificaciones ligeras y accesibles de disponibilidad/lista de espera para "
+"WooCommerce. Creado teniendo en cuenta Core Web Vitals y WCAG 2.2 AA."
 
+#. Author of the plugin
+#: plogins-waitlist.php
 msgid "WPPoland.com"
 msgstr "WPPoland.com"
 
+#. Author URI of the plugin
+#: plogins-waitlist.php
 msgid "https://wppoland.com"
 msgstr "https://wppoland.com"
 
-msgid "Plogins Waitlist requires PHP %1$s or higher. You are running PHP %2$s."
-msgstr "Plogins La lista de espera requiere PHP %1$s o superior. Estás ejecutando PHP %2$s."
+#. translators: 1: Required PHP version, 2: Current PHP version
+#: plogins-waitlist.php:54
+#, php-format
+msgid ""
+"Plogins Waitlist requires PHP %1$s or higher. You are running PHP %2$s."
+msgstr ""
+"Plogins La lista de espera requiere PHP %1$s o superior. Estás ejecutando "
+"PHP %2$s."
 
+#: plogins-waitlist.php:73
 msgid "Plogins Waitlist requires WooCommerce to be installed and activated."
-msgstr "Plogins La lista de espera requiere que WooCommerce esté instalado y activado."
+msgstr ""
+"Plogins La lista de espera requiere que WooCommerce esté instalado y "
+"activado."
 
-msgid "Plogins Waitlist requires WooCommerce %1$s or higher. You are running WooCommerce %2$s."
-msgstr "Plogins Waitlist requiere WooCommerce %1$s o superior. Estás ejecutando WooCommerce %2$s."
+#. translators: 1: Required WC version, 2: Current WC version
+#: plogins-waitlist.php:85
+#, php-format
+msgid ""
+"Plogins Waitlist requires WooCommerce %1$s or higher. You are running "
+"WooCommerce %2$s."
+msgstr ""
+"Plogins Waitlist requiere WooCommerce %1$s o superior. Estás ejecutando "
+"WooCommerce %2$s."
 
+#: src/Admin/Settings.php:36
 msgid "Plogins Waitlist"
-msgstr "Plogins Waitlist"
+msgstr "Plogins Lista de espera"
 
+#: src/Admin/Settings.php:37
 msgid "Waitlist"
 msgstr "Lista de espera"
 
+#: src/Admin/Settings.php:58
 msgid "General"
 msgstr "General"
 
+#: src/Admin/Settings.php:65
 msgid "Allow guest subscriptions"
 msgstr "Permitir suscripciones de invitados"
 
+#: src/Admin/Settings.php:71
 msgid "Allow visitors who are not logged in to subscribe."
 msgstr "Permita que los visitantes que no hayan iniciado sesión se suscriban."
 
-msgid "When on, anyone can join the waitlist by entering their email. When off, only logged-in customers can subscribe and guests see your \"login required\" message instead. Turn off to keep your list tied to real accounts."
-msgstr "Cuando esté activado, cualquiera puede unirse a la lista de espera ingresando su correo electrónico. Cuando está desactivado, solo los clientes que hayan iniciado sesión pueden suscribirse y los invitados verán el mensaje \"se requiere inicio de sesión\". Desactívelo para mantener su lista vinculada a cuentas reales."
+#: src/Admin/Settings.php:72
+msgid ""
+"When on, anyone can join the waitlist by entering their email. When off, "
+"only logged-in customers can subscribe and guests see your \"login "
+"required\" message instead. Turn off to keep your list tied to real "
+"accounts."
+msgstr ""
+"Cuando esté activado, cualquiera puede unirse a la lista de espera "
+"ingresando su correo electrónico. Cuando está desactivado, solo los clientes"
+" que hayan iniciado sesión pueden suscribirse y los invitados verán el "
+"mensaje \"se requiere inicio de sesión\". Desactívelo para mantener tu lista"
+" vinculada a cuentas reales."
 
+#: src/Admin/Settings.php:78
 msgid "Show form on product page"
 msgstr "Mostrar formulario en la página del producto"
 
+#: src/Admin/Settings.php:84
 msgid "Display the waitlist form on single product pages."
-msgstr "Muestre el formulario de lista de espera en páginas de productos individuales."
+msgstr ""
+"Muestre el formulario de lista de espera en páginas de productos "
+"individuales."
 
-msgid "Automatically shows the form on each product page when that product is out of stock or on backorder. On variable products, the form appears after the shopper selects an unavailable variation. Turn off only if you place the form yourself with the [restock_waitlist] shortcode."
-msgstr "Muestra automáticamente el formulario en la página de cada producto cuando ese producto está agotado o en espera. En productos variables, el formulario aparece después de que el comprador selecciona una variación no disponible. Desactívelo solo si coloca el formulario usted mismo con el código corto [restock_waitlist]."
+#: src/Admin/Settings.php:85
+msgid ""
+"Automatically shows the form on each product page when that product is out "
+"of stock or on backorder. On variable products, the form appears after the "
+"shopper selects an unavailable variation. Turn off only if you place the "
+"form yourself with the [restock_waitlist] shortcode."
+msgstr ""
+"Muestra automáticamente el formulario en la página de cada producto cuando "
+"ese producto está agotado o en espera. En productos variables, el formulario"
+" aparece después de que el comprador selecciona una variación no disponible."
+" Desactívelo solo si coloca el formulario tú mismo con el código corto "
+"[restock_waitlist]."
 
+#: src/Admin/Settings.php:91
 msgid "My Account waitlists"
 msgstr "Listas de espera de Mi cuenta"
 
+#: src/Admin/Settings.php:97
 msgid "Show a Waitlists tab in WooCommerce My Account."
 msgstr "Mostrar una pestaña Listas de espera en WooCommerce Mi cuenta."
 
-msgid "Logged-in customers can review active waitlists and leave a list from My Account. After enabling, visit Settings → Permalinks and click Save once if the tab returns a 404."
-msgstr "Los clientes que hayan iniciado sesión pueden revisar las listas de espera activas y dejar una lista desde Mi cuenta. Después de habilitarlo, visite Configuración → Enlaces permanentes y haga clic en Guardar una vez si la pestaña devuelve un 404."
+#: src/Admin/Settings.php:98
+msgid ""
+"Logged-in customers can review active waitlists and leave a list from My "
+"Account. After enabling, visit Settings → Permalinks and click Save once if "
+"the tab returns a 404."
+msgstr ""
+"Los clientes que hayan iniciado sesión pueden revisar las listas de espera "
+"activas y dejar una lista desde Mi cuenta. Después de habilitarlo, visite "
+"Configuración → Enlaces permanentes y haga clic en Guardar una vez si la "
+"pestaña devuelve un 404."
 
+#: src/Admin/Settings.php:104
 msgid "My Account menu label"
 msgstr "Etiqueta del menú Mi cuenta"
 
+#: src/Admin/Settings.php:110 src/Service/WaitlistService.php:89
 msgid "Waitlists"
 msgstr "Listas de espera"
 
+#: src/Admin/Settings.php:111
 msgid "Label for the My Account menu item."
 msgstr "Etiqueta para el elemento del menú Mi cuenta."
 
-msgid "Wording of the menu item customers click in My Account to see the products they are waiting for. Only shown when \"My Account waitlists\" is on. Leave blank to use the default."
-msgstr "Texto del elemento del menú en el que los clientes hacen clic en Mi cuenta para ver los productos que están esperando. Solo se muestra cuando \"Listas de espera de Mi cuenta\" está activada. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:112
+msgid ""
+"Wording of the menu item customers click in My Account to see the products "
+"they are waiting for. Only shown when \"My Account waitlists\" is on. Leave "
+"blank to use the default."
+msgstr ""
+"Texto del elemento del menú en el que los clientes hacen clic en Mi cuenta "
+"para ver los productos que están esperando. Solo se muestra cuando \"Listas "
+"de espera de Mi cuenta\" está activada. Déjelo en blanco para usar el valor "
+"predeterminado."
 
+#: src/Admin/Settings.php:119
 msgid "Heading & intro"
 msgstr "Título e introducción"
 
+#: src/Admin/Settings.php:121
 msgid "Optional heading and introductory text shown above the waitlist form."
-msgstr "Encabezado opcional y texto introductorio que se muestran encima del formulario de lista de espera."
+msgstr ""
+"Encabezado opcional y texto introductorio que se muestran encima del "
+"formulario de lista de espera."
 
+#: src/Admin/Settings.php:131
 msgid "Show heading"
 msgstr "Mostrar encabezado"
 
+#: src/Admin/Settings.php:137
 msgid "Display a heading above the form."
 msgstr "Muestre un encabezado encima del formulario."
 
-msgid "Shows the heading text (set below) above the form, for example \"Notify me when available\". Hide it for a more compact form."
-msgstr "Muestra el texto del encabezado (establecido a continuación) encima del formulario, por ejemplo, \"Avíseme cuando esté disponible\". Ocultarlo para una forma más compacta."
+#: src/Admin/Settings.php:138
+msgid ""
+"Shows the heading text (set below) above the form, for example \"Notify me "
+"when available\". Hide it for a more compact form."
+msgstr ""
+"Muestra el texto del encabezado (establecido a continuación) encima del "
+"formulario, por ejemplo, \"Avíseme cuando esté disponible\". Ocultarlo para "
+"una forma más compacta."
 
+#: src/Admin/Settings.php:144
 msgid "Heading text"
 msgstr "Texto del encabezado"
 
+#: src/Admin/Settings.php:150
 msgid "Notify me when available"
 msgstr "Avísame cuando esté disponible"
 
-msgid "The heading shown above the form (only when \"Show heading\" is on). Keep it short and reassuring. Leave blank to use the placeholder shown here."
-msgstr "El encabezado que se muestra encima del formulario (solo cuando \"Mostrar encabezado\" está activado). Sea breve y tranquilizador. Déjelo en blanco para utilizar el marcador de posición que se muestra aquí."
+#: src/Admin/Settings.php:151
+msgid ""
+"The heading shown above the form (only when \"Show heading\" is on). Keep it"
+" short and reassuring. Leave blank to use the placeholder shown here."
+msgstr ""
+"El encabezado que se muestra encima del formulario (solo cuando \"Mostrar "
+"encabezado\" está activado). Sea breve y tranquilizador. Déjelo en blanco "
+"para utilizar el marcador de posición que se muestra aquí."
 
+#: src/Admin/Settings.php:157
 msgid "Show intro text"
 msgstr "Mostrar texto de introducción"
 
+#: src/Admin/Settings.php:163
 msgid "Display intro text above the form."
 msgstr "Muestra el texto de introducción encima del formulario."
 
-msgid "Shows a short paragraph (set below) between the heading and the form to explain what subscribers will receive."
-msgstr "Muestra un breve párrafo (establecido a continuación) entre el encabezado y el formulario para explicar qué recibirán los suscriptores."
+#: src/Admin/Settings.php:164
+msgid ""
+"Shows a short paragraph (set below) between the heading and the form to "
+"explain what subscribers will receive."
+msgstr ""
+"Muestra un breve párrafo (establecido a continuación) entre el encabezado y "
+"el formulario para explicar qué recibirán los suscriptores."
 
+#: src/Admin/Settings.php:170
 msgid "Intro text"
 msgstr "Texto de introducción"
 
-msgid "Leave your email and we will let you know the moment this product is back."
-msgstr "Deja tu correo electrónico y te avisaremos en el momento en que este producto vuelva a estar disponible."
+#: src/Admin/Settings.php:176
+msgid ""
+"Leave your email and we will let you know the moment this product is back."
+msgstr ""
+"Deja tu correo electrónico y te avisaremos en el momento en que este "
+"producto vuelva a estar disponible."
 
-msgid "Introductory sentence shown above the form (only when \"Show intro text\" is on). Use it to set expectations, e.g. one email, no spam. Leave blank to use the placeholder shown here."
-msgstr "Frase introductoria que se muestra encima del formulario (solo cuando \"Mostrar texto de introducción\" está activado). Úselo para establecer expectativas, p. un correo electrónico, sin spam. Déjelo en blanco para utilizar el marcador de posición que se muestra aquí."
+#: src/Admin/Settings.php:177
+msgid ""
+"Introductory sentence shown above the form (only when \"Show intro text\" is"
+" on). Use it to set expectations, e.g. one email, no spam. Leave blank to "
+"use the placeholder shown here."
+msgstr ""
+"Frase introductoria que se muestra encima del formulario (solo cuando "
+"\"Mostrar texto de introducción\" está activado). Úselo para establecer "
+"expectativas, p. un correo electrónico, sin spam. Déjelo en blanco para "
+"utilizar el marcador de posición que se muestra aquí."
 
+#: src/Admin/Settings.php:184
 msgid "Form labels"
 msgstr "Etiquetas de formulario"
 
+#: src/Admin/Settings.php:191
 msgid "Email field label"
 msgstr "Etiqueta de campo de correo electrónico"
 
+#: src/Admin/Settings.php:197 templates/single-product/waitlist-form.php:21
 msgid "Email address"
 msgstr "Dirección de correo electrónico"
 
-msgid "Accessible label for the email field, read out by screen readers. It is visually hidden on the form but important for accessibility. Leave blank to use the default."
-msgstr "Etiqueta accesible para el campo de correo electrónico, leída por lectores de pantalla. Está visualmente oculto en el formulario pero es importante para la accesibilidad. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:198
+msgid ""
+"Accessible label for the email field, read out by screen readers. It is "
+"visually hidden on the form but important for accessibility. Leave blank to "
+"use the default."
+msgstr ""
+"Etiqueta accesible para el campo de correo electrónico, leída por lectores "
+"de pantalla. Está visualmente oculto en el formulario pero es importante "
+"para la accesibilidad. Déjelo en blanco para usar el valor predeterminado."
 
+#: src/Admin/Settings.php:204
 msgid "Email field placeholder"
 msgstr "Marcador de posición del campo de correo electrónico"
 
+#: src/Admin/Settings.php:210 templates/single-product/waitlist-form.php:52
 msgid "Your email address"
 msgstr "Su dirección de correo electrónico"
 
-msgid "Greyed-out hint shown inside the empty email field. It disappears as soon as the shopper types. Leave blank to use the default."
-msgstr "La sugerencia atenuada se muestra dentro del campo de correo electrónico vacío. Desaparece tan pronto como el comprador escribe. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:211
+msgid ""
+"Greyed-out hint shown inside the empty email field. It disappears as soon as"
+" the shopper types. Leave blank to use the default."
+msgstr ""
+"La sugerencia atenuada se muestra dentro del campo de correo electrónico "
+"vacío. Desaparece tan pronto como el comprador escribe. Déjelo en blanco "
+"para usar el valor predeterminado."
 
+#: src/Admin/Settings.php:217
 msgid "Consent checkbox label"
 msgstr "Etiqueta de casilla de verificación de consentimiento"
 
+#: src/Admin/Settings.php:223 templates/single-product/waitlist-form.php:60
 msgid "I consent to receiving back-in-stock notifications."
-msgstr "Doy mi consentimiento para recibir notificaciones de disponibilidad nuevamente."
+msgstr ""
+"Doy mi consentimiento para recibir notificaciones de disponibilidad "
+"nuevamente."
 
-msgid "Text next to the required consent checkbox. Shoppers must tick it before they can subscribe, so word it clearly for GDPR/marketing-consent compliance. Leave blank to use the default."
-msgstr "Texto junto a la casilla de consentimiento obligatoria. Los compradores deben marcarla antes de suscribirse, así que redacte el texto con claridad para cumplir con el RGPD y el consentimiento de marketing. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:224
+msgid ""
+"Text next to the required consent checkbox. Shoppers must tick it before "
+"they can subscribe, so word it clearly for GDPR/marketing-consent "
+"compliance. Leave blank to use the default."
+msgstr ""
+"Texto junto a la casilla de consentimiento obligatoria. Los compradores "
+"deben marcarla antes de suscribirse, así que redacte el texto con claridad "
+"para cumplir con el RGPD y el consentimiento de marketing. Déjelo en blanco "
+"para usar el valor predeterminado."
 
+#: src/Admin/Settings.php:230
 msgid "Button text"
 msgstr "Texto del botón"
 
+#: src/Admin/Settings.php:236 templates/single-product/waitlist-form.php:22
 msgid "Join Waitlist"
 msgstr "Unirse a la lista de espera"
 
-msgid "Label on the submit button. An action-oriented phrase such as \"Notify me\" or \"Join Waitlist\" works best. Leave blank to use the default."
-msgstr "Etiqueta en el botón enviar. Una frase orientada a la acción como \"Notificarme\" o \"Unirse a la lista de espera\" funciona mejor. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:237
+msgid ""
+"Label on the submit button. An action-oriented phrase such as \"Notify me\" "
+"or \"Join Waitlist\" works best. Leave blank to use the default."
+msgstr ""
+"Etiqueta en el botón enviar. Una frase orientada a la acción como "
+"\"Notificarme\" o \"Unirse a la lista de espera\" funciona mejor. Déjelo en "
+"blanco para usar el valor predeterminado."
 
+#: src/Admin/Settings.php:243
 msgid "Variable product prompt"
 msgstr "Aviso de producto variable"
 
-msgid "Select options above, then join the waitlist when that variation is unavailable."
-msgstr "Seleccione las opciones anteriores y únase a la lista de espera cuando esa variación no esté disponible."
+#: src/Admin/Settings.php:249 templates/single-product/waitlist-form.php:24
+msgid ""
+"Select options above, then join the waitlist when that variation is "
+"unavailable."
+msgstr ""
+"Seleccione las opciones anteriores y únase a la lista de espera cuando esa "
+"variación no esté disponible."
 
+#: src/Admin/Settings.php:250
 msgid "Shown above the form on variable products."
 msgstr "Se muestra encima del formulario sobre productos variables."
 
-msgid "Guidance shown above the form on variable products, telling shoppers to pick a variation first. The form then appears once they choose an unavailable one. Leave blank to use the default."
-msgstr "La orientación que se muestra encima del formulario sobre productos variables indica a los compradores que elijan primero una variación. El formulario aparece una vez que eligen uno que no está disponible. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:251
+msgid ""
+"Guidance shown above the form on variable products, telling shoppers to pick"
+" a variation first. The form then appears once they choose an unavailable "
+"one. Leave blank to use the default."
+msgstr ""
+"La orientación que se muestra encima del formulario sobre productos "
+"variables indica a los compradores que elijan primero una variación. El "
+"formulario aparece una vez que eligen uno que no está disponible. Déjelo en "
+"blanco para usar el valor predeterminado."
 
+#: src/Admin/Settings.php:258
 msgid "Form messages"
 msgstr "mensajes de formulario"
 
-msgid "Messages shown to shoppers after they submit the form. Leave blank to use the built-in defaults."
-msgstr "Mensajes que se muestran a los compradores después de enviar el formulario. Déjelo en blanco para utilizar los valores predeterminados integrados."
+#: src/Admin/Settings.php:260
+msgid ""
+"Messages shown to shoppers after they submit the form. Leave blank to use "
+"the built-in defaults."
+msgstr ""
+"Mensajes que se muestran a los compradores después de enviar el formulario. "
+"Déjelo en blanco para utilizar los valores predeterminados integrados."
 
+#: src/Admin/Settings.php:270
 msgid "Success message"
 msgstr "Mensaje de éxito"
 
+#: src/Admin/Settings.php:276 src/Service/WaitlistService.php:41
 msgid "Thank you. You have been added to the waitlist."
 msgstr "Gracias. Has sido agregado a la lista de espera."
 
-msgid "Confirmation shown after a shopper successfully joins the waitlist. Reassure them you will email when the item returns. Leave blank to use the default."
-msgstr "La confirmación se muestra después de que un comprador se une exitosamente a la lista de espera. Asegúreles que les enviará un correo electrónico cuando regrese el artículo. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:277
+msgid ""
+"Confirmation shown after a shopper successfully joins the waitlist. Reassure"
+" them you will email when the item returns. Leave blank to use the default."
+msgstr ""
+"La confirmación se muestra después de que un comprador se une exitosamente a"
+" la lista de espera. Asegúreles que les enviará un correo electrónico cuando"
+" regrese el artículo. Déjelo en blanco para usar el valor predeterminado."
 
+#: src/Admin/Settings.php:283
 msgid "Invalid email message"
 msgstr "Mensaje de correo electrónico no válido"
 
+#: src/Admin/Settings.php:289 src/Service/WaitlistService.php:38
 msgid "Provide a valid email address."
 msgstr "Proporcione una dirección de correo electrónico válida."
 
-msgid "Error shown when the entered email address is missing or malformed. Leave blank to use the default."
-msgstr "Se muestra un error cuando la dirección de correo electrónico ingresada falta o tiene un formato incorrecto. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:290
+msgid ""
+"Error shown when the entered email address is missing or malformed. Leave "
+"blank to use the default."
+msgstr ""
+"Se muestra un error cuando la dirección de correo electrónico ingresada "
+"falta o tiene un formato incorrecto. Déjelo en blanco para usar el valor "
+"predeterminado."
 
+#: src/Admin/Settings.php:296
 msgid "Missing consent message"
 msgstr "Falta mensaje de consentimiento"
 
+#: src/Admin/Settings.php:302 src/Service/WaitlistService.php:39
 msgid "You must accept the consent for email contact."
-msgstr "Debe aceptar el consentimiento para el contacto por correo electrónico."
+msgstr ""
+"Debe aceptar el consentimiento para el contacto por correo electrónico."
 
-msgid "Error shown when a shopper submits without ticking the consent checkbox. Leave blank to use the default."
-msgstr "Se muestra un error cuando un comprador envía sin marcar la casilla de consentimiento. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:303
+msgid ""
+"Error shown when a shopper submits without ticking the consent checkbox. "
+"Leave blank to use the default."
+msgstr ""
+"Se muestra un error cuando un comprador envía sin marcar la casilla de "
+"consentimiento. Déjelo en blanco para usar el valor predeterminado."
 
+#: src/Admin/Settings.php:309
 msgid "Login required message"
 msgstr "Mensaje requerido para iniciar sesión"
 
+#: src/Admin/Settings.php:315 src/Service/WaitlistService.php:40
 msgid "Login to join the waitlist."
 msgstr "Inicie sesión para unirse a la lista de espera."
 
-msgid "Shown when guest subscriptions are disabled and the visitor is not logged in."
-msgstr "Se muestra cuando las suscripciones de invitados están deshabilitadas y el visitante no ha iniciado sesión."
+#: src/Admin/Settings.php:316
+msgid ""
+"Shown when guest subscriptions are disabled and the visitor is not logged "
+"in."
+msgstr ""
+"Se muestra cuando las suscripciones de invitados están deshabilitadas y el "
+"visitante no ha iniciado sesión."
 
-msgid "Only relevant when \"Allow guest subscriptions\" is off. Tell visitors they need an account, ideally with a link to your login page. Leave blank to use the default."
-msgstr "Solo es relevante cuando \"Permitir suscripciones de invitados\" está desactivado. Dígales a los visitantes que necesitan una cuenta, idealmente con un enlace a su página de inicio de sesión. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:317
+msgid ""
+"Only relevant when \"Allow guest subscriptions\" is off. Tell visitors they "
+"need an account, ideally with a link to your login page. Leave blank to use "
+"the default."
+msgstr ""
+"Solo es relevante cuando \"Permitir suscripciones de invitados\" está "
+"desactivado. Dígales a los visitantes que necesitan una cuenta, idealmente "
+"con un enlace a su página de inicio de sesión. Déjelo en blanco para usar el"
+" valor predeterminado."
 
+#: src/Admin/Settings.php:323
 msgid "Variation required message"
 msgstr "Mensaje de variación requerida"
 
+#: src/Admin/Settings.php:329 src/Service/WaitlistService.php:42
 msgid "Select product options before joining the waitlist."
-msgstr "Seleccione las opciones de productos antes de unirse a la lista de espera."
+msgstr ""
+"Seleccione las opciones de productos antes de unirse a la lista de espera."
 
-msgid "Error shown when a shopper tries to subscribe without choosing a variation on variable products. Leave blank to use the default."
-msgstr "Se muestra un error cuando un comprador intenta suscribirse sin elegir una variación de productos variables. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:330
+msgid ""
+"Error shown when a shopper tries to subscribe without choosing a variation "
+"on variable products. Leave blank to use the default."
+msgstr ""
+"Se muestra un error cuando un comprador intenta suscribirse sin elegir una "
+"variación de productos variables. Déjelo en blanco para usar el valor "
+"predeterminado."
 
+#: src/Admin/Settings.php:336
 msgid "Unsubscribe success message"
 msgstr "Mensaje de éxito para cancelar la suscripción"
 
+#: src/Admin/Settings.php:342 src/Service/WaitlistService.php:46
+#: src/Service/WaitlistService.php:164 src/Service/WaitlistService.php:193
 msgid "You have been removed from this waitlist."
 msgstr "Ha sido eliminado de esta lista de espera."
 
-msgid "Confirmation shown after a customer leaves a waitlist from My Account. Leave blank to use the default."
-msgstr "Confirmación que se muestra después de que un cliente abandona una lista de espera desde Mi cuenta. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:343
+msgid ""
+"Confirmation shown after a customer leaves a waitlist from My Account. Leave"
+" blank to use the default."
+msgstr ""
+"Confirmación que se muestra después de que un cliente abandona una lista de "
+"espera desde Mi cuenta. Déjelo en blanco para usar el valor predeterminado."
 
+#: src/Admin/Settings.php:350
 msgid "Notification email"
 msgstr "Correo electrónico de notificación"
 
-msgid "These texts are used when a product comes back in stock and subscribers are notified."
-msgstr "Estos textos se utilizan cuando un producto vuelve a estar disponible y se notifica a los suscriptores."
+#: src/Admin/Settings.php:352
+msgid ""
+"These texts are used when a product comes back in stock and subscribers are "
+"notified."
+msgstr ""
+"Estos textos se utilizan cuando un producto vuelve a estar disponible y se "
+"notifica a los suscriptores."
 
+#: src/Admin/Settings.php:362
 msgid "Email subject"
 msgstr "Asunto del correo electrónico"
 
+#: src/Admin/Settings.php:368 src/Service/WaitlistService.php:43
 msgid "Product back in stock - {product_name}"
 msgstr "Producto nuevamente disponible - {product_name}"
 
+#: src/Admin/Settings.php:369 src/Admin/Settings.php:383
 msgid "Use {product_name} as a placeholder for the product title."
-msgstr "Utilice {product_name} como marcador de posición para el título del producto."
+msgstr ""
+"Utilice {product_name} como marcador de posición para el título del "
+"producto."
 
-msgid "Subject line of the email sent to subscribers when the product is restocked. Include {product_name} so each email names the exact product. Leave blank to use the default."
-msgstr "Línea de asunto del correo electrónico enviado a los suscriptores cuando se repone el producto. Incluya {product_name} para que cada correo electrónico nombre el producto exacto. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:370
+msgid ""
+"Subject line of the email sent to subscribers when the product is restocked."
+" Include {product_name} so each email names the exact product. Leave blank "
+"to use the default."
+msgstr ""
+"Línea de asunto del correo electrónico enviado a los suscriptores cuando se "
+"repone el producto. Incluya {product_name} para que cada correo electrónico "
+"nombre el producto exacto. Déjelo en blanco para usar el valor "
+"predeterminado."
 
+#: src/Admin/Settings.php:376
 msgid "Email intro text"
 msgstr "Texto de introducción del correo electrónico"
 
+#: src/Admin/Settings.php:382 src/Service/WaitlistService.php:44
 msgid "Product {product_name} is back in stock."
 msgstr "El producto {product_name} vuelve a estar disponible."
 
-msgid "First line of the notification email body. The product link is added automatically on the next line. Use {product_name} to name the product. Leave blank to use the default."
-msgstr "Primera línea del cuerpo del correo electrónico de notificación. El enlace del producto se agrega automáticamente en la siguiente línea. Utilice {product_name} para nombrar el producto. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:384
+msgid ""
+"First line of the notification email body. The product link is added "
+"automatically on the next line. Use {product_name} to name the product. "
+"Leave blank to use the default."
+msgstr ""
+"Primera línea del cuerpo del correo electrónico de notificación. El enlace "
+"del producto se añade automáticamente en la siguiente línea. Utilice "
+"{product_name} para nombrar el producto. Déjelo en blanco para usar el valor"
+" predeterminado."
 
+#: src/Admin/Settings.php:390
 msgid "Email closing text"
 msgstr "Texto de cierre del correo electrónico"
 
-msgid "If you no longer wish to receive these messages, simply ignore this email."
-msgstr "Si ya no desea recibir estos mensajes, simplemente ignore este correo electrónico."
+#: src/Admin/Settings.php:396 src/Service/WaitlistService.php:45
+msgid ""
+"If you no longer wish to receive these messages, simply ignore this email."
+msgstr ""
+"Si ya no desea recibir estos mensajes, simplemente ignore este correo "
+"electrónico."
 
-msgid "Closing line of the notification email, shown after the product link. A good place for a brief reassurance or sign-off. Leave blank to use the default."
-msgstr "Línea de cierre del correo electrónico de notificación, que se muestra después del enlace del producto. Un buen lugar para tranquilizarse brevemente o despedirse. Déjelo en blanco para usar el valor predeterminado."
+#: src/Admin/Settings.php:397
+msgid ""
+"Closing line of the notification email, shown after the product link. A good"
+" place for a brief reassurance or sign-off. Leave blank to use the default."
+msgstr ""
+"Línea de cierre del correo electrónico de notificación, que se muestra "
+"después del enlace del producto. Un buen lugar para tranquilizarse "
+"brevemente o despedirse. Déjelo en blanco para usar el valor predeterminado."
 
-msgid "Configure the back-in-stock waitlist form that appears on out-of-stock products. Hover or focus the ? icons for guidance on each option. Empty text fields fall back to sensible built-in defaults."
-msgstr "Configure el formulario de lista de espera de existencias que aparece en productos agotados. Coloca el cursor sobre o enfoca el? iconos para obtener orientación sobre cada opción. Los campos de texto vacíos recurren a valores predeterminados integrados sensatos."
+#: src/Admin/Settings.php:411
+msgid ""
+"Configure the back-in-stock waitlist form that appears on out-of-stock "
+"products. Hover or focus the ? icons for guidance on each option. Empty text"
+" fields fall back to sensible built-in defaults."
+msgstr ""
+"Configure el formulario de lista de espera de existencias que aparece en "
+"productos agotados. Coloca el cursor sobre o enfoca el? iconos para obtener "
+"orientación sobre cada opción. Los campos de texto vacíos recurren a valores"
+" predeterminados integrados sensatos."
 
+#. translators: accessible name for the inline-help button.
+#: src/Admin/Settings.php:446
 msgid "More information"
 msgstr "Más información"
 
+#: src/Admin/Subscribers.php:37 src/Admin/Subscribers.php:138
 msgid "Waitlist Subscribers"
 msgstr "Suscriptores en lista de espera"
 
+#: src/Admin/Subscribers.php:38
 msgid "Subscribers"
 msgstr "Suscriptores"
 
+#: src/Admin/Subscribers.php:56
 msgid "Security check failed."
 msgstr "El control de seguridad falló."
 
-msgid "Everyone who asked to be notified when an out-of-stock product returns. When you restock a product, pending subscribers are emailed automatically and move to \"Notified\"."
-msgstr "Todos los que solicitaron ser notificados cuando regrese un producto agotado. Cuando reabasteces un producto, los suscriptores pendientes reciben un correo electrónico automáticamente y pasan a \"Notificados\"."
+#: src/Admin/Subscribers.php:141
+msgid ""
+"Everyone who asked to be notified when an out-of-stock product returns. When"
+" you restock a product, pending subscribers are emailed automatically and "
+"move to \"Notified\"."
+msgstr ""
+"Todos los que solicitaron ser notificados cuando regrese un producto "
+"agotado. Cuando reabasteces un producto, los suscriptores pendientes reciben"
+" un correo electrónico automáticamente y pasan a \"Notificados\"."
 
+#. translators: %s: product name.
+#: src/Admin/Subscribers.php:150
+#, php-format
 msgid "Showing waiting subscribers for: %s"
 msgstr "Mostrando suscriptores en espera para: %s"
 
+#: src/Admin/Subscribers.php:156 src/Admin/Subscribers.php:211
 msgid "Show all subscribers"
 msgstr "Mostrar todos los suscriptores"
 
+#: src/Admin/Subscribers.php:166
 msgid "Total"
 msgstr "Total"
 
+#: src/Admin/Subscribers.php:170 src/Admin/Subscribers.php:262
 msgid "Waiting"
 msgstr "Espera"
 
+#: src/Admin/Subscribers.php:174 src/Admin/Subscribers.php:235
+#: src/Admin/Subscribers.php:260
 msgid "Notified"
 msgstr "notificado"
 
+#: src/Admin/Subscribers.php:182
 msgid "Export CSV"
 msgstr "Exportar CSV"
 
+#: src/Admin/Subscribers.php:187
 msgid "Search subscribers by email"
 msgstr "Buscar suscriptores por correo electrónico"
 
+#: src/Admin/Subscribers.php:188
 msgid "Search by email"
 msgstr "Buscar por correo electrónico"
 
+#: src/Admin/Subscribers.php:189
 msgid "Search"
 msgstr "Buscar"
 
+#: src/Admin/Subscribers.php:191
 msgid "Clear"
 msgstr "Borrar"
 
+#: src/Admin/Subscribers.php:199
 msgid "No matching subscribers"
 msgstr "No hay suscriptores coincidentes"
 
+#. translators: %s: search term.
+#: src/Admin/Subscribers.php:204
+#, php-format
 msgid "No subscribers match \"%s\"."
 msgstr "Ningún suscriptor coincide con \"%s\"."
 
+#: src/Admin/Subscribers.php:218
 msgid "No subscribers yet"
 msgstr "Aún no hay suscriptores"
 
-msgid "When a product is out of stock, shoppers can join its waitlist from the product page. Their requests will appear here, and they will be emailed automatically as soon as you restock."
-msgstr "Cuando un producto está agotado, los compradores pueden unirse a su lista de espera desde la página del producto. Sus solicitudes aparecerán aquí y se enviarán por correo electrónico automáticamente tan pronto como reabastezca."
+#: src/Admin/Subscribers.php:220
+msgid ""
+"When a product is out of stock, shoppers can join its waitlist from the "
+"product page. Their requests will appear here, and they will be emailed "
+"automatically as soon as you restock."
+msgstr ""
+"Cuando un producto está agotado, los compradores pueden unirse a tu lista de"
+" espera desde la página del producto. Sus solicitudes aparecerán aquí y se "
+"enviarán por correo electrónico automáticamente tan pronto como reabastezca."
 
+#: src/Admin/Subscribers.php:224
 msgid "Review waitlist settings"
 msgstr "Revisar la configuración de la lista de espera"
 
+#: src/Admin/Subscribers.php:232
 msgid "ID"
 msgstr "ID"
 
+#: src/Admin/Subscribers.php:233 templates/myaccount/waitlists.php:39
 msgid "Product"
 msgstr "Producto"
 
+#: src/Admin/Subscribers.php:234
 msgid "Email"
 msgstr "Correo electrónico"
 
+#: src/Admin/Subscribers.php:236 templates/myaccount/waitlists.php:41
 msgid "Subscribed"
 msgstr "Suscrito"
 
+#: src/Service/WaitlistService.php:35 src/Service/WaitlistService.php:163
 msgid "Something went wrong. Please try again."
 msgstr "Algo salió mal. Por favor inténtalo de nuevo."
 
+#: src/Service/WaitlistService.php:36
 msgid "Product not found."
 msgstr "Producto no encontrado."
 
+#: src/Service/WaitlistService.php:37
 msgid "Waitlist is unavailable for this product."
 msgstr "La lista de espera no está disponible para este producto."
 
+#: src/Service/WaitlistService.php:173 src/Service/WaitlistService.php:183
 msgid "Invalid request."
 msgstr "Solicitud no válida."
 
+#: src/Service/WaitlistService.php:177
 msgid "Login required."
 msgstr "Es necesario iniciar sesión."
 
+#: src/Service/WaitlistService.php:189
 msgid "Could not remove this waitlist entry."
 msgstr "No se pudo eliminar esta entrada de la lista de espera."
 
+#: templates/myaccount/waitlists.php:15
 msgid "My waitlists"
 msgstr "Mis listas de espera"
 
+#: templates/myaccount/waitlists.php:17
 msgid "You are not on any waitlists yet."
 msgstr "Aún no estás en ninguna lista de espera."
 
+#: templates/myaccount/waitlists.php:18
 msgid "Leave waitlist"
 msgstr "Dejar lista de espera"
 
+#: templates/myaccount/waitlists.php:21
 msgid "In stock"
 msgstr "En stock"
 
+#: templates/myaccount/waitlists.php:22
 msgid "Out of stock"
 msgstr "Agotado"
 
+#: templates/myaccount/waitlists.php:23
 msgid "On backorder"
 msgstr "En espera"
 
+#: templates/myaccount/waitlists.php:40
 msgid "Stock"
 msgstr "Existencias"
 
+#: templates/myaccount/waitlists.php:42
 msgid "Actions"
-msgstr "Comportamiento"
+msgstr "Acciones"
 
+#: templates/single-product/waitlist-form.php:62
 msgid "Sending…"
 msgstr "Envío…"
-

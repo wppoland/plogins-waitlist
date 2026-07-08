@@ -1,0 +1,61 @@
+# wp.org Stable Readme translation (de_DE)
+msgid ""
+msgstr ""
+"Project-Id-Version: plogins-waitlist Stable Readme\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: plogins-i18n\n"
+
+msgid "Browse the full catalogue at https://plogins.com/ ."
+msgstr "Browse the full catalogue at https://plogins.com/de/ ."
+
+msgid "* <strong>Documentation</strong> - https://plogins.com/plogins-waitlist/docs/\n* <strong>Plugin page</strong> - https://plogins.com/plogins-waitlist/\n* <strong>Source code</strong> - https://github.com/wppoland/plogins-waitlist\n* <strong>Bug reports and feature requests</strong> - https://github.com/wppoland/plogins-waitlist/issues"
+msgstr "* <strong>Documentation</strong> - https://plogins.com/de/plogins-waitlist/docs/\n* <strong>Plugin page</strong> - https://plogins.com/de/plogins-waitlist/\n* <strong>Source code</strong> - https://github.com/wppoland/plogins-waitlist\n* <strong>Bug reports and feature requests</strong> - https://github.com/wppoland/plogins-waitlist/issues"
+
+msgid "No. The form is submitted with a vanilla-JavaScript `fetch` call and the result is announced in an `aria-live` region, so the page stays put. Plogins Waitlist loads no jQuery for this; on variable products it does rely on WooCommerce's own variation script to know which variation is selected."
+msgstr "Nein. Das Formular wird mit einem Vanilla-JavaScript-„fetch“-Aufruf gesendet und das Ergebnis wird in einer „Aria-Live“-Region angekündigt, sodass die Seite an Ort und Stelle bleibt. Plogins Waitlist lädt dafür kein jQuery; Bei variablen Produkten verlässt es sich auf WooCommerces eigenes Variationsskript, um zu wissen, welche Variation ausgewählt ist."
+
+msgid "Yes. This plugin is compatible with WordPress Multisite. Network activate it or activate it on individual sites; each site keeps its own settings and data."
+msgstr "Ja. Dieses Plugin ist mit WordPress Multisite kompatibel. Aktiviere es im Netzwerk oder auf einzelnen Websites. Jede Site behält ihre eigenen Einstellungen und Daten."
+
+msgid "1. The waitlist form on an out-of-stock product, where a shopper leaves their email and ticks the required consent box to be notified when it returns.\n2. The Plogins Waitlist settings screen with sectioned cards and inline help for guest access, the heading and intro, form labels, on-screen messages, and notification email text.\n3. A customer's My Account Waitlists tab, showing products they are waiting for, the current stock status, and a button to leave each list."
+msgstr "1. Das Wartelistenformular für ein nicht vorrätiges Produkt, bei dem ein Käufer seine E-Mail-Adresse hinterlässt und das erforderliche Einverständnisfeld ankreuzt, um benachrichtigt zu werden, wenn das Produkt zurückkommt.\n2. Der Plogins-Wartelisten-Einstellungsbildschirm mit unterteilten Karten und Inline-Hilfe für den Gastzugang, der Überschrift und Einleitung, Formularbeschriftungen, Bildschirmnachrichten und Benachrichtigungs-E-Mail-Text.\n3. Die Registerkarte „Wartelisten für mein Konto“ eines Kunden mit den Produkten, auf die er wartet, dem aktuellen Lagerbestand und einer Schaltfläche zum Verlassen jeder Liste."
+
+msgid "Plogins Waitlist does not connect to any external services. Back-in-stock notification emails are sent through your own site's WordPress mailer (`wp_mail`); subscriber data stays in your WordPress database."
+msgstr "Plogins Waitlist stellt keine Verbindung zu externen Diensten her. E-Mails mit Benachrichtigungen über wieder verfügbare Lagerbestände werden über den WordPress-Mailer deiner eigenen Website („wp_mail“) gesendet. Abonnentendaten bleiben in deiner WordPress-Datenbank."
+
+msgid "* Internal cleanup: unified the internal code identity to Waitlist (was Restock). No change to your settings or data; legacy aliases keep older PRO builds working during the update."
+msgstr "* Interne Bereinigung: Die interne Codeidentität wurde zur Warteliste vereinheitlicht (war „Aufstocken“). Keine Änderung deiner Einstellungen oder Daten; Legacy-Aliase sorgen dafür, dass ältere PRO-Builds während des Updates funktionieren."
+
+msgid "* Added a settings-screen overview of upcoming PRO features."
+msgstr "* Auf dem Einstellungsbildschirm wurde eine Übersicht über kommende PRO-Funktionen hinzugefügt."
+
+msgid "* First stable release."
+msgstr "* Erste stabile Version."
+
+msgid "* Docs: added a \"You may also like\" section linking the other free WPPoland WooCommerce plugins. No functional changes."
+msgstr "* Dokumente: Es wurde ein Abschnitt „Das könnte dir auch gefallen“ hinzugefügt, der die anderen kostenlosen WPPoland WooCommerce-Plugins verlinkt. Keine funktionalen Änderungen."
+
+msgid "* New: optional social-proof line above the form showing how many shoppers are already waiting for a product (\"12 shoppers are already waiting for this item.\"). Singular/plural aware, fully customisable text with a {count} placeholder, and hidden when nobody is waiting.\n* New: remove a subscriber directly from the admin Subscribers list (nonce-protected, with confirmation)."
+msgstr "* Neu: optionale Social-Proof-Zeile über dem Formular, die anzeigt, wie viele Käufer bereits auf ein Produkt warten („12 Käufer warten bereits auf diesen Artikel.“). Singular/Plural-fähiger, vollständig anpassbarer Text mit einem {count}-Platzhalter und ausgeblendet, wenn niemand wartet.\n* Neu: Entferne einen Abonnenten direkt aus der Admin-Abonnentenliste (nicht geschützt, mit Bestätigung)."
+
+msgid "* New: Elementor widget for the back-in-stock waitlist form, so it can be placed with the Elementor editor. Self-guarded: loads only when Elementor is active."
+msgstr "* Neu: Elementor-Widget für das Formular „Back-in-Stock-Warteliste“, sodass es mit dem Elementor-Editor platziert werden kann. Selbstgeschützt: Wird nur geladen, wenn Elementor aktiv ist."
+
+msgid "* Fix the text domain on three admin help strings so it matches the plugin slug."
+msgstr "* Korrigiere die Textdomäne in drei Admin-Hilfezeichenfolgen, damit sie mit dem Plugin-Slug übereinstimmt."
+
+msgid "* Renamed to Plogins Waitlist for WooCommerce for a distinct, non-generic directory name. No functional changes."
+msgstr "* Für einen eindeutigen, nicht generischen Verzeichnisnamen in „Plogins Waitlist for WooCommerce“ umbenannt. Keine funktionalen Änderungen."
+
+msgid "* New: WooCommerce My Account <strong>Waitlists</strong> tab with stock status and leave-waitlist action.\n* New: variation-aware waitlist signups on variable products (form shows after an out-of-stock variation is selected).\n* New: settings for My Account menu label, variation prompt, and unsubscribe confirmation message."
+msgstr "* Neu: WooCommerce-Registerkarte „Mein Konto“ <strong>Wartelisten</strong> mit Lagerbestandsstatus und Aktion zum Verlassen der Warteliste.\n* Neu: Variantenbezogene Wartelistenanmeldungen für variable Produkte (Formular wird angezeigt, nachdem eine nicht vorrätige Variante ausgewählt wurde).\n* Neu: Einstellungen für die Menübezeichnung „Mein Konto“, die Änderungsaufforderung und die Bestätigungsnachricht zum Abbestellen."
+
+msgid "* New: `[restock_waitlist]` shortcode to place the waitlist form manually (optional `id` attribute to target a specific product).\n* New: optional form heading and intro text, configurable from the settings page.\n* New: editable on-screen form messages (success, invalid email, missing consent, login required).\n* Improved: the settings page now exposes every form label, message, and email text the engine supports, instead of relying on hardcoded defaults.\n* Improved: empty optional settings now correctly fall back to the built-in defaults."
+msgstr "* Neu: Shortcode „[restock_waitlist]“, um das Wartelistenformular manuell zu platzieren (optionales „id“-Attribut, um auf ein bestimmtes Produkt abzuzielen).\n* Neu: optionale Formularüberschrift und Einleitungstext, konfigurierbar über die Einstellungsseite.\n* Neu: Bearbeitbare Formularmeldungen auf dem Bildschirm (Erfolg, ungültige E-Mail, fehlende Einwilligung, Anmeldung erforderlich).\n* Verbessert: Auf der Einstellungsseite werden jetzt alle von der Engine unterstützten Formularbezeichnungen, Nachrichten und E-Mail-Texte angezeigt, anstatt sich auf fest codierte Standardeinstellungen zu verlassen.\n* Verbessert: Leere optionale Einstellungen greifen jetzt korrekt auf die integrierten Standardeinstellungen zurück."
+
+msgid "* Initial release."
+msgstr "* Erstveröffentlichung."
+
