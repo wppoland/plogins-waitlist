@@ -33,7 +33,7 @@ Source and issues: https://github.com/wppoland/plogins-waitlist . Patches and bu
 * Automatic plain-text email notification on restock, sent via `wp_mail`
 * Optional heading and intro text shown above the form
 * Customisable form labels, button text, on-screen submit messages, and notification email subject/intro/closing text
-* `[restock_waitlist]` shortcode for placing the form manually in a product template
+* Place the form with the `[restock_waitlist]` shortcode or the Elementor "Waitlist Form" widget
 * Toggle guest (not-logged-in) subscriptions on or off
 * Social-proof "N shoppers are already waiting" line above the form (optional, customisable, singular/plural aware)
 * Admin subscriber list with per-product filter, CSV export, and one-click remove
