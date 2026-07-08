@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.4
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,11 +22,11 @@ Subscriber data lives in a single `{prefix}_restock_waitlist` table that the plu
 
 Source and issues: https://github.com/wppoland/plogins-waitlist . Patches and bug reports are welcome there.
 
-**Features**
+<strong>Features</strong>
 
 * Waitlist form shown automatically on out-of-stock and backorder ("on backorder") product pages
 * Variable products: form appears after the shopper selects an unavailable variation
-* WooCommerce **My Account → Waitlists** tab for logged-in customers (review lists, leave waitlist)
+* WooCommerce <strong>My Account → Waitlists</strong> tab for logged-in customers (review lists, leave waitlist)
 * Asynchronous submit with a vanilla-JavaScript fetch call, so the page does not reload
 * Email field pre-filled for logged-in customers
 * Required consent checkbox for every signup
@@ -48,24 +48,23 @@ More free WooCommerce plugins from WPPoland:
 * [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
 * [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - Polish-market compliance: GPSR, Omnibus, GDPR, invoices and storefront modules.
 
-Browse the full catalogue at https://plogins.com/ .
+Browse the full catalogue at https://plogins.com/de/ .
 
 == Installation ==
 
 1. Install and activate WooCommerce (8.0 or later).
 2. Install Plogins Waitlist from the WordPress plugin directory, or upload the `plogins-waitlist` folder to `/wp-content/plugins/`.
-3. Activate the plugin through the **Plugins** screen.
-4. Optionally visit **WooCommerce → Plogins Waitlist** to customise labels and notification text; sensible defaults work out of the box.
+3. Activate the plugin through the <strong>Plugins<strong> screen. 4. Optionally visit </strong>WooCommerce → Plogins Waitlist</strong> to customise labels and notification text; sensible defaults work out of the box.
 5. The waitlist form appears automatically on any out-of-stock or backorder product page.
 
 == Frequently Asked Questions ==
 
 = Documentation and links =
 
-* **Documentation** - https://plogins.com/plogins-waitlist/docs/
-* **Plugin page** - https://plogins.com/plogins-waitlist/
-* **Source code** - https://github.com/wppoland/plogins-waitlist
-* **Bug reports and feature requests** - https://github.com/wppoland/plogins-waitlist/issues
+* <strong>Documentation</strong> - https://plogins.com/de/plogins-waitlist/docs/
+* <strong>Plugin page</strong> - https://plogins.com/de/plogins-waitlist/
+* <strong>Source code</strong> - https://github.com/wppoland/plogins-waitlist
+* <strong>Bug reports and feature requests</strong> - https://github.com/wppoland/plogins-waitlist/issues
 
 
 = Does Plogins Waitlist require WooCommerce? =
@@ -78,80 +77,73 @@ When WooCommerce sets a product's stock status to `instock`, Plogins Waitlist se
 Yes. Choose options in the standard WooCommerce variation form first. When the selected variation is out of stock or on backorder, the waitlist form appears and the subscription is stored for that specific variation.
 
 = Can guests join the waitlist? =
-Yes by default. You can restrict signups to logged-in customers by unchecking **Allow guest subscriptions** in **WooCommerce → Plogins Waitlist**.
+Yes by default. You can restrict signups to logged-in customers by unchecking <strong>Allow guest subscriptions</strong> in <strong>WooCommerce → Plogins Waitlist</strong>.
 
 = Can customers manage waitlists in My Account? =
-Yes. Logged-in customers see a **Waitlists** tab under My Account with active subscriptions, current stock status, and a button to leave each list.
+Yes. Logged-in customers see a <strong>Waitlists</strong> tab under My Account with active subscriptions, current stock status, and a button to leave each list.
 
 = Does this comply with GDPR / consent requirements? =
 Every signup requires the shopper to tick an explicit consent checkbox before they can join the waitlist; the form will not submit without it. Subscriber emails are stored only in a custom table in your own WordPress database and are never sent to any external service. You are responsible for the wording of your consent label and your site's privacy policy.
 
 = Can I export the subscriber list? =
-Yes. From **WooCommerce → Plogins Waitlist → Subscribers** you can view subscribers, filter by product, and export the list as CSV.
+Yes. From <strong>WooCommerce → Plogins Waitlist → Subscribers</strong> you can view subscribers, filter by product, and export the list as CSV.
 
 = Does the form reload the page on submit? =
-No. The form is submitted with a vanilla-JavaScript `fetch` call and the result is announced in an `aria-live` region, so the page stays put. Plogins Waitlist loads no jQuery for this; on variable products it does rely on WooCommerce's own variation script to know which variation is selected.
+Nein. Das Formular wird mit einem Vanilla-JavaScript-„fetch“-Aufruf gesendet und das Ergebnis wird in einer „Aria-Live“-Region angekündigt, sodass die Seite an Ort und Stelle bleibt. Plogins Waitlist lädt dafür kein jQuery; Bei variablen Produkten verlässt es sich auf WooCommerces eigenes Variationsskript, um zu wissen, welche Variation ausgewählt ist.
 
 
 = Does this plugin work on WordPress Multisite? =
 
-Yes. This plugin is compatible with WordPress Multisite. Network activate it or activate it on individual sites; each site keeps its own settings and data.
+Ja. Dieses Plugin ist mit WordPress Multisite kompatibel. Aktiviere es im Netzwerk oder auf einzelnen Websites. Jede Site behält ihre eigenen Einstellungen und Daten.
 
 == Screenshots ==
 
-1. The waitlist form on an out-of-stock product, where a shopper leaves their email and ticks the required consent box to be notified when it returns.
-2. The Plogins Waitlist settings screen with sectioned cards and inline help for guest access, the heading and intro, form labels, on-screen messages, and notification email text.
-3. A customer's My Account Waitlists tab, showing products they are waiting for, the current stock status, and a button to leave each list.
+1. Das Wartelistenformular für ein nicht vorrätiges Produkt, bei dem ein Käufer seine E-Mail-Adresse hinterlässt und das erforderliche Einverständnisfeld ankreuzt, um benachrichtigt zu werden, wenn das Produkt zurückkommt.
+2. Der Plogins-Wartelisten-Einstellungsbildschirm mit unterteilten Karten und Inline-Hilfe für den Gastzugang, der Überschrift und Einleitung, Formularbeschriftungen, Bildschirmnachrichten und Benachrichtigungs-E-Mail-Text.
+3. Die Registerkarte „Wartelisten für mein Konto“ eines Kunden mit den Produkten, auf die er wartet, dem aktuellen Lagerbestand und einer Schaltfläche zum Verlassen jeder Liste.
 
 == External Services ==
 
-Plogins Waitlist does not connect to any external services. Back-in-stock notification emails are sent through your own site's WordPress mailer (`wp_mail`); subscriber data stays in your WordPress database.
-
-== Translations ==
-
-Plogins Waitlist includes Polish, German and Spanish translations for the plugin interface. The text domain is `plogins-waitlist`, so WordPress.org language packs can also override or extend these bundled translations.
+Plogins Waitlist stellt keine Verbindung zu externen Diensten her. E-Mails mit Benachrichtigungen über wieder verfügbare Lagerbestände werden über den WordPress-Mailer deiner eigenen Website („wp_mail“) gesendet. Abonnentendaten bleiben in deiner WordPress-Datenbank.
 
 == Changelog ==
 
-= 1.0.4 =
-* Added bundled Polish, German and Spanish translations for the plugin interface.
-
 = 1.0.3 =
-* Internal cleanup: unified the internal code identity to Waitlist (was Restock). No change to your settings or data; legacy aliases keep older PRO builds working during the update.
+* Interne Bereinigung: Die interne Codeidentität wurde zur Warteliste vereinheitlicht (war „Aufstocken“). Keine Änderung deiner Einstellungen oder Daten; Legacy-Aliase sorgen dafür, dass ältere PRO-Builds während des Updates funktionieren.
 
 = 1.0.2 =
-* Added a settings-screen overview of upcoming PRO features.
+* Auf dem Einstellungsbildschirm wurde eine Übersicht über kommende PRO-Funktionen hinzugefügt.
 
 = 1.0.1 =
-* First stable release.
+* Erste stabile Version.
 
 = 0.4.1 =
-* Docs: added a "You may also like" section linking the other free WPPoland WooCommerce plugins. No functional changes.
+* Dokumente: Es wurde ein Abschnitt „Das könnte dir auch gefallen“ hinzugefügt, der die anderen kostenlosen WPPoland WooCommerce-Plugins verlinkt. Keine funktionalen Änderungen.
 
 = 0.4.0 =
-* New: optional social-proof line above the form showing how many shoppers are already waiting for a product ("12 shoppers are already waiting for this item."). Singular/plural aware, fully customisable text with a {count} placeholder, and hidden when nobody is waiting.
-* New: remove a subscriber directly from the admin Subscribers list (nonce-protected, with confirmation).
+* Neu: optionale Social-Proof-Zeile über dem Formular, die anzeigt, wie viele Käufer bereits auf ein Produkt warten („12 Käufer warten bereits auf diesen Artikel.“). Singular/Plural-fähiger, vollständig anpassbarer Text mit einem {count}-Platzhalter und ausgeblendet, wenn niemand wartet.
+* Neu: Entferne einen Abonnenten direkt aus der Admin-Abonnentenliste (nicht geschützt, mit Bestätigung).
 
 = 0.3.3 =
-* New: Elementor widget for the back-in-stock waitlist form, so it can be placed with the Elementor editor. Self-guarded: loads only when Elementor is active.
+* Neu: Elementor-Widget für das Formular „Back-in-Stock-Warteliste“, sodass es mit dem Elementor-Editor platziert werden kann. Selbstgeschützt: Wird nur geladen, wenn Elementor aktiv ist.
 
 = 0.3.2 =
-* Fix the text domain on three admin help strings so it matches the plugin slug.
+* Korrigiere die Textdomäne in drei Admin-Hilfezeichenfolgen, damit sie mit dem Plugin-Slug übereinstimmt.
 
 = 0.3.1 =
-* Renamed to Plogins Waitlist for WooCommerce for a distinct, non-generic directory name. No functional changes.
+* Für einen eindeutigen, nicht generischen Verzeichnisnamen in „Plogins Waitlist for WooCommerce“ umbenannt. Keine funktionalen Änderungen.
 
 = 0.3.0 =
-* New: WooCommerce My Account **Waitlists** tab with stock status and leave-waitlist action.
-* New: variation-aware waitlist signups on variable products (form shows after an out-of-stock variation is selected).
-* New: settings for My Account menu label, variation prompt, and unsubscribe confirmation message.
+* Neu: WooCommerce-Registerkarte „Mein Konto“ <strong>Wartelisten</strong> mit Lagerbestandsstatus und Aktion zum Verlassen der Warteliste.
+* Neu: Variantenbezogene Wartelistenanmeldungen für variable Produkte (Formular wird angezeigt, nachdem eine nicht vorrätige Variante ausgewählt wurde).
+* Neu: Einstellungen für die Menübezeichnung „Mein Konto“, die Änderungsaufforderung und die Bestätigungsnachricht zum Abbestellen.
 
 = 0.2.0 =
-* New: `[restock_waitlist]` shortcode to place the waitlist form manually (optional `id` attribute to target a specific product).
-* New: optional form heading and intro text, configurable from the settings page.
-* New: editable on-screen form messages (success, invalid email, missing consent, login required).
-* Improved: the settings page now exposes every form label, message, and email text the engine supports, instead of relying on hardcoded defaults.
-* Improved: empty optional settings now correctly fall back to the built-in defaults.
+* Neu: Shortcode „[restock_waitlist]“, um das Wartelistenformular manuell zu platzieren (optionales „id“-Attribut, um auf ein bestimmtes Produkt abzuzielen).
+* Neu: optionale Formularüberschrift und Einleitungstext, konfigurierbar über die Einstellungsseite.
+* Neu: Bearbeitbare Formularmeldungen auf dem Bildschirm (Erfolg, ungültige E-Mail, fehlende Einwilligung, Anmeldung erforderlich).
+* Verbessert: Auf der Einstellungsseite werden jetzt alle von der Engine unterstützten Formularbezeichnungen, Nachrichten und E-Mail-Texte angezeigt, anstatt sich auf fest codierte Standardeinstellungen zu verlassen.
+* Verbessert: Leere optionale Einstellungen greifen jetzt korrekt auf die integrierten Standardeinstellungen zurück.
 
 = 0.1.0 =
-* Initial release.
+* Erstveröffentlichung.

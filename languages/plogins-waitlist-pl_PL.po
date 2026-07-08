@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: restock 0.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-waitlist\n"
-"POT-Creation-Date: 2026-06-16T20:24:55+00:00\n"
+"POT-Creation-Date: 2026-06-30T05:20:58+00:00\n"
 "PO-Revision-Date: 2026-06-15 00:00+0000\n"
 "Last-Translator: WPPoland <hello@wppoland.com>\n"
 "Language-Team: Polish <hello@wppoland.com>\n"
@@ -12,66 +12,69 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Domain: plogins-waitlist\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
-"|| n%100>14) ? 1 : 2);\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
-#: restock.php
-msgid "Restock - Back in Stock Notifications for WooCommerce"
-msgstr "Restock - Powiadomienia o dostępności dla WooCommerce"
+#: plogins-waitlist.php
+msgid "Plogins Waitlist for WooCommerce"
+msgstr "Plogins Lista oczekujących dla WooCommerce"
 
 #. Plugin URI of the plugin
-#: restock.php
-msgid "https://plogins.com/restock/"
-msgstr "https://plogins.com/restock/"
+#: plogins-waitlist.php
+msgid "https://plogins.com/plogins-waitlist/"
+msgstr "https://plogins.com/pl/plogins-waitlist/"
 
 #. Description of the plugin
-#: restock.php
+#: plogins-waitlist.php
 msgid ""
 "Lightweight, accessible back-in-stock / waitlist notifications for "
 "WooCommerce. Built with Core Web Vitals and WCAG 2.2 AA in mind."
 msgstr ""
-"Lekkie, dostępne powiadomienia o ponownej dostępności / listach oczekujących "
-"dla WooCommerce. Stworzone z myślą o Core Web Vitals i WCAG 2.2 AA."
+"Lekkie, dostępne powiadomienia o ponownej dostępności / listach oczekujących"
+" dla WooCommerce. Stworzone z myślą o Core Web Vitals i WCAG 2.2 AA."
 
 #. Author of the plugin
-#: restock.php
-msgid "WPPoland"
-msgstr "WPPoland"
+#: plogins-waitlist.php
+msgid "WPPoland.com"
+msgstr "WPPoland.com"
 
 #. Author URI of the plugin
-#: restock.php
+#: plogins-waitlist.php
 msgid "https://wppoland.com"
 msgstr "https://wppoland.com"
 
 #. translators: 1: Required PHP version, 2: Current PHP version
-#: restock.php:54
-#, php-format
-msgid "Restock requires PHP %1$s or higher. You are running PHP %2$s."
-msgstr "Restock wymaga PHP %1$s lub nowszego. Używasz PHP %2$s."
-
-#: restock.php:73
-msgid "Restock requires WooCommerce to be installed and activated."
-msgstr "Restock wymaga zainstalowanego i aktywowanego WooCommerce."
-
-#. translators: 1: Required WC version, 2: Current WC version
-#: restock.php:85
+#: plogins-waitlist.php:54
 #, php-format
 msgid ""
-"Restock requires WooCommerce %1$s or higher. You are running WooCommerce "
-"%2$s."
+"Plogins Waitlist requires PHP %1$s or higher. You are running PHP %2$s."
 msgstr ""
-"Restock wymaga WooCommerce %1$s lub nowszego. Używasz WooCommerce %2$s."
+"Lista oczekujących Plogins wymaga PHP %1$s lub nowszego. Używasz PHP %2$s."
+
+#: plogins-waitlist.php:73
+msgid "Plogins Waitlist requires WooCommerce to be installed and activated."
+msgstr ""
+"Lista oczekujących Plogins wymaga zainstalowania i aktywacji WooCommerce."
+
+#. translators: 1: Required WC version, 2: Current WC version
+#: plogins-waitlist.php:85
+#, php-format
+msgid ""
+"Plogins Waitlist requires WooCommerce %1$s or higher. You are running "
+"WooCommerce %2$s."
+msgstr ""
+"Lista oczekujących Plogins wymaga WooCommerce %1$s lub nowszego. Używasz "
+"WooCommerce %2$s."
 
 #: src/Admin/Settings.php:36
-msgid "Restock Settings"
-msgstr "Ustawienia Restock"
+msgid "Plogins Waitlist"
+msgstr "Plogins Lista oczekujących"
 
 #: src/Admin/Settings.php:37
-msgid "Restock"
-msgstr "Restock"
+msgid "Waitlist"
+msgstr "Lista oczekujących"
 
 #: src/Admin/Settings.php:58
 msgid "General"
@@ -89,10 +92,11 @@ msgstr "Pozwól zapisywać się odwiedzającym, którzy nie są zalogowani."
 msgid ""
 "When on, anyone can join the waitlist by entering their email. When off, "
 "only logged-in customers can subscribe and guests see your \"login "
-"required\" message instead. Turn off to keep your list tied to real accounts."
+"required\" message instead. Turn off to keep your list tied to real "
+"accounts."
 msgstr ""
-"Gdy włączone, każdy może dołączyć do listy oczekujących, podając swój e-"
-"mail. Gdy wyłączone, zapisać się mogą tylko zalogowani klienci, a goście "
+"Gdy włączone, każdy może dołączyć do listy oczekujących, podając swój "
+"e-mail. Gdy wyłączone, zapisać się mogą tylko zalogowani klienci, a goście "
 "zobaczą komunikat „wymagane logowanie”. Wyłącz, aby powiązać listę z "
 "prawdziwymi kontami."
 
@@ -132,8 +136,8 @@ msgid ""
 "Account. After enabling, visit Settings → Permalinks and click Save once if "
 "the tab returns a 404."
 msgstr ""
-"Zalogowani klienci mogą przeglądać aktywne listy oczekujących i opuszczać je "
-"z poziomu Mojego konta. Po włączeniu przejdź do Ustawienia → Bezpośrednie "
+"Zalogowani klienci mogą przeglądać aktywne listy oczekujących i opuszczać je"
+" z poziomu Mojego konta. Po włączeniu przejdź do Ustawienia → Bezpośrednie "
 "odnośniki i kliknij Zapisz raz, jeśli zakładka zwraca błąd 404."
 
 #: src/Admin/Settings.php:104
@@ -154,6 +158,9 @@ msgid ""
 "they are waiting for. Only shown when \"My Account waitlists\" is on. Leave "
 "blank to use the default."
 msgstr ""
+"Treść pozycji menu Klienci klikają w Moje Konto, aby zobaczyć produkty, na "
+"które czekają. Wyświetlane tylko wtedy, gdy włączona jest opcja „Listy "
+"oczekujących na moje konto”. Pozostaw puste, aby użyć wartości domyślnej."
 
 #: src/Admin/Settings.php:119
 msgid "Heading & intro"
@@ -192,8 +199,8 @@ msgstr "Powiadom mnie, gdy będzie dostępny"
 
 #: src/Admin/Settings.php:151
 msgid ""
-"The heading shown above the form (only when \"Show heading\" is on). Keep it "
-"short and reassuring. Leave blank to use the placeholder shown here."
+"The heading shown above the form (only when \"Show heading\" is on). Keep it"
+" short and reassuring. Leave blank to use the placeholder shown here."
 msgstr ""
 "Nagłówek wyświetlany nad formularzem (tylko gdy „Pokaż nagłówek” jest "
 "włączone). Niech będzie krótki i uspokajający. Pozostaw puste, aby użyć "
@@ -228,13 +235,14 @@ msgstr ""
 
 #: src/Admin/Settings.php:177
 msgid ""
-"Introductory sentence shown above the form (only when \"Show intro text\" is "
-"on). Use it to set expectations, e.g. one email, no spam. Leave blank to use "
-"the placeholder shown here."
+"Introductory sentence shown above the form (only when \"Show intro text\" is"
+" on). Use it to set expectations, e.g. one email, no spam. Leave blank to "
+"use the placeholder shown here."
 msgstr ""
 "Zdanie wprowadzające wyświetlane nad formularzem (tylko gdy „Pokaż tekst "
 "wprowadzający” jest włączone). Użyj go, aby określić oczekiwania, np. jeden "
-"e-mail, bez spamu. Pozostaw puste, aby użyć pokazanego tu tekstu zastępczego."
+"e-mail, bez spamu. Pozostaw puste, aby użyć pokazanego tu tekstu "
+"zastępczego."
 
 #: src/Admin/Settings.php:184
 msgid "Form labels"
@@ -268,8 +276,8 @@ msgstr "Twój adres e-mail"
 
 #: src/Admin/Settings.php:211
 msgid ""
-"Greyed-out hint shown inside the empty email field. It disappears as soon as "
-"the shopper types. Leave blank to use the default."
+"Greyed-out hint shown inside the empty email field. It disappears as soon as"
+" the shopper types. Leave blank to use the default."
 msgstr ""
 "Wyszarzona podpowiedź wyświetlana wewnątrz pustego pola e-mail. Znika, gdy "
 "tylko klient zacznie pisać. Pozostaw puste, aby użyć domyślnej."
@@ -327,10 +335,14 @@ msgstr "Wyświetlane nad formularzem w produktach z wariantami."
 
 #: src/Admin/Settings.php:251
 msgid ""
-"Guidance shown above the form on variable products, telling shoppers to pick "
-"a variation first. The form then appears once they choose an unavailable "
+"Guidance shown above the form on variable products, telling shoppers to pick"
+" a variation first. The form then appears once they choose an unavailable "
 "one. Leave blank to use the default."
 msgstr ""
+"Wskazówki dotyczące produktów zmiennych wyświetlane nad formularzem, "
+"informujące kupujących, aby najpierw wybrali odmianę. Formularz pojawia się "
+"wówczas, gdy wybiorą niedostępny. Pozostaw puste, aby użyć wartości "
+"domyślnej."
 
 #: src/Admin/Settings.php:258
 msgid "Form messages"
@@ -354,8 +366,8 @@ msgstr "Dziękujemy. Zostałeś dodany do listy oczekujących."
 
 #: src/Admin/Settings.php:277
 msgid ""
-"Confirmation shown after a shopper successfully joins the waitlist. Reassure "
-"them you will email when the item returns. Leave blank to use the default."
+"Confirmation shown after a shopper successfully joins the waitlist. Reassure"
+" them you will email when the item returns. Leave blank to use the default."
 msgstr ""
 "Potwierdzenie wyświetlane po pomyślnym dołączeniu klienta do listy "
 "oczekujących. Zapewnij go, że wyślesz e-mail, gdy produkt wróci do "
@@ -403,7 +415,8 @@ msgstr "Zaloguj się, aby dołączyć do listy oczekujących."
 
 #: src/Admin/Settings.php:316
 msgid ""
-"Shown when guest subscriptions are disabled and the visitor is not logged in."
+"Shown when guest subscriptions are disabled and the visitor is not logged "
+"in."
 msgstr ""
 "Wyświetlane, gdy zapisy gości są wyłączone, a odwiedzający nie jest "
 "zalogowany."
@@ -431,6 +444,8 @@ msgid ""
 "Error shown when a shopper tries to subscribe without choosing a variation "
 "on variable products. Leave blank to use the default."
 msgstr ""
+"Błąd wyświetlany, gdy kupujący próbuje dokonać subskrypcji bez wybrania "
+"odmiany produktów zmiennych. Pozostaw puste, aby użyć wartości domyślnej."
 
 #: src/Admin/Settings.php:336
 msgid "Unsubscribe success message"
@@ -443,9 +458,11 @@ msgstr "Zostałeś usunięty z tej listy oczekujących."
 
 #: src/Admin/Settings.php:343
 msgid ""
-"Confirmation shown after a customer leaves a waitlist from My Account. Leave "
-"blank to use the default."
+"Confirmation shown after a customer leaves a waitlist from My Account. Leave"
+" blank to use the default."
 msgstr ""
+"Potwierdzenie wyświetlane po opuszczeniu przez klienta listy oczekujących na"
+" stronie Moje konto. Pozostaw puste, aby użyć wartości domyślnej."
 
 #: src/Admin/Settings.php:350
 msgid "Notification email"
@@ -473,9 +490,9 @@ msgstr "Użyj {product_name} jako symbolu zastępczego nazwy produktu."
 
 #: src/Admin/Settings.php:370
 msgid ""
-"Subject line of the email sent to subscribers when the product is restocked. "
-"Include {product_name} so each email names the exact product. Leave blank to "
-"use the default."
+"Subject line of the email sent to subscribers when the product is restocked."
+" Include {product_name} so each email names the exact product. Leave blank "
+"to use the default."
 msgstr ""
 "Temat e-maila wysyłanego do zapisanych, gdy produkt wraca do sprzedaży. "
 "Uwzględnij {product_name}, aby każdy e-mail wskazywał konkretny produkt. "
@@ -507,13 +524,13 @@ msgstr "Tekst zamykający e-maila"
 msgid ""
 "If you no longer wish to receive these messages, simply ignore this email."
 msgstr ""
-"Jeśli nie chcesz już otrzymywać tych wiadomości, po prostu zignoruj ten e-"
-"mail."
+"Jeśli nie chcesz już otrzymywać tych wiadomości, po prostu zignoruj ten "
+"e-mail."
 
 #: src/Admin/Settings.php:397
 msgid ""
-"Closing line of the notification email, shown after the product link. A good "
-"place for a brief reassurance or sign-off. Leave blank to use the default."
+"Closing line of the notification email, shown after the product link. A good"
+" place for a brief reassurance or sign-off. Leave blank to use the default."
 msgstr ""
 "Linia zamykająca e-mail powiadomienia, wyświetlana po linku do produktu. "
 "Dobre miejsce na krótkie zapewnienie lub podpis. Pozostaw puste, aby użyć "
@@ -522,21 +539,21 @@ msgstr ""
 #: src/Admin/Settings.php:411
 msgid ""
 "Configure the back-in-stock waitlist form that appears on out-of-stock "
-"products. Hover or focus the ? icons for guidance on each option. Empty text "
-"fields fall back to sensible built-in defaults."
+"products. Hover or focus the ? icons for guidance on each option. Empty text"
+" fields fall back to sensible built-in defaults."
 msgstr ""
 "Skonfiguruj formularz listy oczekujących pojawiający się przy niedostępnych "
-"produktach. Najedź na ikony ? lub ustaw na nich fokus, aby uzyskać wskazówki "
-"do każdej opcji. Puste pola tekstowe przyjmują rozsądne wartości domyślne."
+"produktach. Najedź na ikony ? lub ustaw na nich fokus, aby uzyskać wskazówki"
+" do każdej opcji. Puste pola tekstowe przyjmują rozsądne wartości domyślne."
 
 #. translators: accessible name for the inline-help button.
 #: src/Admin/Settings.php:446
 msgid "More information"
 msgstr "Więcej informacji"
 
-#: src/Admin/Subscribers.php:37 src/Admin/Subscribers.php:130
-msgid "Restock Subscribers"
-msgstr "Zapisani Restock"
+#: src/Admin/Subscribers.php:37 src/Admin/Subscribers.php:138
+msgid "Waitlist Subscribers"
+msgstr "Subskrybenci listy oczekujących"
 
 #: src/Admin/Subscribers.php:38
 msgid "Subscribers"
@@ -546,48 +563,74 @@ msgstr "Zapisani"
 msgid "Security check failed."
 msgstr "Weryfikacja bezpieczeństwa nie powiodła się."
 
-#: src/Admin/Subscribers.php:133
+#: src/Admin/Subscribers.php:141
 msgid ""
-"Everyone who asked to be notified when an out-of-stock product returns. When "
-"you restock a product, pending subscribers are emailed automatically and "
+"Everyone who asked to be notified when an out-of-stock product returns. When"
+" you restock a product, pending subscribers are emailed automatically and "
 "move to \"Notified\"."
 msgstr ""
 "Wszyscy, którzy poprosili o powiadomienie, gdy niedostępny produkt wróci do "
-"sprzedaży. Po uzupełnieniu zapasów produktu oczekujący zapisani otrzymują e-"
-"mail automatycznie i przechodzą do statusu „Powiadomieni”."
+"sprzedaży. Po uzupełnieniu zapasów produktu oczekujący zapisani otrzymują "
+"e-mail automatycznie i przechodzą do statusu „Powiadomieni”."
 
 #. translators: %s: product name.
-#: src/Admin/Subscribers.php:142
+#: src/Admin/Subscribers.php:150
 #, php-format
 msgid "Showing waiting subscribers for: %s"
 msgstr "Wyświetlanie oczekujących zapisanych dla: %s"
 
-#: src/Admin/Subscribers.php:148
+#: src/Admin/Subscribers.php:156 src/Admin/Subscribers.php:211
 msgid "Show all subscribers"
 msgstr "Pokaż wszystkich zapisanych"
 
-#: src/Admin/Subscribers.php:158
+#: src/Admin/Subscribers.php:166
 msgid "Total"
 msgstr "Łącznie"
 
-#: src/Admin/Subscribers.php:162 src/Admin/Subscribers.php:225
+#: src/Admin/Subscribers.php:170 src/Admin/Subscribers.php:262
 msgid "Waiting"
 msgstr "Oczekujący"
 
-#: src/Admin/Subscribers.php:166 src/Admin/Subscribers.php:198
-#: src/Admin/Subscribers.php:223
+#: src/Admin/Subscribers.php:174 src/Admin/Subscribers.php:235
+#: src/Admin/Subscribers.php:260
 msgid "Notified"
 msgstr "Powiadomieni"
 
-#: src/Admin/Subscribers.php:174
+#: src/Admin/Subscribers.php:182
 msgid "Export CSV"
 msgstr "Eksportuj CSV"
 
-#: src/Admin/Subscribers.php:181
+#: src/Admin/Subscribers.php:187
+msgid "Search subscribers by email"
+msgstr "Szukaj subskrybentów przez e-mail"
+
+#: src/Admin/Subscribers.php:188
+msgid "Search by email"
+msgstr "Szukaj przez e-mail"
+
+#: src/Admin/Subscribers.php:189
+msgid "Search"
+msgstr "Szukaj"
+
+#: src/Admin/Subscribers.php:191
+msgid "Clear"
+msgstr "Wyczyść"
+
+#: src/Admin/Subscribers.php:199
+msgid "No matching subscribers"
+msgstr "Brak pasujących subskrybentów"
+
+#. translators: %s: search term.
+#: src/Admin/Subscribers.php:204
+#, php-format
+msgid "No subscribers match \"%s\"."
+msgstr "Żaden subskrybent nie pasuje do „%s”."
+
+#: src/Admin/Subscribers.php:218
 msgid "No subscribers yet"
 msgstr "Brak zapisanych"
 
-#: src/Admin/Subscribers.php:183
+#: src/Admin/Subscribers.php:220
 msgid ""
 "When a product is out of stock, shoppers can join its waitlist from the "
 "product page. Their requests will appear here, and they will be emailed "
@@ -598,23 +641,23 @@ msgstr ""
 "powiadomienia e-mail zostaną wysłane automatycznie, gdy tylko uzupełnisz "
 "zapasy."
 
-#: src/Admin/Subscribers.php:187
+#: src/Admin/Subscribers.php:224
 msgid "Review waitlist settings"
 msgstr "Przejrzyj ustawienia listy oczekujących"
 
-#: src/Admin/Subscribers.php:195
+#: src/Admin/Subscribers.php:232
 msgid "ID"
 msgstr "ID"
 
-#: src/Admin/Subscribers.php:196 templates/myaccount/waitlists.php:39
+#: src/Admin/Subscribers.php:233 templates/myaccount/waitlists.php:39
 msgid "Product"
 msgstr "Produkt"
 
-#: src/Admin/Subscribers.php:197
+#: src/Admin/Subscribers.php:234
 msgid "Email"
 msgstr "E-mail"
 
-#: src/Admin/Subscribers.php:199 templates/myaccount/waitlists.php:41
+#: src/Admin/Subscribers.php:236 templates/myaccount/waitlists.php:41
 msgid "Subscribed"
 msgstr "Data zapisu"
 
@@ -678,15 +721,46 @@ msgstr "Akcje"
 msgid "Sending…"
 msgstr "Wysyłanie…"
 
+#~ msgid "Restock - Back in Stock Notifications for WooCommerce"
+#~ msgstr "Restock - Powiadomienia o dostępności dla WooCommerce"
+
+#~ msgid "https://plogins.com/restock/"
+#~ msgstr "https://plogins.com/restock/"
+
+#~ msgid "WPPoland"
+#~ msgstr "WPPoland"
+
+#, php-format
+#~ msgid "Restock requires PHP %1$s or higher. You are running PHP %2$s."
+#~ msgstr "Restock wymaga PHP %1$s lub nowszego. Używasz PHP %2$s."
+
+#~ msgid "Restock requires WooCommerce to be installed and activated."
+#~ msgstr "Restock wymaga zainstalowanego i aktywowanego WooCommerce."
+
+#, php-format
 #~ msgid ""
-#~ "Error shown when a shopper tries to subscribe without choosing a "
-#~ "variation on variable products."
+#~ "Restock requires WooCommerce %1$s or higher. You are running WooCommerce "
+#~ "%2$s."
+#~ msgstr ""
+#~ "Restock wymaga WooCommerce %1$s lub nowszego. Używasz WooCommerce %2$s."
+
+#~ msgid "Restock Settings"
+#~ msgstr "Ustawienia Restock"
+
+#~ msgid "Restock"
+#~ msgstr "Restock"
+
+#~ msgid "Restock Subscribers"
+#~ msgstr "Zapisani Restock"
+
+#~ msgid ""
+#~ "Error shown when a shopper tries to subscribe without choosing a variation "
+#~ "on variable products."
 #~ msgstr ""
 #~ "Błąd wyświetlany, gdy klient próbuje się zapisać bez wybrania wariantu w "
 #~ "produktach z wariantami."
 
-#~ msgid ""
-#~ "Confirmation shown after a customer leaves a waitlist from My Account."
+#~ msgid "Confirmation shown after a customer leaves a waitlist from My Account."
 #~ msgstr ""
-#~ "Potwierdzenie wyświetlane po opuszczeniu listy oczekujących przez klienta "
-#~ "z poziomu Mojego konta."
+#~ "Potwierdzenie wyświetlane po opuszczeniu listy oczekujących przez klienta z "
+#~ "poziomu Mojego konta."
