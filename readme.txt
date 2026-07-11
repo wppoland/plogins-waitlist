@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,19 @@ More free WooCommerce plugins from WPPoland:
 * [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - Polish-market compliance: GPSR, Omnibus, GDPR, invoices and storefront modules.
 
 Browse the full catalogue at https://plogins.com/ .
+
+== Plogins Waitlist PRO ==
+
+The free edition is the complete back-in-stock waitlist. **Plogins Waitlist PRO** adds demand insight and automation:
+
+* **Demand analytics** - see what shoppers are waiting for and prioritise restocks
+* **Double opt-in** - confirmed, consent-friendly signups
+* **Scheduled and batched sends** - stagger notifications by batch size and interval
+* **Category segmentation** - include and exclude rules per product category
+
+Everything in the free edition stays free and open. Plogins Waitlist PRO starts at 29 EUR per year (PLN shown at checkout).
+
+Compare editions and pricing: https://plogins.com/plogins-waitlist-pro/pricing/
 
 == Installation ==
 
@@ -112,6 +125,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist includes Polish, German and Spanish translations for the plugin interface. The text domain is `plogins-waitlist`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.0.5 =
+* Added a Free vs PRO overview to the readme.
 
 = 1.0.4 =
 * Added bundled Polish, German and Spanish translations for the plugin interface.
