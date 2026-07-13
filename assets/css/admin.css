@@ -226,21 +226,6 @@
 }
 
 /* ── Dark mode (admin colour scheme handles most; refine cards/tips) ───── */
-
-@media (prefers-color-scheme: dark) {
-    .restock-admin {
-        /* Brighter amber on dark, matching the storefront's dark-mode accent
-           (#fdba74). On the dark card surface (#1f2329) it reaches 8.0:1, well
-           past AA for text and UI. */
-        --restock-accent: #fdba74;
-        --restock-card-bg: #1f2329;
-        --restock-card-border: #3c434a;
-        --restock-muted: #a7aaad;
-        --restock-tip-bg: #e2e4e7;
-        --restock-tip-text: #1d2327;
-    }
-}
-
 /* ------------------------------------------------------------------
  * PRO upsell — dismissible banner, sidebar promo, "what PRO adds"
  * locked cards. Pure advertising (no disabled inputs), scoped to
