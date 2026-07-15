@@ -2,14 +2,16 @@
 # This file is distributed under the same license as the Plugins - Plogins Waitlist &#8211; Back in Stock for WooCommerce - Stable Readme (latest release) package.
 msgid ""
 msgstr ""
+"Project-Id-Version: Plugins - Plogins Waitlist &#8211; Back in Stock for WooCommerce - Stable Readme (latest release)\n"
 "PO-Revision-Date: 2026-07-05 11:03:42+0000\n"
+"Last-Translator: wppoland.com <hello@wppoland.com>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
 "X-Generator: GlotPress/4.0.3\n"
-"Language: pl\n"
-"Project-Id-Version: Plugins - Plogins Waitlist &#8211; Back in Stock for WooCommerce - Stable Readme (latest release)\n"
 
 #. Found in description paragraph.
 msgid "Browse the full catalogue at https://plogins.com/ ."
@@ -20,16 +22,32 @@ msgid "More free WooCommerce plugins from WPPoland:"
 msgstr "Więcej darmowych wtyczek WooCommerce od WPPoland:"
 
 #. Found in description list item.
-msgid "<a href=\"https://wordpress.org/plugins/polski/\">Polski for WooCommerce</a> - Polish-market compliance: GPSR, Omnibus, GDPR, invoices and storefront modules."
-msgstr "<a href=\"https://wordpress.org/plugins/polski/\">Polski for WooCommerce</a> - zgodność z polskim rynkiem: GPSR, Omnibus, RODO, faktury i moduły sklepu."
+msgid ""
+"<a href=\"https://wordpress.org/plugins/polski/\">Polski for WooCommerce</a>"
+" - Polish-market compliance: GPSR, Omnibus, GDPR, invoices and storefront "
+"modules."
+msgstr ""
+"<a href=\"https://wordpress.org/plugins/polski/\">Polski for WooCommerce</a>"
+" - zgodność z polskim rynkiem: GPSR, Omnibus, RODO, faktury i moduły sklepu."
 
 #. Found in description list item.
-msgid "<a href=\"https://wordpress.org/plugins/sieve/\">Sieve - Search &amp; Filter</a> - fast AJAX product search and filtering for WooCommerce, with no jQuery."
-msgstr "<a href=\"https://wordpress.org/plugins/sieve/\">Sieve - Search &amp; Filter</a> - szybkie wyszukiwanie i filtrowanie produktów AJAX dla WooCommerce, bez jQuery."
+msgid ""
+"<a href=\"https://wordpress.org/plugins/sieve/\">Sieve - Search &amp; "
+"Filter</a> - fast AJAX product search and filtering for WooCommerce, with no"
+" jQuery."
+msgstr ""
+"<a href=\"https://wordpress.org/plugins/sieve/\">Sieve - Search &amp; "
+"Filter</a> - szybkie wyszukiwanie i filtrowanie produktów AJAX dla "
+"WooCommerce, bez jQuery."
 
 #. Found in description list item.
-msgid "<a href=\"https://wordpress.org/plugins/plogins-tiers/\">Plogins Tiers</a> - quantity and volume pricing tiers with a server-rendered price table."
-msgstr "<a href=\"https://wordpress.org/plugins/plogins-tiers/\">Plogins Tiers</a> - progi cen ilościowych i hurtowych z tabelą cen renderowaną po stronie serwera."
+msgid ""
+"<a href=\"https://wordpress.org/plugins/plogins-tiers/\">Plogins Tiers</a> -"
+" quantity and volume pricing tiers with a server-rendered price table."
+msgstr ""
+"<a href=\"https://wordpress.org/plugins/plogins-tiers/\">Plogins Tiers</a> -"
+" progi cen ilościowych i hurtowych z tabelą cen renderowaną po stronie "
+"serwera."
 
 #. Found in description header.
 msgid "You may also like these plugins"
@@ -37,6 +55,9 @@ msgstr "Może Ci się także spodobać"
 
 #. Found in changelog list item.
 #, gp-priority: low
-msgid "Docs: added a \"You may also like\" section linking the other free WPPoland WooCommerce plugins. No functional changes."
-msgstr "Dokumentacja: dodano sekcję „Może Ci się także spodobać” linkującą pozostałe darmowe wtyczki WooCommerce od WPPoland. Bez zmian funkcjonalnych."
-
+msgid ""
+"Docs: added a \"You may also like\" section linking the other free WPPoland "
+"WooCommerce plugins. No functional changes."
+msgstr ""
+"Dokumentacja: dodano sekcję „Może Ci się także spodobać” linkującą pozostałe"
+" darmowe wtyczki WooCommerce od WPPoland. Bez zmian funkcjonalnych."
