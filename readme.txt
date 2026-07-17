@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,7 +61,7 @@ The free edition is the complete back-in-stock waitlist. **Plogins Waitlist PRO*
 
 Everything in the free edition stays free and open. Plogins Waitlist PRO starts at 29 EUR per year (PLN shown at checkout).
 
-Compare editions and pricing: https://plogins.com/plogins-waitlist-pro/pricing/
+Compare editions and pricing: [plogins.com/plogins-waitlist-pro/pricing/](https://plogins.com/plogins-waitlist-pro/pricing/)
 
 == Installation ==
 
@@ -75,10 +75,10 @@ Compare editions and pricing: https://plogins.com/plogins-waitlist-pro/pricing/
 
 = Documentation and links =
 
-* **Documentation** - https://plogins.com/plogins-waitlist/docs/
-* **Plugin page** - https://plogins.com/plogins-waitlist/
-* **Source code** - https://github.com/wppoland/plogins-waitlist
-* **Bug reports and feature requests** - https://github.com/wppoland/plogins-waitlist/issues
+* **Documentation** - [plogins.com/plogins-waitlist/docs/](https://plogins.com/plogins-waitlist/docs/)
+* **Plugin page** - [plogins.com/plogins-waitlist/](https://plogins.com/plogins-waitlist/)
+* **Source code** - [github.com/wppoland/plogins-waitlist](https://github.com/wppoland/plogins-waitlist)
+* **Bug reports and feature requests** - [github.com/wppoland/plogins-waitlist/issues](https://github.com/wppoland/plogins-waitlist/issues)
 
 
 = Does Plogins Waitlist require WooCommerce? =
@@ -125,6 +125,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist includes Polish, German and Spanish translations for the plugin interface. The text domain is `plogins-waitlist`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.0.8 =
+* Documentation: readme links are now labelled links.
 
 = 1.0.7 =
 * Shortened display name (dropped the Plogins prefix; slug unchanged).
