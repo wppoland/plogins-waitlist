@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,6 +125,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist includes Polish, German and Spanish translations for the plugin interface. The text domain is `plogins-waitlist`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.0.9 =
+* Translation quality pass: corrected Polish, German and Spanish (product names kept in English, legal withdrawal terminology, WooCommerce glossary and grammar fixes).
 
 = 1.0.8 =
 * Documentation: readme links are now labelled links.

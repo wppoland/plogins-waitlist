@@ -18,7 +18,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: plogins-waitlist.php
 msgid "Plogins Waitlist for WooCommerce"
-msgstr "Plogins Lista de espera para WooCommerce"
+msgstr "Plogins Waitlist para WooCommerce"
 
 #. Plugin URI of the plugin
 #: plogins-waitlist.php
@@ -50,14 +50,11 @@ msgstr "https://wppoland.com"
 msgid ""
 "Plogins Waitlist requires PHP %1$s or higher. You are running PHP %2$s."
 msgstr ""
-"Plogins La lista de espera requiere PHP %1$s o superior. Estás ejecutando "
-"PHP %2$s."
+"Plogins Waitlist requiere PHP %1$s o superior. Estás ejecutando PHP %2$s."
 
 #: plogins-waitlist.php:73
 msgid "Plogins Waitlist requires WooCommerce to be installed and activated."
-msgstr ""
-"Plogins La lista de espera requiere que WooCommerce esté instalado y "
-"activado."
+msgstr "Plogins Waitlist requiere que WooCommerce esté instalado y activado."
 
 #. translators: 1: Required WC version, 2: Current WC version
 #: plogins-waitlist.php:85
@@ -71,7 +68,7 @@ msgstr ""
 
 #: src/Admin/Settings.php:36
 msgid "Plogins Waitlist"
-msgstr "Plogins Lista de espera"
+msgstr "Plogins Waitlist"
 
 #: src/Admin/Settings.php:37
 msgid "Waitlist"
@@ -295,8 +292,8 @@ msgstr "Etiqueta de casilla de verificación de consentimiento"
 #: src/Admin/Settings.php:223 templates/single-product/waitlist-form.php:60
 msgid "I consent to receiving back-in-stock notifications."
 msgstr ""
-"Doy mi consentimiento para recibir notificaciones de disponibilidad "
-"nuevamente."
+"Doy mi consentimiento para recibir avisos cuando el producto vuelva a estar "
+"disponible."
 
 #: src/Admin/Settings.php:224
 msgid ""
@@ -355,7 +352,7 @@ msgstr ""
 
 #: src/Admin/Settings.php:258
 msgid "Form messages"
-msgstr "mensajes de formulario"
+msgstr "Mensajes de formulario"
 
 #: src/Admin/Settings.php:260
 msgid ""
@@ -371,7 +368,7 @@ msgstr "Mensaje de éxito"
 
 #: src/Admin/Settings.php:276 src/Service/WaitlistService.php:41
 msgid "Thank you. You have been added to the waitlist."
-msgstr "Gracias. Has sido agregado a la lista de espera."
+msgstr "Gracias. Te hemos añadido a la lista de espera."
 
 #: src/Admin/Settings.php:277
 msgid ""
@@ -613,7 +610,7 @@ msgstr "Espera"
 #: src/Admin/Subscribers.php:174 src/Admin/Subscribers.php:235
 #: src/Admin/Subscribers.php:260
 msgid "Notified"
-msgstr "notificado"
+msgstr "Notificado"
 
 #: src/Admin/Subscribers.php:182
 msgid "Export CSV"

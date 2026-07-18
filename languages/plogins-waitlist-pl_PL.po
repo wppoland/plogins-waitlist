@@ -19,7 +19,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: plogins-waitlist.php
 msgid "Plogins Waitlist for WooCommerce"
-msgstr "Plogins Lista oczekujących dla WooCommerce"
+msgstr "Plogins Waitlist dla WooCommerce"
 
 #. Plugin URI of the plugin
 #: plogins-waitlist.php
@@ -50,13 +50,11 @@ msgstr "https://wppoland.com"
 #, php-format
 msgid ""
 "Plogins Waitlist requires PHP %1$s or higher. You are running PHP %2$s."
-msgstr ""
-"Lista oczekujących Plogins wymaga PHP %1$s lub nowszego. Używasz PHP %2$s."
+msgstr "Plogins Waitlist wymaga PHP %1$s lub nowszego. Używasz PHP %2$s."
 
 #: plogins-waitlist.php:73
 msgid "Plogins Waitlist requires WooCommerce to be installed and activated."
-msgstr ""
-"Lista oczekujących Plogins wymaga zainstalowania i aktywacji WooCommerce."
+msgstr "Plogins Waitlist wymaga zainstalowanego i aktywowanego WooCommerce."
 
 #. translators: 1: Required WC version, 2: Current WC version
 #: plogins-waitlist.php:85
@@ -65,12 +63,12 @@ msgid ""
 "Plogins Waitlist requires WooCommerce %1$s or higher. You are running "
 "WooCommerce %2$s."
 msgstr ""
-"Lista oczekujących Plogins wymaga WooCommerce %1$s lub nowszego. Używasz "
-"WooCommerce %2$s."
+"Plogins Waitlist wymaga WooCommerce %1$s lub nowszego. Używasz WooCommerce "
+"%2$s."
 
 #: src/Admin/Settings.php:36
 msgid "Plogins Waitlist"
-msgstr "Plogins Lista oczekujących"
+msgstr "Plogins Waitlist"
 
 #: src/Admin/Settings.php:37
 msgid "Waitlist"
@@ -158,9 +156,10 @@ msgid ""
 "they are waiting for. Only shown when \"My Account waitlists\" is on. Leave "
 "blank to use the default."
 msgstr ""
-"Treść pozycji menu Klienci klikają w Moje Konto, aby zobaczyć produkty, na "
-"które czekają. Wyświetlane tylko wtedy, gdy włączona jest opcja „Listy "
-"oczekujących na moje konto”. Pozostaw puste, aby użyć wartości domyślnej."
+"Treść pozycji menu, którą klienci klikają w Moim koncie, aby zobaczyć "
+"produkty, na które czekają. Wyświetlane tylko wtedy, gdy włączona jest opcja"
+" „Listy oczekujących w Moim koncie”. Pozostaw puste, aby użyć wartości "
+"domyślnej."
 
 #: src/Admin/Settings.php:119
 msgid "Heading & intro"

@@ -18,7 +18,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: plogins-waitlist.php
 msgid "Plogins Waitlist for WooCommerce"
-msgstr "Plogins Warteliste für WooCommerce"
+msgstr "Plogins Waitlist für WooCommerce"
 
 #. Plugin URI of the plugin
 #: plogins-waitlist.php
@@ -51,12 +51,12 @@ msgstr "https://wppoland.com"
 msgid ""
 "Plogins Waitlist requires PHP %1$s or higher. You are running PHP %2$s."
 msgstr ""
-"Plogins Warteliste erfordert PHP %1$s oder höher. Du führst PHP %2$s aus."
+"Plogins Waitlist erfordert PHP %1$s oder höher. Du führst PHP %2$s aus."
 
 #: plogins-waitlist.php:73
 msgid "Plogins Waitlist requires WooCommerce to be installed and activated."
 msgstr ""
-"Für die Warteliste Plogins muss WooCommerce installiert und aktiviert sein."
+"Plogins Waitlist erfordert die Installation und Aktivierung von WooCommerce."
 
 #. translators: 1: Required WC version, 2: Current WC version
 #: plogins-waitlist.php:85
@@ -65,12 +65,12 @@ msgid ""
 "Plogins Waitlist requires WooCommerce %1$s or higher. You are running "
 "WooCommerce %2$s."
 msgstr ""
-"Plogins Warteliste erfordert WooCommerce %1$s oder höher. Du führst "
+"Plogins Waitlist erfordert WooCommerce %1$s oder höher. Du führst "
 "WooCommerce %2$s aus."
 
 #: src/Admin/Settings.php:36
 msgid "Plogins Waitlist"
-msgstr "Plogins Warteliste"
+msgstr "Plogins Waitlist"
 
 #: src/Admin/Settings.php:37
 msgid "Waitlist"
@@ -120,7 +120,7 @@ msgstr ""
 "nicht vorrätig ist oder im Rückstand ist. Bei variablen Produkten erscheint "
 "das Formular, nachdem der Käufer eine nicht verfügbare Variante ausgewählt "
 "hat. Deaktiviere die Funktion nur, wenn du das Formular selbst mit dem "
-"Shortcode [restock_waitlist] platzieren."
+"Shortcode [restock_waitlist] platzierst."
 
 #: src/Admin/Settings.php:91
 msgid "My Account waitlists"
@@ -159,9 +159,10 @@ msgid ""
 "they are waiting for. Only shown when \"My Account waitlists\" is on. Leave "
 "blank to use the default."
 msgstr ""
-"Wortlaut des Menüpunkts Klicke in „Mein Konto“, um die Produkte anzuzeigen, "
-"auf die Kunden warten. Wird nur angezeigt, wenn „Wartelisten für mein Konto“"
-" aktiviert ist. Lass das Feld leer, um die Standardeinstellung zu verwenden."
+"Wortlaut des Menüpunkts, den Kunden in „Mein Konto“ anklicken, um die "
+"Produkte zu sehen, auf die sie warten. Wird nur angezeigt, wenn „Wartelisten"
+" für mein Konto“ aktiviert ist. Lass das Feld leer, um die "
+"Standardeinstellung zu verwenden."
 
 #: src/Admin/Settings.php:119
 msgid "Heading & intro"
@@ -274,7 +275,7 @@ msgstr "Platzhalter für das E-Mail-Feld"
 
 #: src/Admin/Settings.php:210 templates/single-product/waitlist-form.php:52
 msgid "Your email address"
-msgstr "deine E-Mail-Adresse"
+msgstr "Deine E-Mail-Adresse"
 
 #: src/Admin/Settings.php:211
 msgid ""
@@ -378,8 +379,8 @@ msgid ""
 " them you will email when the item returns. Leave blank to use the default."
 msgstr ""
 "Bestätigung, die angezeigt wird, nachdem sich ein Käufer erfolgreich auf die"
-" Warteliste eingetragen hat. Versichern Sie ihnen, dass du eine E-Mail "
-"erhalten, wenn der Artikel zurückkommt. Lass das Feld leer, um die "
+" Warteliste eingetragen hat. Versichere ihnen, dass du eine E-Mail sendest, "
+"wenn der Artikel wieder da ist. Lass das Feld leer, um die "
 "Standardeinstellung zu verwenden."
 
 #: src/Admin/Settings.php:283
@@ -448,7 +449,7 @@ msgstr "Meldung „Variation erforderlich“."
 
 #: src/Admin/Settings.php:329 src/Service/WaitlistService.php:42
 msgid "Select product options before joining the waitlist."
-msgstr "Wähle Produktoptionen aus, bevor du sich auf die Warteliste setzen."
+msgstr "Wähle Produktoptionen aus, bevor du der Warteliste beitrittst."
 
 #: src/Admin/Settings.php:330
 msgid ""
@@ -495,7 +496,7 @@ msgstr "E-Mail-Betreff"
 
 #: src/Admin/Settings.php:368 src/Service/WaitlistService.php:43
 msgid "Product back in stock - {product_name}"
-msgstr "Produkt wieder auf Lager – {product_name}"
+msgstr "Produkt wieder auf Lager - {product_name}"
 
 #: src/Admin/Settings.php:369 src/Admin/Settings.php:383
 msgid "Use {product_name} as a placeholder for the product title."
@@ -558,9 +559,10 @@ msgid ""
 " fields fall back to sensible built-in defaults."
 msgstr ""
 "Konfiguriere das Wartelistenformular für wieder verfügbare Artikel, das bei "
-"nicht vorrätigen Produkten angezeigt wird. Bewegen oder fokussiere das? "
-"Symbole zur Orientierung zu den einzelnen Optionen. Leere Textfelder greifen"
-" auf sinnvolle integrierte Standardeinstellungen zurück."
+"nicht vorrätigen Produkten angezeigt wird. Bewege den Mauszeiger über die "
+"?-Symbole oder fokussiere sie, um Hinweise zu jeder Option zu erhalten. "
+"Leere Textfelder greifen auf sinnvolle integrierte Standardeinstellungen "
+"zurück."
 
 #. translators: accessible name for the inline-help button.
 #: src/Admin/Settings.php:446
@@ -586,7 +588,7 @@ msgid ""
 "move to \"Notified\"."
 msgstr ""
 "Jeder, der darum gebeten hat, benachrichtigt zu werden, wenn ein nicht "
-"vorrätiges Produkt zurückkommt. Wenn du ein Produkt wieder auffüllen, werden"
+"vorrätiges Produkt zurückkommt. Wenn du ein Produkt wieder auffüllst, werden"
 " ausstehende Abonnenten automatisch per E-Mail benachrichtigt und in den "
 "Status „Benachrichtigt“ verschoben."
 
@@ -654,9 +656,9 @@ msgid ""
 "automatically as soon as you restock."
 msgstr ""
 "Wenn ein Produkt nicht vorrätig ist, können sich Käufer über die "
-"Produktseite in die Warteliste eintragen. deine Anfragen werden hier "
-"angezeigt und automatisch per E-Mail verschickt, sobald dein Lagerbestand "
-"aufgefüllt ist."
+"Produktseite in die Warteliste eintragen. Ihre Anfragen erscheinen hier, und"
+" sie werden automatisch per E-Mail benachrichtigt, sobald du wieder "
+"auffüllst."
 
 #: src/Admin/Subscribers.php:224
 msgid "Review waitlist settings"
@@ -708,7 +710,7 @@ msgstr "Meine Wartelisten"
 
 #: templates/myaccount/waitlists.php:17
 msgid "You are not on any waitlists yet."
-msgstr "Du stehen noch nicht auf einer Warteliste."
+msgstr "Du stehst noch auf keiner Warteliste."
 
 #: templates/myaccount/waitlists.php:18
 msgid "Leave waitlist"
