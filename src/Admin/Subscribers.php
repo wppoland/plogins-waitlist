@@ -107,8 +107,16 @@ final class Subscribers implements HasHooks
 
         fputcsv($out, ['ID', 'Product ID', 'Email', 'User ID', 'Notified', 'Created At', 'Notified At']);
 
+        // Neutralize spreadsheet formula injection (CWE-1236): a cell starting
+        // with = + - @ (or a control char) is evaluated by Excel/Sheets. The
+        // email comes from an unauthenticated signup, so prefix such cells.
+        $csvCell = static function ($value): string {
+            $s = (string) $value;
+            return $s !== '' && in_array($s[0], ['=', '+', '-', '@', "\t", "\r"], true) ? "'" . $s : $s;
+        };
+
         foreach ($rows as $sub) {
-            fputcsv($out, [
+            fputcsv($out, array_map($csvCell, [
                 $sub->id,
                 $sub->productId,
                 $sub->email,
@@ -116,7 +124,7 @@ final class Subscribers implements HasHooks
                 $sub->notified ? 'yes' : 'no',
                 $sub->createdAt->format('Y-m-d H:i:s'),
                 $sub->notifiedAt !== null ? $sub->notifiedAt->format('Y-m-d H:i:s') : '',
-            ]);
+            ]));
         }
 
         // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Writing CSV to php://output; WP_Filesystem is for files, not the output stream.
