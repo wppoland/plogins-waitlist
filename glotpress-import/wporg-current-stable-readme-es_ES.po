@@ -1,23 +1,461 @@
-# wp.org Stable Readme translation (es_ES)
+# Translation of Plugins - Waitlist &#8211; Back in Stock for WooCommerce - Stable Readme (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Waitlist &#8211; Back in Stock for WooCommerce - Stable Readme (latest release) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: plogins-waitlist Stable Readme\n"
-"Last-Translator: wppoland.com <hello@wppoland.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"Project-Id-Version: Plugins - Waitlist &#8211; Back in Stock for WooCommerce - Stable Readme (latest release)\n"
+"PO-Revision-Date: 2026-07-17 09:50:32+0000\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: plogins-i18n\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
 
+#. Plugin name.
+#, gp-priority: high
+msgid "Waitlist - Back in Stock for WooCommerce"
+msgstr "Waitlist - Back in Stock for WooCommerce"
+
+#. Short description.
+#, gp-priority: high
 msgid ""
 "Back-in-stock waitlist for WooCommerce. Shoppers leave their email, you "
 "email them on restock. Accessible, no layout shift."
 msgstr ""
-"Lista de espera de reposición para WooCommerce. Tus clientes dejan su correo"
-" y les avisas cuando el producto vuelve al stock. Accesible y sin saltos de "
-"maquetación."
+"Lista de espera para productos de nuevo en stock para WooCommerce. Los "
+"compradores dejan su correo electrónico, usted les envía un correo cuando el"
+" producto vuelve a estar disponible. Accesible, sin cambios de diseño."
 
+#. Found in faq list item.
+msgid ""
+"<strong>Bug reports and feature requests</strong> - <a "
+"href=\"https://github.com/wppoland/plogins-"
+"waitlist/issues\">github.com/wppoland/plogins-waitlist/issues</a>"
+msgstr ""
+"<strong>Informes de errores y solicitudes de funciones</strong> - <a "
+"href=\"https://github.com/wppoland/plogins-"
+"waitlist/issues\">github.com/wppoland/plogins-waitlist/issues</a>"
+
+#. Found in faq list item.
+msgid ""
+"<strong>Source code</strong> - <a "
+"href=\"https://github.com/wppoland/plogins-"
+"waitlist\">github.com/wppoland/plogins-waitlist</a>"
+msgstr ""
+"<strong>Código fuente</strong> - <a "
+"href=\"https://github.com/wppoland/plogins-"
+"waitlist\">github.com/wppoland/plogins-waitlist</a>"
+
+#. Found in faq list item.
+msgid ""
+"<strong>Plugin page</strong> - <a href=\"https://plogins.com/plogins-"
+"waitlist/\">plogins.com/plogins-waitlist/</a>"
+msgstr ""
+"<strong>Página del plugin</strong> - <a href=\"https://plogins.com/plogins-"
+"waitlist/\">plogins.com/plogins-waitlist/</a>"
+
+#. Found in faq list item.
+msgid ""
+"<strong>Documentation</strong> - <a href=\"https://plogins.com/plogins-"
+"waitlist/docs/\">plogins.com/plogins-waitlist/docs/</a>"
+msgstr ""
+"<strong>Documentación</strong> - <a href=\"https://plogins.com/plogins-"
+"waitlist/docs/\">plogins.com/plogins-waitlist/docs/</a>"
+
+#. Found in description paragraph.
+msgid ""
+"Compare editions and pricing: <a href=\"https://plogins.com/plogins-"
+"waitlist-pro/pricing/\">plogins.com/plogins-waitlist-pro/pricing/</a>"
+msgstr ""
+"Compare ediciones y precios: <a href=\"https://plogins.com/plogins-waitlist-"
+"pro/pricing/\">plogins.com/plogins-waitlist-pro/pricing/</a>"
+
+#. Found in description paragraph.
+msgid ""
+"Everything in the free edition stays free and open. Plogins Waitlist PRO "
+"starts at 29 EUR per year (PLN shown at checkout)."
+msgstr ""
+"Todo en la edición gratuita permanece gratuito y abierto. Plogins Waitlist "
+"PRO cuesta a partir de 29 EUR al año (PLN se muestra al finalizar la "
+"compra)."
+
+#. Found in description paragraph.
+msgid ""
+"The free edition is the complete back-in-stock waitlist. <strong>Plogins "
+"Waitlist PRO</strong> adds demand insight and automation:"
+msgstr ""
+"La edición gratuita es la lista de espera completa para productos de nuevo "
+"en stock. <strong>Plogins Waitlist PRO</strong> añade información sobre la "
+"demanda y automatización:"
+
+#. Found in description list item.
+msgid ""
+"<strong>Category segmentation</strong> - include and exclude rules per "
+"product category"
+msgstr ""
+"<strong>Segmentación por categoría</strong> - reglas de inclusión y "
+"exclusión por categoría de producto"
+
+#. Found in description list item.
+msgid ""
+"<strong>Scheduled and batched sends</strong> - stagger notifications by "
+"batch size and interval"
+msgstr ""
+"<strong>Envíos programados y por lotes</strong> - escalona las "
+"notificaciones por tamaño de lote e intervalo"
+
+#. Found in description list item.
+msgid "<strong>Double opt-in</strong> - confirmed, consent-friendly signups"
+msgstr ""
+"<strong>Doble opt-in</strong> - registros confirmados y respetuosos con el "
+"consentimiento"
+
+#. Found in description list item.
+msgid ""
+"<strong>Demand analytics</strong> - see what shoppers are waiting for and "
+"prioritise restocks"
+msgstr ""
+"<strong>Análisis de la demanda</strong> - vea qué esperan los compradores y "
+"priorice las reposiciones"
+
+#. Found in description header.
+msgid "Plogins Waitlist PRO"
+msgstr "Plogins Waitlist PRO"
+
+#. Found in description paragraph.
+msgid ""
+"Plogins Waitlist includes Polish, German and Spanish translations for the "
+"plugin interface. The text domain is <code>plogins-waitlist</code>, so "
+"WordPress.org language packs can also override or extend these bundled "
+"translations."
+msgstr ""
+"Plogins Waitlist incluye traducciones al polaco, alemán y español para la "
+"interfaz del plugin. El dominio de texto es <code>plogins-waitlist</code>, "
+"por lo que los paquetes de idioma de WordPress.org también pueden anular o "
+"extender estas traducciones incluidas."
+
+#. Found in description list item.
+msgid ""
+"Place the form with the <code>[restock_waitlist]</code> shortcode or the "
+"Elementor \"Waitlist Form\" widget"
+msgstr ""
+"Coloque el formulario con el shortcode <code>[restock_waitlist]</code> o el "
+"widget de Elementor \"Waitlist Form\""
+
+#. Found in description header.
+msgid "Translations"
+msgstr "Traducciones"
+
+#. Found in description paragraph.
+msgid "Browse the full catalogue at https://plogins.com/ ."
+msgstr "Explore el catálogo completo en https://plogins.com/ ."
+
+#. Found in description paragraph.
+msgid "More free WooCommerce plugins from WPPoland:"
+msgstr "Más plugins gratuitos de WooCommerce de WPPoland:"
+
+#. Found in description list item.
+msgid ""
+"<a href=\"https://wordpress.org/plugins/polski/\">Polski for WooCommerce</a>"
+" - Polish-market compliance: GPSR, Omnibus, GDPR, invoices and storefront "
+"modules."
+msgstr ""
+"<a href=\"https://wordpress.org/plugins/polski/\">Polski para "
+"WooCommerce</a> - Cumplimiento para el mercado polaco: GPSR, Omnibus, GDPR, "
+"módulos de facturas y escaparate."
+
+#. Found in description list item.
+msgid ""
+"<a href=\"https://wordpress.org/plugins/sieve/\">Sieve - Search &amp; "
+"Filter</a> - fast AJAX product search and filtering for WooCommerce, with no"
+" jQuery."
+msgstr ""
+"<a href=\"https://wordpress.org/plugins/sieve/\">Sieve - Búsqueda &amp; "
+"Filtro</a> - búsqueda y filtrado rápido de productos AJAX para WooCommerce, "
+"sin jQuery."
+
+#. Found in description list item.
+msgid ""
+"<a href=\"https://wordpress.org/plugins/plogins-tiers/\">Plogins Tiers</a> -"
+" quantity and volume pricing tiers with a server-rendered price table."
+msgstr ""
+"<a href=\"https://wordpress.org/plugins/plogins-tiers/\">Plogins Tiers</a> -"
+" niveles de precios por cantidad y volumen con una tabla de precios "
+"renderizada en el servidor."
+
+#. Found in description header.
+msgid "You may also like these plugins"
+msgstr "También te pueden gustar estos plugins"
+
+#. Found in description list item.
+msgid ""
+"Admin subscriber list with per-product filter, CSV export, and one-click "
+"remove"
+msgstr ""
+"Lista de suscriptores del administrador con filtro por producto, exportación"
+" CSV y eliminación con un clic"
+
+#. Found in description list item.
+msgid ""
+"Social-proof \"N shoppers are already waiting\" line above the form "
+"(optional, customisable, singular/plural aware)"
+msgstr ""
+"Línea de prueba social \"N compradores ya están esperando\" encima del "
+"formulario (opcional, personalizable, sensible al singular/plural)"
+
+#. Found in faq paragraph.
+msgid ""
+"Yes. This plugin is compatible with WordPress Multisite. Network activate it"
+" or activate it on individual sites; each site keeps its own settings and "
+"data."
+msgstr ""
+"Sí. Este plugin es compatible con WordPress Multisite. Actívalo en la red o "
+"actívalo en sitios individuales; cada sitio mantiene su propia configuración"
+" y datos."
+
+#. Found in faq header.
+msgid "Does this plugin work on WordPress Multisite?"
+msgstr "¿Funciona este plugin en WordPress Multisite?"
+
+#. Found in faq paragraph.
+msgid ""
+"No. The form is submitted with a vanilla-JavaScript <code>fetch</code> call "
+"and the result is announced in an <code>aria-live</code> region, so the page"
+" stays put. Plogins Waitlist loads no jQuery for this; on variable products "
+"it does rely on WooCommerce's own variation script to know which variation "
+"is selected."
+msgstr ""
+"No. El formulario se envía con una llamada <code>fetch</code> de JavaScript "
+"puro y el resultado se anuncia en una región <code>aria-live</code>, por lo "
+"que la página permanece en su lugar. Plogins Waitlist no carga jQuery para "
+"esto; en productos variables, sí depende del propio script de variaciones de"
+" WooCommerce para saber qué variación está seleccionada."
+
+#. Found in faq paragraph.
+msgid ""
+"Yes. From <strong>WooCommerce → Plogins Waitlist → Subscribers</strong> you "
+"can view subscribers, filter by product, and export the list as CSV."
+msgstr ""
+"Sí. Desde <strong>WooCommerce → Plogins Waitlist → Suscriptores</strong> "
+"puedes ver suscriptores, filtrar por producto y exportar la lista como CSV."
+
+#. Found in faq paragraph.
+msgid ""
+"Every signup requires the shopper to tick an explicit consent checkbox "
+"before they can join the waitlist; the form will not submit without it. "
+"Subscriber emails are stored only in a custom table in your own WordPress "
+"database and are never sent to any external service. You are responsible for"
+" the wording of your consent label and your site's privacy policy."
+msgstr ""
+"Cada registro requiere que el comprador marque una casilla de consentimiento"
+" explícito antes de poder unirse a la lista de espera; el formulario no se "
+"enviará sin ella. Los correos electrónicos de los suscriptores se almacenan "
+"únicamente en una tabla personalizada en tu propia base de datos de "
+"WordPress y nunca se envían a ningún servicio externo. Eres responsable de "
+"la redacción de tu etiqueta de consentimiento y de la política de privacidad"
+" de tu sitio."
+
+#. Found in faq paragraph.
+msgid ""
+"Yes. Logged-in customers see a <strong>Waitlists</strong> tab under My "
+"Account with active subscriptions, current stock status, and a button to "
+"leave each list."
+msgstr ""
+"Sí. Los clientes con sesión iniciada ven una pestaña <strong>Listas de "
+"espera</strong> en Mi cuenta con suscripciones activas, estado actual del "
+"stock y un botón para salir de cada lista."
+
+#. Found in faq paragraph.
+msgid ""
+"Yes by default. You can restrict signups to logged-in customers by "
+"unchecking <strong>Allow guest subscriptions</strong> in <strong>WooCommerce"
+" → Plogins Waitlist</strong>."
+msgstr ""
+"Sí, por defecto. Puedes restringir los registros a clientes con sesión "
+"iniciada desmarcando <strong>Permitir suscripciones de invitados</strong> en"
+" <strong>WooCommerce → Plogins Waitlist</strong>."
+
+#. Found in faq paragraph.
+msgid ""
+"Yes. Choose options in the standard WooCommerce variation form first. When "
+"the selected variation is out of stock or on backorder, the waitlist form "
+"appears and the subscription is stored for that specific variation."
+msgstr ""
+"Sí. Primero, elige las opciones en el formulario de variación estándar de "
+"WooCommerce. Cuando la variación seleccionada está agotada o en pedido "
+"pendiente, aparece el formulario de lista de espera y la suscripción se "
+"guarda para esa variación específica."
+
+#. Found in faq paragraph.
+msgid ""
+"When WooCommerce sets a product's stock status to <code>instock</code>, "
+"Plogins Waitlist sends a plain-text email to every pending subscriber for "
+"that product (and its parent, for variations) using your site's own "
+"WordPress mailer (<code>wp_mail</code>). Subscribers who are emailed "
+"successfully are marked as notified so they are not contacted twice."
+msgstr ""
+"Cuando WooCommerce establece el estado de stock de un producto como "
+"<code>instock</code>, Plogins Waitlist envía un correo electrónico de texto "
+"plano a cada suscriptor pendiente de ese producto (y su padre, para "
+"variaciones) utilizando el propio sistema de correo de WordPress de tu sitio"
+" (<code>wp_mail</code>). Los suscriptores a los que se les envía el correo "
+"electrónico con éxito se marcan como notificados para que no se les contacte"
+" dos veces."
+
+#. Found in faq paragraph.
+msgid ""
+"Yes. Plogins Waitlist is a WooCommerce extension and requires WooCommerce "
+"8.0 or later. It will show an admin notice and stay inactive if WooCommerce "
+"is missing or out of date."
+msgstr ""
+"Sí. Plogins Waitlist es una extensión de WooCommerce y requiere WooCommerce "
+"8.0 o posterior. Mostrará un aviso de administración y permanecerá inactivo "
+"si WooCommerce falta o está desactualizado."
+
+#. Found in faq header.
+msgid "Does the form reload the page on submit?"
+msgstr "¿El formulario recarga la página al enviarse?"
+
+#. Found in faq header.
+msgid "Can I export the subscriber list?"
+msgstr "¿Puedo exportar la lista de suscriptores?"
+
+#. Found in faq header.
+msgid "Does this comply with GDPR / consent requirements?"
+msgstr "¿Cumple esto con los requisitos de GDPR / consentimiento?"
+
+#. Found in faq header.
+msgid "Can customers manage waitlists in My Account?"
+msgstr "¿Pueden los clientes gestionar las listas de espera en Mi cuenta?"
+
+#. Found in faq header.
+msgid "Can guests join the waitlist?"
+msgstr "¿Pueden los invitados unirse a la lista de espera?"
+
+#. Found in faq header.
+msgid "Does it work with variable products?"
+msgstr "¿Funciona con productos variables?"
+
+#. Found in faq header.
+msgid "How are notifications sent?"
+msgstr "¿Cómo se envían las notificaciones?"
+
+#. Found in faq header.
+msgid "Does Plogins Waitlist require WooCommerce?"
+msgstr "¿Plogins Waitlist requiere WooCommerce?"
+
+#. Found in faq header.
+msgid "Documentation and links"
+msgstr "Documentación y enlaces"
+
+#. Found in installation list item.
+msgid ""
+"The waitlist form appears automatically on any out-of-stock or backorder "
+"product page."
+msgstr ""
+"El formulario de lista de espera aparece automáticamente en cualquier página"
+" de producto agotado o en pedido pendiente."
+
+#. Found in installation list item.
+msgid ""
+"Optionally visit <strong>WooCommerce → Plogins Waitlist</strong> to "
+"customise labels and notification text; sensible defaults work out of the "
+"box."
+msgstr ""
+"Opcionalmente, visita <strong>WooCommerce → Plogins Waitlist</strong> para "
+"personalizar las etiquetas y el texto de notificación; los valores "
+"predeterminados funcionan sin configuración adicional."
+
+#. Found in installation list item.
+msgid "Activate the plugin through the <strong>Plugins</strong> screen."
+msgstr "Activa el plugin a través de la pantalla de <strong>Plugins</strong>."
+
+#. Found in installation list item.
+msgid ""
+"Install Plogins Waitlist from the WordPress plugin directory, or upload the "
+"<code>plogins-waitlist</code> folder to <code>/wp-content/plugins/</code>."
+msgstr ""
+"Instala Plogins Waitlist desde el directorio de plugins de WordPress, o sube"
+" la carpeta <code>plogins-waitlist</code> a <code>/wp-"
+"content/plugins/</code>."
+
+#. Found in installation list item.
+msgid "Install and activate WooCommerce (8.0 or later)."
+msgstr "Instala y activa WooCommerce (8.0 o posterior)."
+
+#. Found in description paragraph.
+msgid ""
+"Plogins Waitlist does not connect to any external services. Back-in-stock "
+"notification emails are sent through your own site's WordPress mailer "
+"(<code>wp_mail</code>); subscriber data stays in your WordPress database."
+msgstr ""
+"Plogins Waitlist no se conecta a ningún servicio externo. Los correos "
+"electrónicos de notificación de reposición de stock se envían a través del "
+"sistema de correo de WordPress de tu propio sitio (<code>wp_mail</code>); "
+"los datos de los suscriptores permanecen en tu base de datos de WordPress."
+
+#. Found in description paragraph.
+msgid "<strong>Features</strong>"
+msgstr "<strong>Características</strong>"
+
+#. Found in description paragraph.
+msgid ""
+"Source and issues: https://github.com/wppoland/plogins-waitlist . Patches "
+"and bug reports are welcome there."
+msgstr ""
+"Código fuente e incidencias: https://github.com/wppoland/plogins-waitlist . "
+"Los parches y los informes de errores son bienvenidos allí."
+
+#. Found in description paragraph.
+msgid ""
+"Subscriber data lives in a single <code>{prefix}_restock_waitlist</code> "
+"table that the plugin creates and version-tracks. Notifications fire on the "
+"<code>woocommerce_product_set_stock_status</code> hook, so there is no queue"
+" or background cron to run. Uninstalling drops the table and removes the "
+"plugin's options, leaving nothing behind."
+msgstr ""
+"Los datos de los suscriptores residen en una única tabla "
+"<code>{prefix}_restock_waitlist</code> que el plugin crea y rastrea por "
+"versión. Las notificaciones se activan con el hook "
+"<code>woocommerce_product_set_stock_status</code>, por lo que no hay cola ni"
+" cron en segundo plano que ejecutar. La desinstalación elimina la tabla y "
+"las opciones del plugin, sin dejar rastro."
+
+#. Found in description paragraph.
+msgid ""
+"Accessibility was a first-class concern rather than an afterthought. The "
+"email field carries a visually hidden label, consent is a real required "
+"checkbox, and the success/error message is announced through an <code>aria-"
+"live</code> region while the form reports <code>aria-busy</code> during "
+"submission."
+msgstr ""
+"La accesibilidad fue una preocupación de primera clase en lugar de una "
+"ocurrencia tardía. El campo de correo electrónico lleva una etiqueta "
+"visualmente oculta, el consentimiento es una casilla de verificación "
+"requerida real, y el mensaje de éxito/error se anuncia a través de una "
+"región <code>aria-live</code> mientras el formulario informa <code>aria-"
+"busy</code> durante el envío."
+
+#. Found in description paragraph.
+msgid ""
+"The form is rendered in PHP on the single-product summary, where it sits in "
+"the normal page flow rather than being injected after load, so it does not "
+"shift surrounding content. Submitting it runs a small vanilla-JavaScript "
+"<code>fetch</code> request loaded with <code>defer</code> in the footer; the"
+" plugin adds no jQuery of its own. On variable products it hooks into "
+"WooCommerce's existing variation script so the form only appears once an "
+"unavailable variation is selected."
+msgstr ""
+"El formulario se renderiza en PHP en el resumen del producto individual, "
+"donde se ubica en el flujo normal de la página en lugar de ser inyectado "
+"después de la carga, por lo que no desplaza el contenido circundante. Al "
+"enviarlo, se ejecuta una pequeña solicitud <code>fetch</code> de JavaScript "
+"puro cargada con <code>defer</code> en el pie de página; el plugin no añade "
+"su propio jQuery. En productos variables, se engancha al script de variación"
+" existente de WooCommerce para que el formulario solo aparezca una vez que "
+"se selecciona una variación no disponible."
+
+#. Found in description paragraph.
 msgid ""
 "Plogins Waitlist adds a waitlist form to out-of-stock WooCommerce products. "
 "A shopper enters their email, and when you set the product back to \"In "
@@ -26,343 +464,338 @@ msgid ""
 "and nothing leaves your database."
 msgstr ""
 "Plogins Waitlist añade un formulario de lista de espera a los productos de "
-"WooCommerce sin stock. Un cliente introduce su correo y, cuando vuelves a "
-"poner el producto «En stock», Plogins Waitlist avisa por correo a todas las "
-"personas en espera mediante el propio motor de correo de WordPress de tu "
-"sitio. No hay ningún servicio externo, ninguna cuenta que crear y nada sale "
-"de tu base de datos."
+"WooCommerce agotados. Un comprador introduce su correo electrónico, y cuando"
+" vuelves a poner el producto en \"En stock\", Plogins Waitlist envía un "
+"correo electrónico a todos los que esperan a través del sistema de correo de"
+" WordPress de tu propio sitio. No hay ningún servicio externo, ninguna "
+"cuenta para registrarse, y nada sale de tu base de datos."
 
+#. Found in description list item.
 msgid ""
-"The form is rendered in PHP on the single-product summary, where it sits in "
-"the normal page flow rather than being injected after load, so it does not "
-"shift surrounding content. Submitting it runs a small vanilla-JavaScript "
-"`fetch` request loaded with `defer` in the footer; the plugin adds no jQuery"
-" of its own. On variable products it hooks into WooCommerce's existing "
-"variation script so the form only appears once an unavailable variation is "
-"selected."
+"Compatible with WooCommerce HPOS (Custom Order Tables) and Cart/Checkout "
+"Blocks"
 msgstr ""
-"El formulario se renderiza en PHP en el resumen de producto individual, "
-"donde se sitúa en el flujo normal de la página en lugar de inyectarse tras "
-"la carga, así que no desplaza el contenido de alrededor. Al enviarlo se "
-"ejecuta una pequeña petición `fetch` en JavaScript puro, cargada con `defer`"
-" en el pie de página; el plugin no añade jQuery propio. En los productos "
-"variables se engancha al script de variaciones que ya trae WooCommerce, de "
-"modo que el formulario solo aparece una vez seleccionada una variación no "
-"disponible."
+"Compatible con WooCommerce HPOS (Tablas de Pedidos Personalizadas) y Bloques"
+" de Carrito/Finalizar Compra"
 
+#. Found in description list item.
 msgid ""
-"Accessibility was a first-class concern rather than an afterthought. The "
-"email field carries a visually hidden label, consent is a real required "
-"checkbox, and the success/error message is announced through an `aria-live` "
-"region while the form reports `aria-busy` during submission."
+"Theme-overridable form template (<code>yourtheme/restock/single-"
+"product/waitlist-form.php</code>)"
 msgstr ""
-"La accesibilidad fue una prioridad desde el principio y no una ocurrencia de"
-" última hora. El campo de correo lleva una etiqueta oculta visualmente, el "
-"consentimiento es una casilla obligatoria real y el mensaje de éxito o error"
-" se anuncia en una región `aria-live`, mientras que el formulario informa "
-"`aria-busy` durante el envío."
+"Plantilla de formulario anulable por el tema "
+"(<code>yourtheme/restock/single-product/waitlist-form.php</code>)"
 
+#. Found in description list item.
+msgid "Toggle guest (not-logged-in) subscriptions on or off"
+msgstr "Activar o desactivar las suscripciones de invitados (no conectados)"
+
+#. Found in description list item.
 msgid ""
-"Subscriber data lives in a single `{prefix}_restock_waitlist` table that the"
-" plugin creates and version-tracks. Notifications fire on the "
-"`woocommerce_product_set_stock_status` hook, so there is no queue or "
-"background cron to run. Uninstalling drops the table and removes the "
-"plugin's options, leaving nothing behind."
+"Customisable form labels, button text, on-screen submit messages, and "
+"notification email subject/intro/closing text"
 msgstr ""
-"Los datos de los suscriptores viven en una única tabla "
-"`{prefix}_restock_waitlist` que el plugin crea y cuya versión controla. Las "
-"notificaciones se disparan en el hook "
-"`woocommerce_product_set_stock_status`, así que no hay ninguna cola ni tarea"
-" cron en segundo plano. Al desinstalar se elimina la tabla y se borran las "
-"opciones del plugin, sin dejar nada atrás."
+"Etiquetas de formulario, texto de botón, mensajes de envío en pantalla y "
+"texto de asunto/introducción/cierre de correo electrónico de notificación "
+"personalizables"
 
-msgid ""
-"Source and issues: https://github.com/wppoland/plogins-waitlist . Patches "
-"and bug reports are welcome there."
+#. Found in description list item.
+msgid "Optional heading and intro text shown above the form"
 msgstr ""
-"Código fuente e incidencias: https://github.com/wppoland/plogins-waitlist . "
-"Los parches y los informes de errores son bienvenidos allí."
+"Encabezado y texto de introducción opcionales que se muestran encima del "
+"formulario"
 
-msgid "<strong>Features</strong>"
-msgstr "<strong>Funciones</strong>"
-
+#. Found in description list item.
 msgid ""
-"* Waitlist form shown automatically on out-of-stock and backorder (\"on backorder\") product pages\n"
-"* Variable products: form appears after the shopper selects an unavailable variation\n"
-"* WooCommerce <strong>My Account → Waitlists</strong> tab for logged-in customers (review lists, leave waitlist)\n"
-"* Asynchronous submit with a vanilla-JavaScript fetch call, so the page does not reload\n"
-"* Email field pre-filled for logged-in customers\n"
-"* Required consent checkbox for every signup\n"
-"* Automatic plain-text email notification on restock, sent via `wp_mail`\n"
-"* Optional heading and intro text shown above the form\n"
-"* Customisable form labels, button text, on-screen submit messages, and notification email subject/intro/closing text\n"
-"* Place the form with the `[restock_waitlist]` shortcode or the Elementor \"Waitlist Form\" widget\n"
-"* Toggle guest (not-logged-in) subscriptions on or off\n"
-"* Social-proof \"N shoppers are already waiting\" line above the form (optional, customisable, singular/plural aware)\n"
-"* Admin subscriber list with per-product filter, CSV export, and one-click remove\n"
-"* Theme-overridable form template (`yourtheme/restock/single-product/waitlist-form.php`)\n"
-"* Compatible with WooCommerce HPOS (Custom Order Tables) and Cart/Checkout Blocks"
+"Automatic plain-text email notification on restock, sent via "
+"<code>wp_mail</code>"
 msgstr ""
-"* Formulario de lista de espera que se muestra automáticamente en las páginas de productos sin stock y en reserva («en reserva»)\n"
-"* Productos variables: el formulario aparece después de que el cliente seleccione una variación no disponible\n"
-"* Pestaña de WooCommerce <strong>Mi cuenta → Listas de espera</strong> para clientes con sesión iniciada (revisar listas, salir de la lista de espera)\n"
-"* Envío asíncrono con una llamada fetch en JavaScript puro, de modo que la página no se recarga\n"
-"* Campo de correo rellenado previamente para los clientes con sesión iniciada\n"
-"* Casilla de consentimiento obligatoria en cada suscripción\n"
-"* Notificación automática por correo en texto plano al reponer, enviada mediante `wp_mail`\n"
-"* Encabezado y texto introductorio opcionales mostrados sobre el formulario\n"
-"* Etiquetas del formulario, texto del botón, mensajes de envío en pantalla y asunto/introducción/cierre del correo de notificación personalizables\n"
-"* Coloca el formulario con el shortcode `[restock_waitlist]` o el widget «Formulario de lista de espera» de Elementor\n"
-"* Activa o desactiva las suscripciones de invitados (sin sesión iniciada)\n"
-"* Línea de prueba social «N clientes ya están en espera» sobre el formulario (opcional, personalizable, con singular/plural)\n"
-"* Lista de suscriptores en la administración con filtro por producto, exportación a CSV y eliminación con un clic\n"
-"* Plantilla de formulario sobrescribible desde el tema (`yourtheme/restock/single-product/waitlist-form.php`)\n"
-"* Compatible con WooCommerce HPOS (tablas de pedidos personalizadas) y los bloques de Carrito/Pago"
+"Notificación automática por correo electrónico de texto plano al reponer "
+"existencias, enviada a través de <code>wp_mail</code>"
 
-msgid "More free WooCommerce plugins from WPPoland:"
-msgstr "Más plugins gratuitos de WooCommerce de WPPoland:"
-
-msgid ""
-"* [Plogins Tiers](https://wordpress.org/plugins/plogins-tiers/) - quantity and volume pricing tiers with a server-rendered price table.\n"
-"* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.\n"
-"* [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - Polish-market compliance: GPSR, Omnibus, GDPR, invoices and storefront modules."
+#. Found in description list item.
+msgid "Required consent checkbox for every signup"
 msgstr ""
-"* [Plogins Tiers](https://wordpress.org/plugins/plogins-tiers/) - niveles de precios por cantidad y volumen con una tabla de precios renderizada en el servidor.\n"
-"* [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - búsqueda y filtrado de productos por AJAX rápidos para WooCommerce, sin jQuery.\n"
-"* [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - cumplimiento para el mercado polaco: GPSR, Omnibus, RGPD, facturas y módulos de tienda."
+"Casilla de verificación de consentimiento obligatoria para cada registro"
 
-msgid "Browse the full catalogue at https://plogins.com/ ."
-msgstr "Explora el catálogo completo en https://plogins.com/es/ ."
-
-msgid ""
-"1. Install and activate WooCommerce (8.0 or later).\n"
-"2. Install Plogins Waitlist from the WordPress plugin directory, or upload the `plogins-waitlist` folder to `/wp-content/plugins/`.\n"
-"3. Activate the plugin through the <strong>Plugins<strong> screen. 4. Optionally visit </strong>WooCommerce → Plogins Waitlist</strong> to customise labels and notification text; sensible defaults work out of the box.\n"
-"5. The waitlist form appears automatically on any out-of-stock or backorder product page."
+#. Found in description list item.
+msgid "Email field pre-filled for logged-in customers"
 msgstr ""
-"1. Instala y activa WooCommerce (8.0 o posterior).\n"
-"2. Instala Plogins Waitlist desde el directorio de plugins de WordPress o sube la carpeta `plogins-waitlist` a `/wp-content/plugins/`.\n"
-"3. Activa el plugin desde la pantalla <strong>Plugins</strong>.\n"
-"4. Opcionalmente entra en <strong>WooCommerce → Plogins Waitlist</strong> para personalizar las etiquetas y el texto de las notificaciones; los valores por defecto razonables funcionan de inmediato.\n"
-"5. El formulario de lista de espera aparece automáticamente en cualquier página de producto sin stock o en reserva."
+"Campo de correo electrónico precargado para clientes con sesión iniciada"
 
+#. Found in description list item.
 msgid ""
-"* <strong>Documentation</strong> - https://plogins.com/plogins-waitlist/docs/\n"
-"* <strong>Plugin page</strong> - https://plogins.com/plogins-waitlist/\n"
-"* <strong>Source code</strong> - https://github.com/wppoland/plogins-waitlist\n"
-"* <strong>Bug reports and feature requests</strong> - https://github.com/wppoland/plogins-waitlist/issues"
+"Asynchronous submit with a vanilla-JavaScript fetch call, so the page does "
+"not reload"
 msgstr ""
-"* <strong>Documentación</strong> - https://plogins.com/es/plogins-waitlist/docs/\n"
-"* <strong>Página del plugin</strong> - https://plogins.com/es/plogins-waitlist/\n"
-"* <strong>Código fuente</strong> - https://github.com/wppoland/plogins-waitlist\n"
-"* <strong>Informes de errores y peticiones de funciones</strong> - https://github.com/wppoland/plogins-waitlist/issues"
+"Envío asíncrono con una llamada fetch de vanilla-JavaScript, para que la "
+"página no se recargue"
 
+#. Found in description list item.
 msgid ""
-"Yes. Plogins Waitlist is a WooCommerce extension and requires WooCommerce "
-"8.0 or later. It will show an admin notice and stay inactive if WooCommerce "
-"is missing or out of date."
+"WooCommerce <strong>My Account → Waitlists</strong> tab for logged-in "
+"customers (review lists, leave waitlist)"
 msgstr ""
-"Sí. Plogins Waitlist es una extensión de WooCommerce y requiere WooCommerce "
-"8.0 o posterior. Mostrará un aviso en la administración y permanecerá "
-"inactivo si falta WooCommerce o está desactualizado."
+"Pestaña de WooCommerce <strong>Mi cuenta → Listas de espera</strong> para "
+"clientes con sesión iniciada (revisar listas, salir de la lista de espera)"
 
+#. Found in description list item.
 msgid ""
-"When WooCommerce sets a product's stock status to `instock`, Plogins "
-"Waitlist sends a plain-text email to every pending subscriber for that "
-"product (and its parent, for variations) using your site's own WordPress "
-"mailer (`wp_mail`). Subscribers who are emailed successfully are marked as "
-"notified so they are not contacted twice."
+"Variable products: form appears after the shopper selects an unavailable "
+"variation"
 msgstr ""
-"Cuando WooCommerce pone el estado de stock de un producto en `instock`, "
-"Plogins Waitlist envía un correo en texto plano a cada suscriptor pendiente "
-"de ese producto (y de su producto superior, en el caso de las variaciones) "
-"usando el propio motor de correo de WordPress de tu sitio (`wp_mail`). Los "
-"suscriptores a los que se avisa correctamente se marcan como notificados "
-"para no contactarlos dos veces."
+"Productos variables: el formulario aparece después de que el comprador "
+"selecciona una variación no disponible"
 
+#. Found in description list item.
 msgid ""
-"Yes. Choose options in the standard WooCommerce variation form first. When "
-"the selected variation is out of stock or on backorder, the waitlist form "
-"appears and the subscription is stored for that specific variation."
+"Waitlist form shown automatically on out-of-stock and backorder (\"on "
+"backorder\") product pages"
 msgstr ""
-"Sí. Elige primero las opciones en el formulario de variaciones estándar de "
-"WooCommerce. Cuando la variación seleccionada está sin stock o en reserva, "
-"aparece el formulario de lista de espera y la suscripción se guarda para esa"
-" variación concreta."
+"Formulario de lista de espera mostrado automáticamente en páginas de "
+"productos sin existencias y en pedidos pendientes (\"en espera\")"
 
+#. Found in description header.
+msgid "External Services"
+msgstr "Servicios externos"
+
+#. Screenshot description.
 msgid ""
-"Yes by default. You can restrict signups to logged-in customers by "
-"unchecking <strong>Allow guest subscriptions</strong> in <strong>WooCommerce"
-" → Plogins Waitlist</strong>."
+"A customer's My Account Waitlists tab, showing products they are waiting "
+"for, the current stock status, and a button to leave each list."
 msgstr ""
-"Sí, por defecto. Puedes restringir las suscripciones a los clientes con "
-"sesión iniciada desmarcando <strong>Permitir suscripciones de "
-"invitados</strong> en <strong>WooCommerce → Plogins Waitlist</strong>."
+"Una pestaña de Listas de espera de Mi cuenta del cliente, que muestra los "
+"productos que está esperando, el estado actual del stock y un botón para "
+"salir de cada lista."
 
+#. Screenshot description.
 msgid ""
-"Yes. Logged-in customers see a <strong>Waitlists</strong> tab under My "
-"Account with active subscriptions, current stock status, and a button to "
-"leave each list."
+"The Plogins Waitlist settings screen with sectioned cards and inline help "
+"for guest access, the heading and intro, form labels, on-screen messages, "
+"and notification email text."
 msgstr ""
-"Sí. Los clientes con sesión iniciada ven una pestaña <strong>Listas de "
-"espera</strong> en Mi cuenta con las suscripciones activas, el estado de "
-"stock actual y un botón para salir de cada lista."
+"La pantalla de configuración de Plogins Waitlist con tarjetas seccionadas y "
+"ayuda en línea para el acceso de invitados, el encabezado y la introducción,"
+" las etiquetas del formulario, los mensajes en pantalla y el texto del "
+"correo electrónico de notificación."
 
+#. Screenshot description.
 msgid ""
-"Every signup requires the shopper to tick an explicit consent checkbox "
-"before they can join the waitlist; the form will not submit without it. "
-"Subscriber emails are stored only in a custom table in your own WordPress "
-"database and are never sent to any external service. You are responsible for"
-" the wording of your consent label and your site's privacy policy."
+"The waitlist form on an out-of-stock product, where a shopper leaves their "
+"email and ticks the required consent box to be notified when it returns."
 msgstr ""
-"Cada suscripción exige que el cliente marque una casilla de consentimiento "
-"explícita antes de poder unirse a la lista de espera; el formulario no se "
-"enviará sin ella. Los correos de los suscriptores se guardan únicamente en "
-"una tabla propia de tu base de datos de WordPress y nunca se envían a ningún"
-" servicio externo. Eres responsable de la redacción de tu etiqueta de "
-"consentimiento y de la política de privacidad de tu sitio."
+"El formulario de lista de espera en un producto sin existencias, donde un "
+"comprador deja su correo electrónico y marca la casilla de consentimiento "
+"requerida para ser notificado cuando vuelva a estar disponible."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"Yes. From <strong>WooCommerce → Plogins Waitlist → Subscribers</strong> you "
-"can view subscribers, filter by product, and export the list as CSV."
+"Translation quality pass: corrected Polish, German and Spanish (product "
+"names kept in English, legal withdrawal terminology, WooCommerce glossary "
+"and grammar fixes)."
 msgstr ""
-"Sí. Desde <strong>WooCommerce → Plogins Waitlist → Suscriptores</strong> "
-"puedes ver los suscriptores, filtrar por producto y exportar la lista como "
-"CSV."
+"Revisión de calidad de la traducción: se corrigió el polaco, el alemán y el "
+"español (nombres de producto mantenidos en inglés, terminología legal de "
+"desistimiento, glosario de WooCommerce y correcciones gramaticales)."
 
-msgid ""
-"No. The form is submitted with a vanilla-JavaScript `fetch` call and the "
-"result is announced in an `aria-live` region, so the page stays put. Plogins"
-" Waitlist loads no jQuery for this; on variable products it does rely on "
-"WooCommerce's own variation script to know which variation is selected."
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Documentation: readme links are now labelled links."
+msgstr "Documentación: los enlaces del readme ahora son enlaces etiquetados."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Shortened display name (dropped the Plogins prefix; slug unchanged)."
 msgstr ""
-"No. El formulario se envía con una llamada `fetch` en JavaScript puro y el "
-"resultado se anuncia en una región `aria-live`, así que la página no se "
-"mueve. Plogins Waitlist no carga jQuery para esto; en los productos "
-"variables sí depende del propio script de variaciones de WooCommerce para "
-"saber qué variación está seleccionada."
+"Nombre de visualización acortado (se eliminó el prefijo Plogins; el slug no "
+"ha cambiado)."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"Yes. This plugin is compatible with WordPress Multisite. Network activate it"
-" or activate it on individual sites; each site keeps its own settings and "
-"data."
+"Fixed low-contrast headings on the admin settings screen under an OS dark-"
+"mode preference."
 msgstr ""
-"Sí. Este plugin es compatible con WordPress Multisite. Actívalo en toda la "
-"red o en sitios concretos; cada sitio conserva sus propios ajustes y datos."
+"Se corrigieron los encabezados de bajo contraste en la pantalla de "
+"configuración de administración bajo una preferencia de modo oscuro del "
+"sistema operativo."
 
-msgid ""
-"1. The waitlist form on an out-of-stock product, where a shopper leaves their email and ticks the required consent box to be notified when it returns.\n"
-"2. The Plogins Waitlist settings screen with sectioned cards and inline help for guest access, the heading and intro, form labels, on-screen messages, and notification email text.\n"
-"3. A customer's My Account Waitlists tab, showing products they are waiting for, the current stock status, and a button to leave each list."
-msgstr ""
-"1. El formulario de lista de espera en un producto sin stock, donde un cliente deja su correo y marca la casilla de consentimiento obligatoria para recibir un aviso cuando el producto vuelva.\n"
-"2. La pantalla de ajustes de Plogins Waitlist con tarjetas por secciones y ayuda contextual sobre el acceso de invitados, el encabezado y la introducción, las etiquetas del formulario, los mensajes en pantalla y el texto del correo de notificación.\n"
-"3. La pestaña Listas de espera de Mi cuenta de un cliente, que muestra los productos que espera, el estado de stock actual y un botón para salir de cada lista."
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Added a Free vs PRO overview to the readme."
+msgstr "Se añadió una descripción general de Free vs PRO al readme."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"Plogins Waitlist does not connect to any external services. Back-in-stock "
-"notification emails are sent through your own site's WordPress mailer "
-"(`wp_mail`); subscriber data stays in your WordPress database."
-msgstr ""
-"Plogins Waitlist no se conecta a ningún servicio externo. Los correos de "
-"aviso de reposición se envían mediante el propio motor de correo de "
-"WordPress de tu sitio (`wp_mail`); los datos de los suscriptores permanecen "
-"en tu base de datos de WordPress."
-
-msgid ""
-"Plogins Waitlist includes Polish, German and Spanish translations for the "
-"plugin interface. The text domain is `plogins-waitlist`, so WordPress.org "
-"language packs can also override or extend these bundled translations."
-msgstr ""
-"Plogins Waitlist incluye traducciones al polaco, alemán y español de la "
-"interfaz del plugin. El dominio de texto es `plogins-waitlist`, de modo que "
-"los paquetes de idioma de WordPress.org también pueden sobrescribir o "
-"ampliar estas traducciones incluidas."
-
-msgid ""
-"* Added bundled Polish, German and Spanish translations for the plugin "
+"Added bundled Polish, German and Spanish translations for the plugin "
 "interface."
 msgstr ""
-"* Añadidas traducciones al polaco, alemán y español de la interfaz del "
-"plugin."
+"Se añadieron traducciones empaquetadas al polaco, alemán y español para la "
+"interfaz del plugin."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"* Internal cleanup: unified the internal code identity to Waitlist (was "
+"Internal cleanup: unified the internal code identity to Waitlist (was "
 "Restock). No change to your settings or data; legacy aliases keep older PRO "
 "builds working during the update."
 msgstr ""
-"* Limpieza interna: se unificó la identidad interna del código a Waitlist "
-"(antes Restock). Sin cambios en tus ajustes ni datos; los alias heredados "
-"mantienen operativas las compilaciones PRO antiguas durante la "
-"actualización."
+"Limpieza interna: se unificó la identidad del código interno a Waitlist (era"
+" Restock). No hay cambios en su configuración o datos; los alias heredados "
+"mantienen las versiones PRO anteriores funcionando durante la actualización."
 
-msgid "* Added a settings-screen overview of upcoming PRO features."
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Added a settings-screen overview of upcoming PRO features."
 msgstr ""
-"* Añadido en la pantalla de ajustes un resumen de las próximas funciones "
-"PRO."
+"Se añadió una descripción general en la pantalla de configuración de las "
+"próximas características PRO."
 
-msgid "* First stable release."
-msgstr "* Primera versión estable."
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "First stable release."
+msgstr "Primera versión estable."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"* Docs: added a \"You may also like\" section linking the other free "
-"WPPoland WooCommerce plugins. No functional changes."
+"Docs: added a \"You may also like\" section linking the other free WPPoland "
+"WooCommerce plugins. No functional changes."
 msgstr ""
-"* Documentación: se añadió una sección «Quizás también te guste» que enlaza "
-"los demás plugins gratuitos de WooCommerce de WPPoland. Sin cambios "
+"Documentación: se añadió una sección \"También te puede interesar\" que "
+"enlaza a otros plugins gratuitos de WPPoland WooCommerce. Sin cambios "
 "funcionales."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"* New: optional social-proof line above the form showing how many shoppers are already waiting for a product (\"12 shoppers are already waiting for this item.\"). Singular/plural aware, fully customisable text with a {count} placeholder, and hidden when nobody is waiting.\n"
-"* New: remove a subscriber directly from the admin Subscribers list (nonce-protected, with confirmation)."
-msgstr ""
-"* Nuevo: línea opcional de prueba social sobre el formulario que muestra cuántos clientes ya están esperando un producto («12 clientes ya están esperando este artículo.»). Con singular/plural, texto totalmente personalizable con un marcador {count} y oculta cuando no espera nadie.\n"
-"* Nuevo: eliminar un suscriptor directamente desde la lista de suscriptores de la administración (protegido con nonce y con confirmación)."
-
-msgid ""
-"* New: Elementor widget for the back-in-stock waitlist form, so it can be "
+"New: Elementor widget for the back-in-stock waitlist form, so it can be "
 "placed with the Elementor editor. Self-guarded: loads only when Elementor is"
 " active."
 msgstr ""
-"* Nuevo: widget de Elementor para el formulario de lista de espera de "
-"reposición, para poder colocarlo con el editor de Elementor. Autoprotegido: "
-"solo se carga cuando Elementor está activo."
+"Nuevo: widget de Elementor para el formulario de lista de espera de "
+"reposición de stock, para que pueda colocarse con el editor de Elementor. "
+"Autoprotegido: se carga solo cuando Elementor está activo."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"* Fix the text domain on three admin help strings so it matches the plugin "
-"slug."
+"New: remove a subscriber directly from the admin Subscribers list (nonce-"
+"protected, with confirmation)."
 msgstr ""
-"* Se corrigió el dominio de texto en tres cadenas de ayuda de la "
-"administración para que coincida con el slug del plugin."
+"Nuevo: eliminar un suscriptor directamente de la lista de suscriptores del "
+"administrador (protegido con nonce, con confirmación)."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"* Renamed to Plogins Waitlist for WooCommerce for a distinct, non-generic "
+"New: optional social-proof line above the form showing how many shoppers are"
+" already waiting for a product (\"12 shoppers are already waiting for this "
+"item.\"). Singular/plural aware, fully customisable text with a {count} "
+"placeholder, and hidden when nobody is waiting."
+msgstr ""
+"Nuevo: línea opcional de prueba social encima del formulario que muestra "
+"cuántos compradores ya están esperando un producto (\"12 compradores ya "
+"están esperando este artículo.\"). Consciente de singular/plural, texto "
+"totalmente personalizable con un marcador de posición {count} y oculto "
+"cuando nadie está esperando."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid "Initial release."
+msgstr "Versión inicial."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"Improved: empty optional settings now correctly fall back to the built-in "
+"defaults."
+msgstr ""
+"Mejorado: la configuración opcional vacía ahora recurre correctamente a los "
+"valores predeterminados incorporados."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"Improved: the settings page now exposes every form label, message, and email"
+" text the engine supports, instead of relying on hardcoded defaults."
+msgstr ""
+"Mejorado: la página de configuración ahora expone cada etiqueta de "
+"formulario, mensaje y texto de correo electrónico que el motor admite, en "
+"lugar de depender de valores predeterminados codificados."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"New: editable on-screen form messages (success, invalid email, missing "
+"consent, login required)."
+msgstr ""
+"Nuevo: mensajes de formulario editables en pantalla (éxito, correo "
+"electrónico no válido, consentimiento faltante, inicio de sesión requerido)."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"New: optional form heading and intro text, configurable from the settings "
+"page."
+msgstr ""
+"Nuevo: encabezado de formulario y texto de introducción opcionales, "
+"configurables desde la página de configuración."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"New: <code>[restock_waitlist]</code> shortcode to place the waitlist form "
+"manually (optional <code>id</code> attribute to target a specific product)."
+msgstr ""
+"Nuevo: shortcode <code>[restock_waitlist]</code> para colocar el formulario "
+"de lista de espera manualmente (atributo <code>id</code> opcional para "
+"apuntar a un producto específico)."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"New: settings for My Account menu label, variation prompt, and unsubscribe "
+"confirmation message."
+msgstr ""
+"Nuevo: configuración para la etiqueta del menú Mi cuenta, mensaje de "
+"variación y mensaje de confirmación de baja."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"New: variation-aware waitlist signups on variable products (form shows after"
+" an out-of-stock variation is selected)."
+msgstr ""
+"Nuevo: registros en la lista de espera conscientes de la variación en "
+"productos variables (el formulario se muestra después de seleccionar una "
+"variación sin stock)."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"New: WooCommerce My Account <strong>Waitlists</strong> tab with stock status"
+" and leave-waitlist action."
+msgstr ""
+"Nuevo: pestaña <strong>Listas de espera</strong> de Mi cuenta de WooCommerce"
+" con estado de stock y acción para salir de la lista de espera."
+
+#. Found in changelog list item.
+#, gp-priority: low
+msgid ""
+"Renamed to Plogins Waitlist for WooCommerce for a distinct, non-generic "
 "directory name. No functional changes."
 msgstr ""
-"* Renombrado a Plogins Waitlist for WooCommerce para tener un nombre de "
-"directorio distintivo y no genérico. Sin cambios funcionales."
+"Renombrado a Plogins Waitlist for WooCommerce para un nombre de directorio "
+"distinto y no genérico. Sin cambios funcionales."
 
+#. Found in changelog list item.
+#, gp-priority: low
 msgid ""
-"* New: WooCommerce My Account <strong>Waitlists</strong> tab with stock status and leave-waitlist action.\n"
-"* New: variation-aware waitlist signups on variable products (form shows after an out-of-stock variation is selected).\n"
-"* New: settings for My Account menu label, variation prompt, and unsubscribe confirmation message."
+"Fix the text domain on three admin help strings so it matches the plugin "
+"slug."
 msgstr ""
-"* Nuevo: pestaña de WooCommerce <strong>Listas de espera</strong> en Mi cuenta con el estado de stock y la acción de salir de la lista de espera.\n"
-"* Nuevo: suscripciones a la lista de espera que tienen en cuenta la variación en los productos variables (el formulario se muestra después de seleccionar una variación sin stock).\n"
-"* Nuevo: ajustes para la etiqueta del menú de Mi cuenta, el aviso de variación y el mensaje de confirmación de baja."
-
-msgid ""
-"* New: `[restock_waitlist]` shortcode to place the waitlist form manually (optional `id` attribute to target a specific product).\n"
-"* New: optional form heading and intro text, configurable from the settings page.\n"
-"* New: editable on-screen form messages (success, invalid email, missing consent, login required).\n"
-"* Improved: the settings page now exposes every form label, message, and email text the engine supports, instead of relying on hardcoded defaults.\n"
-"* Improved: empty optional settings now correctly fall back to the built-in defaults."
-msgstr ""
-"* Nuevo: shortcode `[restock_waitlist]` para colocar el formulario de lista de espera manualmente (atributo `id` opcional para apuntar a un producto concreto).\n"
-"* Nuevo: encabezado de formulario y texto introductorio opcionales, configurables desde la página de ajustes.\n"
-"* Nuevo: mensajes de formulario en pantalla editables (éxito, correo no válido, falta de consentimiento, inicio de sesión requerido).\n"
-"* Mejorado: la página de ajustes ahora expone cada etiqueta de formulario, mensaje y texto de correo que admite el motor, en lugar de depender de valores por defecto codificados.\n"
-"* Mejorado: los ajustes opcionales vacíos ahora vuelven correctamente a los valores por defecto integrados."
-
-msgid "* Initial release."
-msgstr "* Lanzamiento inicial."
+"Corregido el dominio de texto en tres cadenas de ayuda de administración "
+"para que coincida con el slug del plugin."
