@@ -656,8 +656,8 @@ msgid ""
 "automatically as soon as you restock."
 msgstr ""
 "Wenn ein Produkt nicht vorrätig ist, können sich Käufer über die "
-"Produktseite in die Warteliste eintragen. Ihre Anfragen erscheinen hier, und"
-" sie werden automatisch per E-Mail benachrichtigt, sobald du wieder "
+"Produktseite in die Warteliste eintragen. deine Anfragen erscheinen hier, "
+"und sie werden automatisch per E-Mail benachrichtigt, sobald du wieder "
 "auffüllst."
 
 #: src/Admin/Subscribers.php:224

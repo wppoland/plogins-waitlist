@@ -4,6 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Waitlist &#8211; Back in Stock for WooCommerce - Stable Readme (latest release)\n"
 "PO-Revision-Date: 2026-07-14 17:02:35+0000\n"
+"Last-Translator: wppoland.com <hello@wppoland.com>\n"
+"Language-Team: Polish <pl@li.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -365,7 +367,7 @@ msgstr ""
 
 #. Found in installation list item.
 msgid "Activate the plugin through the <strong>Plugins</strong> screen."
-msgstr "Aktywuj wtyczkę na ekranie <strong>Wtyczki</strong>."
+msgstr "Włącz wtyczkę na ekranie <strong>Wtyczki</strong>."
 
 #. Found in installation list item.
 msgid ""
@@ -377,7 +379,7 @@ msgstr ""
 
 #. Found in installation list item.
 msgid "Install and activate WooCommerce (8.0 or later)."
-msgstr "Zainstaluj i aktywuj WooCommerce (8.0 lub nowszy)."
+msgstr "Zainstaluj i włącz WooCommerce (8.0 lub nowszy)."
 
 #. Found in description paragraph.
 msgid ""
