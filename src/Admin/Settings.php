@@ -621,7 +621,7 @@ final class Settings implements HasHooks
 
         // Drop empty optional text fields so the engine and template fall back to
         // their built-in defaults (their lookups use `?? $default`, which only
-        // triggers on a missing key — not on an empty string).
+        // triggers on a missing key, not on an empty string).
         foreach ($clean as $key => $value) {
             if (! in_array($key, ['allow_guests', 'show_on_single', 'show_in_account', 'show_title', 'show_intro'], true) && $value === '') {
                 unset($clean[$key]);

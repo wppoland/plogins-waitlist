@@ -1,5 +1,5 @@
 /**
- * Restock – Admin UI helpers.
+ * Restock, Admin UI helpers.
  *
  * Progressive enhancement for the inline help tooltips. The "?" buttons are
  * usable on hover/focus via CSS alone; this script adds keyboard niceties:

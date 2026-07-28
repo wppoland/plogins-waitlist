@@ -1,5 +1,5 @@
-# Translation of Plugins - Plogins Waitlist &#8211; Back in Stock for WooCommerce - Stable Readme (latest release) in Polish
-# This file is distributed under the same license as the Plugins - Plogins Waitlist &#8211; Back in Stock for WooCommerce - Stable Readme (latest release) package.
+# Translation of Plugins - Plogins Waitlist, Back in Stock for WooCommerce - Stable Readme (latest release) in Polish
+# This file is distributed under the same license as the Plugins - Plogins Waitlist, Back in Stock for WooCommerce - Stable Readme (latest release) package.
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2026-07-05 11:03:42+0000\n"
@@ -9,12 +9,12 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
 "X-Generator: GlotPress/4.0.3\n"
 "Language: pl\n"
-"Project-Id-Version: Plugins - Plogins Waitlist &#8211; Back in Stock for WooCommerce - Stable Readme (latest release)\n"
+"Project-Id-Version: Plugins - Plogins Waitlist, Back in Stock for WooCommerce - Stable Readme (latest release)\n"
 
 #. Plugin name.
 #, gp-priority: high
 msgid "Plogins Waitlist - Back in Stock for WooCommerce"
-msgstr "Plogins Waitlist – powiadomienia o powrocie produktu do sprzedaży dla WooCommerce"
+msgstr "Plogins Waitlist, powiadomienia o powrocie produktu do sprzedaży dla WooCommerce"
 
 #. Short description.
 #, gp-priority: high
@@ -71,19 +71,19 @@ msgstr "Tak. Plogins Waitlist to rozszerzenie WooCommerce i wymaga WooCommerce 8
 
 #. Found in faq list item.
 msgid "<strong>Bug reports and feature requests</strong> - https://github.com/wppoland/plogins-waitlist/issues"
-msgstr "<strong>Zgłoszenia błędów i propozycje funkcji</strong> – https://github.com/wppoland/plogins-waitlist/issues"
+msgstr "<strong>Zgłoszenia błędów i propozycje funkcji</strong>, https://github.com/wppoland/plogins-waitlist/issues"
 
 #. Found in faq list item.
 msgid "<strong>Source code</strong> - https://github.com/wppoland/plogins-waitlist"
-msgstr "<strong>Kod źródłowy</strong> – https://github.com/wppoland/plogins-waitlist"
+msgstr "<strong>Kod źródłowy</strong>, https://github.com/wppoland/plogins-waitlist"
 
 #. Found in faq list item.
 msgid "<strong>Plugin page</strong> - https://plogins.com/plogins-waitlist/"
-msgstr "<strong>Strona wtyczki</strong> – https://plogins.com/plogins-waitlist/"
+msgstr "<strong>Strona wtyczki</strong>, https://plogins.com/plogins-waitlist/"
 
 #. Found in faq list item.
 msgid "<strong>Documentation</strong> - https://plogins.com/plogins-waitlist/docs/"
-msgstr "<strong>Dokumentacja</strong> – https://plogins.com/plogins-waitlist/docs/"
+msgstr "<strong>Dokumentacja</strong>, https://plogins.com/plogins-waitlist/docs/"
 
 #. Found in faq header.
 msgid "Does the form reload the page on submit?"
@@ -240,7 +240,7 @@ msgstr "Formularz listy oczekujących na niedostępnym produkcie, gdzie klient z
 #. Found in changelog list item.
 #, gp-priority: low
 msgid "New: Elementor widget for the back-in-stock waitlist form, so it can be placed with the Elementor editor. Self-guarded: loads only when Elementor is active."
-msgstr "Nowość: widget Elementora do formularza listy oczekujących na ponowne pojawienie się produktu w magazynie – dzięki temu można go umieścić za pomocą edytora Elementora. Automatyczna ochrona: ładuje się tylko wtedy, gdy Elementor jest aktywny."
+msgstr "Nowość: widget Elementora do formularza listy oczekujących na ponowne pojawienie się produktu w magazynie, dzięki temu można go umieścić za pomocą edytora Elementora. Automatyczna ochrona: ładuje się tylko wtedy, gdy Elementor jest aktywny."
 
 #. Found in changelog list item.
 #, gp-priority: low

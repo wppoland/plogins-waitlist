@@ -72,7 +72,7 @@ Przejrzyj pełny katalog na https://plogins.com/pl/ .
 Tak. Plogins Waitlist jest rozszerzeniem WooCommerce i wymaga WooCommerce 8.0 lub nowszego. Jeśli WooCommerce nie jest zainstalowane lub jest nieaktualne, wyświetli powiadomienie w panelu i pozostanie nieaktywne.
 
 = How are notifications sent? =
-Gdy WooCommerce ustawi stan magazynowy produktu na `instock`, Plogins Waitlist wysyła wiadomość e-mail w formie zwykłego tekstu do każdego oczekującego subskrybenta tego produktu (a w przypadku wariantów — także produktu nadrzędnego), korzystając z własnego mechanizmu poczty WordPress w Twojej witrynie (`wp_mail`). Subskrybenci, do których wiadomość dotarła pomyślnie, są oznaczani jako powiadomieni, aby nie kontaktować się z nimi dwukrotnie.
+Gdy WooCommerce ustawi stan magazynowy produktu na `instock`, Plogins Waitlist wysyła wiadomość e-mail w formie zwykłego tekstu do każdego oczekującego subskrybenta tego produktu (a w przypadku wariantów, także produktu nadrzędnego), korzystając z własnego mechanizmu poczty WordPress w Twojej witrynie (`wp_mail`). Subskrybenci, do których wiadomość dotarła pomyślnie, są oznaczani jako powiadomieni, aby nie kontaktować się z nimi dwukrotnie.
 
 = Does it work with variable products? =
 Tak. Najpierw wybierz opcje w standardowym formularzu wariantów WooCommerce. Gdy wybrany wariant jest niedostępny lub dostępny na zamówienie, pojawia się formularz listy oczekujących, a subskrypcja jest zapisywana dla tego konkretnego wariantu.

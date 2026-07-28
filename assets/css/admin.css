@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Restock – Admin UI
+   Restock, Admin UI
    Polishes the Settings and Subscribers screens: tidy cards, inline help
    tooltips, friendly empty states. Themeable, dark-mode aware, motion-safe.
    Scoped to .restock-admin so it never leaks into the rest of wp-admin.
@@ -9,8 +9,8 @@
     /* Family accent: the same warm signal-amber the storefront waitlist form
        uses, so the admin and shopper surfaces read as one product. This stop
        (#9a3412) is the deepest of the storefront pair and is computed to clear
-       WCAG AA on both wp-admin surfaces — 7.31:1 on #fff and 6.42:1 on the
-       #f0f0f1 canvas — so it is safe for the help-icon text/border and the
+       WCAG AA on both wp-admin surfaces, 7.31:1 on #fff and 6.42:1 on the
+       #f0f0f1 canvas, so it is safe for the help-icon text/border and the
        focus ring (AA needs 4.5:1 text, 3:1 UI). It is scoped to .restock-admin
        and only paints our own affordances, so it never recolours WP chrome or
        clashes with the admin colour schemes. */
@@ -45,7 +45,7 @@
     margin-block-start: 1.75em;
     padding-block-end: 0.4em;
     /* Restrained warm tick at the start of each section heading, echoing the
-       storefront form's inline-start accent edge — one small family cue, not a
+       storefront form's inline-start accent edge, one small family cue, not a
        flourish. */
     padding-inline-start: 0.6rem;
     border-inline-start: 3px solid var(--restock-accent);
@@ -85,7 +85,7 @@
     outline-offset: 2px;
 }
 
-/* Tooltip bubble — shown on hover and keyboard focus. */
+/* Tooltip bubble, shown on hover and keyboard focus. */
 .restock-help__bubble {
     position: absolute;
     inset-block-end: calc(100% + 8px);
@@ -227,7 +227,7 @@
 
 /* ── Dark mode (admin colour scheme handles most; refine cards/tips) ───── */
 /* ------------------------------------------------------------------
- * PRO upsell — dismissible banner, sidebar promo, "what PRO adds"
+ * PRO upsell, dismissible banner, sidebar promo, "what PRO adds"
  * locked cards. Pure advertising (no disabled inputs), scoped to
  * .restock-admin, using the plugin's own warm amber accent. The
  * white-text fills (CTA buttons, PRO tag) use the fixed dark stop
