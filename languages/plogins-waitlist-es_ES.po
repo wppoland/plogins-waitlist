@@ -47,8 +47,7 @@ msgstr "https://wppoland.com"
 #. translators: 1: Required PHP version, 2: Current PHP version
 #: plogins-waitlist.php:54
 #, php-format
-msgid ""
-"Plogins Waitlist requires PHP %1$s or higher. You are running PHP %2$s."
+msgid "Plogins Waitlist requires PHP %1$s or higher. You are running PHP %2$s."
 msgstr ""
 "Plogins Waitlist requiere PHP %1$s o superior. Estás ejecutando PHP %2$s."
 
@@ -90,14 +89,13 @@ msgstr "Permita que los visitantes que no hayan iniciado sesión se suscriban."
 msgid ""
 "When on, anyone can join the waitlist by entering their email. When off, "
 "only logged-in customers can subscribe and guests see your \"login "
-"required\" message instead. Turn off to keep your list tied to real "
-"accounts."
+"required\" message instead. Turn off to keep your list tied to real accounts."
 msgstr ""
 "Cuando esté activado, cualquiera puede unirse a la lista de espera "
-"ingresando su correo electrónico. Cuando está desactivado, solo los clientes"
-" que hayan iniciado sesión pueden suscribirse y los invitados verán el "
-"mensaje \"se requiere inicio de sesión\". Desactívelo para mantener tu lista"
-" vinculada a cuentas reales."
+"ingresando su correo electrónico. Cuando está desactivado, solo los clientes "
+"que hayan iniciado sesión pueden suscribirse y los invitados verán el "
+"mensaje \"se requiere inicio de sesión\". Desactívelo para mantener tu lista "
+"vinculada a cuentas reales."
 
 #: src/Admin/Settings.php:78
 msgid "Show form on product page"
@@ -117,9 +115,9 @@ msgid ""
 "form yourself with the [restock_waitlist] shortcode."
 msgstr ""
 "Muestra automáticamente el formulario en la página de cada producto cuando "
-"ese producto está agotado o en espera. En productos variables, el formulario"
-" aparece después de que el comprador selecciona una variación no disponible."
-" Desactívelo solo si coloca el formulario tú mismo con el código corto "
+"ese producto está agotado o en espera. En productos variables, el formulario "
+"aparece después de que el comprador selecciona una variación no disponible. "
+"Desactívelo solo si coloca el formulario tú mismo con el código corto "
 "[restock_waitlist]."
 
 #: src/Admin/Settings.php:91
@@ -201,8 +199,8 @@ msgstr "Avísame cuando esté disponible"
 
 #: src/Admin/Settings.php:151
 msgid ""
-"The heading shown above the form (only when \"Show heading\" is on). Keep it"
-" short and reassuring. Leave blank to use the placeholder shown here."
+"The heading shown above the form (only when \"Show heading\" is on). Keep it "
+"short and reassuring. Leave blank to use the placeholder shown here."
 msgstr ""
 "El encabezado que se muestra encima del formulario (solo cuando \"Mostrar "
 "encabezado\" está activado). Sea breve y tranquilizador. Déjelo en blanco "
@@ -237,9 +235,9 @@ msgstr ""
 
 #: src/Admin/Settings.php:177
 msgid ""
-"Introductory sentence shown above the form (only when \"Show intro text\" is"
-" on). Use it to set expectations, e.g. one email, no spam. Leave blank to "
-"use the placeholder shown here."
+"Introductory sentence shown above the form (only when \"Show intro text\" is "
+"on). Use it to set expectations, e.g. one email, no spam. Leave blank to use "
+"the placeholder shown here."
 msgstr ""
 "Frase introductoria que se muestra encima del formulario (solo cuando "
 "\"Mostrar texto de introducción\" está activado). Úselo para establecer "
@@ -278,8 +276,8 @@ msgstr "Su dirección de correo electrónico"
 
 #: src/Admin/Settings.php:211
 msgid ""
-"Greyed-out hint shown inside the empty email field. It disappears as soon as"
-" the shopper types. Leave blank to use the default."
+"Greyed-out hint shown inside the empty email field. It disappears as soon as "
+"the shopper types. Leave blank to use the default."
 msgstr ""
 "La sugerencia atenuada se muestra dentro del campo de correo electrónico "
 "vacío. Desaparece tan pronto como el comprador escribe. Déjelo en blanco "
@@ -341,8 +339,8 @@ msgstr "Se muestra encima del formulario sobre productos variables."
 
 #: src/Admin/Settings.php:251
 msgid ""
-"Guidance shown above the form on variable products, telling shoppers to pick"
-" a variation first. The form then appears once they choose an unavailable "
+"Guidance shown above the form on variable products, telling shoppers to pick "
+"a variation first. The form then appears once they choose an unavailable "
 "one. Leave blank to use the default."
 msgstr ""
 "La orientación que se muestra encima del formulario sobre productos "
@@ -372,12 +370,12 @@ msgstr "Gracias. Te hemos añadido a la lista de espera."
 
 #: src/Admin/Settings.php:277
 msgid ""
-"Confirmation shown after a shopper successfully joins the waitlist. Reassure"
-" them you will email when the item returns. Leave blank to use the default."
+"Confirmation shown after a shopper successfully joins the waitlist. Reassure "
+"them you will email when the item returns. Leave blank to use the default."
 msgstr ""
-"La confirmación se muestra después de que un comprador se une exitosamente a"
-" la lista de espera. Asegúreles que les enviará un correo electrónico cuando"
-" regrese el artículo. Déjelo en blanco para usar el valor predeterminado."
+"La confirmación se muestra después de que un comprador se une exitosamente a "
+"la lista de espera. Asegúreles que les enviará un correo electrónico cuando "
+"regrese el artículo. Déjelo en blanco para usar el valor predeterminado."
 
 #: src/Admin/Settings.php:283
 msgid "Invalid email message"
@@ -423,8 +421,7 @@ msgstr "Inicie sesión para unirse a la lista de espera."
 
 #: src/Admin/Settings.php:316
 msgid ""
-"Shown when guest subscriptions are disabled and the visitor is not logged "
-"in."
+"Shown when guest subscriptions are disabled and the visitor is not logged in."
 msgstr ""
 "Se muestra cuando las suscripciones de invitados están deshabilitadas y el "
 "visitante no ha iniciado sesión."
@@ -437,8 +434,8 @@ msgid ""
 msgstr ""
 "Solo es relevante cuando \"Permitir suscripciones de invitados\" está "
 "desactivado. Dígales a los visitantes que necesitan una cuenta, idealmente "
-"con un enlace a su página de inicio de sesión. Déjelo en blanco para usar el"
-" valor predeterminado."
+"con un enlace a su página de inicio de sesión. Déjelo en blanco para usar el "
+"valor predeterminado."
 
 #: src/Admin/Settings.php:323
 msgid "Variation required message"
@@ -469,8 +466,8 @@ msgstr "Ha sido eliminado de esta lista de espera."
 
 #: src/Admin/Settings.php:343
 msgid ""
-"Confirmation shown after a customer leaves a waitlist from My Account. Leave"
-" blank to use the default."
+"Confirmation shown after a customer leaves a waitlist from My Account. Leave "
+"blank to use the default."
 msgstr ""
 "Confirmación que se muestra después de que un cliente abandona una lista de "
 "espera desde Mi cuenta. Déjelo en blanco para usar el valor predeterminado."
@@ -498,14 +495,13 @@ msgstr "Producto nuevamente disponible - {product_name}"
 #: src/Admin/Settings.php:369 src/Admin/Settings.php:383
 msgid "Use {product_name} as a placeholder for the product title."
 msgstr ""
-"Utilice {product_name} como marcador de posición para el título del "
-"producto."
+"Utilice {product_name} como marcador de posición para el título del producto."
 
 #: src/Admin/Settings.php:370
 msgid ""
-"Subject line of the email sent to subscribers when the product is restocked."
-" Include {product_name} so each email names the exact product. Leave blank "
-"to use the default."
+"Subject line of the email sent to subscribers when the product is restocked. "
+"Include {product_name} so each email names the exact product. Leave blank to "
+"use the default."
 msgstr ""
 "Línea de asunto del correo electrónico enviado a los suscriptores cuando se "
 "repone el producto. Incluya {product_name} para que cada correo electrónico "
@@ -528,8 +524,8 @@ msgid ""
 msgstr ""
 "Primera línea del cuerpo del correo electrónico de notificación. El enlace "
 "del producto se añade automáticamente en la siguiente línea. Utilice "
-"{product_name} para nombrar el producto. Déjelo en blanco para usar el valor"
-" predeterminado."
+"{product_name} para nombrar el producto. Déjelo en blanco para usar el valor "
+"predeterminado."
 
 #: src/Admin/Settings.php:390
 msgid "Email closing text"
@@ -544,8 +540,8 @@ msgstr ""
 
 #: src/Admin/Settings.php:397
 msgid ""
-"Closing line of the notification email, shown after the product link. A good"
-" place for a brief reassurance or sign-off. Leave blank to use the default."
+"Closing line of the notification email, shown after the product link. A good "
+"place for a brief reassurance or sign-off. Leave blank to use the default."
 msgstr ""
 "Línea de cierre del correo electrónico de notificación, que se muestra "
 "después del enlace del producto. Un buen lugar para tranquilizarse "
@@ -554,13 +550,13 @@ msgstr ""
 #: src/Admin/Settings.php:411
 msgid ""
 "Configure the back-in-stock waitlist form that appears on out-of-stock "
-"products. Hover or focus the ? icons for guidance on each option. Empty text"
-" fields fall back to sensible built-in defaults."
+"products. Hover or focus the ? icons for guidance on each option. Empty text "
+"fields fall back to sensible built-in defaults."
 msgstr ""
 "Configure el formulario de lista de espera de existencias que aparece en "
 "productos agotados. Coloca el cursor sobre o enfoca el? iconos para obtener "
-"orientación sobre cada opción. Los campos de texto vacíos recurren a valores"
-" predeterminados integrados sensatos."
+"orientación sobre cada opción. Los campos de texto vacíos recurren a valores "
+"predeterminados integrados sensatos."
 
 #. translators: accessible name for the inline-help button.
 #: src/Admin/Settings.php:446
@@ -581,13 +577,13 @@ msgstr "El control de seguridad falló."
 
 #: src/Admin/Subscribers.php:141
 msgid ""
-"Everyone who asked to be notified when an out-of-stock product returns. When"
-" you restock a product, pending subscribers are emailed automatically and "
+"Everyone who asked to be notified when an out-of-stock product returns. When "
+"you restock a product, pending subscribers are emailed automatically and "
 "move to \"Notified\"."
 msgstr ""
 "Todos los que solicitaron ser notificados cuando regrese un producto "
-"agotado. Cuando reabasteces un producto, los suscriptores pendientes reciben"
-" un correo electrónico automáticamente y pasan a \"Notificados\"."
+"agotado. Cuando reabasteces un producto, los suscriptores pendientes reciben "
+"un correo electrónico automáticamente y pasan a \"Notificados\"."
 
 #. translators: %s: product name.
 #: src/Admin/Subscribers.php:150
@@ -652,8 +648,8 @@ msgid ""
 "product page. Their requests will appear here, and they will be emailed "
 "automatically as soon as you restock."
 msgstr ""
-"Cuando un producto está agotado, los compradores pueden unirse a tu lista de"
-" espera desde la página del producto. Sus solicitudes aparecerán aquí y se "
+"Cuando un producto está agotado, los compradores pueden unirse a tu lista de "
+"espera desde la página del producto. Sus solicitudes aparecerán aquí y se "
 "enviarán por correo electrónico automáticamente tan pronto como reabastezca."
 
 #: src/Admin/Subscribers.php:224
@@ -735,3 +731,47 @@ msgstr "Acciones"
 #: templates/single-product/waitlist-form.php:62
 msgid "Sending…"
 msgstr "Envío…"
+
+#. translators: %d: yearly price in PLN
+#: src/Admin/ProUpsell.php:75
+#, php-format
+msgid "od %d zł/rok"
+msgstr "desde %d zł/año"
+
+#. translators: 1: currency symbol, 2: yearly price
+#: src/Admin/ProUpsell.php:80
+#, php-format
+msgid "from %1$s%2$d/yr"
+msgstr "desde %1$s%2$d/año"
+
+#: src/Admin/ProUpsell.php:112
+msgid "Permission denied."
+msgstr "Permiso denegado."
+
+#. translators: %s: PRO edition name
+#: src/Admin/ProUpsell.php:142
+#, php-format
+msgid "Do more with %s"
+msgstr "Haz más con %s"
+
+#: src/Admin/ProUpsell.php:147 src/Admin/ProUpsell.php:176
+msgid "Upgrade to PRO"
+msgstr "Mejora a PRO"
+
+#: src/Admin/ProUpsell.php:149
+msgid "Dismiss this notice"
+msgstr "Descartar este aviso"
+
+#: src/Admin/ProUpsell.php:166
+msgid "Unlock every PRO feature"
+msgstr "Desbloquea todas las funciones PRO"
+
+#: src/Admin/ProUpsell.php:179
+msgid "one licence, every PRO feature"
+msgstr "una licencia, todas las funciones PRO"
+
+#. translators: %s: PRO edition name
+#: src/Admin/ProUpsell.php:198
+#, php-format
+msgid "What %s adds"
+msgstr "Lo que añade %s"
