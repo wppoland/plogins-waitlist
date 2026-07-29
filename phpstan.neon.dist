@@ -9,6 +9,13 @@ parameters:
         - src
         - config
     excludePaths:
+        # Elementor is an optional integration and its classes are not
+        # installed for analysis (no stub package available), so every widget
+        # here reads as an unknown base class. The runtime guard lives in
+        # ElementorWidgets, which only loads these files once Elementor has
+        # booted.
+        - src/Elementor/
+        - src/Service/ElementorWidgets.php
         - vendor/
     bootstrapFiles:
         - tests/phpstan/constants.php
