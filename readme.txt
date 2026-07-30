@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 8.1
-Stable tag: 1.0.13
+Stable tag: 1.0.14
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -125,6 +125,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist includes Polish, German and Spanish translations for the plugin interface. The text domain is `plogins-waitlist`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.0.14 =
+* Fix: a variation coming back in stock now notifies the people waiting for it. WooCommerce fires a separate action for variations, and only the product-level one was listened to, so a signup made on one size or colour never triggered an email.
 
 = 1.0.12 =
 * Translations: completed Polish, German and Spanish for the PRO upgrade panel.
