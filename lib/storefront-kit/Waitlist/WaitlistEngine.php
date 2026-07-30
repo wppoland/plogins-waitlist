@@ -37,6 +37,10 @@ final class WaitlistEngine
         add_action('wp_ajax_' . $this->ajaxAction, [$this, 'handleSubscribe']);
         add_action('wp_ajax_nopriv_' . $this->ajaxAction, [$this, 'handleSubscribe']);
         add_action('woocommerce_product_set_stock_status', [$this, 'notifySubscribers'], 10, 3);
+        // WooCommerce fires a different action for variations, and a signup made
+        // on a variation is stored against that variation id, so without this the
+        // people waiting for one size never hear that it came back.
+        add_action('woocommerce_variation_set_stock_status', [$this, 'notifySubscribers'], 10, 3);
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
     }
 
