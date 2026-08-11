@@ -50,6 +50,8 @@ More free WooCommerce plugins from WPPoland:
 
 Browse the full catalogue at https://plogins.com/ .
 
+Reporting a security issue: email hello@wppoland.com, and under our [coordinated disclosure policy](https://wppoland.com/en/security-policy/) we confirm within two business days, assess within five, and patch a critical issue within seven days of confirming it.
+
 == Plogins Waitlist PRO ==
 
 The free edition is the complete back-in-stock waitlist. **Plogins Waitlist PRO** adds demand insight and automation:
