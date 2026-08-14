@@ -13,8 +13,13 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-$restock_heading = (string) ($restock_settings['title'] ?? '');
-$restock_intro   = (string) ($restock_settings['intro_text'] ?? '');
+// Fall back to the wording the settings screen shows as the placeholder. These
+// two used to default to an empty string, so a merchant who ticked "Show
+// heading" and left "Heading text" blank, which the help text tells them is
+// fine, saw a ticked box in wp-admin while the shopper got a form with no
+// heading on it at all. Same story for the intro text.
+$restock_heading = (string) ($restock_settings['title'] ?? __('Notify me when available', 'plogins-waitlist'));
+$restock_intro   = (string) ($restock_settings['intro_text'] ?? __('Leave your email and we will let you know the moment this product is back.', 'plogins-waitlist'));
 $restock_show_heading = ! empty($restock_settings['show_title']) && $restock_heading !== '';
 $restock_show_intro   = ! empty($restock_settings['show_intro']) && $restock_intro !== '';
 

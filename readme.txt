@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.14
+Stable tag: 1.0.15
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,10 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist includes Polish, German and Spanish translations for the plugin interface. The text domain is `plogins-waitlist`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.0.15 =
+* Fix: turning off "Show form on product page" now only stops the automatic placement. The [restock_waitlist] shortcode and the Elementor widget keep working, and signups made through them are accepted instead of failing with "Waitlist is unavailable for this product".
+* Fix: ticking "Show heading" or "Show intro text" while leaving the text field blank now shows the wording from the greyed placeholder, as the field help promises, instead of showing nothing.
 
 = 1.0.14 =
 * Fix: a variation coming back in stock now notifies the people waiting for it. WooCommerce fires a separate action for variations, and only the product-level one was listened to, so a signup made on one size or colour never triggered an email.

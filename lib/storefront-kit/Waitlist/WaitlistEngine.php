@@ -96,7 +96,7 @@ final class WaitlistEngine
             wp_send_json_error(['message' => (string) ($this->getSettings()['variation_required_text'] ?? $this->defaultMessage('variation_required'))], 422);
         }
 
-        if (! $this->shouldRenderForProduct($product)) {
+        if (! $this->acceptsSubscriptions($product)) {
             wp_send_json_error(['message' => (string) ($this->getSettings()['disabled_text'] ?? $this->defaultMessage('disabled'))], 400);
         }
 
@@ -163,7 +163,23 @@ final class WaitlistEngine
 
     private function shouldRenderForProduct(\WC_Product $product): bool
     {
-        if (! $this->isEnabled() || ! ($this->getSettings()['show_on_single'] ?? true)) {
+        if (! ($this->getSettings()['show_on_single'] ?? true)) {
+            return false;
+        }
+
+        return $this->acceptsSubscriptions($product);
+    }
+
+    /**
+     * Whether this product can take signups at all, ignoring where the form was
+     * placed. `show_on_single` only governs the automatic placement above, so it
+     * must not reach the AJAX handler: merchants who turned it off to drop the
+     * shortcode in themselves saw a form on the page while every shopper who
+     * submitted it got "Waitlist is unavailable for this product".
+     */
+    private function acceptsSubscriptions(\WC_Product $product): bool
+    {
+        if (! $this->isEnabled()) {
             return false;
         }
 

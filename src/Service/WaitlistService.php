@@ -213,10 +213,12 @@ final class WaitlistService implements HasHooks
 
         $settings = $this->getSettings();
 
-        if (empty($settings['show_on_single'])) {
-            return '';
-        }
-
+        // No `show_on_single` check here on purpose. That setting only switches
+        // off the automatic placement (the engine still honours it), and its help
+        // text tells merchants to turn it off when they place the form with this
+        // shortcode. Gating the shortcode on it too meant the merchant unticked
+        // the box, put the shortcode or the Elementor widget exactly where they
+        // wanted it, and the shopper got a blank space with no form anywhere.
         if (! $product->is_type('variable') && $product->is_in_stock() && $product->get_stock_status() !== 'onbackorder') {
             return '';
         }
