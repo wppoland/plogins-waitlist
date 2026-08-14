@@ -2,18 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Plogins Waitlist for WooCommerce 0.3.2\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-waitlist\n"
-"POT-Creation-Date: 2026-06-30T05:20:58+00:00\n"
-"PO-Revision-Date: 2026-07-07 00:00+0000\n"
-"Last-Translator: motylanogha <szatkowski.mariusz@gmail.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
-"Language: es_ES\n"
+"PO-Revision-Date: 2026-07-17 09:54:27+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Domain: plogins-waitlist\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.3\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Waitlist &#8211; Back in Stock for WooCommerce - Stable (latest release)\n"
 
 #. Plugin Name of the plugin
 #: plogins-waitlist.php
@@ -48,8 +44,7 @@ msgstr "https://wppoland.com"
 #: plogins-waitlist.php:54
 #, php-format
 msgid "Plogins Waitlist requires PHP %1$s or higher. You are running PHP %2$s."
-msgstr ""
-"Plogins Waitlist requiere PHP %1$s o superior. Estás ejecutando PHP %2$s."
+msgstr "Plogins Waitlist requiere PHP %1$s o superior. Estás ejecutando PHP %2$s."
 
 #: plogins-waitlist.php:73
 msgid "Plogins Waitlist requires WooCommerce to be installed and activated."
@@ -83,7 +78,7 @@ msgstr "Permitir suscripciones de invitados"
 
 #: src/Admin/Settings.php:71
 msgid "Allow visitors who are not logged in to subscribe."
-msgstr "Permita que los visitantes que no hayan iniciado sesión se suscriban."
+msgstr "Permitir que los visitantes que no han iniciado sesión se suscriban."
 
 #: src/Admin/Settings.php:72
 msgid ""
@@ -103,9 +98,7 @@ msgstr "Mostrar formulario en la página del producto"
 
 #: src/Admin/Settings.php:84
 msgid "Display the waitlist form on single product pages."
-msgstr ""
-"Muestre el formulario de lista de espera en páginas de productos "
-"individuales."
+msgstr "Mostrar el formulario de lista de espera en las páginas de productos individuales."
 
 #: src/Admin/Settings.php:85
 msgid ""
@@ -126,7 +119,7 @@ msgstr "Listas de espera de Mi cuenta"
 
 #: src/Admin/Settings.php:97
 msgid "Show a Waitlists tab in WooCommerce My Account."
-msgstr "Mostrar una pestaña Listas de espera en WooCommerce Mi cuenta."
+msgstr "Mostrar una pestaña de Listas de espera en Mi cuenta de WooCommerce."
 
 #: src/Admin/Settings.php:98
 msgid ""
@@ -141,7 +134,7 @@ msgstr ""
 
 #: src/Admin/Settings.php:104
 msgid "My Account menu label"
-msgstr "Etiqueta del menú Mi cuenta"
+msgstr "Etiqueta del menú de Mi cuenta"
 
 #: src/Admin/Settings.php:110 src/Service/WaitlistService.php:89
 msgid "Waitlists"
@@ -149,7 +142,7 @@ msgstr "Listas de espera"
 
 #: src/Admin/Settings.php:111
 msgid "Label for the My Account menu item."
-msgstr "Etiqueta para el elemento del menú Mi cuenta."
+msgstr "Etiqueta para el elemento del menú de Mi cuenta."
 
 #: src/Admin/Settings.php:112
 msgid ""
@@ -164,13 +157,11 @@ msgstr ""
 
 #: src/Admin/Settings.php:119
 msgid "Heading & intro"
-msgstr "Título e introducción"
+msgstr "Encabezado e introducción"
 
 #: src/Admin/Settings.php:121
 msgid "Optional heading and introductory text shown above the waitlist form."
-msgstr ""
-"Encabezado opcional y texto introductorio que se muestran encima del "
-"formulario de lista de espera."
+msgstr "Encabezado opcional y texto introductorio que se muestran encima del formulario de lista de espera."
 
 #: src/Admin/Settings.php:131
 msgid "Show heading"
@@ -178,7 +169,7 @@ msgstr "Mostrar encabezado"
 
 #: src/Admin/Settings.php:137
 msgid "Display a heading above the form."
-msgstr "Muestre un encabezado encima del formulario."
+msgstr "Mostrar un encabezado encima del formulario."
 
 #: src/Admin/Settings.php:138
 msgid ""
@@ -195,7 +186,7 @@ msgstr "Texto del encabezado"
 
 #: src/Admin/Settings.php:150
 msgid "Notify me when available"
-msgstr "Avísame cuando esté disponible"
+msgstr "Notificarme cuando esté disponible"
 
 #: src/Admin/Settings.php:151
 msgid ""
@@ -212,7 +203,7 @@ msgstr "Mostrar texto de introducción"
 
 #: src/Admin/Settings.php:163
 msgid "Display intro text above the form."
-msgstr "Muestra el texto de introducción encima del formulario."
+msgstr "Mostrar texto de introducción encima del formulario."
 
 #: src/Admin/Settings.php:164
 msgid ""
@@ -246,11 +237,11 @@ msgstr ""
 
 #: src/Admin/Settings.php:184
 msgid "Form labels"
-msgstr "Etiquetas de formulario"
+msgstr "Etiquetas del formulario"
 
 #: src/Admin/Settings.php:191
 msgid "Email field label"
-msgstr "Etiqueta de campo de correo electrónico"
+msgstr "Etiqueta del campo de correo electrónico"
 
 #: src/Admin/Settings.php:197 templates/single-product/waitlist-form.php:21
 msgid "Email address"
@@ -272,7 +263,7 @@ msgstr "Marcador de posición del campo de correo electrónico"
 
 #: src/Admin/Settings.php:210 templates/single-product/waitlist-form.php:52
 msgid "Your email address"
-msgstr "Su dirección de correo electrónico"
+msgstr "Tu dirección de correo electrónico"
 
 #: src/Admin/Settings.php:211
 msgid ""
@@ -285,13 +276,11 @@ msgstr ""
 
 #: src/Admin/Settings.php:217
 msgid "Consent checkbox label"
-msgstr "Etiqueta de casilla de verificación de consentimiento"
+msgstr "Etiqueta de la casilla de verificación de consentimiento"
 
 #: src/Admin/Settings.php:223 templates/single-product/waitlist-form.php:60
 msgid "I consent to receiving back-in-stock notifications."
-msgstr ""
-"Doy mi consentimiento para recibir avisos cuando el producto vuelva a estar "
-"disponible."
+msgstr "Doy mi consentimiento para recibir notificaciones de reposición de existencias."
 
 #: src/Admin/Settings.php:224
 msgid ""
@@ -310,7 +299,7 @@ msgstr "Texto del botón"
 
 #: src/Admin/Settings.php:236 templates/single-product/waitlist-form.php:22
 msgid "Join Waitlist"
-msgstr "Unirse a la lista de espera"
+msgstr "Unirme a la lista de espera"
 
 #: src/Admin/Settings.php:237
 msgid ""
@@ -323,7 +312,7 @@ msgstr ""
 
 #: src/Admin/Settings.php:243
 msgid "Variable product prompt"
-msgstr "Aviso de producto variable"
+msgstr "Prompt de producto variable"
 
 #: src/Admin/Settings.php:249 templates/single-product/waitlist-form.php:24
 msgid ""
@@ -335,7 +324,7 @@ msgstr ""
 
 #: src/Admin/Settings.php:250
 msgid "Shown above the form on variable products."
-msgstr "Se muestra encima del formulario sobre productos variables."
+msgstr "Se muestra encima del formulario en productos variables."
 
 #: src/Admin/Settings.php:251
 msgid ""
@@ -350,7 +339,7 @@ msgstr ""
 
 #: src/Admin/Settings.php:258
 msgid "Form messages"
-msgstr "Mensajes de formulario"
+msgstr "Mensajes del formulario"
 
 #: src/Admin/Settings.php:260
 msgid ""
@@ -366,7 +355,7 @@ msgstr "Mensaje de éxito"
 
 #: src/Admin/Settings.php:276 src/Service/WaitlistService.php:41
 msgid "Thank you. You have been added to the waitlist."
-msgstr "Gracias. Te hemos añadido a la lista de espera."
+msgstr "Gracias. Has sido añadido a la lista de espera."
 
 #: src/Admin/Settings.php:277
 msgid ""
@@ -383,7 +372,7 @@ msgstr "Mensaje de correo electrónico no válido"
 
 #: src/Admin/Settings.php:289 src/Service/WaitlistService.php:38
 msgid "Provide a valid email address."
-msgstr "Proporcione una dirección de correo electrónico válida."
+msgstr "Proporciona una dirección de correo electrónico válida."
 
 #: src/Admin/Settings.php:290
 msgid ""
@@ -396,12 +385,11 @@ msgstr ""
 
 #: src/Admin/Settings.php:296
 msgid "Missing consent message"
-msgstr "Falta mensaje de consentimiento"
+msgstr "Mensaje de consentimiento faltante"
 
 #: src/Admin/Settings.php:302 src/Service/WaitlistService.php:39
 msgid "You must accept the consent for email contact."
-msgstr ""
-"Debe aceptar el consentimiento para el contacto por correo electrónico."
+msgstr "Debes aceptar el consentimiento para el contacto por correo electrónico."
 
 #: src/Admin/Settings.php:303
 msgid ""
@@ -413,11 +401,11 @@ msgstr ""
 
 #: src/Admin/Settings.php:309
 msgid "Login required message"
-msgstr "Mensaje requerido para iniciar sesión"
+msgstr "Mensaje de inicio de sesión requerido"
 
 #: src/Admin/Settings.php:315 src/Service/WaitlistService.php:40
 msgid "Login to join the waitlist."
-msgstr "Inicie sesión para unirse a la lista de espera."
+msgstr "Inicia sesión para unirte a la lista de espera."
 
 #: src/Admin/Settings.php:316
 msgid ""
@@ -443,8 +431,7 @@ msgstr "Mensaje de variación requerida"
 
 #: src/Admin/Settings.php:329 src/Service/WaitlistService.php:42
 msgid "Select product options before joining the waitlist."
-msgstr ""
-"Seleccione las opciones de productos antes de unirse a la lista de espera."
+msgstr "Selecciona las opciones del producto antes de unirte a la lista de espera."
 
 #: src/Admin/Settings.php:330
 msgid ""
@@ -457,12 +444,12 @@ msgstr ""
 
 #: src/Admin/Settings.php:336
 msgid "Unsubscribe success message"
-msgstr "Mensaje de éxito para cancelar la suscripción"
+msgstr "Mensaje de éxito de la baja"
 
 #: src/Admin/Settings.php:342 src/Service/WaitlistService.php:46
 #: src/Service/WaitlistService.php:164 src/Service/WaitlistService.php:193
 msgid "You have been removed from this waitlist."
-msgstr "Ha sido eliminado de esta lista de espera."
+msgstr "Has sido eliminado de esta lista de correo"
 
 #: src/Admin/Settings.php:343
 msgid ""
@@ -490,12 +477,11 @@ msgstr "Asunto del correo electrónico"
 
 #: src/Admin/Settings.php:368 src/Service/WaitlistService.php:43
 msgid "Product back in stock - {product_name}"
-msgstr "Producto nuevamente disponible - {product_name}"
+msgstr "Producto de nuevo en stock - {product_name}"
 
 #: src/Admin/Settings.php:369 src/Admin/Settings.php:383
 msgid "Use {product_name} as a placeholder for the product title."
-msgstr ""
-"Utilice {product_name} como marcador de posición para el título del producto."
+msgstr "Usa {product_name} como marcador de posición para el título del producto."
 
 #: src/Admin/Settings.php:370
 msgid ""
@@ -514,7 +500,7 @@ msgstr "Texto de introducción del correo electrónico"
 
 #: src/Admin/Settings.php:382 src/Service/WaitlistService.php:44
 msgid "Product {product_name} is back in stock."
-msgstr "El producto {product_name} vuelve a estar disponible."
+msgstr "El producto {product_name} ha vuelto a estar en stock."
 
 #: src/Admin/Settings.php:384
 msgid ""
@@ -565,7 +551,7 @@ msgstr "Más información"
 
 #: src/Admin/Subscribers.php:37 src/Admin/Subscribers.php:138
 msgid "Waitlist Subscribers"
-msgstr "Suscriptores en lista de espera"
+msgstr "Suscriptores de la lista de espera"
 
 #: src/Admin/Subscribers.php:38
 msgid "Subscribers"
@@ -573,7 +559,7 @@ msgstr "Suscriptores"
 
 #: src/Admin/Subscribers.php:56
 msgid "Security check failed."
-msgstr "El control de seguridad falló."
+msgstr "La comprobación de seguridad falló."
 
 #: src/Admin/Subscribers.php:141
 msgid ""
@@ -601,12 +587,12 @@ msgstr "Total"
 
 #: src/Admin/Subscribers.php:170 src/Admin/Subscribers.php:262
 msgid "Waiting"
-msgstr "Espera"
+msgstr "Esperando"
 
 #: src/Admin/Subscribers.php:174 src/Admin/Subscribers.php:235
 #: src/Admin/Subscribers.php:260
 msgid "Notified"
-msgstr "Notificado"
+msgstr "Notificados"
 
 #: src/Admin/Subscribers.php:182
 msgid "Export CSV"
@@ -630,7 +616,7 @@ msgstr "Borrar"
 
 #: src/Admin/Subscribers.php:199
 msgid "No matching subscribers"
-msgstr "No hay suscriptores coincidentes"
+msgstr "No hay suscriptores que coincidan"
 
 #. translators: %s: search term.
 #: src/Admin/Subscribers.php:204
@@ -654,7 +640,7 @@ msgstr ""
 
 #: src/Admin/Subscribers.php:224
 msgid "Review waitlist settings"
-msgstr "Revisar la configuración de la lista de espera"
+msgstr "Revisar ajustes de la lista de espera"
 
 #: src/Admin/Subscribers.php:232
 msgid "ID"
@@ -674,7 +660,7 @@ msgstr "Suscrito"
 
 #: src/Service/WaitlistService.php:35 src/Service/WaitlistService.php:163
 msgid "Something went wrong. Please try again."
-msgstr "Algo salió mal. Por favor inténtalo de nuevo."
+msgstr "Algo salió mal. Por favor, inténtalo de nuevo."
 
 #: src/Service/WaitlistService.php:36
 msgid "Product not found."
@@ -690,7 +676,7 @@ msgstr "Solicitud no válida."
 
 #: src/Service/WaitlistService.php:177
 msgid "Login required."
-msgstr "Es necesario iniciar sesión."
+msgstr "Se requiere iniciar sesión."
 
 #: src/Service/WaitlistService.php:189
 msgid "Could not remove this waitlist entry."
@@ -706,7 +692,7 @@ msgstr "Aún no estás en ninguna lista de espera."
 
 #: templates/myaccount/waitlists.php:18
 msgid "Leave waitlist"
-msgstr "Dejar lista de espera"
+msgstr "Salir de la lista de espera"
 
 #: templates/myaccount/waitlists.php:21
 msgid "In stock"
@@ -722,7 +708,7 @@ msgstr "En espera"
 
 #: templates/myaccount/waitlists.php:40
 msgid "Stock"
-msgstr "Existencias"
+msgstr "Stock"
 
 #: templates/myaccount/waitlists.php:42
 msgid "Actions"
@@ -730,13 +716,13 @@ msgstr "Acciones"
 
 #: templates/single-product/waitlist-form.php:62
 msgid "Sending…"
-msgstr "Envío…"
+msgstr "Enviando…"
 
 #. translators: %d: yearly price in PLN
 #: src/Admin/ProUpsell.php:75
 #, php-format
 msgid "od %d zł/rok"
-msgstr "desde %d zł/año"
+msgstr "od %d zł/rok"
 
 #. translators: 1: currency symbol, 2: yearly price
 #: src/Admin/ProUpsell.php:80
@@ -756,7 +742,7 @@ msgstr "Haz más con %s"
 
 #: src/Admin/ProUpsell.php:147 src/Admin/ProUpsell.php:176
 msgid "Upgrade to PRO"
-msgstr "Mejora a PRO"
+msgstr "Actualizar a PRO"
 
 #: src/Admin/ProUpsell.php:149
 msgid "Dismiss this notice"
@@ -764,7 +750,7 @@ msgstr "Descartar este aviso"
 
 #: src/Admin/ProUpsell.php:166
 msgid "Unlock every PRO feature"
-msgstr "Desbloquea todas las funciones PRO"
+msgstr "Desbloquear todas las funciones PRO"
 
 #: src/Admin/ProUpsell.php:179
 msgid "one licence, every PRO feature"
@@ -774,4 +760,4 @@ msgstr "una licencia, todas las funciones PRO"
 #: src/Admin/ProUpsell.php:198
 #, php-format
 msgid "What %s adds"
-msgstr "Lo que añade %s"
+msgstr "Lo que %s añade"
