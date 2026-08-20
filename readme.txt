@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.15
+Stable tag: 1.0.16
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,7 +61,7 @@ The free edition is the complete back-in-stock waitlist. **Plogins Waitlist PRO*
 * **Scheduled and batched sends** - stagger notifications by batch size and interval
 * **Category segmentation** - include and exclude rules per product category
 
-Everything in the free edition stays free and open. Plogins Waitlist PRO starts at 29 EUR per year (PLN shown at checkout).
+Everything in the free edition stays free and open. Plogins Waitlist PRO starts at 29 EUR per year, billed in EUR.
 
 Compare editions and pricing: [plogins.com/plogins-waitlist-pro/pricing/](https://plogins.com/plogins-waitlist-pro/pricing/)
 
@@ -127,6 +127,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist includes Polish, German and Spanish translations for the plugin interface. The text domain is `plogins-waitlist`, so WordPress.org language packs can also override or extend these bundled translations.
 
 == Changelog ==
+
+= 1.0.16 =
+* Fix: corrected the PRO pricing line. Subscriptions are priced and charged in EUR. An earlier wording claimed a different currency was offered at the payment step.
 
 = 1.0.15 =
 * Fix: turning off "Show form on product page" now only stops the automatic placement. The [restock_waitlist] shortcode and the Elementor widget keep working, and signups made through them are accepted instead of failing with "Waitlist is unavailable for this product".
