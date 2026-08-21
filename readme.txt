@@ -20,7 +20,7 @@ Accessibility was a first-class concern rather than an afterthought. The email f
 
 Subscriber data lives in a single `{prefix}_restock_waitlist` table that the plugin creates and version-tracks. Notifications fire on the `woocommerce_product_set_stock_status` hook, so there is no queue or background cron to run. Uninstalling drops the table and removes the plugin's options, leaving nothing behind.
 
-Source and issues: https://github.com/wppoland/plogins-waitlist . Patches and bug reports are welcome there.
+Source and issues: [github.com/wppoland/plogins-waitlist](https://github.com/wppoland/plogins-waitlist) . Patches and bug reports are welcome there.
 
 **Features**
 
@@ -48,7 +48,7 @@ More free WooCommerce plugins from WPPoland:
 * [Sieve - Search & Filter](https://wordpress.org/plugins/sieve/) - fast AJAX product search and filtering for WooCommerce, with no jQuery.
 * [Polski for WooCommerce](https://wordpress.org/plugins/polski/) - Polish-market compliance: GPSR, Omnibus, GDPR, invoices and storefront modules.
 
-Browse the full catalogue at https://plogins.com/ .
+Browse the full catalogue at [plogins.com/](https://plogins.com/) .
 
 Reporting a security issue: email hello@wppoland.com, and under our [coordinated disclosure policy](https://wppoland.com/en/security-policy/) we confirm within two business days, assess within five, and patch a critical issue within seven days of confirming it.
 
