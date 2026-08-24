@@ -8,6 +8,7 @@ use Waitlist\Admin\Assets;
 use Waitlist\Admin\Settings;
 use Waitlist\Admin\Subscribers;
 use Waitlist\Service\ElementorWidgets;
+use Waitlist\Service\WaitlistPrivacyService;
 use Waitlist\Service\WaitlistService;
 
 /**
@@ -18,6 +19,7 @@ use Waitlist\Service\WaitlistService;
 return is_admin()
     ? [
         WaitlistService::class,
+        WaitlistPrivacyService::class,
         ElementorWidgets::class,
         Settings::class,
         Subscribers::class,
@@ -25,5 +27,6 @@ return is_admin()
     ]
     : [
         WaitlistService::class,
+        WaitlistPrivacyService::class,
         ElementorWidgets::class,
     ];
