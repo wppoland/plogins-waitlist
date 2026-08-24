@@ -11,6 +11,7 @@ use Waitlist\Admin\Settings;
 use Waitlist\Admin\Subscribers;
 use Waitlist\Repository\WaitlistRepository;
 use Waitlist\Service\ElementorWidgets;
+use Waitlist\Service\WaitlistPrivacyService;
 use Waitlist\Service\WaitlistService;
 use Waitlist\Util\TemplateLoader;
 
@@ -33,6 +34,9 @@ return static function (Container $c): void {
     $c->singleton(WaitlistService::class, static fn (): WaitlistService => new WaitlistService(
         $c->get(WaitlistRepository::class),
         $c->get(TemplateLoader::class),
+    ));
+    $c->singleton(WaitlistPrivacyService::class, static fn (): WaitlistPrivacyService => new WaitlistPrivacyService(
+        $c->get(WaitlistRepository::class),
     ));
 
     // Elementor integration (self-guards on the elementor/widgets/register hook)

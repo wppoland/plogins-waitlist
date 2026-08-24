@@ -241,4 +241,86 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
 
         return is_int($deleted) && $deleted > 0;
     }
+
+    /**
+     * @return list<WaitlistSubscription>
+     */
+    public function findByEmail(string $email, int $limit = 100, int $offset = 0): array
+    {
+        $limit  = max(1, $limit);
+        $offset = max(0, $offset);
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+        $rows = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                'SELECT * FROM %i WHERE email = %s ORDER BY id ASC LIMIT %d OFFSET %d',
+                $this->tableName(),
+                $email,
+                $limit,
+                $offset,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return array_map(
+            static fn (object $row): WaitlistSubscription => WaitlistSubscription::fromRow($row),
+            is_array($rows) ? $rows : [],
+        );
+    }
+
+    /**
+     * @return list<WaitlistSubscription>
+     */
+    public function findByUser(int $userId, int $limit = 100, int $offset = 0): array
+    {
+        $limit  = max(1, $limit);
+        $offset = max(0, $offset);
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+        $rows = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                'SELECT * FROM %i WHERE user_id = %d ORDER BY id ASC LIMIT %d OFFSET %d',
+                $this->tableName(),
+                $userId,
+                $limit,
+                $offset,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return array_map(
+            static fn (object $row): WaitlistSubscription => WaitlistSubscription::fromRow($row),
+            is_array($rows) ? $rows : [],
+        );
+    }
+
+    public function deleteByEmail(string $email): int
+    {
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+        $deleted = $this->wpdb->query(
+            $this->wpdb->prepare(
+                'DELETE FROM %i WHERE email = %s',
+                $this->tableName(),
+                $email,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return is_int($deleted) ? $deleted : 0;
+    }
+
+    public function deleteByUser(int $userId): int
+    {
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+        $deleted = $this->wpdb->query(
+            $this->wpdb->prepare(
+                'DELETE FROM %i WHERE user_id = %d',
+                $this->tableName(),
+                $userId,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return is_int($deleted) ? $deleted : 0;
+    }
 }
