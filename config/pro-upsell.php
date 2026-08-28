@@ -15,7 +15,6 @@ return [
     'sellable'   => true,
     'price_from' => 29,
     'currency'   => 'EUR',
-    'price_pln'  => 129,
     'lead'       => [
         'en' => 'Demand analytics, double opt-in, scheduled sends, category segmentation and advanced CSV export ship in the current PRO release.',
         'pl' => 'Analityka popytu, double opt-in, harmonogramy wysyłki, segmentacja kategorii i zaawansowany eksport CSV są dostępne w bieżącym wydaniu PRO.',
