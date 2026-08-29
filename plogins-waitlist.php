@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Plugin Name:       Waitlist - Back in Stock for WooCommerce
  * Plugin URI:        https://plogins.com/plogins-waitlist/
  * Description:       Lightweight, accessible back-in-stock / waitlist notifications for WooCommerce. Built with Core Web Vitals and WCAG 2.2 AA in mind.
- * Version:           1.0.17
+ * Version:           1.0.18
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Tested up to:      7.0
@@ -19,7 +19,7 @@ declare(strict_types=1);
  * Requires Plugins:  woocommerce
  *
  * WC requires at least: 8.0
- * WC tested up to:      10.9
+ * WC tested up to:      11.0
  */
 
 namespace Waitlist;
