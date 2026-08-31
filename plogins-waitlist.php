@@ -26,7 +26,7 @@ namespace Waitlist;
 
 defined('ABSPATH') || exit;
 
-const VERSION     = '1.0.16';
+const VERSION     = '1.0.18';
 
 // Legacy aliases for Plogins Waitlist PRO <= 1.0.2 (it coupled to the old `Restock\` namespace
 // + `restock/booted`). Safe to remove once all PRO installs are >= 1.0.3.
