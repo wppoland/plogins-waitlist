@@ -36,7 +36,7 @@ final class WaitlistPrivacyService implements HasHooks
     public function registerExporters(array $exporters): array
     {
         $exporters['restock-waitlist'] = [
-            'exporter_friendly_name' => __('Restock Waitlist Subscriptions', 'restock'),
+            'exporter_friendly_name' => __('Restock Waitlist Subscriptions', 'plogins-waitlist'),
             'callback'               => [$this, 'exportWaitlist'],
         ];
 
@@ -50,7 +50,7 @@ final class WaitlistPrivacyService implements HasHooks
     public function registerErasers(array $erasers): array
     {
         $erasers['restock-waitlist'] = [
-            'eraser_friendly_name' => __('Restock Waitlist Subscriptions', 'restock'),
+            'eraser_friendly_name' => __('Restock Waitlist Subscriptions', 'plogins-waitlist'),
             'callback'             => [$this, 'eraseWaitlist'],
         ];
 
@@ -119,18 +119,19 @@ final class WaitlistPrivacyService implements HasHooks
     private function formatSubscription(WaitlistSubscription $sub): array
     {
         $product = function_exists('wc_get_product') ? wc_get_product($sub->productId) : null;
-        $productName = $product ? $product->get_name() : sprintf(__('Product #%d', 'restock'), $sub->productId);
+        /* translators: %d: numeric product ID, shown when the product no longer exists. */
+        $productName = $product ? $product->get_name() : sprintf(__('Product #%d', 'plogins-waitlist'), $sub->productId);
 
         return [
             'group_id'    => 'restock-waitlist',
-            'group_label' => __('Restock Waitlist Subscriptions', 'restock'),
+            'group_label' => __('Restock Waitlist Subscriptions', 'plogins-waitlist'),
             'item_id'     => 'waitlist-' . $sub->id,
             'data'        => [
-                ['name' => __('Product ID', 'restock'), 'value' => (string) $sub->productId],
-                ['name' => __('Product', 'restock'), 'value' => $productName],
-                ['name' => __('Subscribed At', 'restock'), 'value' => (string) $sub->createdAt],
-                ['name' => __('Notified', 'restock'), 'value' => $sub->notified ? __('Yes', 'restock') : __('No', 'restock')],
-                ['name' => __('Notified At', 'restock'), 'value' => $sub->notifiedAt ?? '—'],
+                ['name' => __('Product ID', 'plogins-waitlist'), 'value' => (string) $sub->productId],
+                ['name' => __('Product', 'plogins-waitlist'), 'value' => $productName],
+                ['name' => __('Subscribed At', 'plogins-waitlist'), 'value' => (string) $sub->createdAt],
+                ['name' => __('Notified', 'plogins-waitlist'), 'value' => $sub->notified ? __('Yes', 'plogins-waitlist') : __('No', 'plogins-waitlist')],
+                ['name' => __('Notified At', 'plogins-waitlist'), 'value' => $sub->notifiedAt ?? '-'],
             ],
         ];
     }
