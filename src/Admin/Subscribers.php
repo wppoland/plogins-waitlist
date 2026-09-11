@@ -12,7 +12,7 @@ use Waitlist\Repository\WaitlistRepository;
 /**
  * Admin page for viewing and exporting waitlist subscribers.
  *
- * Registered as WooCommerce → Waitlist → Subscribers.
+ * Registered as WooCommerce > Waitlist > Subscribers.
  */
 final class Subscribers implements HasHooks
 {

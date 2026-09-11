@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.23
+Stable tag: 1.0.24
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,7 +26,7 @@ Source and issues: [github.com/wppoland/plogins-waitlist](https://github.com/wpp
 
 * Waitlist form shown automatically on out-of-stock and backorder ("on backorder") product pages
 * Variable products: form appears after the shopper selects an unavailable variation
-* WooCommerce **My Account → Waitlists** tab for logged-in customers (review lists, leave waitlist)
+* WooCommerce **My Account > Waitlists** tab for logged-in customers (review lists, leave waitlist)
 * Asynchronous submit with a vanilla-JavaScript fetch call, so the page does not reload
 * Email field pre-filled for logged-in customers
 * Required consent checkbox for every signup
@@ -70,7 +70,7 @@ Compare editions and pricing: [plogins.com/plogins-waitlist-pro/pricing/](https:
 1. Install and activate WooCommerce (8.0 or later).
 2. Install Plogins Waitlist from the WordPress plugin directory, or upload the `plogins-waitlist` folder to `/wp-content/plugins/`.
 3. Activate the plugin through the **Plugins** screen.
-4. Optionally visit **WooCommerce → Plogins Waitlist** to customise labels and notification text; sensible defaults work out of the box.
+4. Optionally visit **WooCommerce > Plogins Waitlist** to customise labels and notification text; sensible defaults work out of the box.
 5. The waitlist form appears automatically on any out-of-stock or backorder product page.
 
 == Frequently Asked Questions ==
@@ -93,7 +93,7 @@ When WooCommerce sets a product's stock status to `instock`, Plogins Waitlist se
 Yes. Choose options in the standard WooCommerce variation form first. When the selected variation is out of stock or on backorder, the waitlist form appears and the subscription is stored for that specific variation.
 
 = Can guests join the waitlist? =
-Yes by default. You can restrict signups to logged-in customers by unchecking **Allow guest subscriptions** in **WooCommerce → Plogins Waitlist**.
+Yes by default. You can restrict signups to logged-in customers by unchecking **Allow guest subscriptions** in **WooCommerce > Plogins Waitlist**.
 
 = Can customers manage waitlists in My Account? =
 Yes. Logged-in customers see a **Waitlists** tab under My Account with active subscriptions, current stock status, and a button to leave each list.
@@ -102,7 +102,7 @@ Yes. Logged-in customers see a **Waitlists** tab under My Account with active su
 Every signup requires the shopper to tick an explicit consent checkbox before they can join the waitlist; the form will not submit without it. Subscriber emails are stored only in a custom table in your own WordPress database and are never sent to any external service. You are responsible for the wording of your consent label and your site's privacy policy.
 
 = Can I export the subscriber list? =
-Yes. From **WooCommerce → Plogins Waitlist → Subscribers** you can view subscribers, filter by product, and export the list as CSV.
+Yes. From **WooCommerce > Plogins Waitlist > Subscribers** you can view subscribers, filter by product, and export the list as CSV.
 
 = Does the form reload the page on submit? =
 No. The form is submitted with a vanilla-JavaScript `fetch` call and the result is announced in an `aria-live` region, so the page stays put. Plogins Waitlist loads no jQuery for this; on variable products it does rely on WooCommerce's own variation script to know which variation is selected.
@@ -127,6 +127,10 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.0.24 =
+* Fixed: the PRO upgrade promo kept selling to people who had already bought the paid edition. Only the banner could be dismissed, so the sidebar promo and the locked feature cards followed a paying customer around for good. The promo now checks whether the paid edition is active and steps aside when it is.
+* Fixed: arrow glyphs in the admin menu paths, and in the strings handed to translators. An arrow inside a translatable string makes the glyph every translator's problem and changes the layout in any locale that drops it.
 
 = 1.0.23 =
 * Changed: the PRO feature cards printed an arrow glyph in menu paths where the rest of the plugin and the documentation use a plain ">". Same navigation, one character that renders everywhere.

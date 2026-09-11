@@ -124,12 +124,12 @@ msgstr "Mostrar una pestaña de Listas de espera en Mi cuenta de WooCommerce."
 #: src/Admin/Settings.php:98
 msgid ""
 "Logged-in customers can review active waitlists and leave a list from My "
-"Account. After enabling, visit Settings → Permalinks and click Save once if "
+"Account. After enabling, visit Settings > Permalinks and click Save once if "
 "the tab returns a 404."
 msgstr ""
 "Los clientes que hayan iniciado sesión pueden revisar las listas de espera "
 "activas y dejar una lista desde Mi cuenta. Después de habilitarlo, visite "
-"Configuración → Enlaces permanentes y haga clic en Guardar una vez si la "
+"Configuración > Enlaces permanentes y haga clic en Guardar una vez si la "
 "pestaña devuelve un 404."
 
 #: src/Admin/Settings.php:104

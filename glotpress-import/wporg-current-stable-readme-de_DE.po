@@ -234,10 +234,10 @@ msgstr ""
 
 #. Found in faq paragraph.
 msgid ""
-"Yes. From <strong>WooCommerce → Plogins Waitlist → Subscribers</strong> you "
+"Yes. From <strong>WooCommerce > Plogins Waitlist > Subscribers</strong> you "
 "can view subscribers, filter by product, and export the list as CSV."
 msgstr ""
-"Ja. Unter <strong>WooCommerce → Plogins Waitlist → Abonnenten</strong> "
+"Ja. Unter <strong>WooCommerce > Plogins Waitlist > Abonnenten</strong> "
 "kannst du Abonnenten ansehen, nach Produkt filtern und die Liste als CSV "
 "exportieren."
 
@@ -271,11 +271,11 @@ msgstr ""
 msgid ""
 "Yes by default. You can restrict signups to logged-in customers by "
 "unchecking <strong>Allow guest subscriptions</strong> in <strong>WooCommerce"
-" → Plogins Waitlist</strong>."
+" > Plogins Waitlist</strong>."
 msgstr ""
 "Ja, standardmäßig. Du kannst Anmeldungen auf angemeldete Kunden beschränken,"
 " indem du <strong>Gast-Anmeldungen erlauben</strong> unter "
-"<strong>WooCommerce → Plogins Waitlist</strong> deaktivierst."
+"<strong>WooCommerce > Plogins Waitlist</strong> deaktivierst."
 
 #. Found in faq paragraph.
 msgid ""
@@ -359,11 +359,11 @@ msgstr ""
 
 #. Found in installation list item.
 msgid ""
-"Optionally visit <strong>WooCommerce → Plogins Waitlist</strong> to "
+"Optionally visit <strong>WooCommerce > Plogins Waitlist</strong> to "
 "customise labels and notification text; sensible defaults work out of the "
 "box."
 msgstr ""
-"Besuche optional <strong>WooCommerce → Plogins Waitlist</strong>, um "
+"Besuche optional <strong>WooCommerce > Plogins Waitlist</strong>, um "
 "Bezeichnungen und Benachrichtigungstext anzupassen; sinnvolle Standardwerte "
 "funktionieren sofort."
 
@@ -530,10 +530,10 @@ msgstr ""
 
 #. Found in description list item.
 msgid ""
-"WooCommerce <strong>My Account → Waitlists</strong> tab for logged-in "
+"WooCommerce <strong>My Account > Waitlists</strong> tab for logged-in "
 "customers (review lists, leave waitlist)"
 msgstr ""
-"WooCommerce-Tab <strong>Mein Konto → Wartelisten</strong> für angemeldete "
+"WooCommerce-Tab <strong>Mein Konto > Wartelisten</strong> für angemeldete "
 "Kunden (Listen einsehen, Warteliste verlassen)"
 
 #. Found in description list item.

@@ -140,7 +140,7 @@ msgid "Show a Waitlists tab in WooCommerce My Account."
 msgstr ""
 
 #: src/Admin/Settings.php:106
-msgid "Logged-in customers can review active waitlists and leave a list from My Account. After enabling, visit Settings → Permalinks and click Save once if the tab returns a 404."
+msgid "Logged-in customers can review active waitlists and leave a list from My Account. After enabling, visit Settings > Permalinks and click Save once if the tab returns a 404."
 msgstr ""
 
 #: src/Admin/Settings.php:112

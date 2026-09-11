@@ -123,11 +123,11 @@ msgstr "Pokaż zakładkę Listy oczekujących w Moim koncie WooCommerce."
 #: src/Admin/Settings.php:98
 msgid ""
 "Logged-in customers can review active waitlists and leave a list from My "
-"Account. After enabling, visit Settings → Permalinks and click Save once if "
+"Account. After enabling, visit Settings > Permalinks and click Save once if "
 "the tab returns a 404."
 msgstr ""
 "Zalogowani klienci mogą przeglądać aktywne listy oczekujących i opuszczać je "
-"z poziomu Mojego konta. Po włączeniu przejdź do Ustawienia → Bezpośrednie "
+"z poziomu Mojego konta. Po włączeniu przejdź do Ustawienia > Bezpośrednie "
 "odnośniki i kliknij Zapisz raz, jeśli zakładka zwraca błąd 404."
 
 #: src/Admin/Settings.php:104

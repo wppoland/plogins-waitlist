@@ -234,10 +234,10 @@ msgstr ""
 
 #. Found in faq paragraph.
 msgid ""
-"Yes. From <strong>WooCommerce → Plogins Waitlist → Subscribers</strong> you "
+"Yes. From <strong>WooCommerce > Plogins Waitlist > Subscribers</strong> you "
 "can view subscribers, filter by product, and export the list as CSV."
 msgstr ""
-"Sí. Desde <strong>WooCommerce → Plogins Waitlist → Suscriptores</strong> "
+"Sí. Desde <strong>WooCommerce > Plogins Waitlist > Suscriptores</strong> "
 "puedes ver suscriptores, filtrar por producto y exportar la lista como CSV."
 
 #. Found in faq paragraph.
@@ -270,11 +270,11 @@ msgstr ""
 msgid ""
 "Yes by default. You can restrict signups to logged-in customers by "
 "unchecking <strong>Allow guest subscriptions</strong> in <strong>WooCommerce"
-" → Plogins Waitlist</strong>."
+" > Plogins Waitlist</strong>."
 msgstr ""
 "Sí, por defecto. Puedes restringir los registros a clientes con sesión "
 "iniciada desmarcando <strong>Permitir suscripciones de invitados</strong> en"
-" <strong>WooCommerce → Plogins Waitlist</strong>."
+" <strong>WooCommerce > Plogins Waitlist</strong>."
 
 #. Found in faq paragraph.
 msgid ""
@@ -359,11 +359,11 @@ msgstr ""
 
 #. Found in installation list item.
 msgid ""
-"Optionally visit <strong>WooCommerce → Plogins Waitlist</strong> to "
+"Optionally visit <strong>WooCommerce > Plogins Waitlist</strong> to "
 "customise labels and notification text; sensible defaults work out of the "
 "box."
 msgstr ""
-"Opcionalmente, visita <strong>WooCommerce → Plogins Waitlist</strong> para "
+"Opcionalmente, visita <strong>WooCommerce > Plogins Waitlist</strong> para "
 "personalizar las etiquetas y el texto de notificación; los valores "
 "predeterminados funcionan sin configuración adicional."
 
@@ -534,10 +534,10 @@ msgstr ""
 
 #. Found in description list item.
 msgid ""
-"WooCommerce <strong>My Account → Waitlists</strong> tab for logged-in "
+"WooCommerce <strong>My Account > Waitlists</strong> tab for logged-in "
 "customers (review lists, leave waitlist)"
 msgstr ""
-"Pestaña de WooCommerce <strong>Mi cuenta → Listas de espera</strong> para "
+"Pestaña de WooCommerce <strong>Mi cuenta > Listas de espera</strong> para "
 "clientes con sesión iniciada (revisar listas, salir de la lista de espera)"
 
 #. Found in description list item.
