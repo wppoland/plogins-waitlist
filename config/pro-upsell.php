@@ -21,20 +21,20 @@ return [
     ],
     'features'   => [
         [
-            'en' => ['title' => 'Demand analytics', 'desc' => 'Plogins Waitlist → Demand Analytics dashboard: pending signups per product, top out-of-stock demand, demand and subscriber CSV exports.'],
-            'pl' => ['title' => 'Analityka popytu', 'desc' => 'Panel Plogins Waitlist → Demand Analytics: oczekujące zapisy per produkt, produkty bez towaru z największym popytem, eksport CSV popytu i subskrybentów.'],
+            'en' => ['title' => 'Demand analytics', 'desc' => 'Plogins Waitlist > Demand Analytics dashboard: pending signups per product, top out-of-stock demand, demand and subscriber CSV exports.'],
+            'pl' => ['title' => 'Analityka popytu', 'desc' => 'Panel Plogins Waitlist > Demand Analytics: oczekujące zapisy per produkt, produkty bez towaru z największym popytem, eksport CSV popytu i subskrybentów.'],
         ],
         [
-            'en' => ['title' => 'Double opt-in', 'desc' => 'Plogins Waitlist → Double Opt-In: optional email confirmation before signup. Links expire after seven days.'],
-            'pl' => ['title' => 'Double opt-in', 'desc' => 'Plogins Waitlist → Double Opt-In: opcjonalne potwierdzenie e-mail przed zapisem. Link ważny siedem dni.'],
+            'en' => ['title' => 'Double opt-in', 'desc' => 'Plogins Waitlist > Double Opt-In: optional email confirmation before signup. Links expire after seven days.'],
+            'pl' => ['title' => 'Double opt-in', 'desc' => 'Plogins Waitlist > Double Opt-In: opcjonalne potwierdzenie e-mail przed zapisem. Link ważny siedem dni.'],
         ],
         [
-            'en' => ['title' => 'Scheduled sends', 'desc' => 'Plogins Waitlist → Scheduled Sends: stagger notifications with configurable batch size and interval.'],
-            'pl' => ['title' => 'Harmonogramy wysyłki', 'desc' => 'Plogins Waitlist → Scheduled Sends: powiadomienia w partiach z konfigurowalnym rozmiarem i odstępem czasu.'],
+            'en' => ['title' => 'Scheduled sends', 'desc' => 'Plogins Waitlist > Scheduled Sends: stagger notifications with configurable batch size and interval.'],
+            'pl' => ['title' => 'Harmonogramy wysyłki', 'desc' => 'Plogins Waitlist > Scheduled Sends: powiadomienia w partiach z konfigurowalnym rozmiarem i odstępem czasu.'],
         ],
         [
-            'en' => ['title' => 'Category segmentation', 'desc' => 'Plogins Waitlist → Segmentation: notify only for selected product categories (include or exclude).'],
-            'pl' => ['title' => 'Segmentacja kategorii', 'desc' => 'Plogins Waitlist → Segmentation: powiadomienia tylko dla wybranych kategorii (include/exclude).'],
+            'en' => ['title' => 'Category segmentation', 'desc' => 'Plogins Waitlist > Segmentation: notify only for selected product categories (include or exclude).'],
+            'pl' => ['title' => 'Segmentacja kategorii', 'desc' => 'Plogins Waitlist > Segmentation: powiadomienia tylko dla wybranych kategorii (include/exclude).'],
         ],
         [
             'en' => ['title' => 'Advanced CSV export', 'desc' => 'Demand CSV with SKU, stock status, categories and URLs; subscriber CSV with product metadata.'],
