@@ -26,7 +26,7 @@ Kod źródłowy i zgłoszenia: https://github.com/wppoland/plogins-waitlist . Po
 
 * Formularz listy oczekujących wyświetlany automatycznie na stronach produktów niedostępnych oraz dostępnych na zamówienie („na zamówienie”)
 * Produkty z wariantami: formularz pojawia się po wybraniu przez klienta niedostępnego wariantu
-* Zakładka WooCommerce <strong>Moje konto → Listy oczekujących</strong> dla zalogowanych klientów (przegląd list, opuszczenie listy)
+* Zakładka WooCommerce <strong>Moje konto > Listy oczekujących</strong> dla zalogowanych klientów (przegląd list, opuszczenie listy)
 * Asynchroniczne wysyłanie wywołaniem fetch w czystym JavaScripcie, dzięki czemu strona się nie przeładowuje
 * Pole e-mail wstępnie wypełnione dla zalogowanych klientów
 * Wymagane pole zgody przy każdym zapisie
@@ -55,7 +55,7 @@ Przejrzyj pełny katalog na https://plogins.com/pl/ .
 1. Zainstaluj i włącz WooCommerce (8.0 lub nowszy).
 2. Zainstaluj Plogins Waitlist z katalogu wtyczek WordPress lub wgraj folder `plogins-waitlist` do `/wp-content/plugins/`.
 3. Włącz wtyczkę na ekranie <strong>Wtyczki</strong>.
-4. Opcjonalnie wejdź w <strong>WooCommerce → Plogins Waitlist</strong>, aby dostosować etykiety i tekst powiadomień; rozsądne ustawienia domyślne działają od razu.
+4. Opcjonalnie wejdź w <strong>WooCommerce > Plogins Waitlist</strong>, aby dostosować etykiety i tekst powiadomień; rozsądne ustawienia domyślne działają od razu.
 5. Formularz listy oczekujących pojawia się automatycznie na każdej stronie produktu niedostępnego lub dostępnego na zamówienie.
 
 == Frequently Asked Questions ==
@@ -78,7 +78,7 @@ Gdy WooCommerce ustawi stan magazynowy produktu na `instock`, Plogins Waitlist w
 Tak. Najpierw wybierz opcje w standardowym formularzu wariantów WooCommerce. Gdy wybrany wariant jest niedostępny lub dostępny na zamówienie, pojawia się formularz listy oczekujących, a subskrypcja jest zapisywana dla tego konkretnego wariantu.
 
 = Can guests join the waitlist? =
-Tak, domyślnie. Możesz ograniczyć zapisy do zalogowanych klientów, odznaczając opcję <strong>Zezwól na subskrypcje gości</strong> w <strong>WooCommerce → Plogins Waitlist</strong>.
+Tak, domyślnie. Możesz ograniczyć zapisy do zalogowanych klientów, odznaczając opcję <strong>Zezwól na subskrypcje gości</strong> w <strong>WooCommerce > Plogins Waitlist</strong>.
 
 = Can customers manage waitlists in My Account? =
 Tak. Zalogowani klienci widzą zakładkę <strong>Listy oczekujących</strong> w sekcji Moje konto, z aktywnymi subskrypcjami, bieżącym stanem magazynowym i przyciskiem do opuszczenia każdej listy.
@@ -87,7 +87,7 @@ Tak. Zalogowani klienci widzą zakładkę <strong>Listy oczekujących</strong> w
 Każdy zapis wymaga od klienta zaznaczenia wyraźnego pola zgody, zanim będzie mógł dołączyć do listy oczekujących; bez tego formularz nie zostanie wysłany. Adresy e-mail subskrybentów są przechowywane wyłącznie w osobnej tabeli w Twojej własnej bazie danych WordPress i nigdy nie są wysyłane do żadnej usługi zewnętrznej. Za treść etykiety zgody oraz politykę prywatności Twojej witryny odpowiadasz Ty.
 
 = Can I export the subscriber list? =
-Tak. W <strong>WooCommerce → Plogins Waitlist → Subskrybenci</strong> możesz przeglądać subskrybentów, filtrować według produktu i eksportować listę do pliku CSV.
+Tak. W <strong>WooCommerce > Plogins Waitlist > Subskrybenci</strong> możesz przeglądać subskrybentów, filtrować według produktu i eksportować listę do pliku CSV.
 
 = Does the form reload the page on submit? =
 Nie. Formularz jest wysyłany wywołaniem `fetch` w czystym JavaScripcie, a wynik jest ogłaszany w regionie `aria-live`, więc strona pozostaje na miejscu. Plogins Waitlist nie ładuje w tym celu żadnego jQuery; w przypadku produktów z wariantami korzysta z własnego skryptu wariantów WooCommerce, aby wiedzieć, który wariant jest wybrany.

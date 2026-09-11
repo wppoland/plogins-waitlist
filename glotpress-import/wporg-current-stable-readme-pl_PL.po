@@ -234,10 +234,10 @@ msgstr ""
 
 #. Found in faq paragraph.
 msgid ""
-"Yes. From <strong>WooCommerce → Plogins Waitlist → Subscribers</strong> you "
+"Yes. From <strong>WooCommerce > Plogins Waitlist > Subscribers</strong> you "
 "can view subscribers, filter by product, and export the list as CSV."
 msgstr ""
-"Tak. W <strong>WooCommerce → Plogins Waitlist → Subskrybenci</strong> możesz"
+"Tak. W <strong>WooCommerce > Plogins Waitlist > Subskrybenci</strong> możesz"
 " przeglądać subskrybentów, filtrować według produktu i eksportować listę do "
 "CSV."
 
@@ -269,11 +269,11 @@ msgstr ""
 msgid ""
 "Yes by default. You can restrict signups to logged-in customers by "
 "unchecking <strong>Allow guest subscriptions</strong> in <strong>WooCommerce"
-" → Plogins Waitlist</strong>."
+" > Plogins Waitlist</strong>."
 msgstr ""
 "Tak, domyślnie. Możesz ograniczyć zapisy do zalogowanych klientów, "
 "odznaczając <strong>Zezwalaj na zapisy gości</strong> w <strong>WooCommerce "
-"→ Plogins Waitlist</strong>."
+"> Plogins Waitlist</strong>."
 
 #. Found in faq paragraph.
 msgid ""
@@ -357,11 +357,11 @@ msgstr ""
 
 #. Found in installation list item.
 msgid ""
-"Optionally visit <strong>WooCommerce → Plogins Waitlist</strong> to "
+"Optionally visit <strong>WooCommerce > Plogins Waitlist</strong> to "
 "customise labels and notification text; sensible defaults work out of the "
 "box."
 msgstr ""
-"Opcjonalnie odwiedź <strong>WooCommerce → Plogins Waitlist</strong>, aby "
+"Opcjonalnie odwiedź <strong>WooCommerce > Plogins Waitlist</strong>, aby "
 "dostosować etykiety i teksty powiadomień; sensowne wartości domyślne "
 "działają od razu."
 
@@ -523,10 +523,10 @@ msgstr ""
 
 #. Found in description list item.
 msgid ""
-"WooCommerce <strong>My Account → Waitlists</strong> tab for logged-in "
+"WooCommerce <strong>My Account > Waitlists</strong> tab for logged-in "
 "customers (review lists, leave waitlist)"
 msgstr ""
-"Zakładka WooCommerce <strong>Moje konto → Listy oczekujących</strong> dla "
+"Zakładka WooCommerce <strong>Moje konto > Listy oczekujących</strong> dla "
 "zalogowanych klientów (przeglądanie list, opuszczanie listy)"
 
 #. Found in description list item.

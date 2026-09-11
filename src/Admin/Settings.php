@@ -103,7 +103,7 @@ final class Settings implements HasHooks
             [
                 'id'    => 'show_in_account',
                 'label' => __('Show a Waitlists tab in WooCommerce My Account.', 'plogins-waitlist'),
-                'help'  => __('Logged-in customers can review active waitlists and leave a list from My Account. After enabling, visit Settings → Permalinks and click Save once if the tab returns a 404.', 'plogins-waitlist'),
+                'help'  => __('Logged-in customers can review active waitlists and leave a list from My Account. After enabling, visit Settings > Permalinks and click Save once if the tab returns a 404.', 'plogins-waitlist'),
             ],
         );
 

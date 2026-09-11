@@ -42,8 +42,8 @@ msgid "No. The form is submitted with a vanilla-JavaScript <code>fetch</code> ca
 msgstr "Nie. Formularz jest wysyłany za pomocą wywołania <code>fetch</code> w czystym JavaScript, a wynik jest ogłaszany w regionie <code>aria-live</code>, więc strona się nie przeładowuje. Plogins Waitlist nie ładuje jQuery do tego celu; przy produktach zmiennych korzysta ze skryptu wariantów WooCommerce, aby wiedzieć, który wariant jest wybrany."
 
 #. Found in faq paragraph.
-msgid "Yes. From <strong>WooCommerce → Plogins Waitlist → Subscribers</strong> you can view subscribers, filter by product, and export the list as CSV."
-msgstr "Tak. W <strong>WooCommerce → Plogins Waitlist → Subskrybenci</strong> możesz przeglądać subskrybentów, filtrować według produktu i eksportować listę do CSV."
+msgid "Yes. From <strong>WooCommerce > Plogins Waitlist > Subscribers</strong> you can view subscribers, filter by product, and export the list as CSV."
+msgstr "Tak. W <strong>WooCommerce > Plogins Waitlist > Subskrybenci</strong> możesz przeglądać subskrybentów, filtrować według produktu i eksportować listę do CSV."
 
 #. Found in faq paragraph.
 msgid "Every signup requires the shopper to tick an explicit consent checkbox before they can join the waitlist; the form will not submit without it. Subscriber emails are stored only in a custom table in your own WordPress database and are never sent to any external service. You are responsible for the wording of your consent label and your site's privacy policy."
@@ -54,8 +54,8 @@ msgid "Yes. Logged-in customers see a <strong>Waitlists</strong> tab under My Ac
 msgstr "Tak. Zalogowani klienci widzą zakładkę <strong>Listy oczekujących</strong> w Moim koncie z aktywnymi zapisami, aktualnym stanem magazynowym i przyciskiem do opuszczenia każdej listy."
 
 #. Found in faq paragraph.
-msgid "Yes by default. You can restrict signups to logged-in customers by unchecking <strong>Allow guest subscriptions</strong> in <strong>WooCommerce → Plogins Waitlist</strong>."
-msgstr "Tak, domyślnie. Możesz ograniczyć zapisy do zalogowanych klientów, odznaczając <strong>Zezwalaj na zapisy gości</strong> w <strong>WooCommerce → Plogins Waitlist</strong>."
+msgid "Yes by default. You can restrict signups to logged-in customers by unchecking <strong>Allow guest subscriptions</strong> in <strong>WooCommerce > Plogins Waitlist</strong>."
+msgstr "Tak, domyślnie. Możesz ograniczyć zapisy do zalogowanych klientów, odznaczając <strong>Zezwalaj na zapisy gości</strong> w <strong>WooCommerce > Plogins Waitlist</strong>."
 
 #. Found in faq paragraph.
 msgid "Yes. Choose options in the standard WooCommerce variation form first. When the selected variation is out of stock or on backorder, the waitlist form appears and the subscription is stored for that specific variation."
@@ -126,8 +126,8 @@ msgid "The waitlist form appears automatically on any out-of-stock or backorder 
 msgstr "Formularz listy oczekujących pojawia się automatycznie na każdej stronie produktu niedostępnego lub na zamówienie."
 
 #. Found in installation list item.
-msgid "Optionally visit <strong>WooCommerce → Plogins Waitlist</strong> to customise labels and notification text; sensible defaults work out of the box."
-msgstr "Opcjonalnie odwiedź <strong>WooCommerce → Plogins Waitlist</strong>, aby dostosować etykiety i teksty powiadomień; sensowne wartości domyślne działają od razu."
+msgid "Optionally visit <strong>WooCommerce > Plogins Waitlist</strong> to customise labels and notification text; sensible defaults work out of the box."
+msgstr "Opcjonalnie odwiedź <strong>WooCommerce > Plogins Waitlist</strong>, aby dostosować etykiety i teksty powiadomień; sensowne wartości domyślne działają od razu."
 
 #. Found in installation list item.
 msgid "Activate the plugin through the <strong>Plugins</strong> screen."
@@ -210,8 +210,8 @@ msgid "Asynchronous submit with a vanilla-JavaScript fetch call, so the page doe
 msgstr "Asynchroniczne wysyłanie za pomocą wywołania fetch w czystym JavaScript, bez przeładowania strony"
 
 #. Found in description list item.
-msgid "WooCommerce <strong>My Account → Waitlists</strong> tab for logged-in customers (review lists, leave waitlist)"
-msgstr "Zakładka WooCommerce <strong>Moje konto → Listy oczekujących</strong> dla zalogowanych klientów (przeglądanie list, opuszczanie listy)"
+msgid "WooCommerce <strong>My Account > Waitlists</strong> tab for logged-in customers (review lists, leave waitlist)"
+msgstr "Zakładka WooCommerce <strong>Moje konto > Listy oczekujących</strong> dla zalogowanych klientów (przeglądanie list, opuszczanie listy)"
 
 #. Found in description list item.
 msgid "Variable products: form appears after the shopper selects an unavailable variation"

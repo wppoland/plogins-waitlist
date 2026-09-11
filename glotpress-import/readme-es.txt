@@ -26,7 +26,7 @@ Código fuente e incidencias: https://github.com/wppoland/plogins-waitlist . Los
 
 * Formulario de lista de espera que se muestra automáticamente en las páginas de productos sin stock y en reserva («en reserva»)
 * Productos variables: el formulario aparece después de que el cliente seleccione una variación no disponible
-* Pestaña de WooCommerce <strong>Mi cuenta → Listas de espera</strong> para clientes con sesión iniciada (revisar listas, salir de la lista de espera)
+* Pestaña de WooCommerce <strong>Mi cuenta > Listas de espera</strong> para clientes con sesión iniciada (revisar listas, salir de la lista de espera)
 * Envío asíncrono con una llamada fetch en JavaScript puro, de modo que la página no se recarga
 * Campo de correo rellenado previamente para los clientes con sesión iniciada
 * Casilla de consentimiento obligatoria en cada suscripción
@@ -55,7 +55,7 @@ Explora el catálogo completo en https://plogins.com/es/ .
 1. Instala y activa WooCommerce (8.0 o posterior).
 2. Instala Plogins Waitlist desde el directorio de plugins de WordPress o sube la carpeta `plogins-waitlist` a `/wp-content/plugins/`.
 3. Activa el plugin desde la pantalla <strong>Plugins</strong>.
-4. Opcionalmente entra en <strong>WooCommerce → Plogins Waitlist</strong> para personalizar las etiquetas y el texto de las notificaciones; los valores por defecto razonables funcionan de inmediato.
+4. Opcionalmente entra en <strong>WooCommerce > Plogins Waitlist</strong> para personalizar las etiquetas y el texto de las notificaciones; los valores por defecto razonables funcionan de inmediato.
 5. El formulario de lista de espera aparece automáticamente en cualquier página de producto sin stock o en reserva.
 
 == Frequently Asked Questions ==
@@ -78,7 +78,7 @@ Cuando WooCommerce pone el estado de stock de un producto en `instock`, Plogins 
 Sí. Elige primero las opciones en el formulario de variaciones estándar de WooCommerce. Cuando la variación seleccionada está sin stock o en reserva, aparece el formulario de lista de espera y la suscripción se guarda para esa variación concreta.
 
 = Can guests join the waitlist? =
-Sí, por defecto. Puedes restringir las suscripciones a los clientes con sesión iniciada desmarcando <strong>Permitir suscripciones de invitados</strong> en <strong>WooCommerce → Plogins Waitlist</strong>.
+Sí, por defecto. Puedes restringir las suscripciones a los clientes con sesión iniciada desmarcando <strong>Permitir suscripciones de invitados</strong> en <strong>WooCommerce > Plogins Waitlist</strong>.
 
 = Can customers manage waitlists in My Account? =
 Sí. Los clientes con sesión iniciada ven una pestaña <strong>Listas de espera</strong> en Mi cuenta con las suscripciones activas, el estado de stock actual y un botón para salir de cada lista.
@@ -87,7 +87,7 @@ Sí. Los clientes con sesión iniciada ven una pestaña <strong>Listas de espera
 Cada suscripción exige que el cliente marque una casilla de consentimiento explícita antes de poder unirse a la lista de espera; el formulario no se enviará sin ella. Los correos de los suscriptores se guardan únicamente en una tabla propia de tu base de datos de WordPress y nunca se envían a ningún servicio externo. Eres responsable de la redacción de tu etiqueta de consentimiento y de la política de privacidad de tu sitio.
 
 = Can I export the subscriber list? =
-Sí. Desde <strong>WooCommerce → Plogins Waitlist → Suscriptores</strong> puedes ver los suscriptores, filtrar por producto y exportar la lista como CSV.
+Sí. Desde <strong>WooCommerce > Plogins Waitlist > Suscriptores</strong> puedes ver los suscriptores, filtrar por producto y exportar la lista como CSV.
 
 = Does the form reload the page on submit? =
 No. El formulario se envía con una llamada `fetch` en JavaScript puro y el resultado se anuncia en una región `aria-live`, así que la página no se mueve. Plogins Waitlist no carga jQuery para esto; en los productos variables sí depende del propio script de variaciones de WooCommerce para saber qué variación está seleccionada.

@@ -26,7 +26,7 @@ Quellcode und Issues: https://github.com/wppoland/plogins-waitlist . Patches und
 
 * Wartelisten-Formular, das automatisch auf Produktseiten erscheint, die nicht vorrätig oder auf Bestellung („lieferbar auf Bestellung“) sind
 * Variable Produkte: das Formular erscheint, nachdem der Käufer eine nicht verfügbare Variante gewählt hat
-* WooCommerce-Tab <strong>Mein Konto → Wartelisten</strong> für eingeloggte Kundschaft (Listen ansehen, Warteliste verlassen)
+* WooCommerce-Tab <strong>Mein Konto > Wartelisten</strong> für eingeloggte Kundschaft (Listen ansehen, Warteliste verlassen)
 * Asynchrones Absenden per fetch-Aufruf in reinem JavaScript, sodass die Seite nicht neu lädt
 * E-Mail-Feld für eingeloggte Kundschaft vorausgefüllt
 * Pflicht-Einwilligungs-Checkbox bei jeder Anmeldung
@@ -55,7 +55,7 @@ Durchstöbere den vollständigen Katalog unter https://plogins.com/de/ .
 1. Installiere und aktiviere WooCommerce (8.0 oder neuer).
 2. Installiere Plogins Waitlist aus dem WordPress-Plugin-Verzeichnis oder lade den Ordner `plogins-waitlist` nach `/wp-content/plugins/` hoch.
 3. Aktiviere das Plugin über den Bildschirm <strong>Plugins</strong>.
-4. Besuche optional <strong>WooCommerce → Plogins Waitlist</strong>, um Beschriftungen und Benachrichtigungstexte anzupassen; sinnvolle Standardwerte funktionieren sofort.
+4. Besuche optional <strong>WooCommerce > Plogins Waitlist</strong>, um Beschriftungen und Benachrichtigungstexte anzupassen; sinnvolle Standardwerte funktionieren sofort.
 5. Das Wartelisten-Formular erscheint automatisch auf jeder Produktseite, die nicht vorrätig oder auf Bestellung ist.
 
 == Frequently Asked Questions ==
@@ -78,7 +78,7 @@ Wenn WooCommerce den Lagerstatus eines Produkts auf `instock` setzt, sendet Plog
 Ja. Wähle zuerst die Optionen im normalen WooCommerce-Variationsformular. Ist die gewählte Variante nicht vorrätig oder auf Bestellung, erscheint das Wartelisten-Formular und die Anmeldung wird für genau diese Variante gespeichert.
 
 = Can guests join the waitlist? =
-Ja, standardmäßig. Du kannst Anmeldungen auf eingeloggte Kundschaft beschränken, indem du <strong>Gast-Anmeldungen erlauben</strong> unter <strong>WooCommerce → Plogins Waitlist</strong> deaktivierst.
+Ja, standardmäßig. Du kannst Anmeldungen auf eingeloggte Kundschaft beschränken, indem du <strong>Gast-Anmeldungen erlauben</strong> unter <strong>WooCommerce > Plogins Waitlist</strong> deaktivierst.
 
 = Can customers manage waitlists in My Account? =
 Ja. Eingeloggte Kundschaft sieht unter „Mein Konto“ einen Tab <strong>Wartelisten</strong> mit aktiven Anmeldungen, aktuellem Lagerstatus und einem Button, um jede Liste zu verlassen.
@@ -87,7 +87,7 @@ Ja. Eingeloggte Kundschaft sieht unter „Mein Konto“ einen Tab <strong>Wartel
 Jede Anmeldung verlangt, dass der Käufer eine ausdrückliche Einwilligungs-Checkbox anhakt, bevor er der Warteliste beitreten kann; ohne sie wird das Formular nicht abgeschickt. Die E-Mail-Adressen der Abonnenten werden nur in einer eigenen Tabelle in deiner eigenen WordPress-Datenbank gespeichert und niemals an einen externen Dienst gesendet. Für den Wortlaut deiner Einwilligungs-Beschriftung und die Datenschutzerklärung deiner Website bist du verantwortlich.
 
 = Can I export the subscriber list? =
-Ja. Unter <strong>WooCommerce → Plogins Waitlist → Abonnenten</strong> kannst du Abonnenten ansehen, nach Produkt filtern und die Liste als CSV exportieren.
+Ja. Unter <strong>WooCommerce > Plogins Waitlist > Abonnenten</strong> kannst du Abonnenten ansehen, nach Produkt filtern und die Liste als CSV exportieren.
 
 = Does the form reload the page on submit? =
 Nein. Das Formular wird mit einem `fetch`-Aufruf in reinem JavaScript abgeschickt und das Ergebnis in einer `aria-live`-Region angesagt, sodass die Seite bleibt, wo sie ist. Plogins Waitlist lädt dafür kein jQuery; bei variablen Produkten verlässt es sich auf das eigene Variations-Skript von WooCommerce, um zu wissen, welche Variante gewählt ist.

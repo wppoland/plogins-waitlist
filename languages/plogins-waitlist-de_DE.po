@@ -131,11 +131,11 @@ msgstr "Zeige eine Wartelisten-Registerkarte in WooCommerce Mein Konto an."
 #: src/Admin/Settings.php:98
 msgid ""
 "Logged-in customers can review active waitlists and leave a list from My "
-"Account. After enabling, visit Settings → Permalinks and click Save once if "
+"Account. After enabling, visit Settings > Permalinks and click Save once if "
 "the tab returns a 404."
 msgstr ""
 "Angemeldete Kunden können aktive Wartelisten überprüfen und über „Mein "
-"Konto“ eine Liste hinterlassen. Gehe nach der Aktivierung zu Einstellungen → "
+"Konto“ eine Liste hinterlassen. Gehe nach der Aktivierung zu Einstellungen > "
 "Permalinks und klicke einmal auf Speichern, wenn die Registerkarte einen 404-"
 "Fehler zurückgibt."
 
