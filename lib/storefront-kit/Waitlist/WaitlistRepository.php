@@ -13,5 +13,13 @@ interface WaitlistRepository
      */
     public function findPendingByProduct(int $productId): iterable;
 
+    /**
+     * One batch of pending subscribers after the given (created_at, id) cursor,
+     * in the same order as findPendingByProduct().
+     *
+     * @return iterable<object{id:int,email:string,createdAt:\DateTimeImmutable}>
+     */
+    public function findPendingBatch(int $productId, int $limit, string $afterCreatedAt = '', int $afterId = 0): iterable;
+
     public function markNotified(int $id): void;
 }

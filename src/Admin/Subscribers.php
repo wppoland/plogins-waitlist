@@ -20,6 +20,21 @@ final class Subscribers implements HasHooks
     private const NONCE_EXPORT = 'restock_export_subscribers';
     private const NONCE_DELETE = 'restock_delete_subscriber';
 
+    /**
+     * Subscribers listed per admin page. Filterable with
+     * `plogins_waitlist_subscribers_per_page`.
+     */
+    private const PER_PAGE = 50;
+
+    /**
+     * Rows held in memory at once while streaming the CSV export.
+     *
+     * ponytail: a plain LIMIT/OFFSET walk, which is enough for a table this
+     * shape. If an export ever outgrows the PHP time limit, move it behind a
+     * scheduled job that appends to a file instead of raising this.
+     */
+    private const EXPORT_CHUNK = 500;
+
     public function __construct(
         private readonly WaitlistRepository $repository,
     ) {
@@ -91,9 +106,6 @@ final class Subscribers implements HasHooks
         }
 
         $productId = isset($_GET['product_id']) ? absint($_GET['product_id']) : 0;
-        $rows = $productId > 0
-            ? $this->repository->findPendingByProduct($productId)
-            : $this->repository->findAll();
 
         nocache_headers();
         header('Content-Type: text/csv; charset=UTF-8');
@@ -115,16 +127,28 @@ final class Subscribers implements HasHooks
             return $s !== '' && in_array($s[0], ['=', '+', '-', '@', "\t", "\r"], true) ? "'" . $s : $s;
         };
 
-        foreach ($rows as $sub) {
-            fputcsv($out, array_map($csvCell, [
-                $sub->id,
-                $sub->productId,
-                $sub->email,
-                $sub->userId ?? '',
-                $sub->notified ? 'yes' : 'no',
-                $sub->createdAt->format('Y-m-d H:i:s'),
-                $sub->notifiedAt !== null ? $sub->notifiedAt->format('Y-m-d H:i:s') : '',
-            ]));
+        // Same rows, same order as before, read one chunk at a time so the
+        // export does not load the whole table into memory first.
+        for ($offset = 0; ; $offset += self::EXPORT_CHUNK) {
+            $rows = $productId > 0
+                ? $this->repository->findPendingByProduct($productId, self::EXPORT_CHUNK, $offset)
+                : $this->repository->findAll(self::EXPORT_CHUNK, $offset);
+
+            foreach ($rows as $sub) {
+                fputcsv($out, array_map($csvCell, [
+                    $sub->id,
+                    $sub->productId,
+                    $sub->email,
+                    $sub->userId ?? '',
+                    $sub->notified ? 'yes' : 'no',
+                    $sub->createdAt->format('Y-m-d H:i:s'),
+                    $sub->notifiedAt !== null ? $sub->notifiedAt->format('Y-m-d H:i:s') : '',
+                ]));
+            }
+
+            if (count($rows) < self::EXPORT_CHUNK) {
+                break;
+            }
         }
 
         // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Writing CSV to php://output; WP_Filesystem is for files, not the output stream.
@@ -141,14 +165,19 @@ final class Subscribers implements HasHooks
         // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only list filters (GET), no state change.
         $productId = isset($_GET['product_id']) ? absint($_GET['product_id']) : 0;
         $search    = isset($_GET['s']) ? sanitize_text_field(wp_unslash((string) $_GET['s'])) : '';
+        $paged     = isset($_GET['paged']) ? max(1, absint($_GET['paged'])) : 1;
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
+
+        $perPage = max(1, (int) apply_filters('plogins_waitlist_subscribers_per_page', self::PER_PAGE));
+        $offset  = ($paged - 1) * $perPage;
+
         if ($productId > 0) {
-            $rows = $this->repository->findPendingByProduct($productId);
+            $rows = $this->repository->findPendingByProduct($productId, $perPage, $offset);
         } elseif ('' !== $search) {
-            $rows = $this->repository->search($search);
+            $rows = $this->repository->search($search, $perPage, $offset);
         } else {
-            $rows = $this->repository->findAll();
+            $rows = $this->repository->findAll($perPage, $offset);
         }
 
         $exportUrl = wp_nonce_url(
@@ -162,17 +191,13 @@ final class Subscribers implements HasHooks
             self::NONCE_EXPORT,
         );
 
-        // Summary stats computed from the already-fetched rows (no extra query).
-        $total    = count($rows);
-        $pending  = 0;
-        $notified = 0;
-        foreach ($rows as $sub) {
-            if ($sub->notified) {
-                ++$notified;
-            } else {
-                ++$pending;
-            }
-        }
+        // Counted in the database, not from $rows: only one page of rows is
+        // fetched now, and a summary of the visible page would be a lie.
+        $counts     = $this->repository->countFiltered($productId, $search);
+        $total      = $counts['total'];
+        $pending    = $counts['pending'];
+        $notified   = $counts['notified'];
+        $totalPages = (int) ceil($total / $perPage);
 
         $filteredProduct = $productId > 0 ? wc_get_product($productId) : null;
         ?>
@@ -333,6 +358,22 @@ final class Subscribers implements HasHooks
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+                <?php if ($totalPages > 1) : ?>
+                    <div class="tablenav bottom">
+                        <div class="tablenav-pages">
+                            <?php
+                            // Core supplies the translated prev/next labels.
+                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- paginate_links() returns escaped markup.
+                            echo paginate_links([
+                                'base' => add_query_arg('paged', '%#%'),
+                                'format' => '',
+                                'total' => $totalPages,
+                                'current' => $paged,
+                            ]);
+                            ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
         <?php
