@@ -11,11 +11,13 @@ declare(strict_types=1);
  * changed the stock, if a batch ignores its size, if the walk loses or repeats
  * a subscriber, if a failed send makes it loop forever, if a batch that cannot
  * run abandons the rest of the list, if the CSV export goes back to walking by
- * offset over rows the mailing is still mutating, or if a list query drops its
- * LIMIT.
+ * offset over rows the mailing is still mutating, if a list query drops its
+ * LIMIT, if the `plogins_waitlist_should_notify` seam an add-on needs stops
+ * being honoured, or if deactivation and uninstall stop unscheduling the batch
+ * hook (or go back to reading its name off a class an add-on can shadow).
  *
  * Plain PHP on purpose: this plugin has no test framework, and adding one to
- * protect five assertions would cost more than it guards.
+ * protect these assertions would cost more than it guards.
  */
 
 define('ABSPATH', __DIR__ . '/');
@@ -40,6 +42,8 @@ function check(string $label, bool $ok): void
 $GLOBALS['scheduled'] = [];
 $GLOBALS['mails']     = [];
 $GLOBALS['mail_ok']   = true;
+/** @var array<string, mixed> Filter name to the value the stub returns. */
+$GLOBALS['filters']   = [];
 
 function add_action(string $hook, $callback, int $priority = 10, int $args = 1): bool
 {
@@ -48,7 +52,7 @@ function add_action(string $hook, $callback, int $priority = 10, int $args = 1):
 
 function apply_filters(string $hook, $value, ...$rest)
 {
-    return $value;
+    return array_key_exists($hook, $GLOBALS['filters']) ? $GLOBALS['filters'][$hook] : $value;
 }
 
 function wp_schedule_single_event(int $timestamp, string $hook, array $args = [])
@@ -397,6 +401,71 @@ check('the notify batch is a keyset walk', str_contains($wpdb->queries[2], 'crea
     && ! str_contains($wpdb->queries[2], 'OFFSET'));
 check('the export walk is a keyset walk', str_contains($wpdb->queries[5], 'id > %d')
     && ! str_contains($wpdb->queries[5], 'OFFSET'));
+
+
+// --- 6. an add-on can veto a mailing without removing the callback ----------
+
+// Plogins Waitlist PRO used to remove notifySubscribers() and mail everyone
+// itself, inline, which is exactly the request-length problem the batching was
+// added to end. `plogins_waitlist_should_notify` is the seam it uses instead.
+
+$repository           = new FakeRepository();
+$GLOBALS['product']   = new WC_Product(7);
+$GLOBALS['mails']     = [];
+$GLOBALS['scheduled'] = [];
+seed($repository, 7, 30);
+$engine = make_engine($repository);
+
+$GLOBALS['filters']['plogins_waitlist_should_notify'] = false;
+$engine->notifySubscribers(7, 'instock', $GLOBALS['product']);
+
+check('a vetoed restock queues nothing', $GLOBALS['scheduled'] === []);
+check('a vetoed restock mails nobody', $GLOBALS['mails'] === []);
+
+$GLOBALS['filters'] = [];
+$engine->notifySubscribers(7, 'instock', $GLOBALS['product']);
+
+check('an unvetoed restock still queues', count($GLOBALS['scheduled']) === 1);
+
+drain($engine);
+check('an unvetoed restock still mails everyone', count($GLOBALS['mails']) === 30);
+
+// --- 7. deactivation and uninstall unschedule the batch hook ----------------
+
+/**
+ * Source of a PHP file with comments removed, so these assertions read the code
+ * and not the prose explaining it.
+ */
+function php_code_without_comments(string $file): string
+{
+    $code = '';
+
+    foreach (token_get_all((string) file_get_contents($file)) as $token) {
+        if (is_array($token) && in_array($token[0], [T_COMMENT, T_DOC_COMMENT], true)) {
+            continue;
+        }
+
+        $code .= is_array($token) ? $token[1] : $token;
+    }
+
+    return $code;
+}
+
+$bootstrapCode = php_code_without_comments(__DIR__ . '/../plogins-waitlist.php');
+$uninstallCode = php_code_without_comments(__DIR__ . '/../uninstall.php');
+$unschedule    = "wp_unschedule_hook('" . WaitlistEngine::NOTIFY_HOOK . "')";
+
+check('deactivation unschedules the batch hook', str_contains($bootstrapCode, $unschedule));
+// `wp plugin delete` removes an active plugin without deactivating it first,
+// so on that path uninstall.php is the only thing that runs.
+check('uninstall unschedules the batch hook', str_contains($uninstallCode, $unschedule));
+
+// Reading WaitlistEngine::NOTIFY_HOOK from either file autoloads the class, and
+// an older Plogins Waitlist PRO prepends an autoloader whose copy of that class
+// has no such constant. The uncaught Error fired before core wrote
+// `active_plugins`, so the plugin could not be deactivated at all.
+check('deactivation does not dereference the engine class', ! str_contains($bootstrapCode, 'WaitlistEngine'));
+check('uninstall does not dereference the engine class', ! str_contains($uninstallCode, 'WaitlistEngine'));
 
 echo $failures === 0 ? "\nPASS\n" : "\n{$failures} FAILED\n";
 exit($failures === 0 ? 0 : 1);

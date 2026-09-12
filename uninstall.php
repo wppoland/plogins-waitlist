@@ -11,6 +11,19 @@
 
 defined('WP_UNINSTALL_PLUGIN') || exit;
 
+// A queued restock mailing must not outlive the plugin.
+//
+// The deactivation hook already unschedules it, but `wp plugin delete` removes
+// an active plugin without deactivating it first, and then uninstall.php is the
+// only thing that runs. Without this the batch events stayed in the options
+// table, waking on every request with nothing left to answer them.
+//
+// The hook name is a literal: this file runs with the plugin's classes
+// unloaded, and an older Plogins Waitlist PRO supplies a WaitlistEngine that
+// has no such constant. tests/batching-test.php keeps the literal in step with
+// WaitlistEngine::NOTIFY_HOOK.
+wp_unschedule_hook('plogins_waitlist_notify_batch');
+
 global $wpdb;
 
 // Drop the waitlist table.

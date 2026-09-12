@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.26
+Stable tag: 1.0.27
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ The form is rendered in PHP on the single-product summary, where it sits in the 
 
 Accessibility was a first-class concern rather than an afterthought. The email field carries a visually hidden label, consent is a real required checkbox, and the success/error message is announced through an `aria-live` region while the form reports `aria-busy` during submission.
 
-Subscriber data lives in a single `{prefix}_restock_waitlist` table that the plugin creates and version-tracks. Notifications fire on the `woocommerce_product_set_stock_status` hook, so there is no queue or background cron to run. Uninstalling drops the table and removes the plugin's options, leaving nothing behind.
+Subscriber data lives in a single `{prefix}_restock_waitlist` table that the plugin creates and version-tracks. A restock queues the mailing and sends it in batches on WordPress's own cron, so the request that changed the stock is not held open while the emails go out. Uninstalling drops the table, removes the plugin's options and unschedules any batch still waiting, leaving nothing behind.
 
 Source and issues: [github.com/wppoland/plogins-waitlist](https://github.com/wppoland/plogins-waitlist) . Patches and bug reports are welcome there.
 
@@ -128,6 +128,12 @@ Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` temp
 
 == Changelog ==
 
+= 1.0.27 =
+* Fixed: deactivating the plugin could throw a fatal error, and leave it impossible to switch off, on a site also running Plogins Waitlist PRO 1.0.12 or older. The deactivation routine read the name of its scheduled job off a class those PRO versions also supply, in a copy that does not carry that name. The name is now written out in full and the routine loads nothing.
+* Fixed: deleting the plugin without deactivating it first left its queued mailing scheduled. `wp plugin delete` removes an active plugin without deactivating it, so uninstall now unschedules the job in the same way deactivation does.
+* Added: `plogins_waitlist_should_notify`, a filter deciding whether a restock mails the people waiting for that product. Returning false skips the mailing and leaves those subscribers pending. Plogins Waitlist PRO applies its category segmentation through it instead of taking the mailing over.
+* Note: if you run Plogins Waitlist PRO, update it to 1.0.14 or later at the same time. Older PRO versions remove this plugin's mailing callback on every restock and send the emails themselves, one at a time, inside the request that changed the stock. PRO 1.0.14 hands that work back to the queue here, and requires this version.
+
 = 1.0.26 =
 * Fixed: the CSV export could leave subscribers out of the file without saying so. It read the list in chunks by offset, over the same rows a queued restock mailing marks as notified while it runs, so every row that left the set took another row with it. The export now walks by a cursor on a stable key, which cannot skip or repeat. Rows come out oldest first; the list on screen is unchanged.
 * Fixed: a queued batch that could not run ended the mailing for good. If the product could not be loaded on that cron tick, or the waitlist had just been switched off, the front of the list was mailed and the rest was left neither mailed nor cleared. The same batch is now retried up to three times, five minutes apart, before the mailing is abandoned.
@@ -135,7 +141,6 @@ Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` temp
 * Fixed: "Remove" on the subscriber list threw you back to page one of an unfiltered list. It now returns to the page, product filter and search you removed from.
 * Fixed: a personal-data export request (Tools > Export Personal Data) hit a fatal error on the "Subscribed At" row, which tried to print a date object as a string. Static analysis had been reporting it; the analysis now runs over the shared engine directory too, which had been outside both it and the coding-standards check.
 * Changed: a pending-subscriber query that names no limit of its own now reads at most 5000 rows (filter `plogins_waitlist_pending_query_limit`), and the waitlist list on a customer's account page at most 200. Neither had a ceiling before.
-* Note: until Plogins Waitlist PRO 1.0.13, the PRO add-on carried its own copy of the waitlist engine, so on a site running PRO the batched mailing added in 1.0.25 did not take effect. If you run PRO, update it as well.
 
 = 1.0.25 =
 * Fixed: restocking a product no longer sends the waitlist emails inside the request that changed the stock. A product save, a REST update or an order going through used to wait for one email per waiting shopper. The mailing is now queued and sent in batches of 50 (filter `plogins_waitlist_notify_batch_size`), in the same order, to the same people.
