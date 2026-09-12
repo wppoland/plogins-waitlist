@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.27
+Stable tag: 1.0.28
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,7 +87,7 @@ Compare editions and pricing: [plogins.com/plogins-waitlist-pro/pricing/](https:
 Yes. Plogins Waitlist is a WooCommerce extension and requires WooCommerce 8.0 or later. It will show an admin notice and stay inactive if WooCommerce is missing or out of date.
 
 = How are notifications sent? =
-When WooCommerce sets a product's stock status to `instock`, Plogins Waitlist sends a plain-text email to every pending subscriber for that product (and its parent, for variations) using your site's own WordPress mailer (`wp_mail`). Subscribers who are emailed successfully are marked as notified so they are not contacted twice.
+When WooCommerce sets a product's stock status to `instock`, Plogins Waitlist queues the mailing rather than sending it inside that request. WordPress cron then walks the pending subscribers for that product (and its parent, for variations) in batches of 50, oldest signup first, emailing each one with your site's own WordPress mailer (`wp_mail`). Subscribers who are emailed successfully are marked as notified so they are not contacted twice. Filter `plogins_waitlist_notify_batch_size` to change the batch size.
 
 = Does it work with variable products? =
 Yes. Choose options in the standard WooCommerce variation form first. When the selected variation is out of stock or on backorder, the waitlist form appears and the subscription is stored for that specific variation.
@@ -127,6 +127,10 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.0.28 =
+* Fixed: the plugin logged `Warning: Class "Waitlist\Plugin" not found` on every request on any site with WP_DEBUG on. A compatibility alias kept for Plogins Waitlist PRO 1.0.2 and older was declared before the plugin's autoloader was registered, so PHP could not find the class it was aliasing. The alias now sits below the autoloader, which also means it is finally declared: for the whole time it was above, it failed and gave those old PRO versions nothing.
+* Copy: the "How are notifications sent?" answer still described the email leaving the moment WooCommerce sets the stock status. It has been queued and sent in batches on WP-Cron since 1.0.25, which is what the rest of the readme says; the answer now says it too.
 
 = 1.0.27 =
 * Fixed: deactivating the plugin could throw a fatal error, and leave it impossible to switch off, on a site also running Plogins Waitlist PRO 1.0.12 or older. The deactivation routine read the name of its scheduled job off a class those PRO versions also supply, in a copy that does not carry that name. The name is now written out in full and the routine loads nothing.

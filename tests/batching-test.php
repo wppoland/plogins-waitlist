@@ -467,5 +467,37 @@ check('uninstall unschedules the batch hook', str_contains($uninstallCode, $unsc
 check('deactivation does not dereference the engine class', ! str_contains($bootstrapCode, 'WaitlistEngine'));
 check('uninstall does not dereference the engine class', ! str_contains($uninstallCode, 'WaitlistEngine'));
 
+// --- 8. the bootstrap loads without complaining -----------------------------
+
+// class_alias() loads the class it aliases. The legacy `Restock\Plugin` alias
+// used to be declared above the autoloader, so on every single request PHP
+// warned `Class "Waitlist\Plugin" not found`, returned false, and left the
+// alias that older Plogins Waitlist PRO type-hints against undefined. Neither
+// Plugin Check nor phpcs can see that; only loading the file can.
+$loader = escapeshellarg(__DIR__ . '/bootstrap-load.php');
+$php    = escapeshellarg(PHP_BINARY);
+$output = (string) shell_exec(
+    $php . ' -d error_reporting=E_ALL -d display_errors=1 -d log_errors=0 ' . $loader . ' 2>&1'
+);
+
+$lines  = array_values(array_filter(array_map('trim', explode("\n", $output)), static fn (string $l): bool => $l !== ''));
+$result = [];
+
+foreach ($lines as $index => $line) {
+    if (str_starts_with($line, 'BOOTSTRAP ')) {
+        $result = (array) json_decode(substr($line, 10), true);
+        unset($lines[$index]);
+    }
+}
+
+check('the bootstrap emits no diagnostics when it loads', $lines === []);
+
+if ($lines !== []) {
+    echo '      ' . implode("\n      ", $lines) . "\n";
+}
+
+check('the legacy Restock\\Plugin alias is actually declared', ($result['alias'] ?? false) === true);
+check('the legacy alias points at the real plugin class', ($result['alias_target'] ?? '') === 'Waitlist\\Plugin');
+
 echo $failures === 0 ? "\nPASS\n" : "\n{$failures} FAILED\n";
 exit($failures === 0 ? 0 : 1);
