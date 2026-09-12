@@ -29,9 +29,9 @@ final class Subscribers implements HasHooks
     /**
      * Rows held in memory at once while streaming the CSV export.
      *
-     * ponytail: a plain LIMIT/OFFSET walk, which is enough for a table this
-     * shape. If an export ever outgrows the PHP time limit, move it behind a
-     * scheduled job that appends to a file instead of raising this.
+     * ponytail: a keyset walk, which is enough for a table this shape. If an
+     * export ever outgrows the PHP time limit, move it behind a scheduled job
+     * that appends to a file instead of raising this.
      */
     private const EXPORT_CHUNK = 500;
 
@@ -69,14 +69,42 @@ final class Subscribers implements HasHooks
             $this->repository->deleteById($id);
         }
 
-        wp_safe_redirect(
-            add_query_arg(
-                'restock_deleted',
-                $id > 0 ? '1' : '0',
-                admin_url('admin.php?page=' . self::PAGE),
-            ),
-        );
+        wp_safe_redirect($this->listUrl(['restock_deleted' => $id > 0 ? '1' : '0']));
         exit;
+    }
+
+    /**
+     * The list URL carrying the filters and the page the request came from.
+     *
+     * A Remove link built from the bare page slug threw the admin back to page
+     * one of an unfiltered list, so removing three rows from page three meant
+     * paging back three times.
+     *
+     * @param array<string, string|int> $extra
+     */
+    private function listUrl(array $extra = []): string
+    {
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only list filters; the actions that carry them verify their own nonce.
+        $productId = isset($_GET['product_id']) ? absint($_GET['product_id']) : 0;
+        $search    = isset($_GET['s']) ? sanitize_text_field(wp_unslash((string) $_GET['s'])) : '';
+        $paged     = isset($_GET['paged']) ? max(1, absint($_GET['paged'])) : 1;
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
+
+        $args = ['page' => self::PAGE];
+
+        if ($productId > 0) {
+            $args['product_id'] = $productId;
+        }
+
+        if ('' !== $search) {
+            $args['s'] = $search;
+        }
+
+        if ($paged > 1) {
+            $args['paged'] = $paged;
+        }
+
+        return add_query_arg(array_merge($args, $extra), admin_url('admin.php'));
     }
 
     public function addMenuPage(): void
@@ -127,14 +155,23 @@ final class Subscribers implements HasHooks
             return $s !== '' && in_array($s[0], ['=', '+', '-', '@', "\t", "\r"], true) ? "'" . $s : $s;
         };
 
-        // Same rows, same order as before, read one chunk at a time so the
-        // export does not load the whole table into memory first.
-        for ($offset = 0; ; $offset += self::EXPORT_CHUNK) {
+        // Read one chunk at a time so the export does not load the whole table
+        // into memory first, and walk it by cursor rather than by offset: the
+        // queued restock batches mark rows notified while this runs, so the
+        // `notified = 0` set shrinks under an offset walk and takes a row with
+        // it for every row that leaves. Rows come out oldest first.
+        $afterCreatedAt = '';
+        $afterId        = 0;
+
+        while (true) {
             $rows = $productId > 0
-                ? $this->repository->findPendingByProduct($productId, self::EXPORT_CHUNK, $offset)
-                : $this->repository->findAll(self::EXPORT_CHUNK, $offset);
+                ? $this->repository->findPendingBatch($productId, self::EXPORT_CHUNK, $afterCreatedAt, $afterId)
+                : $this->repository->findAllBatch(self::EXPORT_CHUNK, $afterId);
 
             foreach ($rows as $sub) {
+                $afterCreatedAt = $sub->createdAt->format('Y-m-d H:i:s');
+                $afterId        = (int) $sub->id;
+
                 fputcsv($out, array_map($csvCell, [
                     $sub->id,
                     $sub->productId,
@@ -341,7 +378,7 @@ final class Subscribers implements HasHooks
                                 <td>
                                     <?php
                                     $deleteUrl = wp_nonce_url(
-                                        add_query_arg('restock_delete', $sub->id, admin_url('admin.php?page=' . self::PAGE)),
+                                        $this->listUrl(['restock_delete' => $sub->id]),
                                         self::NONCE_DELETE . '_' . $sub->id,
                                     );
                                     ?>

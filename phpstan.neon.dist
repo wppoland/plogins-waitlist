@@ -8,6 +8,7 @@ parameters:
         - uninstall.php
         - src
         - config
+        - lib
     excludePaths:
         - vendor/
     bootstrapFiles:

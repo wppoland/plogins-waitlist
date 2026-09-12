@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Plugin Name:       Waitlist - Back in Stock for WooCommerce
  * Plugin URI:        https://plogins.com/plogins-waitlist/
  * Description:       Lightweight, accessible back-in-stock / waitlist notifications for WooCommerce. Built with Core Web Vitals and WCAG 2.2 AA in mind.
- * Version:           1.0.25
+ * Version:           1.0.26
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            WPPoland.com
@@ -25,7 +25,7 @@ namespace Waitlist;
 
 defined('ABSPATH') || exit;
 
-const VERSION     = '1.0.25';
+const VERSION     = '1.0.26';
 
 // Legacy aliases for Plogins Waitlist PRO <= 1.0.2 (it coupled to the old `Restock\` namespace
 // + `restock/booted`). Safe to remove once all PRO installs are >= 1.0.3.
@@ -108,4 +108,17 @@ register_activation_hook(PLUGIN_FILE, static function (): void {
     require_once PLUGIN_DIR . '/autoload.php';
     Plugin::instance()->container()->get(Migrator::class)->run();
     flush_rewrite_rules();
+});
+
+/**
+ * A queued restock mailing must not outlive the plugin.
+ *
+ * The batches are single events carrying a cursor in their arguments, so
+ * wp_clear_scheduled_hook() (which only matches events with the same
+ * arguments) would leave them behind. wp_unschedule_hook() clears the hook
+ * whatever arguments an event was queued with.
+ */
+register_deactivation_hook(PLUGIN_FILE, static function (): void {
+    require_once PLUGIN_DIR . '/autoload.php';
+    wp_unschedule_hook(\WPPoland\StorefrontKit\Waitlist\WaitlistEngine::NOTIFY_HOOK);
 });

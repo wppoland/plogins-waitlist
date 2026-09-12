@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.25
+Stable tag: 1.0.26
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,15 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.0.26 =
+* Fixed: the CSV export could leave subscribers out of the file without saying so. It read the list in chunks by offset, over the same rows a queued restock mailing marks as notified while it runs, so every row that left the set took another row with it. The export now walks by a cursor on a stable key, which cannot skip or repeat. Rows come out oldest first; the list on screen is unchanged.
+* Fixed: a queued batch that could not run ended the mailing for good. If the product could not be loaded on that cron tick, or the waitlist had just been switched off, the front of the list was mailed and the rest was left neither mailed nor cleared. The same batch is now retried up to three times, five minutes apart, before the mailing is abandoned.
+* Fixed: queued mailings survived deactivating the plugin. They are now unscheduled with the plugin, whichever batch they were up to.
+* Fixed: "Remove" on the subscriber list threw you back to page one of an unfiltered list. It now returns to the page, product filter and search you removed from.
+* Fixed: a personal-data export request (Tools > Export Personal Data) hit a fatal error on the "Subscribed At" row, which tried to print a date object as a string. Static analysis had been reporting it; the analysis now runs over the shared engine directory too, which had been outside both it and the coding-standards check.
+* Changed: a pending-subscriber query that names no limit of its own now reads at most 5000 rows (filter `plogins_waitlist_pending_query_limit`), and the waitlist list on a customer's account page at most 200. Neither had a ceiling before.
+* Note: until Plogins Waitlist PRO 1.0.13, the PRO add-on carried its own copy of the waitlist engine, so on a site running PRO the batched mailing added in 1.0.25 did not take effect. If you run PRO, update it as well.
 
 = 1.0.25 =
 * Fixed: restocking a product no longer sends the waitlist emails inside the request that changed the stock. A product save, a REST update or an order going through used to wait for one email per waiting shopper. The mailing is now queued and sent in batches of 50 (filter `plogins_waitlist_notify_batch_size`), in the same order, to the same people.
