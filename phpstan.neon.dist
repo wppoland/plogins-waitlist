@@ -12,6 +12,7 @@ parameters:
     excludePaths:
         - vendor/
     bootstrapFiles:
+        - tests/phpstan/memory-limit.php
         - tests/phpstan/elementor-stubs.php
         - tests/phpstan/constants.php
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
