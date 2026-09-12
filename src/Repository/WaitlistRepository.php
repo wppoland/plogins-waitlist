@@ -19,9 +19,28 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
     ) {
     }
 
+    /**
+     * Ceiling for a pending-subscriber read that names no limit of its own.
+     * Filterable with `plogins_waitlist_pending_query_limit`.
+     */
+    private const MAX_PENDING = 5000;
+
+    /**
+     * Ceiling for the waitlist list on a customer's account page.
+     */
+    private const MAX_ACCOUNT_ROWS = 200;
+
     public function tableName(): string
     {
         return $this->wpdb->prefix . 'restock_waitlist';
+    }
+
+    private function maxPendingRows(): int
+    {
+        /** @var int|numeric-string $limit */
+        $limit = apply_filters('plogins_waitlist_pending_query_limit', self::MAX_PENDING);
+
+        return max(1, (int) $limit);
     }
 
     public function subscribe(int $productId, string $email, ?int $userId): int
@@ -81,30 +100,28 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
     /**
      * Pending subscribers for a product.
      *
-     * `$limit` of 0 keeps the historical unbounded result, which the PRO add-on
-     * still relies on. Every caller in this plugin passes a limit.
+     * There is no unbounded branch any more: a caller that passes no limit
+     * gets MAX_PENDING rows (filter `plogins_waitlist_pending_query_limit`).
+     * The batched restock mailing in this plugin does not use this method at
+     * all, it walks findPendingBatch(); the PRO add-on reads a whole pending
+     * list through here, and that read is now capped rather than as long as
+     * the table.
      *
      * @return list<WaitlistSubscription>
      */
     public function findPendingByProduct(int $productId, int $limit = 0, int $offset = 0): array
     {
-        $limit  = max(0, $limit);
+        $limit  = $limit > 0 ? $limit : $this->maxPendingRows();
         $offset = max(0, $offset);
 
         // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
-        $sql = $limit > 0
-            ? $this->wpdb->prepare(
-                'SELECT * FROM %i WHERE product_id = %d AND notified = 0 ORDER BY created_at ASC, id ASC LIMIT %d OFFSET %d',
-                $this->tableName(),
-                $productId,
-                $limit,
-                $offset,
-            )
-            : $this->wpdb->prepare(
-                'SELECT * FROM %i WHERE product_id = %d AND notified = 0 ORDER BY created_at ASC',
-                $this->tableName(),
-                $productId,
-            );
+        $sql = $this->wpdb->prepare(
+            'SELECT * FROM %i WHERE product_id = %d AND notified = 0 ORDER BY created_at ASC, id ASC LIMIT %d OFFSET %d',
+            $this->tableName(),
+            $productId,
+            $limit,
+            $offset,
+        );
 
         $rows = $this->wpdb->get_results($sql);
         // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
@@ -124,6 +141,13 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
      * walk is still running, and an offset would skip the rows that slid down.
      * A row whose mail failed stays pending but is still behind the cursor, so
      * the walk cannot loop on it.
+     *
+     * The table indexes (product_id, notified), so this sorts the matched rows
+     * rather than reading them in order. That is deliberate: a wider index
+     * covering created_at and id would cost a write on every signup and every
+     * send to save a sort over one product's waiting list, which is hundreds of
+     * rows on the shops this plugin is built for. Widen the index when a real
+     * list makes the sort show up, not before.
      *
      * @return list<WaitlistSubscription>
      */
@@ -199,6 +223,42 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
     }
 
     /**
+     * One batch of every subscription, walked by a keyset cursor on the id.
+     *
+     * The CSV export used to walk LIMIT/OFFSET, over the same rows the restock
+     * batches mark notified and the admin Remove link deletes. An offset walk
+     * over a set that shrinks under it skips a row per row removed, and those
+     * rows vanish from the file with nothing to say they were dropped. The id
+     * is stable and never reused, so this walk cannot skip or repeat.
+     *
+     * Rows come out oldest first, which is the export's own order now; the
+     * on-screen list is still newest first.
+     *
+     * @return list<\Waitlist\Model\WaitlistSubscription>
+     */
+    public function findAllBatch(int $limit, int $afterId = 0): array
+    {
+        $limit   = max(1, $limit);
+        $afterId = max(0, $afterId);
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
+        $rows = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                'SELECT * FROM %i WHERE id > %d ORDER BY id ASC LIMIT %d',
+                $this->tableName(),
+                $afterId,
+                $limit,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return array_map(
+            static fn (object $row): \Waitlist\Model\WaitlistSubscription => \Waitlist\Model\WaitlistSubscription::fromRow($row),
+            is_array($rows) ? $rows : [],
+        );
+    }
+
+    /**
      * Subscriptions whose email matches the search term, newest first.
      *
      * Used by the admin subscriber list page only.
@@ -232,6 +292,9 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
     /**
      * Active (not yet notified) subscriptions for a logged-in customer.
      *
+     * Capped at MAX_ACCOUNT_ROWS: this feeds one My account table, and a
+     * shopper waiting on more products than that is not a page anyone reads.
+     *
      * @return list<WaitlistSubscription>
      */
     public function findActiveForAccount(int $userId, string $email): array
@@ -239,10 +302,11 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
         // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
         $rows = $this->wpdb->get_results(
             $this->wpdb->prepare(
-                'SELECT * FROM %i WHERE notified = 0 AND (user_id = %d OR email = %s) ORDER BY created_at DESC',
+                'SELECT * FROM %i WHERE notified = 0 AND (user_id = %d OR email = %s) ORDER BY created_at DESC, id DESC LIMIT %d',
                 $this->tableName(),
                 $userId,
                 $email,
+                self::MAX_ACCOUNT_ROWS,
             ),
         );
         // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter

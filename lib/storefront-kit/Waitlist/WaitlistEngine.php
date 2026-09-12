@@ -10,14 +10,28 @@ final class WaitlistEngine
 {
     /**
      * Cron hook that sends one batch of restock notifications.
+     *
+     * Public so the plugin's deactivation hook can unschedule it: an event
+     * whose hook nothing listens to still wakes on every request.
      */
-    private const NOTIFY_HOOK = 'plogins_waitlist_notify_batch';
+    public const NOTIFY_HOOK = 'plogins_waitlist_notify_batch';
 
     /**
      * Subscribers emailed per batch. Filterable with
      * `plogins_waitlist_notify_batch_size`.
      */
     private const NOTIFY_BATCH_SIZE = 50;
+
+    /**
+     * Seconds to wait before retrying a batch that could not run.
+     */
+    private const NOTIFY_RETRY_DELAY = 300;
+
+    /**
+     * How many times a batch that could not run is retried before the drain is
+     * abandoned.
+     */
+    private const NOTIFY_MAX_RETRIES = 3;
 
     /**
      * @param \Closure(): bool $isEnabled
@@ -52,7 +66,7 @@ final class WaitlistEngine
         // on a variation is stored against that variation id, so without this the
         // people waiting for one size never hear that it came back.
         add_action('woocommerce_variation_set_stock_status', [$this, 'notifySubscribers'], 10, 3);
-        add_action(self::NOTIFY_HOOK, [$this, 'runNotifyBatch'], 10, 4);
+        add_action(self::NOTIFY_HOOK, [$this, 'runNotifyBatch'], 10, 5);
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
     }
 
@@ -165,15 +179,21 @@ final class WaitlistEngine
      * needs retries and visibility, move this hook onto Action Scheduler
      * (as_schedule_single_action) without changing the batching itself.
      */
-    public function runNotifyBatch(int $productId, int $targetProductId, string $afterCreatedAt = '', int $afterId = 0): void
+    public function runNotifyBatch(int $productId, int $targetProductId, string $afterCreatedAt = '', int $afterId = 0, int $attempt = 0): void
     {
-        if (! $this->isEnabled()) {
-            return;
-        }
-
-        $product = wc_get_product($productId);
+        $product = $this->isEnabled() ? wc_get_product($productId) : null;
 
         if (! $product instanceof \WC_Product) {
+            // The waitlist was switched off part-way through, or the product is
+            // not resolvable on this tick. Returning here used to end the drain
+            // for good, leaving the front of the list mailed and the rest both
+            // unmailed and still pending. The same cursor is retried a few
+            // times first; a product that stays gone ends the drain, because
+            // its notification has nothing to say.
+            if ($attempt < self::NOTIFY_MAX_RETRIES) {
+                $this->scheduleNotifyBatch($productId, $targetProductId, $afterCreatedAt, $afterId, $attempt + 1, self::NOTIFY_RETRY_DELAY);
+            }
+
             return;
         }
 
@@ -209,12 +229,12 @@ final class WaitlistEngine
         }
     }
 
-    private function scheduleNotifyBatch(int $productId, int $targetProductId, string $afterCreatedAt, int $afterId): void
+    private function scheduleNotifyBatch(int $productId, int $targetProductId, string $afterCreatedAt, int $afterId, int $attempt = 0, int $delay = 0): void
     {
         wp_schedule_single_event(
-            time(),
+            time() + $delay,
             self::NOTIFY_HOOK,
-            [$productId, $targetProductId, $afterCreatedAt, $afterId],
+            [$productId, $targetProductId, $afterCreatedAt, $afterId, $attempt],
         );
     }
 

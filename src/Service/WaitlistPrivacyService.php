@@ -129,9 +129,9 @@ final class WaitlistPrivacyService implements HasHooks
             'data'        => [
                 ['name' => __('Product ID', 'plogins-waitlist'), 'value' => (string) $sub->productId],
                 ['name' => __('Product', 'plogins-waitlist'), 'value' => $productName],
-                ['name' => __('Subscribed At', 'plogins-waitlist'), 'value' => (string) $sub->createdAt],
+                ['name' => __('Subscribed At', 'plogins-waitlist'), 'value' => $sub->createdAt->format('Y-m-d H:i:s')],
                 ['name' => __('Notified', 'plogins-waitlist'), 'value' => $sub->notified ? __('Yes', 'plogins-waitlist') : __('No', 'plogins-waitlist')],
-                ['name' => __('Notified At', 'plogins-waitlist'), 'value' => $sub->notifiedAt ?? '-'],
+                ['name' => __('Notified At', 'plogins-waitlist'), 'value' => $sub->notifiedAt?->format('Y-m-d H:i:s') ?? '-'],
             ],
         ];
     }

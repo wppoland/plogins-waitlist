@@ -9,8 +9,10 @@ declare(strict_types=1);
  *
  * Fails if the restock mailing goes back to sending inside the request that
  * changed the stock, if a batch ignores its size, if the walk loses or repeats
- * a subscriber, if a failed send makes it loop forever, or if the admin list
- * queries drop their LIMIT.
+ * a subscriber, if a failed send makes it loop forever, if a batch that cannot
+ * run abandons the rest of the list, if the CSV export goes back to walking by
+ * offset over rows the mailing is still mutating, or if a list query drops its
+ * LIMIT.
  *
  * Plain PHP on purpose: this plugin has no test framework, and adding one to
  * protect five assertions would cost more than it guards.
@@ -278,7 +280,64 @@ check('a failing mailer retries nobody twice', count($GLOBALS['mails']) === 120)
 
 $GLOBALS['mail_ok'] = true;
 
-// --- 3. the admin list queries carry a LIMIT --------------------------------
+// --- 3. a batch that cannot run retries instead of stranding the list -------
+
+$repository         = new FakeRepository();
+$GLOBALS['product'] = new WC_Product(7);
+$GLOBALS['mails']   = [];
+seed($repository, 7, 120);
+$engine = make_engine($repository);
+
+$engine->notifySubscribers(7, 'instock', $GLOBALS['product']);
+$engine->runNotifyBatch(...array_shift($GLOBALS['scheduled']));
+
+check('the first batch goes out', count($GLOBALS['mails']) === 50);
+
+// The product stops resolving part-way through: trashed, or the waitlist
+// switched off while the queue still holds batches.
+$GLOBALS['product'] = null;
+$engine->runNotifyBatch(...array_shift($GLOBALS['scheduled']));
+
+check('a batch that cannot run queues a retry', count($GLOBALS['scheduled']) === 1);
+check('the retry keeps the cursor', ($GLOBALS['scheduled'][0][3] ?? null) === 50);
+check('the retry counts an attempt', ($GLOBALS['scheduled'][0][4] ?? null) === 1);
+
+// It comes back before the retries run out.
+$GLOBALS['product'] = new WC_Product(7);
+drain($engine);
+
+check('the rest of the list still goes out', count($GLOBALS['mails']) === 120
+    && count(array_unique($GLOBALS['mails'])) === 120);
+
+// A product that stays gone must not retry for ever either.
+$GLOBALS['product'] = null;
+$GLOBALS['mails']   = [];
+$engine->runNotifyBatch(7, 7, '', 0);
+$perRun = drain($engine);
+
+check('a batch that never runs gives up', count($perRun) === 3 && $GLOBALS['scheduled'] === []);
+check('a batch that never runs mails nobody', $GLOBALS['mails'] === []);
+
+$GLOBALS['product'] = new WC_Product(7);
+
+// --- 4. the CSV export walks by cursor, not by offset -----------------------
+
+$subscribers = (string) file_get_contents(__DIR__ . '/../src/Admin/Subscribers.php');
+$exportStart = strpos($subscribers, 'function maybeExportCsv');
+$exportEnd   = strpos($subscribers, 'public function renderPage');
+$export      = $exportStart !== false && $exportEnd > $exportStart
+    ? substr($subscribers, $exportStart, $exportEnd - $exportStart)
+    : '';
+
+check('the export was found', $export !== '');
+check('the export walks by cursor', str_contains($export, 'findPendingBatch(')
+    && str_contains($export, 'findAllBatch('));
+// The export reads the same `notified = 0` rows the queued batches mark as
+// they mail. An offset walk over a set that shrinks under it drops one row
+// per row that leaves, silently, straight out of the merchant's file.
+check('the export does not walk by offset', ! str_contains($export, '$offset'));
+
+// --- 5. the list queries carry a LIMIT --------------------------------------
 
 final class RecordingWpdb
 {
@@ -322,12 +381,22 @@ $repository->findAll(50, 0);
 $repository->search('shopper', 50, 50);
 $repository->findPendingBatch(7, 50);
 $repository->findPendingByProduct(7, 500, 0);
+// The call the PRO add-on makes: no limit named, which used to mean no LIMIT
+// in the SQL and the whole pending list in memory.
+$repository->findPendingByProduct(7);
+$repository->findAllBatch(500);
+$repository->findActiveForAccount(3, 'shopper@example.test');
 
 foreach ($wpdb->queries as $query) {
     check('bounded: ' . substr($query, 0, 60), str_contains($query, 'LIMIT'));
 }
 
-check('four list queries were checked', count($wpdb->queries) === 4);
+check('seven list queries were checked', count($wpdb->queries) === 7);
+
+check('the notify batch is a keyset walk', str_contains($wpdb->queries[2], 'created_at > %s')
+    && ! str_contains($wpdb->queries[2], 'OFFSET'));
+check('the export walk is a keyset walk', str_contains($wpdb->queries[5], 'id > %d')
+    && ! str_contains($wpdb->queries[5], 'OFFSET'));
 
 echo $failures === 0 ? "\nPASS\n" : "\n{$failures} FAILED\n";
 exit($failures === 0 ? 0 : 1);
