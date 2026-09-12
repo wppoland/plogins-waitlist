@@ -152,10 +152,21 @@ final class WaitlistEngine
      * REST call, an order going through), and a product with thousands of
      * people waiting used to hold that request open for one wp_mail() per
      * subscriber. The work is handed to WP-Cron and walked in batches instead.
+     *
+     * `plogins_waitlist_should_notify` decides whether a restock mails anyone
+     * at all. It exists so an add-on can apply its own rule (Plogins Waitlist
+     * PRO filters by product category through it) without removing this
+     * callback and sending the mail itself, which is what PRO used to do and
+     * what put every waiting shopper back inside the stock-change request.
+     * Returning false skips the mailing and leaves the rows pending.
      */
     public function notifySubscribers(int $productId, string $stockStatus, \WC_Product $product): void
     {
         if (! $this->isEnabled() || $stockStatus !== 'instock') {
+            return;
+        }
+
+        if (! apply_filters('plogins_waitlist_should_notify', true, $productId, $product)) {
             return;
         }
 

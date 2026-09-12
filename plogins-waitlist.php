@@ -6,7 +6,7 @@ declare(strict_types=1);
  * Plugin Name:       Waitlist - Back in Stock for WooCommerce
  * Plugin URI:        https://plogins.com/plogins-waitlist/
  * Description:       Lightweight, accessible back-in-stock / waitlist notifications for WooCommerce. Built with Core Web Vitals and WCAG 2.2 AA in mind.
- * Version:           1.0.26
+ * Version:           1.0.27
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            WPPoland.com
@@ -25,7 +25,7 @@ namespace Waitlist;
 
 defined('ABSPATH') || exit;
 
-const VERSION     = '1.0.26';
+const VERSION     = '1.0.27';
 
 // Legacy aliases for Plogins Waitlist PRO <= 1.0.2 (it coupled to the old `Restock\` namespace
 // + `restock/booted`). Safe to remove once all PRO installs are >= 1.0.3.
@@ -117,8 +117,16 @@ register_activation_hook(PLUGIN_FILE, static function (): void {
  * wp_clear_scheduled_hook() (which only matches events with the same
  * arguments) would leave them behind. wp_unschedule_hook() clears the hook
  * whatever arguments an event was queued with.
+ *
+ * The hook name is a literal, not WaitlistEngine::NOTIFY_HOOK. Reading that
+ * constant autoloads the class, and an older Plogins Waitlist PRO prepends an
+ * autoloader carrying its own WPPoland\StorefrontKit\Waitlist\WaitlistEngine
+ * with no such constant. Deactivating this plugin then threw an uncaught Error
+ * before core wrote `active_plugins`, so the plugin could not be switched off
+ * at all. Nothing in a deactivation path may depend on which copy of a shared
+ * class won the autoloader. tests/batching-test.php asserts this literal still
+ * equals WaitlistEngine::NOTIFY_HOOK.
  */
 register_deactivation_hook(PLUGIN_FILE, static function (): void {
-    require_once PLUGIN_DIR . '/autoload.php';
-    wp_unschedule_hook(\WPPoland\StorefrontKit\Waitlist\WaitlistEngine::NOTIFY_HOOK);
+    wp_unschedule_hook('plogins_waitlist_notify_batch');
 });
