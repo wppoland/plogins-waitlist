@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.24
+Stable tag: 1.0.25
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,10 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.0.25 =
+* Fixed: restocking a product no longer sends the waitlist emails inside the request that changed the stock. A product save, a REST update or an order going through used to wait for one email per waiting shopper. The mailing is now queued and sent in batches of 50 (filter `plogins_waitlist_notify_batch_size`), in the same order, to the same people.
+* Fixed: the Subscribers screen read the whole table on every load. It is now paged at 50 rows (filter `plogins_waitlist_subscribers_per_page`), the summary counts come from the database so they describe the whole list, and the CSV export streams in chunks instead of loading every row first.
 
 = 1.0.24 =
 * Fixed: the PRO upgrade promo kept selling to people who had already bought the paid edition. Only the banner could be dismissed, so the sidebar promo and the locked feature cards followed a paying customer around for good. The promo now checks whether the paid edition is active and steps aside when it is.

@@ -79,16 +79,72 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
     }
 
     /**
+     * Pending subscribers for a product.
+     *
+     * `$limit` of 0 keeps the historical unbounded result, which the PRO add-on
+     * still relies on. Every caller in this plugin passes a limit.
+     *
      * @return list<WaitlistSubscription>
      */
-    public function findPendingByProduct(int $productId): array
+    public function findPendingByProduct(int $productId, int $limit = 0, int $offset = 0): array
     {
+        $limit  = max(0, $limit);
+        $offset = max(0, $offset);
+
         // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
-        $rows = $this->wpdb->get_results(
-            $this->wpdb->prepare(
+        $sql = $limit > 0
+            ? $this->wpdb->prepare(
+                'SELECT * FROM %i WHERE product_id = %d AND notified = 0 ORDER BY created_at ASC, id ASC LIMIT %d OFFSET %d',
+                $this->tableName(),
+                $productId,
+                $limit,
+                $offset,
+            )
+            : $this->wpdb->prepare(
                 'SELECT * FROM %i WHERE product_id = %d AND notified = 0 ORDER BY created_at ASC',
                 $this->tableName(),
                 $productId,
+            );
+
+        $rows = $this->wpdb->get_results($sql);
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return array_map(
+            static fn (object $row): WaitlistSubscription => WaitlistSubscription::fromRow($row),
+            is_array($rows) ? $rows : [],
+        );
+    }
+
+    /**
+     * One batch of pending subscribers, in the same order as
+     * findPendingByProduct(), starting after the given cursor.
+     *
+     * The cursor is (created_at, id) rather than an offset on purpose: the send
+     * marks rows notified as it goes, so they leave the result set while the
+     * walk is still running, and an offset would skip the rows that slid down.
+     * A row whose mail failed stays pending but is still behind the cursor, so
+     * the walk cannot loop on it.
+     *
+     * @return list<WaitlistSubscription>
+     */
+    public function findPendingBatch(int $productId, int $limit, string $afterCreatedAt = '', int $afterId = 0): array
+    {
+        $limit          = max(1, $limit);
+        $afterCreatedAt = $afterCreatedAt !== '' ? $afterCreatedAt : '1000-01-01 00:00:00';
+        $afterId        = max(0, $afterId);
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
+        $rows = $this->wpdb->get_results(
+            $this->wpdb->prepare(
+                'SELECT * FROM %i WHERE product_id = %d AND notified = 0'
+                . ' AND (created_at > %s OR (created_at = %s AND id > %d))'
+                . ' ORDER BY created_at ASC, id ASC LIMIT %d',
+                $this->tableName(),
+                $productId,
+                $afterCreatedAt,
+                $afterCreatedAt,
+                $afterId,
+                $limit,
             ),
         );
         // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
@@ -114,21 +170,27 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
     }
 
     /**
-     * Return all subscriptions ordered newest first.
+     * One page of subscriptions, newest first.
      *
-     * Used by the admin subscriber list page only.
+     * Used by the admin subscriber list page and the CSV export only.
      *
      * @return list<\Waitlist\Model\WaitlistSubscription>
      */
-    public function findAll(): array
+    public function findAll(int $limit, int $offset = 0): array
     {
-        $restock_table = $this->tableName();
+        $limit  = max(1, $limit);
+        $offset = max(0, $offset);
 
-        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Own plugin table; table name from $wpdb->prefix, cannot be parameterised.
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
         $rows = $this->wpdb->get_results(
-            "SELECT * FROM {$restock_table} ORDER BY created_at DESC", // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+            $this->wpdb->prepare(
+                'SELECT * FROM %i ORDER BY created_at DESC, id DESC LIMIT %d OFFSET %d',
+                $this->tableName(),
+                $limit,
+                $offset,
+            ),
         );
-        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
 
         return array_map(
             static fn (object $row): \Waitlist\Model\WaitlistSubscription => \Waitlist\Model\WaitlistSubscription::fromRow($row),
@@ -143,16 +205,20 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
      *
      * @return list<WaitlistSubscription>
      */
-    public function search(string $term): array
+    public function search(string $term, int $limit, int $offset = 0): array
     {
-        $like = '%' . $this->wpdb->esc_like($term) . '%';
+        $like   = '%' . $this->wpdb->esc_like($term) . '%';
+        $limit  = max(1, $limit);
+        $offset = max(0, $offset);
 
         // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
         $rows = $this->wpdb->get_results(
             $this->wpdb->prepare(
-                'SELECT * FROM %i WHERE email LIKE %s ORDER BY created_at DESC',
+                'SELECT * FROM %i WHERE email LIKE %s ORDER BY created_at DESC, id DESC LIMIT %d OFFSET %d',
                 $this->tableName(),
                 $like,
+                $limit,
+                $offset,
             ),
         );
         // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
@@ -202,6 +268,47 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
         // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
 
         return is_int($deleted) && $deleted > 0;
+    }
+
+    /**
+     * Row counts for the admin list, so the summary and the pager describe the
+     * whole filtered set rather than the page that happens to be on screen.
+     *
+     * @return array{total:int,pending:int,notified:int}
+     */
+    public function countFiltered(int $productId, string $search): array
+    {
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
+        if ($productId > 0) {
+            $sql = $this->wpdb->prepare(
+                'SELECT COUNT(*) AS total, SUM(notified = 0) AS pending FROM %i WHERE product_id = %d AND notified = 0',
+                $this->tableName(),
+                $productId,
+            );
+        } elseif ($search !== '') {
+            $sql = $this->wpdb->prepare(
+                'SELECT COUNT(*) AS total, SUM(notified = 0) AS pending FROM %i WHERE email LIKE %s',
+                $this->tableName(),
+                '%' . $this->wpdb->esc_like($search) . '%',
+            );
+        } else {
+            $sql = $this->wpdb->prepare(
+                'SELECT COUNT(*) AS total, SUM(notified = 0) AS pending FROM %i',
+                $this->tableName(),
+            );
+        }
+
+        $row = $this->wpdb->get_row($sql);
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        $total   = is_object($row) ? (int) ($row->total ?? 0) : 0;
+        $pending = is_object($row) ? (int) ($row->pending ?? 0) : 0;
+
+        return [
+            'total' => $total,
+            'pending' => $pending,
+            'notified' => max(0, $total - $pending),
+        ];
     }
 
     /**

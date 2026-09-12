@@ -9,6 +9,17 @@ use WPPoland\StorefrontKit\Support\Formatter;
 final class WaitlistEngine
 {
     /**
+     * Cron hook that sends one batch of restock notifications.
+     */
+    private const NOTIFY_HOOK = 'plogins_waitlist_notify_batch';
+
+    /**
+     * Subscribers emailed per batch. Filterable with
+     * `plogins_waitlist_notify_batch_size`.
+     */
+    private const NOTIFY_BATCH_SIZE = 50;
+
+    /**
      * @param \Closure(): bool $isEnabled
      * @param \Closure(): array<string, mixed> $settings
      * @param \Closure(string, array<string, mixed>): void $renderTemplate
@@ -41,6 +52,7 @@ final class WaitlistEngine
         // on a variation is stored against that variation id, so without this the
         // people waiting for one size never hear that it came back.
         add_action('woocommerce_variation_set_stock_status', [$this, 'notifySubscribers'], 10, 3);
+        add_action(self::NOTIFY_HOOK, [$this, 'runNotifyBatch'], 10, 4);
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
     }
 
@@ -119,6 +131,14 @@ final class WaitlistEngine
         ]);
     }
 
+    /**
+     * A restock queues the mailing, it does not send it.
+     *
+     * This runs inside whatever request changed the stock (a product save, a
+     * REST call, an order going through), and a product with thousands of
+     * people waiting used to hold that request open for one wp_mail() per
+     * subscriber. The work is handed to WP-Cron and walked in batches instead.
+     */
     public function notifySubscribers(int $productId, string $stockStatus, \WC_Product $product): void
     {
         if (! $this->isEnabled() || $stockStatus !== 'instock') {
@@ -132,33 +152,78 @@ final class WaitlistEngine
             $targetProductIds[] = $parentId;
         }
 
-        $processedSubscriptions = [];
-
         foreach ($targetProductIds as $targetProductId) {
-            foreach ($this->repository->findPendingByProduct($targetProductId) as $subscription) {
-                if (isset($processedSubscriptions[$subscription->id])) {
-                    continue;
-                }
+            $this->scheduleNotifyBatch($productId, $targetProductId, '', 0);
+        }
+    }
 
-                $processedSubscriptions[$subscription->id] = true;
+    /**
+     * Email one batch of the people waiting, then queue the next one.
+     *
+     * ponytail: one batch per cron tick, so a very large waitlist drains over
+     * several minutes rather than in one run. If a site needs it faster or
+     * needs retries and visibility, move this hook onto Action Scheduler
+     * (as_schedule_single_action) without changing the batching itself.
+     */
+    public function runNotifyBatch(int $productId, int $targetProductId, string $afterCreatedAt = '', int $afterId = 0): void
+    {
+        if (! $this->isEnabled()) {
+            return;
+        }
 
-                $subject = Formatter::interpolate(
-                    (string) ($this->getSettings()['notify_subject'] ?? $this->defaultMessage('notify_subject')),
-                    ['product_name' => $product->get_name()],
-                );
+        $product = wc_get_product($productId);
 
-                $message = sprintf(
-                    "%s\n\n%s\n%s",
-                    str_replace('{product_name}', $product->get_name(), (string) ($this->getSettings()['notify_intro_text'] ?? $this->defaultMessage('notify_intro'))),
-                    get_permalink($targetProductId),
-                    (string) ($this->getSettings()['notify_outro_text'] ?? $this->defaultMessage('notify_outro')),
-                );
+        if (! $product instanceof \WC_Product) {
+            return;
+        }
 
-                if (wp_mail($subscription->email, $subject, $message)) {
-                    $this->repository->markNotified($subscription->id);
-                }
+        $batchSize = $this->notifyBatchSize();
+        $processed = 0;
+        $cursorCreatedAt = $afterCreatedAt;
+        $cursorId = $afterId;
+
+        foreach ($this->repository->findPendingBatch($targetProductId, $batchSize, $afterCreatedAt, $afterId) as $subscription) {
+            ++$processed;
+            $cursorCreatedAt = $subscription->createdAt->format('Y-m-d H:i:s');
+            $cursorId = (int) $subscription->id;
+
+            $subject = Formatter::interpolate(
+                (string) ($this->getSettings()['notify_subject'] ?? $this->defaultMessage('notify_subject')),
+                ['product_name' => $product->get_name()],
+            );
+
+            $message = sprintf(
+                "%s\n\n%s\n%s",
+                str_replace('{product_name}', $product->get_name(), (string) ($this->getSettings()['notify_intro_text'] ?? $this->defaultMessage('notify_intro'))),
+                get_permalink($targetProductId),
+                (string) ($this->getSettings()['notify_outro_text'] ?? $this->defaultMessage('notify_outro')),
+            );
+
+            if (wp_mail($subscription->email, $subject, $message)) {
+                $this->repository->markNotified($subscription->id);
             }
         }
+
+        if ($processed >= $batchSize) {
+            $this->scheduleNotifyBatch($productId, $targetProductId, $cursorCreatedAt, $cursorId);
+        }
+    }
+
+    private function scheduleNotifyBatch(int $productId, int $targetProductId, string $afterCreatedAt, int $afterId): void
+    {
+        wp_schedule_single_event(
+            time(),
+            self::NOTIFY_HOOK,
+            [$productId, $targetProductId, $afterCreatedAt, $afterId],
+        );
+    }
+
+    private function notifyBatchSize(): int
+    {
+        /** @var int|numeric-string $size */
+        $size = apply_filters('plogins_waitlist_notify_batch_size', self::NOTIFY_BATCH_SIZE);
+
+        return max(1, (int) $size);
     }
 
     private function shouldRenderForProduct(\WC_Product $product): bool
