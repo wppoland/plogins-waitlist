@@ -18,7 +18,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: plogins-waitlist.php
 msgid "Waitlist - Back in Stock for WooCommerce"
-msgstr ""
+msgstr "Waitlist - ponowna dostępność dla WooCommerce"
 
 #. Plugin URI of the plugin
 #: plogins-waitlist.php
@@ -175,11 +175,11 @@ msgstr ""
 
 #: src/Admin/Settings.php:112
 msgid "Show \"people waiting\" count"
-msgstr ""
+msgstr "Pokaż licznik osób oczekujących"
 
 #: src/Admin/Settings.php:118
 msgid "Show how many shoppers are already on the waitlist."
-msgstr ""
+msgstr "Pokazuj, ile osób jest już na liście oczekujących."
 
 #: src/Admin/Settings.php:119
 msgid ""
@@ -187,27 +187,27 @@ msgid ""
 "shoppers are already waiting for this item.\") when at least one person is "
 "waiting. A higher count reassures shoppers the product is in demand and "
 "worth waiting for."
-msgstr ""
+msgstr "Wyświetla nad formularzem krótkie zdanie z dowodem społecznym (na przykład \"12 osób już czeka na ten produkt.\"), gdy czeka co najmniej jedna osoba. Wyższy licznik upewnia klientów, że produkt cieszy się popytem i warto na niego poczekać."
 
 #: src/Admin/Settings.php:125
 msgid "\"People waiting\" text"
-msgstr ""
+msgstr "Tekst licznika osób oczekujących"
 
 #: src/Admin/Settings.php:131
 msgid "{count} shoppers are already waiting for this item."
-msgstr ""
+msgstr "{count} osób już czeka na ten produkt."
 
 #: src/Admin/Settings.php:132
 msgid ""
 "Use {count} for the number. Leave blank for the built-in wording (handles "
 "singular/plural automatically)."
-msgstr ""
+msgstr "Użyj {count} dla liczby. Pozostaw puste, aby użyć wbudowanej treści (sama dobiera liczbę pojedynczą i mnogą)."
 
 #: src/Admin/Settings.php:133
 msgid ""
 "Only shown when \"people waiting\" count is on and at least one shopper is "
 "waiting."
-msgstr ""
+msgstr "Wyświetlane tylko wtedy, gdy licznik osób oczekujących jest włączony i czeka co najmniej jedna osoba."
 
 #: src/Admin/Settings.php:139
 msgid "My Account menu label"
@@ -633,7 +633,7 @@ msgstr "Zapisani"
 
 #: src/Admin/Subscribers.php:186
 msgid "Subscriber removed from the waitlist."
-msgstr ""
+msgstr "Usunięto zapisaną osobę z listy oczekujących."
 
 #: src/Admin/Subscribers.php:190
 msgid ""
@@ -740,58 +740,58 @@ msgstr "Akcje"
 
 #: src/Admin/Subscribers.php:326
 msgid "Remove this subscriber from the waitlist?"
-msgstr ""
+msgstr "Usunąć tę osobę z listy oczekujących?"
 
 #. translators: %s: subscriber email.
 #: src/Admin/Subscribers.php:327
 #, php-format
 msgid "Remove %s"
-msgstr ""
+msgstr "Usuń %s"
 
 #: src/Admin/Subscribers.php:329
 msgid "Remove"
-msgstr ""
+msgstr "Usuń"
 
 #: src/Elementor/WaitlistWidget.php:37
 msgid "Back-in-Stock Waitlist"
-msgstr ""
+msgstr "Lista oczekujących na ponowną dostępność"
 
 #: src/Elementor/WaitlistWidget.php:81
 #: src/Service/WaitlistPrivacyService.php:130
 msgid "Product ID"
-msgstr ""
+msgstr "Identyfikator produktu"
 
 #: src/Elementor/WaitlistWidget.php:85
 msgid "Leave 0 to use the current product on a product page."
-msgstr ""
+msgstr "Zostaw 0, aby użyć bieżącego produktu na stronie produktu."
 
 #: src/Service/WaitlistPrivacyService.php:39
 #: src/Service/WaitlistPrivacyService.php:53
 #: src/Service/WaitlistPrivacyService.php:127
 msgid "Restock Waitlist Subscriptions"
-msgstr ""
+msgstr "Zapisy na listę oczekujących"
 
 #. translators: %d: numeric product ID, shown when the product no longer exists.
 #: src/Service/WaitlistPrivacyService.php:123
 #, php-format
 msgid "Product #%d"
-msgstr ""
+msgstr "Produkt #%d"
 
 #: src/Service/WaitlistPrivacyService.php:132
 msgid "Subscribed At"
-msgstr ""
+msgstr "Data zapisu"
 
 #: src/Service/WaitlistPrivacyService.php:133
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
 
 #: src/Service/WaitlistPrivacyService.php:133
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: src/Service/WaitlistPrivacyService.php:134
 msgid "Notified At"
-msgstr ""
+msgstr "Data powiadomienia"
 
 #: src/Service/WaitlistService.php:35 src/Service/WaitlistService.php:166
 msgid "Something went wrong. Please try again."
@@ -850,9 +850,9 @@ msgstr "Stan magazynowy"
 #, php-format
 msgid "%s shopper is already waiting for this item."
 msgid_plural "%s shoppers are already waiting for this item."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s osoba już czeka na ten produkt."
+msgstr[1] "%s osoby już czekają na ten produkt."
+msgstr[2] "%s osób już czeka na ten produkt."
 
 #: templates/single-product/waitlist-form.php:91
 msgid "Sending…"
