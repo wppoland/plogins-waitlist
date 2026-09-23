@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.28
+Stable tag: 1.0.29
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.0.29 =
+* The sidebar upgrade promo now follows the same dismissal as the banner. Dismissing the banner used to leave a full-height advert on the settings screen for good, which is not what the WordPress.org guideline on upgrade prompts means by used with moderation.
 
 = 1.0.28 =
 * Fixed: the plugin logged `Warning: Class "Waitlist\Plugin" not found` on every request on any site with WP_DEBUG on. A compatibility alias kept for Plogins Waitlist PRO 1.0.2 and older was declared before the plugin's autoloader was registered, so PHP could not find the class it was aliasing. The alias now sits below the autoloader, which also means it is finally declared: for the whole time it was above, it failed and gave those old PRO versions nothing.
