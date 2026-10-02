@@ -68,11 +68,50 @@ final class WaitlistEngine
         add_action('woocommerce_variation_set_stock_status', [$this, 'notifySubscribers'], 10, 3);
         add_action(self::NOTIFY_HOOK, [$this, 'runNotifyBatch'], 10, 5);
         add_action('wp_enqueue_scripts', [$this, 'enqueueAssets']);
+        add_filter('woocommerce_available_variation', [$this, 'flagVariation'], 10, 3);
+    }
+
+    /**
+     * Tell the storefront script whether a variation takes signups, using the
+     * same rule the AJAX handler applies.
+     *
+     * The script used to decide this itself by looking for "out of stock" in
+     * the variation's availability text. That text is translated, so on a
+     * store in any other language the form never appeared for an unavailable
+     * variation, and a variation on backorder never showed it either while the
+     * handler would have accepted the signup.
+     *
+     * @param array<string, mixed> $data
+     * @return array<string, mixed>
+     */
+    public function flagVariation(array $data, \WC_Product $product, \WC_Product $variation): array
+    {
+        $data['restock_waitlistable'] = $this->acceptsSubscriptions($variation);
+
+        return $data;
     }
 
     public function enqueueAssets(): void
     {
-        if (! $this->isEnabled() || ! is_product()) {
+        if (! is_product()) {
+            return;
+        }
+
+        $this->enqueueFormAssets();
+    }
+
+    /**
+     * Load the form's script and style on any page that prints the form.
+     *
+     * Public because the shortcode (and the Elementor widget, which renders the
+     * shortcode) can put the form on a page that is not a product page, where
+     * enqueueAssets() loads nothing. Without the script the form fell back to a
+     * plain GET submit that reloaded the page, signed nobody up and put the
+     * shopper's email address in the URL.
+     */
+    public function enqueueFormAssets(): void
+    {
+        if (! $this->isEnabled()) {
             return;
         }
 

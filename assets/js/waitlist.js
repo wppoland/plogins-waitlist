@@ -52,15 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return false;
       }
 
-      if (variation.is_in_stock === true || variation.is_in_stock === 'yes') {
-        return false;
+      // Set by the plugin from the same rule the signup handler applies. Do not
+      // read the availability text: it is translated.
+      if (typeof variation.restock_waitlistable === 'boolean') {
+        return variation.restock_waitlistable;
       }
 
-      return variation.backorders_allowed === true
-        || variation.backorders_allowed === 'yes'
-        || variation.availability_html === ''
-        || (typeof variation.availability_html === 'string'
-          && variation.availability_html.toLowerCase().includes('out of stock'));
+      return variation.is_in_stock === false;
     };
 
     if (wrapper && wrapper.dataset.restockVariable === '1' && productInput) {
