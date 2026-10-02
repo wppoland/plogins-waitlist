@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.29
+Stable tag: 1.0.30
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,11 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.0.30 =
+* Fixed: the "Leave waitlist" button in My Account did nothing. Its script was never loaded on that tab, and the request it would have sent was refused because the handler read the security token from a field the script does not send.
+* Fixed: on variable products in a store not running in English, the form never appeared for an out-of-stock variation, because the check looked for the English words "out of stock". A variation on backorder never showed the form in any language. The plugin now tells the page which variations take signups, using the same rule as the signup itself.
+* Fixed: the `[restock_waitlist]` shortcode and the Elementor widget, placed anywhere except a product page, printed a form without its script. Submitting it reloaded the page, signed nobody up and put the email address in the URL.
 
 = 1.0.29 =
 * The sidebar upgrade promo now follows the same dismissal as the banner. Dismissing the banner used to leave a full-height advert on the settings screen for good, which is not what the WordPress.org guideline on upgrade prompts means by used with moderation.
