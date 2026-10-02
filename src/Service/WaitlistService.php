@@ -137,7 +137,10 @@ final class WaitlistService implements HasHooks
             return;
         }
 
-        if (function_exists('is_wc_endpoint_url') && ! is_wc_endpoint_url(self::ACCOUNT_ENDPOINT)) {
+        // Not is_wc_endpoint_url(): it only knows the endpoints WooCommerce
+        // registers itself, so for this one it always answered false and the
+        // script behind the "Leave waitlist" button never loaded.
+        if (! isset($GLOBALS['wp']->query_vars[self::ACCOUNT_ENDPOINT])) {
             return;
         }
 
@@ -170,11 +173,10 @@ final class WaitlistService implements HasHooks
 
     public function handleUnsubscribe(): void
     {
-        check_ajax_referer('restock_waitlist');
-
-        if (! isset($_POST['nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash((string) $_POST['nonce'])), 'restock_waitlist')) {
-            wp_send_json_error(['message' => __('Invalid request.', 'plogins-waitlist')], 403);
-        }
+        // The script sends the nonce as `nonce`. check_ajax_referer() without a
+        // field name only reads `_ajax_nonce` and `_wpnonce`, so every request
+        // the button made died here with -1.
+        check_ajax_referer('restock_waitlist', 'nonce');
 
         if (! is_user_logged_in()) {
             wp_send_json_error(['message' => __('Login required.', 'plogins-waitlist')], 401);
@@ -212,6 +214,8 @@ final class WaitlistService implements HasHooks
         }
 
         $settings = $this->getSettings();
+
+        $this->engine->enqueueFormAssets();
 
         // No `show_on_single` check here on purpose. That setting only switches
         // off the automatic placement (the engine still honours it), and its help
