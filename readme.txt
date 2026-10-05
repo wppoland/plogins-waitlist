@@ -265,3 +265,8 @@ Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` temp
 
 = 0.1.0 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 1.0.31 =
+Security release. Only a logged-in customer could hide a guest's pending waitlist signups by changing their own account email to the guest's address. Update, nothing else to do.
