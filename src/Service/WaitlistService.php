@@ -108,7 +108,7 @@ final class WaitlistService implements HasHooks
 
         // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup is escaped in templates/myaccount/waitlists.php.
         echo $this->templateLoader->render('myaccount/waitlists', [
-            'subscriptions' => $this->repository->findActiveForAccount((int) $user->ID, (string) $user->user_email),
+            'subscriptions' => $this->repository->findActiveForAccount((int) $user->ID),
             'settings' => $this->getSettings(),
         ]);
         // phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -190,7 +190,7 @@ final class WaitlistService implements HasHooks
 
         $user = wp_get_current_user();
 
-        if (! $this->repository->deleteForAccountOwner($subscriptionId, (int) $user->ID, (string) $user->user_email)) {
+        if (! $this->repository->deleteForAccountOwner($subscriptionId, (int) $user->ID)) {
             wp_send_json_error(['message' => __('Could not remove this waitlist entry.', 'plogins-waitlist')], 404);
         }
 

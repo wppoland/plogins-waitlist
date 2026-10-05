@@ -389,7 +389,7 @@ $repository->findPendingByProduct(7, 500, 0);
 // in the SQL and the whole pending list in memory.
 $repository->findPendingByProduct(7);
 $repository->findAllBatch(500);
-$repository->findActiveForAccount(3, 'shopper@example.test');
+$repository->findActiveForAccount(3);
 
 foreach ($wpdb->queries as $query) {
     check('bounded: ' . substr($query, 0, 60), str_contains($query, 'LIMIT'));
