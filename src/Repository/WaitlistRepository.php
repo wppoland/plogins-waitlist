@@ -295,17 +295,24 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
      * Capped at MAX_ACCOUNT_ROWS: this feeds one My account table, and a
      * shopper waiting on more products than that is not a page anyone reads.
      *
+     * Ownership is the user_id alone, never the email. WooCommerce lets a
+     * customer set any account email without verifying it, so matching on
+     * email would let anyone list (and delete, see deleteForAccountOwner())
+     * a guest's signups by typing the guest's address into their profile.
+     * Cost: a signup made as a guest (user_id NULL) no longer shows here
+     * after the shopper registers, since nothing attaches guest rows to an
+     * account. Such a row still gets its restock email and is then done.
+     *
      * @return list<WaitlistSubscription>
      */
-    public function findActiveForAccount(int $userId, string $email): array
+    public function findActiveForAccount(int $userId): array
     {
         // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
         $rows = $this->wpdb->get_results(
             $this->wpdb->prepare(
-                'SELECT * FROM %i WHERE notified = 0 AND (user_id = %d OR email = %s) ORDER BY created_at DESC, id DESC LIMIT %d',
+                'SELECT * FROM %i WHERE notified = 0 AND user_id = %d ORDER BY created_at DESC, id DESC LIMIT %d',
                 $this->tableName(),
                 $userId,
-                $email,
                 self::MAX_ACCOUNT_ROWS,
             ),
         );
@@ -317,16 +324,18 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
         );
     }
 
-    public function deleteForAccountOwner(int $subscriptionId, int $userId, string $email): bool
+    /**
+     * Owned by user_id only, for the reason given on findActiveForAccount().
+     */
+    public function deleteForAccountOwner(int $subscriptionId, int $userId): bool
     {
         // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
         $deleted = $this->wpdb->query(
             $this->wpdb->prepare(
-                'DELETE FROM %i WHERE id = %d AND notified = 0 AND (user_id = %d OR email = %s)',
+                'DELETE FROM %i WHERE id = %d AND notified = 0 AND user_id = %d',
                 $this->tableName(),
                 $subscriptionId,
                 $userId,
-                $email,
             ),
         );
         // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
