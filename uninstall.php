@@ -40,6 +40,8 @@ $wpdb->query( "DROP TABLE IF EXISTS {$restock_table}" );
 // Remove options.
 delete_option( 'restock_settings' );
 delete_option( 'restock_schema_version' );
+// Settings of the Back in stock (Waitlist) WooCommerce email.
+delete_option( 'woocommerce_plogins_waitlist_restock_settings' );
 
 // The PRO banner's dismissal is stored per user, so it belongs to the
 // plugin rather than to the site content. User meta is global, not
