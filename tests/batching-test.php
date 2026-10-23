@@ -13,8 +13,10 @@ declare(strict_types=1);
  * run abandons the rest of the list, if the CSV export goes back to walking by
  * offset over rows the mailing is still mutating, if a list query drops its
  * LIMIT, if the `plogins_waitlist_should_notify` seam an add-on needs stops
- * being honoured, or if deactivation and uninstall stop unscheduling the batch
- * hook (or go back to reading its name off a class an add-on can shadow).
+ * being honoured, if batches stop going to Action Scheduler when it is ready,
+ * or if deactivation and uninstall stop unscheduling the batch hook from WP-Cron
+ * and Action Scheduler (or go back to reading its name off a class an add-on
+ * can shadow).
  *
  * Plain PHP on purpose: this plugin has no test framework, and adding one to
  * protect these assertions would cost more than it guards.
@@ -60,6 +62,22 @@ function wp_schedule_single_event(int $timestamp, string $hook, array $args = []
     $GLOBALS['scheduled'][] = $args;
 
     return true;
+}
+
+/** Number of times `action_scheduler_init` has fired; 0 means WP-Cron fallback. */
+$GLOBALS['as_ready']     = 0;
+$GLOBALS['as_scheduled'] = [];
+
+function did_action(string $hook): int
+{
+    return $hook === 'action_scheduler_init' ? (int) $GLOBALS['as_ready'] : 0;
+}
+
+function as_schedule_single_action(int $timestamp, string $hook, array $args = [], string $group = ''): int
+{
+    $GLOBALS['as_scheduled'][] = ['hook' => $hook, 'args' => $args, 'group' => $group];
+
+    return count($GLOBALS['as_scheduled']);
 }
 
 function wp_mail($to, $subject, $message): bool
@@ -430,6 +448,38 @@ check('an unvetoed restock still queues', count($GLOBALS['scheduled']) === 1);
 drain($engine);
 check('an unvetoed restock still mails everyone', count($GLOBALS['mails']) === 30);
 
+// --- 6b. with Action Scheduler ready, batches go there, not to WP-Cron -----
+
+$repository         = new FakeRepository();
+$GLOBALS['product'] = new WC_Product(7);
+seed($repository, 7, 120);
+$engine               = make_engine($repository);
+$GLOBALS['scheduled'] = [];
+$GLOBALS['mails']     = [];
+$GLOBALS['as_ready']  = 1;
+
+$engine->notifySubscribers(7, 'instock', $GLOBALS['product']);
+
+check('with Action Scheduler ready, nothing goes to WP-Cron', $GLOBALS['scheduled'] === []);
+check('with Action Scheduler ready, one batch action is queued', count($GLOBALS['as_scheduled']) === 1);
+check(
+    'the action uses the batch hook and the plugin group',
+    ($GLOBALS['as_scheduled'][0]['hook'] ?? '') === WaitlistEngine::NOTIFY_HOOK
+        && ($GLOBALS['as_scheduled'][0]['group'] ?? '') === 'plogins-waitlist'
+);
+
+$asRuns = 0;
+while ($GLOBALS['as_scheduled'] !== [] && $asRuns < 40) {
+    $job = array_shift($GLOBALS['as_scheduled']);
+    $engine->runNotifyBatch(...$job['args']);
+    ++$asRuns;
+}
+
+check('the Action Scheduler drain mails all 120 subscribers', count($GLOBALS['mails']) === 120 && count(array_unique($GLOBALS['mails'])) === 120);
+check('the Action Scheduler drain never touches WP-Cron', $GLOBALS['scheduled'] === []);
+
+$GLOBALS['as_ready'] = 0;
+
 // --- 7. deactivation and uninstall unschedule the batch hook ----------------
 
 /**
@@ -459,6 +509,9 @@ check('deactivation unschedules the batch hook', str_contains($bootstrapCode, $u
 // `wp plugin delete` removes an active plugin without deactivating it first,
 // so on that path uninstall.php is the only thing that runs.
 check('uninstall unschedules the batch hook', str_contains($uninstallCode, $unschedule));
+$asUnschedule = "as_unschedule_all_actions('" . WaitlistEngine::NOTIFY_HOOK . "')";
+check('deactivation clears Action Scheduler batches', str_contains($bootstrapCode, $asUnschedule));
+check('uninstall clears Action Scheduler batches', str_contains($uninstallCode, $asUnschedule));
 
 // Reading WaitlistEngine::NOTIFY_HOOK from either file autoloads the class, and
 // an older Plogins Waitlist PRO prepends an autoloader whose copy of that class
