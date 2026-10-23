@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.31
+Stable tag: 1.0.32
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.0.32 =
+* Improved: back-in-stock emails are now sent in batches through WooCommerce Action Scheduler, so each batch is visible with its log under WooCommerce > Status > Scheduled Actions. Sites where Action Scheduler is not loaded keep using WP-Cron. Deactivating or deleting the plugin clears queued batches from both.
 
 = 1.0.31 =
 * Security (low): My Account > Waitlists matched signups by the account email as well as the account itself. WooCommerce does not verify an account email, so any logged-in customer could change theirs to a guest's address and then see and remove that guest's pending waitlist signups. Only signups made while logged in to that account show there now. A signup made as a guest before registering no longer appears in My Account; it still gets its restock email.

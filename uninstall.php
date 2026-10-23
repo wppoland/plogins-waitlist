@@ -24,6 +24,12 @@ defined('WP_UNINSTALL_PLUGIN') || exit;
 // WaitlistEngine::NOTIFY_HOOK.
 wp_unschedule_hook('plogins_waitlist_notify_batch');
 
+// Batches queued since 1.0.32 live in Action Scheduler, not WP-Cron. It is
+// there only while WooCommerce is loaded, hence the guard.
+if (function_exists('as_unschedule_all_actions')) {
+    as_unschedule_all_actions('plogins_waitlist_notify_batch');
+}
+
 global $wpdb;
 
 // Drop the waitlist table.
