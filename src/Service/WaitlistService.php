@@ -7,6 +7,7 @@ namespace Waitlist\Service;
 defined('ABSPATH') || exit;
 
 use Waitlist\Contract\HasHooks;
+use Waitlist\Email\RestockEmail;
 use Waitlist\Repository\WaitlistRepository;
 use Waitlist\Util\TemplateLoader;
 use WPPoland\StorefrontKit\Waitlist\WaitlistEngine;
@@ -53,12 +54,15 @@ final class WaitlistService implements HasHooks
                 }
                 $this->templateLoader->include($template, $data);
             },
+            sendNotification: fn (int $subscriptionId, string $email, \WC_Product $product, int $targetProductId): bool => $this->sendRestockEmail($subscriptionId, $email, $product, $targetProductId),
         );
     }
 
     public function registerHooks(): void
     {
         $this->engine->registerHooks();
+
+        add_filter('woocommerce_email_classes', [$this, 'registerEmail']);
 
         add_shortcode('restock_waitlist', [$this, 'renderShortcode']);
         add_action('init', [$this, 'registerAccountEndpoint']);
@@ -67,6 +71,35 @@ final class WaitlistService implements HasHooks
         add_action('wp_enqueue_scripts', [$this, 'enqueueAccountAssets'], 15);
         add_action('wp_enqueue_scripts', [$this, 'enqueueVariationDependency'], 9);
         add_action('wp_ajax_restock_waitlist_unsubscribe', [$this, 'handleUnsubscribe']);
+    }
+
+    /**
+     * @param array<string, \WC_Email> $emails
+     * @return array<string, \WC_Email>
+     */
+    public function registerEmail(array $emails): array
+    {
+        $emails[RestockEmail::KEY] = new RestockEmail();
+
+        return $emails;
+    }
+
+    /**
+     * Calling WC()->mailer() here is what builds the email classes on a cron or
+     * Action Scheduler run; nothing else does it there.
+     */
+    private function sendRestockEmail(int $subscriptionId, string $email, \WC_Product $product, int $targetProductId): bool
+    {
+        $mailer = WC()->mailer();
+        $restockEmail = $mailer->emails[RestockEmail::KEY] ?? null;
+
+        if (! $restockEmail instanceof RestockEmail) {
+            // The mailer was built before this plugin booted, so the filter above missed it.
+            $restockEmail = new RestockEmail();
+            $mailer->emails[RestockEmail::KEY] = $restockEmail;
+        }
+
+        return $restockEmail->trigger($subscriptionId, $email, $product, $targetProductId);
     }
 
     public function registerAccountEndpoint(): void

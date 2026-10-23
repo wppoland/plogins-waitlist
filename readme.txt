@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.32
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,9 @@ Source and issues: [github.com/wppoland/plogins-waitlist](https://github.com/wpp
 * Asynchronous submit with a vanilla-JavaScript fetch call, so the page does not reload
 * Email field pre-filled for logged-in customers
 * Required consent checkbox for every signup
-* Automatic plain-text email notification on restock, sent via `wp_mail`
+* Restock email as a WooCommerce email (store header and footer, product name, image and link), editable under **WooCommerce > Settings > Emails**, HTML or plain text
+* One-click "Leave this waitlist" link and `List-Unsubscribe` header in every restock email, no login needed
+* Privacy policy link next to the consent checkbox when your site has a privacy policy page
 * Optional heading and intro text shown above the form
 * Customisable form labels, button text, on-screen submit messages, and notification email subject/intro/closing text
 * Place the form with the `[restock_waitlist]` shortcode or the Elementor "Back-in-Stock Waitlist" widget
@@ -87,7 +89,7 @@ Compare editions and pricing: [plogins.com/plogins-waitlist-pro/pricing/](https:
 Yes. Plogins Waitlist is a WooCommerce extension and requires WooCommerce 8.0 or later. It will show an admin notice and stay inactive if WooCommerce is missing or out of date.
 
 = How are notifications sent? =
-When WooCommerce sets a product's stock status to `instock`, Plogins Waitlist queues the mailing rather than sending it inside that request. WordPress cron then walks the pending subscribers for that product (and its parent, for variations) in batches of 50, oldest signup first, emailing each one with your site's own WordPress mailer (`wp_mail`). Subscribers who are emailed successfully are marked as notified so they are not contacted twice. Filter `plogins_waitlist_notify_batch_size` to change the batch size.
+When WooCommerce sets a product's stock status to `instock`, Plogins Waitlist queues the mailing rather than sending it inside that request. WordPress cron then walks the pending subscribers for that product (and its parent, for variations) in batches of 50, oldest signup first, emailing each one with the **Back in stock (Waitlist)** WooCommerce email, which goes through your site's own WordPress mailer. Edit its subject, heading, extra content and format, or switch it off, under **WooCommerce > Settings > Emails**; the template can be overridden in `yourtheme/woocommerce/emails/waitlist-restock.php`. Subscribers who are emailed successfully are marked as notified so they are not contacted twice. Filter `plogins_waitlist_notify_batch_size` to change the batch size.
 
 = Does it work with variable products? =
 Yes. Choose options in the standard WooCommerce variation form first. When the selected variation is out of stock or on backorder, the waitlist form appears and the subscription is stored for that specific variation.
@@ -99,7 +101,7 @@ Yes by default. You can restrict signups to logged-in customers by unchecking **
 Yes. Logged-in customers see a **Waitlists** tab under My Account with active subscriptions, current stock status, and a button to leave each list.
 
 = Does this comply with GDPR / consent requirements? =
-Every signup requires the shopper to tick an explicit consent checkbox before they can join the waitlist; the form will not submit without it. Subscriber emails are stored only in a custom table in your own WordPress database and are never sent to any external service. You are responsible for the wording of your consent label and your site's privacy policy.
+Every signup requires the shopper to tick an explicit consent checkbox before they can join the waitlist; the form will not submit without it. When a privacy policy page is set under **Settings > Privacy**, the consent label links to it. Every restock email carries a signed "Leave this waitlist" link (and a `List-Unsubscribe` header for mail clients) that removes the signup without a login; the link does not reveal whether an address is on any list. Subscriber emails are stored only in a custom table in your own WordPress database and are never sent to any external service. You are responsible for the wording of your consent label and your site's privacy policy.
 
 = Can I export the subscriber list? =
 Yes. From **WooCommerce > Plogins Waitlist > Subscribers** you can view subscribers, filter by product, and export the list as CSV.
@@ -127,6 +129,11 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.0 =
+* New: the restock email is a WooCommerce email (store header and footer, product name, image and link) with an HTML and a plain-text version, editable or switchable off under WooCommerce > Settings > Emails > Back in stock (Waitlist). A subject saved on the plugin's own settings screen stays the default until one is saved there.
+* New: every restock email has a "Leave this waitlist" link that works without a login, plus `List-Unsubscribe` and one-click `List-Unsubscribe-Post` headers. Opening the link asks for confirmation, so mail scanners that open links cannot remove anyone. The link is signed per signup and rate limited, and an invalid or used link never says whether an address is subscribed.
+* New: the consent label links to the site's privacy policy when one is set.
 
 = 1.0.32 =
 * Improved: back-in-stock emails are now sent in batches through WooCommerce Action Scheduler, so each batch is visible with its log under WooCommerce > Status > Scheduled Actions. Sites where Action Scheduler is not loaded keep using WP-Cron. Deactivating or deleting the plugin clears queued batches from both.

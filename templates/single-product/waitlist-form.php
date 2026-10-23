@@ -86,7 +86,20 @@ if ($restock_show_social_proof) {
         </label>
         <label class="restock-waitlist__privacy">
             <input type="checkbox" name="privacy" value="1" required />
-            <span><?php echo esc_html((string) ($restock_settings['privacy_label'] ?? __('I consent to receiving back-in-stock notifications.', 'plogins-waitlist'))); ?></span>
+            <span><?php
+            echo esc_html((string) ($restock_settings['privacy_label'] ?? __('I consent to receiving back-in-stock notifications.', 'plogins-waitlist')));
+            if (get_privacy_policy_url() !== '') {
+                echo ' ' . wp_kses(
+                    sprintf(
+                        '<a href="%1$s" target="_blank" rel="noopener">%2$s<span class="screen-reader-text"> %3$s</span></a>',
+                        esc_url(get_privacy_policy_url()),
+                        esc_html__('Privacy policy', 'plogins-waitlist'),
+                        esc_html__('(opens in a new tab)', 'plogins-waitlist'),
+                    ),
+                    ['a' => ['href' => [], 'target' => [], 'rel' => []], 'span' => ['class' => []]],
+                );
+            }
+            ?></span>
         </label>
         <button type="submit" class="button alt" data-busy-label="<?php echo esc_attr__('Sending…', 'plogins-waitlist'); ?>"><?php echo esc_html($restock_button_text); ?></button>
         <p class="restock-waitlist__message" data-restock-waitlist-message hidden></p>
