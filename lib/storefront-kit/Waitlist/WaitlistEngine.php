@@ -16,6 +16,9 @@ final class WaitlistEngine
      */
     public const NOTIFY_HOOK = 'plogins_waitlist_notify_batch';
 
+    /** Action Scheduler group for the batches, so they can be listed and cleared together. */
+    public const NOTIFY_GROUP = 'plogins-waitlist';
+
     /**
      * Subscribers emailed per batch. Filterable with
      * `plogins_waitlist_notify_batch_size`.
@@ -224,10 +227,8 @@ final class WaitlistEngine
     /**
      * Email one batch of the people waiting, then queue the next one.
      *
-     * ponytail: one batch per cron tick, so a very large waitlist drains over
-     * several minutes rather than in one run. If a site needs it faster or
-     * needs retries and visibility, move this hook onto Action Scheduler
-     * (as_schedule_single_action) without changing the batching itself.
+     * ponytail: one batch per queued action, so a very large waitlist drains
+     * over several runs rather than in one request.
      */
     public function runNotifyBatch(int $productId, int $targetProductId, string $afterCreatedAt = '', int $afterId = 0, int $attempt = 0): void
     {
@@ -279,13 +280,26 @@ final class WaitlistEngine
         }
     }
 
+    /**
+     * Queue one batch on Action Scheduler, or on WP-Cron when it is not there.
+     *
+     * Action Scheduler ships with WooCommerce and shows each batch with its
+     * log under WooCommerce > Status > Scheduled Actions. Its store is ready only once `action_scheduler_init`
+     * has fired; a stock change before that (or a site without WooCommerce's
+     * copy loaded) falls back to WP-Cron, which runs the same callback with the
+     * same positional arguments.
+     */
     private function scheduleNotifyBatch(int $productId, int $targetProductId, string $afterCreatedAt, int $afterId, int $attempt = 0, int $delay = 0): void
     {
-        wp_schedule_single_event(
-            time() + $delay,
-            self::NOTIFY_HOOK,
-            [$productId, $targetProductId, $afterCreatedAt, $afterId, $attempt],
-        );
+        $args = [$productId, $targetProductId, $afterCreatedAt, $afterId, $attempt];
+
+        if (function_exists('as_schedule_single_action') && did_action('action_scheduler_init') > 0) {
+            as_schedule_single_action(time() + $delay, self::NOTIFY_HOOK, $args, self::NOTIFY_GROUP);
+
+            return;
+        }
+
+        wp_schedule_single_event(time() + $delay, self::NOTIFY_HOOK, $args);
     }
 
     private function notifyBatchSize(): int
