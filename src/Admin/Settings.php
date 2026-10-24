@@ -375,7 +375,7 @@ final class Settings implements HasHooks
             [
                 'id'          => 'unsubscribe_success_text',
                 'placeholder' => __('You have been removed from this waitlist.', 'plogins-waitlist'),
-                'help'        => __('Confirmation shown after a customer leaves a waitlist from My Account. Leave blank to use the default.', 'plogins-waitlist'),
+                'help'        => __('Confirmation shown after a shopper leaves a waitlist from My Account or from the link in the back-in-stock email. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );
 
@@ -385,7 +385,7 @@ final class Settings implements HasHooks
             __('Notification email', 'plogins-waitlist'),
             static function (): void {
                 echo '<p>' . esc_html__(
-                    'These texts are used when a product comes back in stock and subscribers are notified.',
+                    'These texts are used when a product comes back in stock and subscribers are notified. The email itself (heading, subject, layout, plain text or HTML, on or off) is edited under WooCommerce > Settings > Emails > Back in stock (Waitlist); a subject saved there replaces the one here.',
                     'plogins-waitlist',
                 ) . '</p>';
             },
@@ -428,7 +428,7 @@ final class Settings implements HasHooks
             self::SECTION_EMAIL,
             [
                 'id'          => 'notify_outro_text',
-                'placeholder' => __('If you no longer wish to receive these messages, simply ignore this email.', 'plogins-waitlist'),
+                'placeholder' => __('You asked to hear when this product is back. To stop these emails, use the link to leave the waitlist.', 'plogins-waitlist'),
                 'help'        => __('Closing line of the notification email, shown after the product link. A good place for a brief reassurance or sign-off. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );

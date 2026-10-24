@@ -41,6 +41,9 @@ final class WaitlistEngine
      * @param \Closure(): array<string, mixed> $settings
      * @param \Closure(string, array<string, mixed>): void $renderTemplate
      * @param array<string, string> $defaultMessages
+     * @param (\Closure(int, string, \WC_Product, int): bool)|null $sendNotification
+     *        Sends one restock mail (subscription id, email, restocked product,
+     *        product the signup was made on). Null keeps the plain wp_mail().
      */
     public function __construct(
         private readonly WaitlistRepository $repository,
@@ -56,6 +59,7 @@ final class WaitlistEngine
         private readonly \Closure $isEnabled,
         private readonly \Closure $settings,
         private readonly \Closure $renderTemplate,
+        private readonly ?\Closure $sendNotification = null,
     ) {
     }
 
@@ -258,19 +262,7 @@ final class WaitlistEngine
             $cursorCreatedAt = $subscription->createdAt->format('Y-m-d H:i:s');
             $cursorId = (int) $subscription->id;
 
-            $subject = Formatter::interpolate(
-                (string) ($this->getSettings()['notify_subject'] ?? $this->defaultMessage('notify_subject')),
-                ['product_name' => $product->get_name()],
-            );
-
-            $message = sprintf(
-                "%s\n\n%s\n%s",
-                str_replace('{product_name}', $product->get_name(), (string) ($this->getSettings()['notify_intro_text'] ?? $this->defaultMessage('notify_intro'))),
-                get_permalink($targetProductId),
-                (string) ($this->getSettings()['notify_outro_text'] ?? $this->defaultMessage('notify_outro')),
-            );
-
-            if (wp_mail($subscription->email, $subject, $message)) {
+            if ($this->send((int) $subscription->id, (string) $subscription->email, $product, $targetProductId)) {
                 $this->repository->markNotified($subscription->id);
             }
         }
@@ -278,6 +270,27 @@ final class WaitlistEngine
         if ($processed >= $batchSize) {
             $this->scheduleNotifyBatch($productId, $targetProductId, $cursorCreatedAt, $cursorId);
         }
+    }
+
+    private function send(int $subscriptionId, string $email, \WC_Product $product, int $targetProductId): bool
+    {
+        if ($this->sendNotification !== null) {
+            return (bool) ($this->sendNotification)($subscriptionId, $email, $product, $targetProductId);
+        }
+
+        $subject = Formatter::interpolate(
+            (string) ($this->getSettings()['notify_subject'] ?? $this->defaultMessage('notify_subject')),
+            ['product_name' => $product->get_name()],
+        );
+
+        $message = sprintf(
+            "%s\n\n%s\n%s",
+            str_replace('{product_name}', $product->get_name(), (string) ($this->getSettings()['notify_intro_text'] ?? $this->defaultMessage('notify_intro'))),
+            get_permalink($targetProductId),
+            (string) ($this->getSettings()['notify_outro_text'] ?? $this->defaultMessage('notify_outro')),
+        );
+
+        return wp_mail($email, $subject, $message);
     }
 
     /**
