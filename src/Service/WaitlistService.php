@@ -43,7 +43,7 @@ final class WaitlistService implements HasHooks
                 'variation_required' => __('Select product options before joining the waitlist.', 'plogins-waitlist'),
                 'notify_subject' => __('Product back in stock - {product_name}', 'plogins-waitlist'),
                 'notify_intro' => __('Product {product_name} is back in stock.', 'plogins-waitlist'),
-                'notify_outro' => __('If you no longer wish to receive these messages, simply ignore this email.', 'plogins-waitlist'),
+                'notify_outro' => __('You asked to hear when this product is back. To stop these emails, use the link to leave the waitlist.', 'plogins-waitlist'),
                 'unsubscribe_success' => __('You have been removed from this waitlist.', 'plogins-waitlist'),
             ],
             isEnabled: fn (): bool => $this->isEnabled(),

@@ -428,7 +428,7 @@ final class Settings implements HasHooks
             self::SECTION_EMAIL,
             [
                 'id'          => 'notify_outro_text',
-                'placeholder' => __('If you no longer wish to receive these messages, simply ignore this email.', 'plogins-waitlist'),
+                'placeholder' => __('You asked to hear when this product is back. To stop these emails, use the link to leave the waitlist.', 'plogins-waitlist'),
                 'help'        => __('Closing line of the notification email, shown after the product link. A good place for a brief reassurance or sign-off. Leave blank to use the default.', 'plogins-waitlist'),
             ],
         );

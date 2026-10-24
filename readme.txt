@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -129,6 +129,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.1 =
+* The default closing line of the restock email now points to the leave link instead of telling guests to ignore the email. A closing line you saved yourself is unchanged.
 
 = 1.1.0 =
 * New: the restock email is a WooCommerce email (store header and footer, product name, image and link) with an HTML and a plain-text version, editable or switchable off under WooCommerce > Settings > Emails > Back in stock (Waitlist). A subject saved on the plugin's own settings screen stays the default until one is saved there.
