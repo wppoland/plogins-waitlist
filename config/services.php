@@ -11,6 +11,7 @@ use Waitlist\Admin\Settings;
 use Waitlist\Admin\Subscribers;
 use Waitlist\Repository\WaitlistRepository;
 use Waitlist\Service\ElementorWidgets;
+use Waitlist\Service\GuestUnsubscribe;
 use Waitlist\Service\WaitlistPrivacyService;
 use Waitlist\Service\WaitlistService;
 use Waitlist\Util\TemplateLoader;
@@ -36,6 +37,10 @@ return static function (Container $c): void {
         $c->get(TemplateLoader::class),
     ));
     $c->singleton(WaitlistPrivacyService::class, static fn (): WaitlistPrivacyService => new WaitlistPrivacyService(
+        $c->get(WaitlistRepository::class),
+    ));
+
+    $c->singleton(GuestUnsubscribe::class, static fn (): GuestUnsubscribe => new GuestUnsubscribe(
         $c->get(WaitlistRepository::class),
     ));
 

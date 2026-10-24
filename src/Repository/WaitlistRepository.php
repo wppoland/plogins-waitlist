@@ -81,6 +81,21 @@ final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\Waitl
         return (int) $this->wpdb->insert_id;
     }
 
+    public function findById(int $id): ?WaitlistSubscription
+    {
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
+        $row = $this->wpdb->get_row(
+            $this->wpdb->prepare(
+                'SELECT * FROM %i WHERE id = %d LIMIT 1',
+                $this->tableName(),
+                $id,
+            ),
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        return $row !== null ? WaitlistSubscription::fromRow($row) : null;
+    }
+
     public function findByProductAndEmail(int $productId, string $email): ?WaitlistSubscription
     {
         // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table, statement prepared with placeholders.
