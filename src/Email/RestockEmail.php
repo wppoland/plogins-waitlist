@@ -123,7 +123,7 @@ class RestockEmail extends \WC_Email
             'intro' => str_replace('{product_name}', $name, $intro),
             'outro' => ! empty($settings['notify_outro_text'])
                 ? (string) $settings['notify_outro_text']
-                : __('If you no longer wish to receive these messages, simply ignore this email.', 'plogins-waitlist'),
+                : __('You asked to hear when this product is back. To stop these emails, use the link to leave the waitlist.', 'plogins-waitlist'),
             'unsubscribe_url' => $this->subscriptionId > 0 ? $this->unsubscribeUrl() : '',
             'additional_content' => $this->get_additional_content(),
             'sent_to_admin' => false,
