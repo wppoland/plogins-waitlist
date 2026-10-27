@@ -12,6 +12,8 @@ defined('ABSPATH') || exit;
 return [
     'name'       => 'Waitlist PRO',
     'url'        => 'https://plogins.com/plogins-waitlist-pro/pricing/',
+    'campaign'   => 'plogins-waitlist',
+    'locales'    => ['pl', 'de', 'es'],
     'sellable'   => true,
     'price_from' => 29,
     'currency'   => 'EUR',
