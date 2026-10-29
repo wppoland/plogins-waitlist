@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -129,6 +129,10 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.4 =
+* Security (low): the waitlist signup accepted the id of a draft, private or password-protected product, so restocking a product before publishing it could email its name and link to an address someone had signed up for it. Signups now need a product a visitor can see.
+* Settings: a new Ecosystem integrations section says whether Shortlist is active and what the two plugins do together. It changes no behaviour.
 
 = 1.1.3 =
 * The Upgrade to PRO links open the pricing page in the admin's language where plogins.com has one, and tell plogins.com which plugin the visit came from (utm_source, utm_medium and utm_campaign in the link). Nothing is sent from your site.
@@ -286,6 +290,9 @@ Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` temp
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.1.4 =
+Security release. Only the names of products restocked while still unpublished are exposed. Update, nothing else to do.
 
 = 1.0.31 =
 Security release. Only a logged-in customer could hide a guest's pending waitlist signups by changing their own account email to the guest's address. Update, nothing else to do.

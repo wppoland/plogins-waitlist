@@ -168,7 +168,9 @@ final class WaitlistEngine
             wp_send_json_error(['message' => (string) ($this->getSettings()['variation_required_text'] ?? $this->defaultMessage('variation_required'))], 422);
         }
 
-        if (! $this->acceptsSubscriptions($product)) {
+        // wc_get_product() loads drafts and private products too. A signup for
+        // one would later mail its name and link to whatever address was sent.
+        if (! $this->isPublic($product) || ! $this->acceptsSubscriptions($product)) {
             wp_send_json_error(['message' => (string) ($this->getSettings()['disabled_text'] ?? $this->defaultMessage('disabled'))], 400);
         }
 
@@ -339,6 +341,28 @@ final class WaitlistEngine
      * shortcode in themselves saw a form on the page while every shopper who
      * submitted it got "Waitlist is unavailable for this product".
      */
+    /**
+     * Published and not behind a password; a variation's parent too, since a
+     * disabled variation is private and its parent carries the password.
+     */
+    private function isPublic(\WC_Product $product): bool
+    {
+        $parentId = $product->get_parent_id();
+        $parent = $parentId > 0 ? wc_get_product($parentId) : null;
+
+        if ($parentId > 0 && ! $parent instanceof \WC_Product) {
+            return false;
+        }
+
+        foreach (array_filter([$product, $parent]) as $item) {
+            if ('publish' !== $item->get_status() || post_password_required($item->get_id())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private function acceptsSubscriptions(\WC_Product $product): bool
     {
         if (! $this->isEnabled()) {

@@ -453,7 +453,7 @@ final class Settings implements HasHooks
             static function (): void {
                 if (class_exists('\Shortlist\Plugin')) {
                     echo '<p class="description" style="color:#007017;font-weight:600;">' . esc_html__(
-                        'Shortlist is active. Out-of-stock items saved in customer wishlists automatically display "Notify when available" waitlist buttons.',
+                        'Shortlist is active. Its wishlist can show a "Notify when available" button on out-of-stock items, switched in the Shortlist settings under Ecosystem integrations.',
                         'plogins-waitlist',
                     ) . '</p>';
                 } else {
