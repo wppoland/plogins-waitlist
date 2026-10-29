@@ -42,6 +42,11 @@ Source and issues: [github.com/wppoland/plogins-waitlist](https://github.com/wpp
 * Theme-overridable form template (`yourtheme/restock/single-product/waitlist-form.php`)
 * Compatible with WooCommerce HPOS (Custom Order Tables) and Cart/Checkout Blocks
 
+= Works with other Plogins plugins =
+
+* [Shortlist - Wishlist for WooCommerce](https://plogins.com/plogins-shortlist/) - the wishlist shows this sign-up form on out-of-stock simple products, so shoppers join without opening the product page. Switched in the Shortlist settings.
+* [Rezervo - Pre-Orders for WooCommerce](https://plogins.com/rezervo/) - a pre-order product or variation shows its Pre-order button and no waitlist form, and sign-ups for it are refused. Needs Rezervo 1.1.5 or later.
+
 = You may also like these plugins =
 
 More free WooCommerce plugins from WPPoland:
@@ -109,6 +114,10 @@ Yes. From **WooCommerce > Plogins Waitlist > Subscribers** you can view subscrib
 = Does the form reload the page on submit? =
 No. The form is submitted with a vanilla-JavaScript `fetch` call and the result is announced in an `aria-live` region, so the page stays put. Plogins Waitlist loads no jQuery for this; on variable products it does rely on WooCommerce's own variation script to know which variation is selected.
 
+
+= Does it work with Shortlist and Rezervo? =
+
+Yes. Shortlist shows this sign-up form on out-of-stock items on the wishlist, switched in the Shortlist settings. Rezervo takes pre-order products and variations off the waitlist with no setting, so a pre-order never shows a second sign-up form. Developers can do the same with the plogins_waitlist_accepts_subscriptions filter.
 
 = Does this plugin work on WordPress Multisite? =
 
