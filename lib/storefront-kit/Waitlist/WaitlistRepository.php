@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WPPoland\StorefrontKit\Waitlist;
+namespace Waitlist\Vendor\StorefrontKit\Waitlist;
 
 interface WaitlistRepository
 {

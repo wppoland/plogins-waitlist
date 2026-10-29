@@ -116,9 +116,9 @@ class WC_Product
 require_once __DIR__ . '/../lib/storefront-kit/Waitlist/WaitlistRepository.php';
 require_once __DIR__ . '/../lib/storefront-kit/Waitlist/WaitlistEngine.php';
 
-use WPPoland\StorefrontKit\Waitlist\WaitlistEngine;
+use Waitlist\Vendor\StorefrontKit\Waitlist\WaitlistEngine;
 
-$repository = new class implements WPPoland\StorefrontKit\Waitlist\WaitlistRepository {
+$repository = new class implements Waitlist\Vendor\StorefrontKit\Waitlist\WaitlistRepository {
     public function subscribe(int $productId, string $email, ?int $userId): int
     {
         return 0;

@@ -241,7 +241,7 @@ require_once __DIR__ . '/../src/Service/GuestUnsubscribe.php';
 
 use Waitlist\Repository\WaitlistRepository;
 use Waitlist\Service\GuestUnsubscribe;
-use WPPoland\StorefrontKit\Waitlist\WaitlistEngine;
+use Waitlist\Vendor\StorefrontKit\Waitlist\WaitlistEngine;
 
 // --- Signature --------------------------------------------------------------
 
@@ -310,7 +310,7 @@ check('another IP is not affected', visit($service, 'GET', 999, 'x', '10.0.0.10'
 
 // --- Engine handoff and PRO-facing hooks -------------------------------------
 
-final class OneRowRepository implements WPPoland\StorefrontKit\Waitlist\WaitlistRepository
+final class OneRowRepository implements Waitlist\Vendor\StorefrontKit\Waitlist\WaitlistRepository
 {
     /** @var list<int> */
     public array $notified = [];
