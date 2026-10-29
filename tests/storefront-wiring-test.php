@@ -47,6 +47,18 @@ function add_filter(string $hook, $callback, int $priority = 10, int $args = 1):
     return true;
 }
 
+/** @var callable|null Stands in for a partner plugin on plogins_waitlist_accepts_subscriptions. */
+$GLOBALS['accepts_filter'] = null;
+
+function apply_filters(string $hook, $value, ...$args)
+{
+    if ('plogins_waitlist_accepts_subscriptions' === $hook && null !== $GLOBALS['accepts_filter']) {
+        return ($GLOBALS['accepts_filter'])($value, ...$args);
+    }
+
+    return $value;
+}
+
 function is_product(): bool
 {
     return false;
@@ -152,6 +164,13 @@ $flag = static fn (string $status): mixed => method_exists($engine, 'flagVariati
 check('out-of-stock variation takes signups', $flag('outofstock') === true);
 check('variation on backorder takes signups, as the handler does', $flag('onbackorder') === true);
 check('in-stock variation does not', $flag('instock') === false);
+
+// A partner (Rezervo for a pre-order) can take a product out, and only out.
+$GLOBALS['accepts_filter'] = static fn (bool $accepts): bool => false;
+check('filter returning false removes the waitlist for a backorder variation', $flag('onbackorder') === false);
+$GLOBALS['accepts_filter'] = static fn (bool $accepts): bool => $accepts;
+check('pass-through filter leaves the answer unchanged', $flag('onbackorder') === true && $flag('instock') === false);
+$GLOBALS['accepts_filter'] = null;
 
 if (method_exists($engine, 'enqueueFormAssets')) {
     $engine->enqueueFormAssets();
