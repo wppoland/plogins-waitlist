@@ -453,13 +453,15 @@ final class Settings implements HasHooks
             static function (): void {
                 if (class_exists('\Shortlist\Plugin')) {
                     echo '<p class="description" style="color:#007017;font-weight:600;">' . esc_html__(
-                        'Shortlist is active. Its wishlist can show a "Notify when available" button on out-of-stock items, switched in the Shortlist settings under Ecosystem integrations.',
+                        'Shortlist is active. Its wishlist can show this waitlist form on out-of-stock items, switched in the Shortlist settings under Ecosystem integrations. Variable products link to their page, where the variation is picked.',
                         'plogins-waitlist',
                     ) . '</p>';
                 } else {
-                    echo '<p class="description">' . esc_html__(
-                        'Install Shortlist (Wishlist for WooCommerce) to let customers save products and subscribe to back-in-stock alerts straight from their wishlist.',
-                        'plogins-waitlist',
+                    $name = 'Shortlist - Wishlist for WooCommerce';
+                    echo '<p class="description">' . sprintf(
+                        /* translators: %s: partner plugin name, linked to its search on the Add Plugins screen. */
+                        esc_html__('Install %s to let customers save products and join the waitlist for out-of-stock ones straight from their wishlist.', 'plogins-waitlist'),
+                        '<a href="' . esc_url(admin_url('plugin-install.php?s=' . rawurlencode($name) . '&tab=search&type=term')) . '">' . esc_html($name) . '</a>'
                     ) . '</p>';
                 }
             },
