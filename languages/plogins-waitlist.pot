@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Waitlist - Back in Stock for WooCommerce 1.1.1\n"
+"Project-Id-Version: Waitlist - Back in Stock for WooCommerce 1.1.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-waitlist\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-24T06:36:47+00:00\n"
+"POT-Creation-Date: 2026-10-29T13:51:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: plogins-waitlist\n"
@@ -56,351 +56,351 @@ msgid "Plogins Waitlist requires WooCommerce %1$s or higher. You are running Woo
 msgstr ""
 
 #. translators: 1: currency symbol, 2: yearly price
-#: src/Admin/ProUpsell.php:83
+#: src/Admin/ProUpsell.php:108
 #, php-format
 msgid "from %1$s%2$d/yr"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:115
+#: src/Admin/ProUpsell.php:140
 msgid "Permission denied."
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:145
+#: src/Admin/ProUpsell.php:170
 #, php-format
 msgid "Do more with %s"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:150
-#: src/Admin/ProUpsell.php:184
+#: src/Admin/ProUpsell.php:175
+#: src/Admin/ProUpsell.php:209
 msgid "Upgrade to PRO"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:152
+#: src/Admin/ProUpsell.php:177
 msgid "Dismiss this notice"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:174
+#: src/Admin/ProUpsell.php:199
 msgid "Unlock every PRO feature"
 msgstr ""
 
-#: src/Admin/ProUpsell.php:187
+#: src/Admin/ProUpsell.php:212
 msgid "one licence, every PRO feature"
 msgstr ""
 
 #. translators: %s: PRO edition name
-#: src/Admin/ProUpsell.php:206
+#: src/Admin/ProUpsell.php:231
 #, php-format
 msgid "What %s adds"
 msgstr ""
 
-#: src/Admin/Settings.php:44
+#: src/Admin/Settings.php:45
 msgid "Plogins Waitlist"
 msgstr ""
 
-#: src/Admin/Settings.php:45
+#: src/Admin/Settings.php:46
 #: src/Elementor/WaitlistWidget.php:75
 msgid "Waitlist"
 msgstr ""
 
-#: src/Admin/Settings.php:66
+#: src/Admin/Settings.php:67
 msgid "General"
 msgstr ""
 
-#: src/Admin/Settings.php:73
+#: src/Admin/Settings.php:74
 msgid "Allow guest subscriptions"
 msgstr ""
 
-#: src/Admin/Settings.php:79
+#: src/Admin/Settings.php:80
 msgid "Allow visitors who are not logged in to subscribe."
 msgstr ""
 
-#: src/Admin/Settings.php:80
+#: src/Admin/Settings.php:81
 msgid "When on, anyone can join the waitlist by entering their email. When off, only logged-in customers can subscribe and guests see your \"login required\" message instead. Turn off to keep your list tied to real accounts."
 msgstr ""
 
-#: src/Admin/Settings.php:86
+#: src/Admin/Settings.php:87
 msgid "Show form on product page"
 msgstr ""
 
-#: src/Admin/Settings.php:92
+#: src/Admin/Settings.php:93
 msgid "Display the waitlist form on single product pages."
 msgstr ""
 
-#: src/Admin/Settings.php:93
+#: src/Admin/Settings.php:94
 msgid "Automatically shows the form on each product page when that product is out of stock or on backorder. On variable products, the form appears after the shopper selects an unavailable variation. Turn off only if you place the form yourself with the [restock_waitlist] shortcode."
 msgstr ""
 
-#: src/Admin/Settings.php:99
+#: src/Admin/Settings.php:100
 msgid "My Account waitlists"
 msgstr ""
 
-#: src/Admin/Settings.php:105
+#: src/Admin/Settings.php:106
 msgid "Show a Waitlists tab in WooCommerce My Account."
 msgstr ""
 
-#: src/Admin/Settings.php:106
+#: src/Admin/Settings.php:107
 msgid "Logged-in customers can review active waitlists and leave a list from My Account. After enabling, visit Settings > Permalinks and click Save once if the tab returns a 404."
 msgstr ""
 
-#: src/Admin/Settings.php:112
+#: src/Admin/Settings.php:113
 msgid "Show \"people waiting\" count"
 msgstr ""
 
-#: src/Admin/Settings.php:118
+#: src/Admin/Settings.php:119
 msgid "Show how many shoppers are already on the waitlist."
 msgstr ""
 
-#: src/Admin/Settings.php:119
+#: src/Admin/Settings.php:120
 msgid "Displays a short social-proof line above the form (for example, \"12 shoppers are already waiting for this item.\") when at least one person is waiting. A higher count reassures shoppers the product is in demand and worth waiting for."
 msgstr ""
 
-#: src/Admin/Settings.php:125
+#: src/Admin/Settings.php:126
 msgid "\"People waiting\" text"
 msgstr ""
 
-#: src/Admin/Settings.php:131
+#: src/Admin/Settings.php:132
 msgid "{count} shoppers are already waiting for this item."
 msgstr ""
 
-#: src/Admin/Settings.php:132
+#: src/Admin/Settings.php:133
 msgid "Use {count} for the number. Leave blank for the built-in wording (handles singular/plural automatically)."
 msgstr ""
 
-#: src/Admin/Settings.php:133
+#: src/Admin/Settings.php:134
 msgid "Only shown when \"people waiting\" count is on and at least one shopper is waiting."
 msgstr ""
 
-#: src/Admin/Settings.php:139
+#: src/Admin/Settings.php:140
 msgid "My Account menu label"
 msgstr ""
 
-#: src/Admin/Settings.php:145
+#: src/Admin/Settings.php:146
 #: src/Service/WaitlistService.php:125
 msgid "Waitlists"
 msgstr ""
 
-#: src/Admin/Settings.php:146
+#: src/Admin/Settings.php:147
 msgid "Label for the My Account menu item."
 msgstr ""
 
-#: src/Admin/Settings.php:147
+#: src/Admin/Settings.php:148
 msgid "Wording of the menu item customers click in My Account to see the products they are waiting for. Only shown when \"My Account waitlists\" is on. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:154
+#: src/Admin/Settings.php:155
 msgid "Heading & intro"
 msgstr ""
 
-#: src/Admin/Settings.php:156
+#: src/Admin/Settings.php:157
 msgid "Optional heading and introductory text shown above the waitlist form."
 msgstr ""
 
-#: src/Admin/Settings.php:166
+#: src/Admin/Settings.php:167
 msgid "Show heading"
 msgstr ""
 
-#: src/Admin/Settings.php:172
+#: src/Admin/Settings.php:173
 msgid "Display a heading above the form."
 msgstr ""
 
-#: src/Admin/Settings.php:173
+#: src/Admin/Settings.php:174
 msgid "Shows the heading text (set below) above the form, for example \"Notify me when available\". Hide it for a more compact form."
 msgstr ""
 
-#: src/Admin/Settings.php:179
+#: src/Admin/Settings.php:180
 msgid "Heading text"
 msgstr ""
 
-#: src/Admin/Settings.php:185
+#: src/Admin/Settings.php:186
 #: templates/single-product/waitlist-form.php:21
 msgid "Notify me when available"
 msgstr ""
 
-#: src/Admin/Settings.php:186
+#: src/Admin/Settings.php:187
 msgid "The heading shown above the form (only when \"Show heading\" is on). Keep it short and reassuring. Leave blank to use the placeholder shown here."
 msgstr ""
 
-#: src/Admin/Settings.php:192
+#: src/Admin/Settings.php:193
 msgid "Show intro text"
 msgstr ""
 
-#: src/Admin/Settings.php:198
+#: src/Admin/Settings.php:199
 msgid "Display intro text above the form."
 msgstr ""
 
-#: src/Admin/Settings.php:199
+#: src/Admin/Settings.php:200
 msgid "Shows a short paragraph (set below) between the heading and the form to explain what subscribers will receive."
 msgstr ""
 
-#: src/Admin/Settings.php:205
+#: src/Admin/Settings.php:206
 msgid "Intro text"
 msgstr ""
 
-#: src/Admin/Settings.php:211
+#: src/Admin/Settings.php:212
 #: templates/single-product/waitlist-form.php:22
 msgid "Leave your email and we will let you know the moment this product is back."
 msgstr ""
 
-#: src/Admin/Settings.php:212
+#: src/Admin/Settings.php:213
 msgid "Introductory sentence shown above the form (only when \"Show intro text\" is on). Use it to set expectations, e.g. one email, no spam. Leave blank to use the placeholder shown here."
 msgstr ""
 
-#: src/Admin/Settings.php:219
+#: src/Admin/Settings.php:220
 msgid "Form labels"
 msgstr ""
 
-#: src/Admin/Settings.php:226
+#: src/Admin/Settings.php:227
 msgid "Email field label"
 msgstr ""
 
-#: src/Admin/Settings.php:232
+#: src/Admin/Settings.php:233
 #: templates/single-product/waitlist-form.php:26
 msgid "Email address"
 msgstr ""
 
-#: src/Admin/Settings.php:233
+#: src/Admin/Settings.php:234
 msgid "Accessible label for the email field, read out by screen readers. It is visually hidden on the form but important for accessibility. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:239
+#: src/Admin/Settings.php:240
 msgid "Email field placeholder"
 msgstr ""
 
-#: src/Admin/Settings.php:245
+#: src/Admin/Settings.php:246
 #: templates/single-product/waitlist-form.php:81
 msgid "Your email address"
 msgstr ""
 
-#: src/Admin/Settings.php:246
+#: src/Admin/Settings.php:247
 msgid "Greyed-out hint shown inside the empty email field. It disappears as soon as the shopper types. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:252
+#: src/Admin/Settings.php:253
 msgid "Consent checkbox label"
 msgstr ""
 
-#: src/Admin/Settings.php:258
+#: src/Admin/Settings.php:259
 #: templates/single-product/waitlist-form.php:90
 msgid "I consent to receiving back-in-stock notifications."
 msgstr ""
 
-#: src/Admin/Settings.php:259
+#: src/Admin/Settings.php:260
 msgid "Text next to the required consent checkbox. Shoppers must tick it before they can subscribe, so word it clearly for GDPR/marketing-consent compliance. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:265
+#: src/Admin/Settings.php:266
 msgid "Button text"
 msgstr ""
 
-#: src/Admin/Settings.php:271
+#: src/Admin/Settings.php:272
 #: templates/single-product/waitlist-form.php:27
 msgid "Join Waitlist"
 msgstr ""
 
-#: src/Admin/Settings.php:272
+#: src/Admin/Settings.php:273
 msgid "Label on the submit button. An action-oriented phrase such as \"Notify me\" or \"Join Waitlist\" works best. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:278
+#: src/Admin/Settings.php:279
 msgid "Variable product prompt"
 msgstr ""
 
-#: src/Admin/Settings.php:284
+#: src/Admin/Settings.php:285
 #: templates/single-product/waitlist-form.php:29
 msgid "Select options above, then join the waitlist when that variation is unavailable."
 msgstr ""
 
-#: src/Admin/Settings.php:285
+#: src/Admin/Settings.php:286
 msgid "Shown above the form on variable products."
 msgstr ""
 
-#: src/Admin/Settings.php:286
+#: src/Admin/Settings.php:287
 msgid "Guidance shown above the form on variable products, telling shoppers to pick a variation first. The form then appears once they choose an unavailable one. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:293
+#: src/Admin/Settings.php:294
 msgid "Form messages"
 msgstr ""
 
-#: src/Admin/Settings.php:295
+#: src/Admin/Settings.php:296
 msgid "Messages shown to shoppers after they submit the form. Leave blank to use the built-in defaults."
 msgstr ""
 
-#: src/Admin/Settings.php:305
+#: src/Admin/Settings.php:306
 msgid "Success message"
 msgstr ""
 
-#: src/Admin/Settings.php:311
+#: src/Admin/Settings.php:312
 #: src/Service/WaitlistService.php:42
 msgid "Thank you. You have been added to the waitlist."
 msgstr ""
 
-#: src/Admin/Settings.php:312
+#: src/Admin/Settings.php:313
 msgid "Confirmation shown after a shopper successfully joins the waitlist. Reassure them you will email when the item returns. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:318
+#: src/Admin/Settings.php:319
 msgid "Invalid email message"
 msgstr ""
 
-#: src/Admin/Settings.php:324
+#: src/Admin/Settings.php:325
 #: src/Service/WaitlistService.php:39
 msgid "Provide a valid email address."
 msgstr ""
 
-#: src/Admin/Settings.php:325
+#: src/Admin/Settings.php:326
 msgid "Error shown when the entered email address is missing or malformed. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:331
+#: src/Admin/Settings.php:332
 msgid "Missing consent message"
 msgstr ""
 
-#: src/Admin/Settings.php:337
+#: src/Admin/Settings.php:338
 #: src/Service/WaitlistService.php:40
 msgid "You must accept the consent for email contact."
 msgstr ""
 
-#: src/Admin/Settings.php:338
+#: src/Admin/Settings.php:339
 msgid "Error shown when a shopper submits without ticking the consent checkbox. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:344
+#: src/Admin/Settings.php:345
 msgid "Login required message"
 msgstr ""
 
-#: src/Admin/Settings.php:350
+#: src/Admin/Settings.php:351
 #: src/Service/WaitlistService.php:41
 msgid "Login to join the waitlist."
 msgstr ""
 
-#: src/Admin/Settings.php:351
+#: src/Admin/Settings.php:352
 msgid "Shown when guest subscriptions are disabled and the visitor is not logged in."
 msgstr ""
 
-#: src/Admin/Settings.php:352
+#: src/Admin/Settings.php:353
 msgid "Only relevant when \"Allow guest subscriptions\" is off. Tell visitors they need an account, ideally with a link to your login page. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:358
+#: src/Admin/Settings.php:359
 msgid "Variation required message"
 msgstr ""
 
-#: src/Admin/Settings.php:364
+#: src/Admin/Settings.php:365
 #: src/Service/WaitlistService.php:43
 msgid "Select product options before joining the waitlist."
 msgstr ""
 
-#: src/Admin/Settings.php:365
+#: src/Admin/Settings.php:366
 msgid "Error shown when a shopper tries to subscribe without choosing a variation on variable products. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:371
+#: src/Admin/Settings.php:372
 msgid "Unsubscribe success message"
 msgstr ""
 
-#: src/Admin/Settings.php:377
+#: src/Admin/Settings.php:378
 #: src/Service/GuestUnsubscribe.php:94
 #: src/Service/WaitlistService.php:47
 #: src/Service/WaitlistService.php:203
@@ -408,71 +408,93 @@ msgstr ""
 msgid "You have been removed from this waitlist."
 msgstr ""
 
-#: src/Admin/Settings.php:378
+#: src/Admin/Settings.php:379
 msgid "Confirmation shown after a shopper leaves a waitlist from My Account or from the link in the back-in-stock email. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:385
+#: src/Admin/Settings.php:386
 msgid "Notification email"
 msgstr ""
 
-#: src/Admin/Settings.php:387
+#: src/Admin/Settings.php:388
 msgid "These texts are used when a product comes back in stock and subscribers are notified. The email itself (heading, subject, layout, plain text or HTML, on or off) is edited under WooCommerce > Settings > Emails > Back in stock (Waitlist); a subject saved there replaces the one here."
 msgstr ""
 
-#: src/Admin/Settings.php:397
+#: src/Admin/Settings.php:398
 msgid "Email subject"
 msgstr ""
 
-#: src/Admin/Settings.php:403
+#: src/Admin/Settings.php:404
 #: src/Email/RestockEmail.php:54
 #: src/Service/WaitlistService.php:44
 msgid "Product back in stock - {product_name}"
 msgstr ""
 
-#: src/Admin/Settings.php:404
-#: src/Admin/Settings.php:418
+#: src/Admin/Settings.php:405
+#: src/Admin/Settings.php:419
 msgid "Use {product_name} as a placeholder for the product title."
 msgstr ""
 
-#: src/Admin/Settings.php:405
+#: src/Admin/Settings.php:406
 msgid "Subject line of the email sent to subscribers when the product is restocked. Include {product_name} so each email names the exact product. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:411
+#: src/Admin/Settings.php:412
 msgid "Email intro text"
 msgstr ""
 
-#: src/Admin/Settings.php:417
+#: src/Admin/Settings.php:418
 #: src/Email/RestockEmail.php:116
 #: src/Service/WaitlistService.php:45
 msgid "Product {product_name} is back in stock."
 msgstr ""
 
-#: src/Admin/Settings.php:419
+#: src/Admin/Settings.php:420
 msgid "First line of the notification email body. The product link is added automatically on the next line. Use {product_name} to name the product. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:425
+#: src/Admin/Settings.php:426
 msgid "Email closing text"
 msgstr ""
 
-#: src/Admin/Settings.php:431
+#: src/Admin/Settings.php:432
 #: src/Email/RestockEmail.php:126
 #: src/Service/WaitlistService.php:46
 msgid "You asked to hear when this product is back. To stop these emails, use the link to leave the waitlist."
 msgstr ""
 
-#: src/Admin/Settings.php:432
+#: src/Admin/Settings.php:433
 msgid "Closing line of the notification email, shown after the product link. A good place for a brief reassurance or sign-off. Leave blank to use the default."
 msgstr ""
 
-#: src/Admin/Settings.php:449
+#: src/Admin/Settings.php:440
+msgid "Ecosystem integrations"
+msgstr ""
+
+#: src/Admin/Settings.php:442
+msgid "Connect companion plugins from the Plogins family."
+msgstr ""
+
+#: src/Admin/Settings.php:452
+msgid "Shortlist (Wishlist)"
+msgstr ""
+
+#: src/Admin/Settings.php:455
+msgid "Shortlist is active. Its wishlist can show this waitlist form on out-of-stock items, switched in the Shortlist settings under Ecosystem integrations. Variable products link to their page, where the variation is picked."
+msgstr ""
+
+#. translators: %s: partner plugin name, linked to its search on the Add Plugins screen.
+#: src/Admin/Settings.php:463
+#, php-format
+msgid "Install %s to let customers save products and join the waitlist for out-of-stock ones straight from their wishlist."
+msgstr ""
+
+#: src/Admin/Settings.php:485
 msgid "Configure the back-in-stock waitlist form that appears on out-of-stock products. Hover or focus the ? icons for guidance on each option. Empty text fields fall back to sensible built-in defaults."
 msgstr ""
 
 #. translators: accessible name for the inline-help button.
-#: src/Admin/Settings.php:490
+#: src/Admin/Settings.php:526
 msgid "More information"
 msgstr ""
 
