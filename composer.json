@@ -16,7 +16,7 @@
     "autoload": {
         "psr-4": {
             "Waitlist\\": "src/",
-            "WPPoland\\StorefrontKit\\": "lib/storefront-kit/"
+            "Waitlist\\Vendor\\StorefrontKit\\": "lib/storefront-kit/"
         }
     },
     "scripts": {

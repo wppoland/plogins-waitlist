@@ -12,7 +12,7 @@ use wpdb;
 /**
  * Data access for product waitlist subscriptions.
  */
-final class WaitlistRepository implements \WPPoland\StorefrontKit\Waitlist\WaitlistRepository
+final class WaitlistRepository implements \Waitlist\Vendor\StorefrontKit\Waitlist\WaitlistRepository
 {
     public function __construct(
         private readonly wpdb $wpdb,

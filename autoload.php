@@ -13,8 +13,8 @@ if (file_exists(__DIR__ . '/vendor/autoload.php')) {
 // Fallback PSR-4 autoloader.
 spl_autoload_register(static function (string $class): void {
     $prefixes = [
+        'Waitlist\\Vendor\\StorefrontKit\\' => __DIR__ . '/lib/storefront-kit/',
         'Waitlist\\' => __DIR__ . '/src/',
-        'WPPoland\\StorefrontKit\\' => __DIR__ . '/lib/storefront-kit/',
     ];
 
     foreach ($prefixes as $prefix => $baseDir) {

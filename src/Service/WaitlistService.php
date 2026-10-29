@@ -10,7 +10,7 @@ use Waitlist\Contract\HasHooks;
 use Waitlist\Email\RestockEmail;
 use Waitlist\Repository\WaitlistRepository;
 use Waitlist\Util\TemplateLoader;
-use WPPoland\StorefrontKit\Waitlist\WaitlistEngine;
+use Waitlist\Vendor\StorefrontKit\Waitlist\WaitlistEngine;
 
 final class WaitlistService implements HasHooks
 {

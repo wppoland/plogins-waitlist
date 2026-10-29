@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace WPPoland\StorefrontKit\Waitlist;
+namespace Waitlist\Vendor\StorefrontKit\Waitlist;
 
-use WPPoland\StorefrontKit\Support\Formatter;
+use Waitlist\Vendor\StorefrontKit\Support\Formatter;
 
 final class WaitlistEngine
 {

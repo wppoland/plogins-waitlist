@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.7 =
+* Fixed: the site could fatal ("Unknown named parameter") when another Plogins plugin with an older copy of the shared library was active. Plogins Waitlist's bundled copy now lives under its own namespace.
 
 = 1.1.6 =
 * The Shortlist line under Ecosystem integrations says the wishlist shows this waitlist form on out-of-stock items, and links to the plugin search on the Add Plugins screen when Shortlist is not installed.
