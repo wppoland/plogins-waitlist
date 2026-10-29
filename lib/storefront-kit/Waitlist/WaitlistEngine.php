@@ -335,13 +335,6 @@ final class WaitlistEngine
     }
 
     /**
-     * Whether this product can take signups at all, ignoring where the form was
-     * placed. `show_on_single` only governs the automatic placement above, so it
-     * must not reach the AJAX handler: merchants who turned it off to drop the
-     * shortcode in themselves saw a form on the page while every shopper who
-     * submitted it got "Waitlist is unavailable for this product".
-     */
-    /**
      * Published and not behind a password; a variation's parent too, since a
      * disabled variation is private and its parent carries the password.
      */
@@ -363,17 +356,37 @@ final class WaitlistEngine
         return true;
     }
 
+    /**
+     * Whether this product can take signups at all, ignoring where the form was
+     * placed. `show_on_single` only governs the automatic placement above, so it
+     * must not reach the AJAX handler: merchants who turned it off to drop the
+     * shortcode in themselves saw a form on the page while every shopper who
+     * submitted it got "Waitlist is unavailable for this product".
+     *
+     * Filter `plogins_waitlist_accepts_subscriptions` lets another plugin take
+     * a product out: Rezervo returns false for a pre-order, which already has
+     * its own button, so the shopper is not offered "Notify me" next to it.
+     */
     private function acceptsSubscriptions(\WC_Product $product): bool
     {
         if (! $this->isEnabled()) {
             return false;
         }
 
-        if ($product->is_type('variable')) {
-            return true;
-        }
+        $accepts = $product->is_type('variable')
+            || ! $product->is_in_stock()
+            || $product->get_stock_status() === 'onbackorder';
 
-        return ! $product->is_in_stock() || $product->get_stock_status() === 'onbackorder';
+        /**
+         * Filter whether a product or variation takes waitlist signups.
+         *
+         * Decides the form on the product page, the per-variation flag and the
+         * signup handler alike, so returning false removes the waitlist for it.
+         *
+         * @param bool        $accepts Whether signups are accepted.
+         * @param \WC_Product $product The product or variation.
+         */
+        return (bool) apply_filters('plogins_waitlist_accepts_subscriptions', $accepts, $product);
     }
 
     private function isEnabled(): bool

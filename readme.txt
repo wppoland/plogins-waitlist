@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -129,6 +129,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.5 =
+* Added: `plogins_waitlist_accepts_subscriptions`, a filter deciding whether a product or variation takes waitlist signups. Returning false removes the form, the per-variation flag and the signup for it. Rezervo uses it so a pre-order product shows its Pre-order button and no second "Notify me" form.
 
 = 1.1.4 =
 * Security (low): the waitlist signup accepted the id of a draft, private or password-protected product, so restocking a product before publishing it could email its name and link to an address someone had signed up for it. Signups now need a product a visitor can see.
