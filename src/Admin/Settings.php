@@ -22,6 +22,7 @@ final class Settings implements HasHooks
     private const SECTION_FORM    = 'restock_form';
     private const SECTION_MESSAGES = 'restock_messages';
     private const SECTION_EMAIL   = 'restock_email';
+    private const SECTION_INTEGRATIONS = 'restock_integrations';
 
     private ?ProUpsell $proUpsell = null;
 
@@ -431,6 +432,39 @@ final class Settings implements HasHooks
                 'placeholder' => __('You asked to hear when this product is back. To stop these emails, use the link to leave the waitlist.', 'plogins-waitlist'),
                 'help'        => __('Closing line of the notification email, shown after the product link. A good place for a brief reassurance or sign-off. Leave blank to use the default.', 'plogins-waitlist'),
             ],
+        );
+
+        // ── Ecosystem Integrations ───────────────────────────────────────────
+        add_settings_section(
+            self::SECTION_INTEGRATIONS,
+            __('Ecosystem integrations', 'plogins-waitlist'),
+            static function (): void {
+                echo '<p>' . esc_html__(
+                    'Connect companion plugins from the Plogins family.',
+                    'plogins-waitlist',
+                ) . '</p>';
+            },
+            self::PAGE,
+        );
+
+        add_settings_field(
+            'integration_shortlist',
+            __('Shortlist (Wishlist)', 'plogins-waitlist'),
+            static function (): void {
+                if (class_exists('\Shortlist\Plugin')) {
+                    echo '<p class="description" style="color:#007017;font-weight:600;">' . esc_html__(
+                        'Shortlist is active. Its wishlist can show a "Notify when available" button on out-of-stock items, switched in the Shortlist settings under Ecosystem integrations.',
+                        'plogins-waitlist',
+                    ) . '</p>';
+                } else {
+                    echo '<p class="description">' . esc_html__(
+                        'Install Shortlist (Wishlist for WooCommerce) to let customers save products and subscribe to back-in-stock alerts straight from their wishlist.',
+                        'plogins-waitlist',
+                    ) . '</p>';
+                }
+            },
+            self::PAGE,
+            self::SECTION_INTEGRATIONS,
         );
     }
 
