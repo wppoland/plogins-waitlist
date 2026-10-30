@@ -32,10 +32,19 @@ if (function_exists('as_unschedule_all_actions')) {
 
 global $wpdb;
 
-// Drop the waitlist table.
-$restock_table = $wpdb->prefix . 'restock_waitlist';
-// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Table name from $wpdb->prefix, cannot be parameterised.
-$wpdb->query( "DROP TABLE IF EXISTS {$restock_table}" );
+// Drop the waitlist table, unless the PRO add-on is still installed (active or
+// not): it adds subscribers to this table too, so whichever of the two is
+// removed last drops it. Matched on the text domain, current and pre-rename,
+// so a renamed plugin folder still counts. tests/uninstall-shared-table-check.php
+// keeps this in step with the add-on's cleanup.
+if ( ! function_exists( 'get_plugins' ) ) {
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+if ( array_intersect( array( 'plogins-waitlist-pro', 'restock-pro' ), array_column( get_plugins(), 'TextDomain' ) ) === array() ) {
+	$restock_table = $wpdb->prefix . 'restock_waitlist';
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.DirectDatabaseQuery.SchemaChange,WordPress.DB.PreparedSQL.InterpolatedNotPrepared,PluginCheck.Security.DirectDB.UnescapedDBParameter -- Table name from $wpdb->prefix, cannot be parameterised.
+	$wpdb->query( "DROP TABLE IF EXISTS {$restock_table}" );
+}
 
 // Remove options.
 delete_option( 'restock_settings' );
