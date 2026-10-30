@@ -8,7 +8,9 @@ declare(strict_types=1);
  * the add-on is gone.
  *
  * Runs uninstall.php against a fake $wpdb with and without the add-on on disk
- * (under its current and its pre-rename text domain) and reads the DROPs.
+ * (under its current and its pre-rename text domain) and reads the DROPs. The
+ * last run is a bulk delete of both plugins: get_plugins() still holds the
+ * add-on in its request cache though the add-on is gone from disk.
  *
  *   php tests/uninstall-shared-table-check.php [path/to/uninstall.php]
  */
@@ -17,15 +19,29 @@ define('ABSPATH', sys_get_temp_dir() . '/');
 define('WP_UNINSTALL_PLUGIN', 'plogins-waitlist/plogins-waitlist.php');
 
 $GLOBALS['addon'] = null;
+$GLOBALS['cache'] = null;
 
+// Like core, the list is cached for the request and only wp_cache_delete()
+// makes get_plugins() read the disk again.
+function wp_cache_delete($key, $group = '')
+{
+    if ('plugins' === $key && 'plugins' === $group) {
+        $GLOBALS['cache'] = null;
+    }
+
+    return true;
+}
 function get_plugins()
 {
+    if (null !== $GLOBALS['cache']) {
+        return $GLOBALS['cache'];
+    }
     $plugins = ['plogins-waitlist/plogins-waitlist.php' => ['TextDomain' => 'plogins-waitlist']];
     if ($GLOBALS['addon'] !== null) {
         $plugins['renamed-folder/main.php'] = ['TextDomain' => $GLOBALS['addon']];
     }
 
-    return $plugins;
+    return $GLOBALS['cache'] = $plugins;
 }
 function wp_unschedule_hook($hook)
 {
@@ -56,10 +72,11 @@ final class FakeWpdb
 
 $file = $argv[1] ?? dirname(__DIR__) . '/uninstall.php';
 
-function drops_waitlist(string $file, ?string $addon): bool
+function drops_waitlist(string $file, ?string $addon, ?array $cached = null): bool
 {
     global $wpdb;
     $GLOBALS['addon'] = $addon;
+    $GLOBALS['cache'] = $cached;
     $wpdb = new FakeWpdb();
     include $file;
 
@@ -74,6 +91,14 @@ foreach (['plogins-waitlist-pro', 'restock-pro'] as $addon) {
     if (drops_waitlist($file, $addon)) {
         $fail[] = "with the add-on ({$addon}) installed, uninstall drops wp_restock_waitlist it still writes to";
     }
+}
+// Bulk delete: the add-on was uninstalled and removed earlier in this request.
+$stale = [
+    'plogins-waitlist/plogins-waitlist.php'         => ['TextDomain' => 'plogins-waitlist'],
+    'plogins-waitlist-pro/plogins-waitlist-pro.php' => ['TextDomain' => 'plogins-waitlist-pro'],
+];
+if (! drops_waitlist($file, null, $stale)) {
+    $fail[] = 'bulk delete of both plugins: uninstall trusts the stale get_plugins() cache and leaves wp_restock_waitlist behind';
 }
 
 if ($fail !== []) {
