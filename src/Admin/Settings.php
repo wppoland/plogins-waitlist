@@ -35,6 +35,8 @@ final class Settings implements HasHooks
     {
         add_action('admin_menu', [$this, 'addMenuPage']);
         add_action('admin_init', [$this, 'registerSettings']);
+        // options.php checks manage_options unless the group says otherwise.
+        add_filter('option_page_capability_' . self::PAGE, static fn (): string => 'manage_woocommerce');
         $this->proUpsell()->registerHooks();
     }
 
