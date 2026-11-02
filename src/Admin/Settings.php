@@ -498,7 +498,40 @@ final class Settings implements HasHooks
                 <?php $this->proUpsell()->aside(); ?>
             </div>
 
-            <?php $this->proUpsell()->cards(); ?>
+            <?php
+            $this->renderCompanionCard();
+            $this->proUpsell()->cards();
+            ?>
+        </div>
+        <?php
+    }
+
+    /**
+     * Cross-recommendation card for sister plugins (Rezervo - Pre-Orders).
+     * Strictly scoped to the Waitlist settings screen per WordPress.org Guideline 11.
+     */
+    private function renderCompanionCard(): void
+    {
+        $isPreorderActive = defined('\\Preorder\\VERSION') || (function_exists('is_plugin_active') && (is_plugin_active('preorder/rezervo.php') || is_plugin_active('rezervo/rezervo.php')));
+
+        ?>
+        <div class="card" style="max-width: 800px; margin-top: 24px; padding: 18px 22px;">
+            <h2 class="title" style="margin-top: 0; font-size: 15px;"><?php echo esc_html__('Complementary integration: Rezervo - Pre-Orders for WooCommerce', 'plogins-waitlist'); ?></h2>
+            <p style="color: #50575e; line-height: 1.5;">
+                <?php echo esc_html__('Pair back in stock waitlists with pre-orders to collect advance purchases when items have confirmed arrival dates instead of making customers wait.', 'plogins-waitlist'); ?>
+            </p>
+            <?php if ($isPreorderActive) : ?>
+                <p style="color: #007017; font-weight: 600; margin-bottom: 0;">
+                    <span class="dashicons dashicons-yes-alt" style="vertical-align: text-bottom;"></span>
+                    <?php echo esc_html__('Rezervo is active.', 'plogins-waitlist'); ?>
+                </p>
+            <?php else : ?>
+                <p style="margin-bottom: 0;">
+                    <a href="<?php echo esc_url(admin_url('plugin-install.php?s=' . rawurlencode('Rezervo - Pre-Orders for WooCommerce') . '&tab=search&type=term')); ?>" class="button button-secondary">
+                        <?php echo esc_html__('Explore Rezervo Pre-Orders', 'plogins-waitlist'); ?> &rarr;
+                    </a>
+                </p>
+            <?php endif; ?>
         </div>
         <?php
     }
