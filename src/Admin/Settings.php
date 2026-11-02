@@ -470,6 +470,28 @@ final class Settings implements HasHooks
             self::PAGE,
             self::SECTION_INTEGRATIONS,
         );
+
+        add_settings_field(
+            'integration_preorder',
+            __('Rezervo (Pre-Orders)', 'plogins-waitlist'),
+            static function (): void {
+                if (class_exists('\Preorder\Plugin')) {
+                    echo '<p class="description" style="color:#007017;font-weight:600;">' . esc_html__(
+                        'Rezervo is active. Out-of-stock items can accept pre-orders while products not eligible for pre-order offer the back-in-stock waitlist.',
+                        'plogins-waitlist',
+                    ) . '</p>';
+                } else {
+                    $name = 'Rezervo - Pre-Orders for WooCommerce';
+                    echo '<p class="description">' . sprintf(
+                        /* translators: %s: partner plugin name, linked to its search on the Add Plugins screen. */
+                        esc_html__('Install %s to let customers pre-order upcoming or out-of-stock products directly, complementing waitlist notifications.', 'plogins-waitlist'),
+                        '<a href="' . esc_url(admin_url('plugin-install.php?s=' . rawurlencode($name) . '&tab=search&type=term')) . '">' . esc_html($name) . '</a>'
+                    ) . '</p>';
+                }
+            },
+            self::PAGE,
+            self::SECTION_INTEGRATIONS,
+        );
     }
 
     public function renderPage(): void
