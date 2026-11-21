@@ -9,7 +9,7 @@
      confirmation glow is painted with box-shadow/pseudo-elements only, so it
      never changes box size, so there is zero CLS.
    - Tasteful transitions gated behind prefers-reduced-motion.
-   - Native dark-mode support via prefers-color-scheme.
+   - Dark mode follows the page's color-scheme (set by the theme).
    - Designed to sit inside WooCommerce themes without fighting them.
    ========================================================================== */
 
@@ -136,6 +136,7 @@
     /* Warm signal-amber button treatment. */
     border: 0;
     color: #fff;
+    color: light-dark(#fff, #3a1c08);
     background: linear-gradient(180deg,
         var(--restock-accent-soft) 0%,
         var(--restock-accent) 100%);
@@ -308,30 +309,52 @@
 
 /* Dark mode */
 
-@media (prefers-color-scheme: dark) {
+@supports (color: light-dark(white, black)) {
     .restock-waitlist {
-        --restock-surface: rgba(255, 245, 235, 0.045);
-        --restock-surface-2: rgba(255, 245, 235, 0.07);
-        --restock-border: rgba(255, 255, 255, 0.14);
-        --restock-border-strong: rgba(255, 255, 255, 0.24);
-        --restock-muted: #b6a896;
-
-        /* Brighter accent for dark mode contrast. */
-        --restock-accent: #fb923c;
-        --restock-accent-soft: #fdba74;
-        --restock-ember: #fbbf24;
-
-        --restock-ok-bg: rgba(251, 146, 60, 0.14);
-        --restock-ok-border: rgba(251, 146, 60, 0.5);
-        --restock-ok-text: #fdba74;
-        --restock-err-bg: rgba(248, 113, 113, 0.14);
-        --restock-err-border: rgba(248, 113, 113, 0.5);
-        --restock-err-text: #f87171;
+        --restock-surface: light-dark(#fbf7f3, rgba(255, 245, 235, 0.045));
+        --restock-surface-2: light-dark(#ffffff, rgba(255, 245, 235, 0.07));
+        --restock-border: light-dark(rgba(80, 44, 18, 0.14), rgba(255, 255, 255, 0.14));
+        --restock-border-strong: light-dark(rgba(80, 44, 18, 0.26), rgba(255, 255, 255, 0.24));
+        --restock-muted: light-dark(#6b5847, #b6a896);
+        --restock-accent: light-dark(#9a3412, #fb923c);
+        --restock-accent-soft: light-dark(#c2410c, #fdba74);
+        --restock-ember: light-dark(#f59e0b, #fbbf24);
+        --restock-ok-bg: light-dark(rgba(194, 65, 12, 0.08), rgba(251, 146, 60, 0.14));
+        --restock-ok-border: light-dark(rgba(194, 65, 12, 0.42), rgba(251, 146, 60, 0.5));
+        --restock-ok-text: light-dark(#9a3412, #fdba74);
+        --restock-err-bg: light-dark(rgba(190, 30, 36, 0.08), rgba(248, 113, 113, 0.14));
+        --restock-err-border: light-dark(rgba(190, 30, 36, 0.4), rgba(248, 113, 113, 0.5));
+        --restock-err-text: light-dark(#b91c1c, #f87171);
     }
+}
 
-    /* In dark mode the lit-button text needs deeper contrast on bright amber. */
-    .restock-waitlist-form button[type="submit"] {
-        color: #3a1c08;
+/* Fallback for browsers without light-dark(): keep the OS-based dark styling. */
+@supports not (color: light-dark(white, black)) {
+    @media (prefers-color-scheme: dark) {
+        .restock-waitlist {
+            --restock-surface: rgba(255, 245, 235, 0.045);
+            --restock-surface-2: rgba(255, 245, 235, 0.07);
+            --restock-border: rgba(255, 255, 255, 0.14);
+            --restock-border-strong: rgba(255, 255, 255, 0.24);
+            --restock-muted: #b6a896;
+
+            /* Brighter accent for dark mode contrast. */
+            --restock-accent: #fb923c;
+            --restock-accent-soft: #fdba74;
+            --restock-ember: #fbbf24;
+
+            --restock-ok-bg: rgba(251, 146, 60, 0.14);
+            --restock-ok-border: rgba(251, 146, 60, 0.5);
+            --restock-ok-text: #fdba74;
+            --restock-err-bg: rgba(248, 113, 113, 0.14);
+            --restock-err-border: rgba(248, 113, 113, 0.5);
+            --restock-err-text: #f87171;
+        }
+
+        /* In dark mode the lit-button text needs deeper contrast on bright amber. */
+        .restock-waitlist-form button[type="submit"] {
+            color: #3a1c08;
+        }
     }
 }
 
