@@ -16,9 +16,6 @@ defined('WP_UNINSTALL_PLUGIN') || exit;
 // removed last drops it. Matched on the text domain, current and pre-rename,
 // so a renamed plugin folder still counts. tests/uninstall-shared-table-check.php
 // keeps this in step with the add-on's cleanup.
-if ( ! function_exists( 'get_plugins' ) ) {
-	require_once ABSPATH . 'wp-admin/includes/plugin.php';
-}
 // A bulk delete of both plugins uninstalls them in one request, and
 // get_plugins() caches its list for the request: the add-on deleted a moment
 // ago would still be listed, and the table would never be dropped.
