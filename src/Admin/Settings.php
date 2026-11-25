@@ -34,6 +34,7 @@ final class Settings implements HasHooks
     public function registerHooks(): void
     {
         add_action('admin_menu', [$this, 'addMenuPage']);
+        add_filter('plugin_action_links_' . plugin_basename(\Waitlist\PLUGIN_FILE), [$this, 'actionLinks']);
         add_action('admin_init', [$this, 'registerSettings']);
         // options.php checks manage_options unless the group says otherwise.
         add_filter('option_page_capability_' . self::PAGE, static fn (): string => 'manage_woocommerce');
@@ -50,6 +51,24 @@ final class Settings implements HasHooks
             self::PAGE,
             [$this, 'renderPage'],
         );
+    }
+
+    /**
+     * Shortcuts to the plugin's screens on the Plugins list.
+     *
+     * @param array<int|string, string> $links
+     * @return array<int|string, string>
+     */
+    public function actionLinks(array $links): array
+    {
+        array_unshift(
+            $links,
+            sprintf('<a href="%s">%s</a>', esc_url(admin_url('admin.php?page=' . self::PAGE)), esc_html__('Settings', 'plogins-waitlist')),
+            sprintf('<a href="%s">%s</a>', esc_url(admin_url('admin.php?page=restock-subscribers')), esc_html__('Subscribers', 'plogins-waitlist')),
+            sprintf('<a href="%s">%s</a>', esc_url(admin_url('admin.php?page=wc-settings&tab=email&section=' . strtolower(\Waitlist\Email\RestockEmail::KEY))), esc_html__('Back in stock (Waitlist)', 'plogins-waitlist')),
+        );
+
+        return $links;
     }
 
     public function registerSettings(): void
