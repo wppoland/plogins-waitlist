@@ -2,7 +2,7 @@
 Contributors: motylanogha
 Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
-Tested up to: 7.1
+Tested up to: 7.2
 Requires PHP: 8.1
 Stable tag: 1.1.13
 License: GPLv2 or later
