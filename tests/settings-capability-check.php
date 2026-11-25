@@ -15,6 +15,11 @@ declare(strict_types=1);
 
 namespace {
     define('ABSPATH', __DIR__);
+    define('Waitlist\\PLUGIN_FILE', __FILE__);
+    function plugin_basename(string $file): string
+    {
+        return basename($file);
+    }
 
     $GLOBALS['filters'] = [];
     $GLOBALS['groups']  = [];
