@@ -109,10 +109,11 @@ final class Subscribers implements HasHooks
 
     public function addMenuPage(): void
     {
+        // Under WooCommerce itself: a submenu of the Waitlist submenu is never drawn.
         add_submenu_page(
-            'restock-settings',
+            'woocommerce',
             __('Waitlist Subscribers', 'plogins-waitlist'),
-            __('Subscribers', 'plogins-waitlist'),
+            __('Waitlist: Subscribers', 'plogins-waitlist'),
             'manage_woocommerce',
             self::PAGE,
             [$this, 'renderPage'],
