@@ -23,7 +23,7 @@ final class Assets implements HasHooks
      */
     private const PAGE_HOOKS = [
         'woocommerce_page_restock-settings',
-        'restock_page_restock-subscribers',
+        'woocommerce_page_restock-subscribers',
     ];
 
     public function registerHooks(): void

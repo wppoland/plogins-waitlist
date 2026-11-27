@@ -4,7 +4,7 @@ Tags: woocommerce, back in stock, waitlist, stock notification, email
 Requires at least: 6.4
 Tested up to: 7.2
 Requires PHP: 8.1
-Stable tag: 1.1.13
+Stable tag: 1.1.14
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,7 +109,7 @@ Yes. Logged-in customers see a **Waitlists** tab under My Account with active su
 Every signup requires the shopper to tick an explicit consent checkbox before they can join the waitlist; the form will not submit without it. When a privacy policy page is set under **Settings > Privacy**, the consent label links to it. Every restock email carries a signed "Leave this waitlist" link (and a `List-Unsubscribe` header for mail clients) that removes the signup without a login; the link does not reveal whether an address is on any list. Subscriber emails are stored only in a custom table in your own WordPress database and are never sent to any external service. You are responsible for the wording of your consent label and your site's privacy policy.
 
 = Can I export the subscriber list? =
-Yes. From **WooCommerce > Plogins Waitlist > Subscribers** you can view subscribers, filter by product, and export the list as CSV.
+Yes. From **WooCommerce > Waitlist: Subscribers** you can view subscribers, filter by product, and export the list as CSV.
 
 = Does the form reload the page on submit? =
 No. The form is submitted with a vanilla-JavaScript `fetch` call and the result is announced in an `aria-live` region, so the page stays put. Plogins Waitlist loads no jQuery for this; on variable products it does rely on WooCommerce's own variation script to know which variation is selected.
@@ -138,6 +138,9 @@ Plogins Waitlist does not connect to any external services. Back-in-stock notifi
 Plogins Waitlist is fully translatable and ships the `plogins-waitlist.pot` template. Translations are delivered by WordPress.org language packs from translate.wordpress.org, which is where Polish, German and Spanish are being contributed; the package itself carries no compiled translation files.
 
 == Changelog ==
+
+= 1.1.14 =
+* Fixed: the Subscribers screen had no menu entry (WordPress does not draw a submenu of a submenu), so it was reachable only from the Plugins list. It is now **WooCommerce > Waitlist: Subscribers**, next to the Waitlist settings.
 
 = 1.1.13 =
 * Plugins list shows shortcuts to the settings screens.

@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Waitlist - Back in Stock for WooCommerce 1.1.13\n"
+"Project-Id-Version: Waitlist - Back in Stock for WooCommerce 1.1.14\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plogins-waitlist\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-25T14:32:02+00:00\n"
+"POT-Creation-Date: 2026-11-27T13:53:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: plogins-waitlist\n"
@@ -99,6 +99,7 @@ msgid "Plogins Waitlist"
 msgstr ""
 
 #: src/Admin/Settings.php:49
+#: src/Admin/Subscribers.php:117
 #: src/Elementor/WaitlistWidget.php:75
 msgid "Waitlist"
 msgstr ""
@@ -108,7 +109,7 @@ msgid "Settings"
 msgstr ""
 
 #: src/Admin/Settings.php:67
-#: src/Admin/Subscribers.php:115
+#: src/Admin/Subscribers.php:117
 msgid "Subscribers"
 msgstr ""
 
@@ -543,127 +544,127 @@ msgid "More information"
 msgstr ""
 
 #: src/Admin/Subscribers.php:65
-#: src/Admin/Subscribers.php:133
+#: src/Admin/Subscribers.php:135
 msgid "Security check failed."
 msgstr ""
 
-#: src/Admin/Subscribers.php:114
-#: src/Admin/Subscribers.php:242
+#: src/Admin/Subscribers.php:115
+#: src/Admin/Subscribers.php:244
 msgid "Waitlist Subscribers"
 msgstr ""
 
-#: src/Admin/Subscribers.php:248
+#: src/Admin/Subscribers.php:250
 msgid "Subscriber removed from the waitlist."
 msgstr ""
 
-#: src/Admin/Subscribers.php:252
+#: src/Admin/Subscribers.php:254
 msgid "Everyone who asked to be notified when an out-of-stock product returns. When you restock a product, pending subscribers are emailed automatically and move to \"Notified\"."
 msgstr ""
 
 #. translators: %s: product name.
-#: src/Admin/Subscribers.php:261
+#: src/Admin/Subscribers.php:263
 #, php-format
 msgid "Showing waiting subscribers for: %s"
 msgstr ""
 
-#: src/Admin/Subscribers.php:267
-#: src/Admin/Subscribers.php:322
+#: src/Admin/Subscribers.php:269
+#: src/Admin/Subscribers.php:324
 msgid "Show all subscribers"
 msgstr ""
 
-#: src/Admin/Subscribers.php:277
+#: src/Admin/Subscribers.php:279
 msgid "Total"
 msgstr ""
 
-#: src/Admin/Subscribers.php:281
-#: src/Admin/Subscribers.php:374
+#: src/Admin/Subscribers.php:283
+#: src/Admin/Subscribers.php:376
 msgid "Waiting"
 msgstr ""
 
-#: src/Admin/Subscribers.php:285
-#: src/Admin/Subscribers.php:346
-#: src/Admin/Subscribers.php:372
+#: src/Admin/Subscribers.php:287
+#: src/Admin/Subscribers.php:348
+#: src/Admin/Subscribers.php:374
 #: src/Service/WaitlistPrivacyService.php:133
 msgid "Notified"
 msgstr ""
 
-#: src/Admin/Subscribers.php:293
+#: src/Admin/Subscribers.php:295
 msgid "Export CSV"
 msgstr ""
 
-#: src/Admin/Subscribers.php:298
+#: src/Admin/Subscribers.php:300
 msgid "Search subscribers by email"
 msgstr ""
 
-#: src/Admin/Subscribers.php:299
+#: src/Admin/Subscribers.php:301
 msgid "Search by email"
 msgstr ""
 
-#: src/Admin/Subscribers.php:300
+#: src/Admin/Subscribers.php:302
 msgid "Search"
 msgstr ""
 
-#: src/Admin/Subscribers.php:302
+#: src/Admin/Subscribers.php:304
 msgid "Clear"
 msgstr ""
 
-#: src/Admin/Subscribers.php:310
+#: src/Admin/Subscribers.php:312
 msgid "No matching subscribers"
 msgstr ""
 
 #. translators: %s: search term.
-#: src/Admin/Subscribers.php:315
+#: src/Admin/Subscribers.php:317
 #, php-format
 msgid "No subscribers match \"%s\"."
 msgstr ""
 
-#: src/Admin/Subscribers.php:329
+#: src/Admin/Subscribers.php:331
 msgid "No subscribers yet"
 msgstr ""
 
-#: src/Admin/Subscribers.php:331
+#: src/Admin/Subscribers.php:333
 msgid "When a product is out of stock, shoppers can join its waitlist from the product page. Their requests will appear here, and they will be emailed automatically as soon as you restock."
 msgstr ""
 
-#: src/Admin/Subscribers.php:335
+#: src/Admin/Subscribers.php:337
 msgid "Review waitlist settings"
 msgstr ""
 
-#: src/Admin/Subscribers.php:343
+#: src/Admin/Subscribers.php:345
 msgid "ID"
 msgstr ""
 
-#: src/Admin/Subscribers.php:344
+#: src/Admin/Subscribers.php:346
 #: src/Service/WaitlistPrivacyService.php:131
 #: templates/myaccount/waitlists.php:39
 msgid "Product"
 msgstr ""
 
-#: src/Admin/Subscribers.php:345
+#: src/Admin/Subscribers.php:347
 msgid "Email"
 msgstr ""
 
-#: src/Admin/Subscribers.php:347
+#: src/Admin/Subscribers.php:349
 #: templates/myaccount/waitlists.php:41
 msgid "Subscribed"
 msgstr ""
 
-#: src/Admin/Subscribers.php:348
+#: src/Admin/Subscribers.php:350
 #: templates/myaccount/waitlists.php:42
 msgid "Actions"
 msgstr ""
 
-#: src/Admin/Subscribers.php:388
+#: src/Admin/Subscribers.php:390
 msgid "Remove this subscriber from the waitlist?"
 msgstr ""
 
 #. translators: %s: subscriber email.
-#: src/Admin/Subscribers.php:389
+#: src/Admin/Subscribers.php:391
 #, php-format
 msgid "Remove %s"
 msgstr ""
 
-#: src/Admin/Subscribers.php:391
+#: src/Admin/Subscribers.php:393
 msgid "Remove"
 msgstr ""
 
