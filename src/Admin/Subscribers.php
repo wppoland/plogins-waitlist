@@ -113,7 +113,8 @@ final class Subscribers implements HasHooks
         add_submenu_page(
             'woocommerce',
             __('Waitlist Subscribers', 'plogins-waitlist'),
-            __('Waitlist: Subscribers', 'plogins-waitlist'),
+            // Built from two strings every catalogue already translates, in the family's "Plugin: Screen" form.
+            sprintf('%s: %s', __('Waitlist', 'plogins-waitlist'), __('Subscribers', 'plogins-waitlist')),
             'manage_woocommerce',
             self::PAGE,
             [$this, 'renderPage'],
